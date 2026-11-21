@@ -34,8 +34,11 @@ const [W, H] = format === 'landscape' ? [1920, 1080] : [1080, 1920];
   }
 
   const outFile = path.join(outDir, `trailer-${format}-${W}x${H}.mp4`);
+  // voiceover is muxed in when audio/voiceover.wav exists
+  const audio = path.join(__dirname, 'audio', 'voiceover.wav');
+  const audioArgs = fs.existsSync(audio) ? ['-i', audio, '-map', '0:v', '-map', '1:a', '-c:a', 'aac', '-b:a', '192k', '-shortest'] : [];
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS),
-    '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-pix_fmt', 'yuv420p',
+    '-c:v', 'mjpeg', '-i', '-', ...audioArgs, '-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-pix_fmt', 'yuv420p',
     '-movflags', '+faststart', outFile], { stdio: ['pipe', 'inherit', 'inherit'] });
 
   const total = Math.round(duration * FPS);
