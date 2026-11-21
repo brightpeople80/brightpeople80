@@ -1,0 +1,17 @@
+[
+ {"id":"notebook",  "at":0.30,  "text":"A notebook full of plans."},
+ {"id":"camera",    "at":2.20,  "text":"A camera roll full of screenshots."},
+ {"id":"head",      "at":4.45,  "text":"A head full of ideas."},
+ {"id":"why",       "at":6.50,  "text":"So why does nothing ever actually start?"},
+ {"id":"lazy",      "at":9.70,  "text":"You're not lazy."},
+ {"id":"stuck",     "at":11.00, "text":"You're stuck in the cycle of planning."},
+ {"id":"noplan",    "at":14.00, "text":"You don't need another plan."},
+ {"id":"begin",     "at":16.30, "text":"You need a way to begin."},
+ {"id":"title",     "at":18.90, "text":"The Life You Keep Planning."},
+ {"id":"debut",     "at":20.90, "text":"The debut book by Belinda Bright N."},
+ {"id":"select",    "at":23.70, "text":"The SELECT method."},
+ {"id":"thirty",    "at":25.10, "text":"A thirty-day programme."},
+ {"id":"step",      "at":26.70, "text":"One meaningful step at a time."},
+ {"id":"out",       "at":28.90, "text":"Out January the twenty-third."},
+ {"id":"preorder",  "at":30.80, "text":"Pre-order now on Kindle."}
+]

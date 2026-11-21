@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Life You Keep Planning — Trailer v2</title>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+  @font-face { font-family: 'Caveat'; font-weight: 600; src: url(../assets/fonts/Caveat.woff2) format('woff2'); }
+  :root { --navy: #0b1a31; --yellow: #fbc312; --cream: #f6efe2; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #000; overflow: hidden; }
+  #frame { position: relative; overflow: hidden; background: var(--navy); }
+  #stage { position: absolute; inset: 0; will-change: transform; }
+  #gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  /* kinetic captions */
+  .cap { position: absolute; left: 50px; right: 50px; text-align: center; transform: translateY(-50%);
+         color: #fff; text-shadow: 0 6px 36px rgba(0,0,0,.65), 0 2px 6px rgba(0,0,0,.4); }
+  .row { display: block; white-space: nowrap; line-height: 1.02; }
+  .w { display: inline-block; margin: 0 .13em; transform-origin: 50% 75%; position: relative; }
+  .s { font: 800 84px 'Montserrat'; text-transform: uppercase; letter-spacing: -.01em; }
+  .S { font: 900 138px 'Montserrat'; text-transform: uppercase; letter-spacing: -.02em; }
+  .Y { font: 900 138px 'Montserrat'; text-transform: uppercase; letter-spacing: -.02em; color: var(--yellow); }
+  .i { font: italic 600 92px 'Source Serif 4'; }
+  .I { font: italic 600 92px 'Source Serif 4'; color: var(--yellow); }
+  .X { font: 900 220px 'Montserrat'; text-transform: uppercase; letter-spacing: -.03em; color: var(--yellow); line-height: .95; }
+  .Z { font: 900 190px 'Montserrat'; text-transform: uppercase; letter-spacing: -.03em; line-height: .95; }
+  .Z::after { content: ""; position: absolute; left: -4%; top: 50%; height: 16px; width: calc(108% * var(--k, 0));
+              background: var(--yellow); transform: rotate(-4deg); box-shadow: 0 4px 20px rgba(0,0,0,.4); }
+  .H { font: italic 700 168px 'Source Serif 4'; color: var(--navy); text-shadow: none; padding: 0 .16em; }
+  .H::before { content: ""; position: absolute; inset: .12em -.02em .02em; background: var(--yellow); z-index: -1;
+               transform-origin: left; transform: rotate(-2deg) scaleX(var(--k, 0)); box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+  .B { font: 800 60px 'Montserrat'; letter-spacing: .16em; text-transform: uppercase; }
+  .t { font: italic 600 80px 'Source Serif 4'; }
+  .C { font: 900 150px 'Montserrat'; color: var(--yellow); letter-spacing: -.02em; text-transform: uppercase; }
+
+  /* call to action */
+  #cta { position: absolute; left: 0; right: 0; text-align: center; color: #fff; }
+  #cta .out { font: 800 40px 'Montserrat'; letter-spacing: .5em; color: var(--yellow); margin-left: .5em; }
+  #cta .date { font: 900 170px 'Montserrat'; letter-spacing: -.02em; line-height: 1; margin-top: 6px;
+               text-shadow: 0 10px 40px rgba(0,0,0,.5); font-variant-numeric: tabular-nums; }
+  #cta .date span { display: inline-block; }
+  #cta .date .dot { color: var(--yellow); }
+  #cta .btn { display: inline-block; margin-top: 40px; background: var(--yellow); color: var(--navy);
+              font: 900 58px 'Montserrat'; letter-spacing: .02em; padding: 34px 80px; border-radius: 99px;
+              box-shadow: 0 0 80px rgba(251,195,18,.45), 0 20px 40px rgba(0,0,0,.4); position: relative; overflow: hidden; }
+  #cta .btn::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: var(--sx, -60%);
+              background: linear-gradient(100deg, transparent, rgba(255,255,255,.7), transparent); }
+  #cta .price { margin-top: 34px; font: 500 42px 'Roboto'; color: rgba(255,255,255,.9); }
+  #cta .price b { color: var(--yellow); font-weight: 500; margin: 0 14px; }
+  #cta .author { margin-top: 50px; font: 800 46px 'Montserrat'; letter-spacing: .3em; margin-left: .3em; }
+  #cta > * { will-change: transform, opacity, filter; }
+
+  /* finishing layers */
+  .layer { position: absolute; inset: 0; pointer-events: none; }
+  #leak { mix-blend-mode: screen; }
+  #scrim { background: radial-gradient(ellipse 70% 16% at 50% 52%, rgba(6,14,28,.82), rgba(6,14,28,0) 100%); opacity: 0; }
+  #vignette { background: radial-gradient(ellipse 75% 60% at 50% 48%, transparent 55%, rgba(0,0,0,.55) 100%); }
+  #grain { width: 100%; height: 100%; opacity: .085; mix-blend-mode: overlay; image-rendering: pixelated; }
+  #flash { background: #fff; opacity: 0; }
+
+  /* landscape */
+  body.landscape .s { font-size: 72px; } body.landscape .S, body.landscape .Y { font-size: 118px; }
+  body.landscape .i, body.landscape .I { font-size: 80px; } body.landscape .X { font-size: 190px; }
+  body.landscape .Z { font-size: 160px; } body.landscape .H { font-size: 140px; }
+  body.landscape .B { font-size: 52px; } body.landscape .t { font-size: 70px; } body.landscape .C { font-size: 130px; }
+  body.landscape #cta .date { font-size: 150px; }
+</style>
+</head>
+<body>
+<div id="frame">
+  <div id="stage">
+    <canvas id="gl"></canvas>
+    <div class="layer" id="scrim"></div>
+    <div id="caps"></div>
+    <div id="cta">
+      <div class="out">OUT</div>
+      <div class="date"></div>
+      <div class="btn">PRE-ORDER NOW</div>
+      <div class="price">Kindle £3.99<b>•</b>Paperback £9.99</div>
+      <div class="author">BELINDA BRIGHT N.</div>
+    </div>
+  </div>
+  <div class="layer" id="leak"></div>
+  <div class="layer" id="vignette"></div>
+  <canvas class="layer" id="grain"></canvas>
+  <div class="layer" id="flash"></div>
+</div>
+
+<script src="timeline.js"></script>
+<script type="module">
+import * as THREE from './vendor/three.module.js';
+import { RoomEnvironment } from './vendor/RoomEnvironment.js';
+
+// ---------------------------------------------------------------- setup
+const params = new URLSearchParams(location.search);
+const LAND = params.get('format') === 'landscape';
+if (LAND) document.body.classList.add('landscape');
+const W = LAND ? 1920 : 1080, H = LAND ? 1080 : 1920;
+const frame = document.getElementById('frame');
+frame.style.width = W + 'px'; frame.style.height = H + 'px';
+const DURATION = 34.5;
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const smooth = (e0, e1, x) => { const k = clamp((x - e0) / (e1 - e0)); return k * k * (3 - 2 * k); };
+const easeOut = k => 1 - Math.pow(1 - clamp(k), 3);
+const easeIn = k => Math.pow(clamp(k), 2.4);
+const easeOutBack = k => { k = clamp(k); const c = 1.9; return 1 + (c + 1) * Math.pow(k - 1, 3) + c * Math.pow(k - 1, 2); };
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+
+const TL = Object.fromEntries(window.TIMELINE.map(l => [l.id, l]));
+const wordT = (id, i) => TL[id].words[i].t;
+
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('gl'), antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.NoToneMapping;
+
+const scene = new THREE.Scene();
+const NAVY = new THREE.Color('#0b1a31');
+scene.background = NAVY; scene.fog = new THREE.FogExp2(NAVY, 0.028);
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.35;
+const camera = new THREE.PerspectiveCamera(LAND ? 34 : 50, W / H, 0.1, 400);
+
+const amb = new THREE.AmbientLight('#9fb4d8', 0.55); scene.add(amb);
+const key = new THREE.DirectionalLight('#ffffff', 2.2); scene.add(key, key.target);
+const rim = new THREE.PointLight('#fbc312', 0, 40, 1.4); scene.add(rim);
+const sweep = new THREE.PointLight('#fff4d6', 0, 30, 1.6); scene.add(sweep);
+
+// ---------------------------------------------------------------- textures
+function roundRect(g, x, y, w, h, r) { g.beginPath(); g.roundRect(x, y, w, h, r); }
+function noteTexture(kind, text, sub, r) {
+  const c = document.createElement('canvas'); const g = c.getContext('2d');
+  if (kind === 'shot') {                       // phone screenshot card
+    c.width = 360; c.height = 620;
+    roundRect(g, 6, 6, 348, 608, 40); g.fillStyle = '#16253f'; g.fill();
+    g.lineWidth = 6; g.strokeStyle = 'rgba(246,239,226,.55)'; g.stroke();
+    const grd = g.createLinearGradient(0, 60, 0, 420); grd.addColorStop(0, '#2b4a7a'); grd.addColorStop(1, '#fbc312');
+    roundRect(g, 30, 70, 300, 330, 20); g.fillStyle = grd; g.globalAlpha = .55; g.fill(); g.globalAlpha = 1;
+    g.fillStyle = '#f6efe2'; g.font = '500 34px Roboto'; g.textAlign = 'center'; g.fillText(text, 180, 470);
+    g.globalAlpha = .6; g.font = '400 26px Roboto'; g.fillText(sub || 'Saved for later', 180, 515); g.globalAlpha = 1;
+    roundRect(g, 140, 26, 80, 14, 7); g.fillStyle = 'rgba(246,239,226,.35)'; g.fill();
+  } else if (kind === 'list') {                // lined notebook page
+    c.width = 440; c.height = 560;
+    g.fillStyle = '#fbf7ee'; g.fillRect(0, 0, 440, 560);
+    g.strokeStyle = 'rgba(40,80,140,.25)'; g.lineWidth = 2;
+    for (let y = 110; y < 560; y += 56) { g.beginPath(); g.moveTo(0, y); g.lineTo(440, y); g.stroke(); }
+    g.strokeStyle = 'rgba(220,60,60,.35)'; g.beginPath(); g.moveTo(60, 0); g.lineTo(60, 560); g.stroke();
+    g.fillStyle = '#0b1a31'; g.font = '600 52px Caveat'; g.fillText(text, 78, 90);
+    const items = sub.split('|');
+    items.forEach((it, k) => { const y = 150 + k * 56; g.strokeStyle = '#0b1a31'; g.lineWidth = 3; g.strokeRect(78, y - 26, 26, 26);
+      g.font = '600 40px Caveat'; g.fillText(it, 118, y); });
+  } else {                                     // sticky note
+    c.width = 480; c.height = 440;
+    const col = kind === 'yellow' ? '#fbc312' : kind === 'white' ? '#ffffff' : '#f6efe2';
+    g.fillStyle = col; g.fillRect(0, 0, 480, 440);
+    const sh = g.createLinearGradient(0, 0, 0, 80); sh.addColorStop(0, 'rgba(0,0,0,.10)'); sh.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = sh; g.fillRect(0, 0, 480, 80);
+    g.fillStyle = '#0b1a31'; g.font = '600 74px Caveat'; g.textAlign = 'center';
+    const words = text.split(' '); const lines = []; let cur = '';
+    for (const w of words) { const tr = cur ? cur + ' ' + w : w; if (g.measureText(tr).width > 400 && cur) { lines.push(cur); cur = w; } else cur = tr; }
+    lines.push(cur);
+    lines.forEach((ln, k) => g.fillText(ln, 240, 220 - (lines.length - 1) * 38 + k * 76));
+    if (sub) { g.globalAlpha = .55; g.font = '600 44px Caveat'; g.fillText(sub, 240, 380); g.globalAlpha = 1; }
+  }
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 4;
+  return { tex, aspect: c.width / c.height };
+}
+
+const NOTES = [
+  ['yellow', 'Business plan v7', 'edited 2 hrs ago'], ['cream', 'Start a podcast'], ['shot', 'IMG_4021.PNG'],
+  ['white', 'Learn Spanish', 'day 1 (again)'], ['list', 'This year', 'Run a 10K|Read 52 books|Side hustle|Declutter'],
+  ['cream', 'Online course?'], ['shot', 'Screenshot 07:14', 'Watch later'], ['yellow', 'Morning routine 2.0'],
+  ['cream', '5-year plan', 'draft'], ['white', 'Rebrand the blog'], ['shot', 'Recipe_reel.mp4', 'Saved'],
+  ['list', 'Ideas', 'Etsy shop|YouTube?|Write a book|Move abroad'], ['yellow', 'Do it Monday'],
+  ['cream', 'Research more first'], ['white', 'Vision board'], ['shot', 'Budget_template', 'Downloaded'],
+  ['cream', 'New Year plan'], ['yellow', 'Big idea!!'], ['white', 'Pick ONE?'], ['cream', 'Someday…'],
+];
+
+// ---------------------------------------------------------------- world: notes corridor
+const R = rng(11);
+const C = V(0, 0, -64);                    // vortex centre
+const notes = [];
+const noteGroup = new THREE.Group(); scene.add(noteGroup);
+function buildNotes() {
+  const tex = NOTES.map(n => noteTexture(n[0], n[1], n[2], R));
+  for (let i = 0; i < 84; i++) {
+    const k = i % NOTES.length, { tex: map, aspect } = tex[k];
+    const h = NOTES[k][0] === 'shot' ? 2.7 : NOTES[k][0] === 'list' ? 2.6 : 2.0;
+    const mat = new THREE.MeshStandardMaterial({ map, roughness: .85, side: THREE.DoubleSide });
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(h * aspect, h), mat);
+    const z = 4 - i * 1.15 - R() * 1.2;
+    const ang = R() * Math.PI * 2, rad = 2.3 + R() * 4.2;
+    const p0 = V(Math.cos(ang) * rad * (LAND ? 1.9 : 1), Math.sin(ang) * rad * (LAND ? 1 : 1.55), z);
+    const rot = V((R() - .5) * .7, (R() - .5) * .9, (R() - .5) * 1.0);
+    notes.push({ m, p0, rot, spin: (R() - .5) * .5, delay: R() * .5, swirl: R() < .5 ? 1 : -1 });
+    noteGroup.add(m);
+  }
+}
+
+// dust
+function dust(n, cx, cz, sx, sy, sz, size, seed) {
+  const r = rng(seed), pos = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) { pos[i * 3] = cx + (r() - .5) * sx; pos[i * 3 + 1] = (r() - .5) * sy; pos[i * 3 + 2] = cz + (r() - .5) * sz; }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const dot = document.createElement('canvas'); dot.width = dot.height = 64; const d = dot.getContext('2d');
+  const gr = d.createRadialGradient(32, 32, 0, 32, 32, 32); gr.addColorStop(0, 'rgba(255,240,200,1)'); gr.addColorStop(1, 'rgba(255,240,200,0)');
+  d.fillStyle = gr; d.fillRect(0, 0, 64, 64);
+  const mat = new THREE.PointsMaterial({ size, map: new THREE.CanvasTexture(dot), transparent: true, depthWrite: false,
+    blending: THREE.AdditiveBlending, opacity: .55, sizeAttenuation: true });
+  const p = new THREE.Points(g, mat); scene.add(p); return p;
+}
+const dust1 = dust(2600, 0, -40, 30, 40, 130, .16, 3);
+const dust2 = dust(900, 0, -300, 34, 40, 40, .13, 5);
+
+// ---------------------------------------------------------------- tangle + golden line
+const TR = rng(42), tanglePts = [];
+let a = 0, b = 0;
+for (let i = 0; i < 150; i++) {
+  a += .55 + TR() * .5; b += .33 + TR() * .4;
+  const r = 1.4 + TR() * .9;
+  tanglePts.push(V(Math.cos(a) * Math.sin(b) * r, Math.sin(a) * Math.sin(b) * r * .9, Math.cos(b) * r * .8));
+}
+tanglePts.push(V(1.1, -0.7, 0.9));
+const tangleCurve = new THREE.CatmullRomCurve3(tanglePts);
+const TSEG = 2400, TRAD = 6;
+const tangle = new THREE.Mesh(new THREE.TubeGeometry(tangleCurve, TSEG, .028, TRAD, false),
+  new THREE.MeshStandardMaterial({ color: '#ffffff', emissive: '#ffffff', emissiveIntensity: .55, roughness: .4 }));
+const tangleGroup = new THREE.Group(); tangleGroup.position.copy(C); tangleGroup.add(tangle); scene.add(tangleGroup);
+
+const lineCurve = new THREE.CatmullRomCurve3([V(1.1, -0.7, 0.9), V(2.6, -1.4, 0.4), V(5, -0.6, -3), V(8, 1.2, -9),
+  V(9.5, 0.2, -17), V(8.5, -1.2, -26), V(5.5, 0, -35), V(2, 1, -44)].map(p => p.add(C)));
+const LSEG = 900;
+const goldLine = new THREE.Mesh(new THREE.TubeGeometry(lineCurve, LSEG, .085, 10, false),
+  new THREE.MeshStandardMaterial({ color: '#fbc312', emissive: '#fbc312', emissiveIntensity: .9, roughness: .3 }));
+scene.add(goldLine);
+function glowSprite(color, size, op) {
+  const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d');
+  const gr = g.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, color); gr.addColorStop(1, 'rgba(0,0,0,0)');
+  g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: op }));
+  s.scale.set(size, size, 1); scene.add(s); return s;
+}
+const tip = glowSprite('rgba(255,200,60,1)', 1.1, 1);
+
+// "cycle of planning" ring
+function ringTexture() {
+  const c = document.createElement('canvas'); c.width = 4096; c.height = 200; const g = c.getContext('2d');
+  g.font = '900 120px Montserrat'; g.fillStyle = '#fbc312'; g.textBaseline = 'middle';
+  const unit = 'CYCLE OF PLANNING  •  '; let x = 0; const w = g.measureText(unit).width;
+  const reps = Math.round(4096 / w), sc = 4096 / (w * reps);
+  g.scale(sc, 1); for (let i = 0; i < reps; i++) { g.fillText(unit, x, 104); x += w; }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
+}
+const ring = new THREE.Group();
+let ringFront, ringBack;
+
+// ---------------------------------------------------------------- book
+const B = V(0, 0, -300);
+const book = new THREE.Group(); book.position.copy(B); scene.add(book);
+const bookGlow = glowSprite('rgba(251,195,18,.9)', 26, .32); bookGlow.position.copy(B).add(V(0, 0, -6));
+const loader = new THREE.TextureLoader();
+const loadTex = url => new Promise(res => loader.load(url, t => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; res(t); }));
+async function buildBook() {
+  const [front, back, spine] = await Promise.all(['../assets/front-cover.png', '../assets/back-cover.png', '../assets/spine.png'].map(loadTex));
+  const pc = document.createElement('canvas'); pc.width = 64; pc.height = 512; const g = pc.getContext('2d');
+  g.fillStyle = '#f3ecdc'; g.fillRect(0, 0, 64, 512);
+  for (let x = 0; x < 64; x += 2) { g.fillStyle = `rgba(120,100,70,${.05 + Math.random() * .08})`; g.fillRect(x, 0, 1, 512); }
+  const pages = new THREE.CanvasTexture(pc); pages.colorSpace = THREE.SRGBColorSpace;
+  const cover = map => new THREE.MeshPhysicalMaterial({ map, roughness: .5, clearcoat: .6, clearcoatRoughness: .25 });
+  const pageMat = new THREE.MeshStandardMaterial({ map: pages, roughness: .9 });
+  const mats = [pageMat, cover(spine), pageMat, pageMat, cover(front), cover(back)];
+  const mesh = new THREE.Mesh(new THREE.BoxGeometry(6, 9, .26), mats);
+  book.add(mesh);
+}
+
+// ---------------------------------------------------------------- captions
+const SPEC = {
+  notebook: { y: 50, s: 's S/ i i i' },
+  camera:   { y: 50, s: 's S S/ i i I' },
+  head:     { y: 50, s: 's S/ i i I' },
+  why:      { y: 73, s: 'i i i i/ i i/ X' },
+  lazy:     { y: 73, s: 's s/ Z' },
+  stuck:    { y: 73, s: 's Y/ i i/ I I I' },
+  noplan:   { y: 73, s: 's s s/ S S' },
+  begin:    { y: 70, s: 'i i i i i/ H' },
+  title:    { y: 77, s: 'i i i/ i i' },
+  debut:    { y: 77, s: 's s s/ s/ B B B' },
+  select:   { y: 77, s: 's/ Y/ s' },
+  thirty:   { y: 77, s: 's C/ i' },
+  step:     { y: 77, s: 'i I/ i i i i' },
+};
+const capsEl = document.getElementById('caps');
+const groups = [];
+window.TIMELINE.forEach((line, li) => {
+  const spec = SPEC[line.id]; if (!spec) return;
+  const toks = spec.s.split(' ');
+  const el = document.createElement('div'); el.className = 'cap'; el.style.top = spec.y + '%';
+  const split = LAND && !['notebook', 'camera', 'head'].includes(line.id);
+  if (split) { el.style.left = '50%'; el.style.right = '60px'; el.style.top = '50%'; }
+  let row = document.createElement('div'); row.className = 'row'; el.appendChild(row);
+  const words = line.words.map((wd, i) => {
+    const tk = toks[i] || 's', cls = tk.replace('/', '');
+    const w = document.createElement('span'); w.className = 'w ' + cls;
+    w.textContent = cls === 'C' ? '30-DAY' : wd.w;
+    row.appendChild(w);
+    if (tk.endsWith('/')) { row = document.createElement('div'); row.className = 'row'; el.appendChild(row); }
+    return { el: w, t: wd.t - .03, cls };
+  });
+  const next = window.TIMELINE[li + 1];
+  let end = next ? Math.min(next.start - .05, line.start + line.dur + 1.1) : line.start + line.dur + 1;
+  if (line.id === 'begin') end = 17.85;
+  capsEl.appendChild(el);
+  groups.push({ el, words, start: line.start, end, split });
+});
+
+function renderCaptions(t) {
+  for (const g of groups) {
+    const vis = t >= g.start - .05 && t < g.end + .2;
+    g.el.style.display = vis ? '' : 'none'; if (!vis) continue;
+    if (g.fit === undefined) {
+      const avail = g.split ? W / 2 - 100 : W - 110, widest = Math.max(...[...g.el.children].map(r => r.scrollWidth));
+      g.fit = Math.min(1, avail / widest);
+    }
+    const q = clamp((t - g.end) / .18);
+    g.el.style.opacity = 1 - q;
+    g.el.style.transform = `translateY(-50%) translateY(${-40 * easeIn(q)}px) scale(${g.fit * (1 + .06 * q)})`;
+    g.el.style.filter = q > 0 ? `blur(${8 * q}px)` : '';
+    for (const w of g.words) {
+      const dt = t - w.t;
+      if (dt < 0) { w.el.style.opacity = 0; continue; }
+      const p = clamp(dt / .22), big = 'XZHC'.includes(w.cls);
+      const sc = big ? lerp(1.9, 1, easeOutBack(clamp(dt / .3))) : lerp(1.35, 1, easeOut(p));
+      w.el.style.opacity = clamp(dt / .07);
+      w.el.style.transform = `translateY(${(1 - easeOut(p)) * 26}px) scale(${sc})`;
+      w.el.style.filter = p < 1 ? `blur(${(1 - p) * 9}px)` : '';
+      if (w.cls === 'Z') w.el.style.setProperty('--k', easeOut(clamp((dt - .35) / .22)));
+      if (w.cls === 'H') w.el.style.setProperty('--k', easeOut(clamp(dt / .28)));
+      if (w.cls === 'C') w.el.textContent = Math.max(1, Math.round(30 * easeOut(clamp(dt / .6)))) + '-DAY';
+    }
+  }
+}
+
+// call to action
+const cta = document.getElementById('cta');
+const [ctaOut, ctaDate, ctaBtn, ctaPrice, ctaAuthor] = cta.children;
+const DATE = '23.01.27';
+ctaDate.innerHTML = [...DATE].map(ch => `<span class="${ch === '.' ? 'dot' : 'dg'}">${ch}</span>`).join('');
+const digitEls = [...ctaDate.querySelectorAll('span')];
+cta.style.top = LAND ? '30%' : '58%';
+if (LAND) { cta.style.left = '50%'; cta.style.right = '60px'; cta.style.top = '19%'; }
+function popIn(el, t0, t, dy = 30) {
+  const dt = t - t0, p = clamp(dt / .3);
+  el.style.opacity = clamp(dt / .1);
+  el.style.transform = `translateY(${(1 - easeOut(p)) * dy}px) scale(${lerp(1.25, 1, easeOutBack(p))})`;
+  el.style.filter = p < 1 ? `blur(${(1 - p) * 8}px)` : '';
+}
+function renderCTA(t) {
+  const t0 = TL.out.start;
+  cta.style.display = t >= t0 - .1 ? '' : 'none'; if (t < t0 - .1) return;
+  popIn(ctaOut, wordT('out', 0), t);
+  const tDate = wordT('out', 1);
+  digitEls.forEach((el, i) => {
+    const dt = t - tDate - i * .05;
+    el.style.opacity = clamp(dt / .08);
+    if (el.classList.contains('dg')) {
+      const settle = .45 + i * .06, final = DATE[i];
+      el.textContent = dt < settle ? String((Math.floor(dt * 28) + i * 3) % 10) : final;
+      el.style.transform = `translateY(${dt < settle ? ((dt * 28) % 1) * -18 : 0}px)`;
+    }
+  });
+  ctaDate.style.transform = `scale(${lerp(1.15, 1, easeOut(clamp((t - tDate) / .5)))})`;
+  popIn(ctaBtn, wordT('preorder', 0), t);
+  ctaBtn.style.setProperty('--sx', lerp(-60, 160, clamp((t - wordT('preorder', 0) - .5) / .7)) + '%');
+  if (t > 32.0) ctaBtn.style.transform += ` scale(${1 + .06 * Math.exp(-(t - 32) / .25)})`;
+  popIn(ctaPrice, wordT('preorder', 3), t);
+  popIn(ctaAuthor, 32.0, t);
+}
+
+// ---------------------------------------------------------------- finishing
+const grain = document.getElementById('grain');
+grain.width = W / 3; grain.height = H / 3;
+const gctx = grain.getContext('2d'), gimg = gctx.createImageData(grain.width, grain.height);
+function renderGrain(f) {
+  const r = rng(f * 7919 + 1), d = gimg.data;
+  for (let i = 0; i < d.length; i += 4) { const v = r() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; }
+  gctx.putImageData(gimg, 0, 0);
+}
+const HITS = [[9.68, 22], [18.0, 30], [32.0, 14], [wordT('why', 6), 12], [wordT('lazy', 2), 12], [wordT('begin', 5), 10]];
+const CUTS = [9.68, 23.7, 25.1, 26.7, 28.9];
+function shake(t) {
+  let x = 0, y = 0;
+  for (const [t0, amp] of HITS) if (t >= t0) { const e = amp * Math.exp(-(t - t0) / .13);
+    x += e * Math.sin(t * 93 + t0); y += e * Math.cos(t * 71 + t0 * 3); }
+  return [x, y];
+}
+const flashEl = document.getElementById('flash'), leak = document.getElementById('leak'), stage = document.getElementById('stage');
+const glEl = document.getElementById('gl');
+function renderFinish(t) {
+  let flash = 0;
+  if (t >= 18) flash = Math.max(flash, Math.exp(-(t - 18) / .14));
+  if (t >= 32) flash = Math.max(flash, .55 * Math.exp(-(t - 32) / .12));
+  for (const c of CUTS.slice(1)) if (t >= c) flash = Math.max(flash, .28 * Math.exp(-(t - c) / .06));
+  flashEl.style.opacity = flash;
+  document.getElementById('scrim').style.opacity = 1 - smooth(5.9, 6.4, t);
+  let blur = 0, zoom = 1;
+  for (const c of CUTS) if (t >= c) { const e = Math.exp(-(t - c) / .07); blur += 9 * e; zoom += .05 * e; }
+  const whip = smooth(17.15, 17.95, t) * (t < 18 ? 1 : 0);
+  blur += 18 * whip; zoom += .1 * whip;
+  if (t >= 18) { const e = Math.exp(-(t - 18) / .2); blur += 10 * e; zoom += .08 * e; }
+  glEl.style.filter = blur > .2 ? `blur(${blur.toFixed(2)}px) brightness(${1 + whip * .6})` : '';
+  const [sx, sy] = shake(t);
+  stage.style.transform = `translate(${sx.toFixed(2)}px, ${sy.toFixed(2)}px) scale(${zoom.toFixed(4)})`;
+  // light leak
+  let lk = 0, lx = 50;
+  if (t >= 17.9 && t < 21) { lk = smooth(17.9, 18.1, t) * (1 - smooth(19.2, 21, t)); lx = lerp(-10, 90, (t - 17.9) / 3.1); }
+  if (t >= 31.9) { lk = smooth(31.9, 32.1, t) * (1 - smooth(32.6, 34.2, t)) * .8; lx = lerp(100, 20, (t - 31.9) / 2.6); }
+  leak.style.opacity = lk;
+  leak.style.background = `radial-gradient(ellipse 55% 45% at ${lx}% 30%, rgba(255,170,40,.75), rgba(255,120,30,.25) 45%, transparent 70%)`;
+}
+
+// ---------------------------------------------------------------- the camera / world timeline
+const tmpA = V(0, 0, 0), tmpB = V(0, 0, 0);
+const VY = LAND ? 0 : 1;   // vertical framing pushes subjects up; landscape splits left/right instead
+function renderWorld(t) {
+  const look = V(0, 0, 0);
+  let roll = 0;
+  // ---- notes: flythrough, then vortex
+  const notesOn = t < 9.68;
+  noteGroup.visible = notesOn;
+  if (notesOn) for (const n of notes) {
+    const v = n.p0.z < -36 ? smooth(6.35 + n.delay, 9.0 + n.delay * .6, t) : 0;
+    const off = tmpA.copy(n.p0).sub(C);
+    const r0 = Math.hypot(off.x, off.y), a0 = Math.atan2(off.y, off.x);
+    const rr = r0 * Math.pow(1 - v, 1.3), aa = a0 + v * 5 * n.swirl;
+    n.m.position.set(C.x + Math.cos(aa) * rr, C.y + Math.sin(aa) * rr, C.z + off.z * (1 - v));
+    n.m.rotation.set(n.rot.x + t * n.spin * .4 + v * 4, n.rot.y + t * n.spin * .3, n.rot.z + t * n.spin + v * 6 * n.swirl);
+    const s = 1 - Math.pow(v, 1.5) * .95; n.m.scale.setScalar(s); n.m.visible = s > .06;
+  }
+  // ---- tangle
+  const tp = smooth(6.8, 9.4, t);
+  tangle.geometry.setDrawRange(0, Math.floor(tp * TSEG) * TRAD * 6);
+  tangleGroup.visible = t > 6.7 && t < 18.0;
+  tangleGroup.rotation.set(Math.sin(t * .3) * .25, t * .35, 0);
+  if (t > 9.68 && t < 9.9) tangleGroup.scale.setScalar(lerp(1.12, 1, easeOut((t - 9.68) / .22))); else tangleGroup.scale.setScalar(1);
+  // ---- ring
+  const ringOn = TL.stuck.words[4].t;
+  const ro = smooth(ringOn - .05, ringOn + .35, t) * (1 - smooth(13.8, 14.3, t));
+  ring.visible = ro > 0.01; ring.position.copy(C);
+  ring.rotation.set(.28, -t * .7, .12); ring.scale.setScalar(lerp(.6, 1, easeOutBack(clamp((t - ringOn) / .5))));
+  ringFront.material.opacity = ro; ringBack.material.opacity = ro * .3;
+  // ---- golden line
+  const lu = easeIn(clamp((t - 16.35) / 1.55));
+  goldLine.visible = t > 16.3 && t < 18.0;
+  goldLine.geometry.setDrawRange(0, Math.floor(lu * LSEG) * 10 * 6);
+  const tipP = lineCurve.getPointAt(Math.max(.001, lu));
+  tip.position.copy(tipP); tip.visible = goldLine.visible; tip.material.opacity = .9;
+
+  // ---- camera per section
+  if (t < 6.3) {                                  // 1 · flythrough
+    const p = t / 6.3, z = lerp(14, -50, .35 * p + .65 * (p * p * (3 - 2 * p)));
+    camera.position.set(Math.sin(t * .6) * .5, Math.cos(t * .45) * .4, z);
+    look.set(Math.sin(t * .6 + .5) * .3, 0, z - 10); roll = Math.sin(t * .5) * .06;
+  } else if (t < 9.68) {                          // 2 · vortex
+    const p = clamp((t - 6.3) / 3.38), z = -50 - 5 * easeOut(p);
+    const sh = .06 * p * p;
+    camera.position.set(Math.sin(t * 40) * sh, Math.cos(t * 33) * sh, z);
+    look.copy(C).add(V(0, -1.4 * VY * smooth(6.3, 8.2, t), 0)); roll = Math.sin(t * .5) * .06 * (1 - p) + p * p * .12;
+  } else if (t < 16.45) {                          // 3–4 · stuck, then pull back
+    const orbit = (t - 9.68) * .16, pull = easeOut(clamp((t - 13.95) / 2.2));
+    const d = lerp(11, 14, pull);
+    camera.position.set(C.x + Math.sin(orbit) * d, C.y + .4 + pull * .6, C.z + Math.cos(orbit) * d);
+    look.copy(C).add(V(0, (-2.1 + pull * .2) * VY, 0));
+  } else if (t < 18.0) {                          // 4b · follow the golden line
+    const f = smooth(16.45, 17.0, t);
+    const orbit = (16.45 - 9.68) * .16, d = 14;
+    const stat = tmpA.set(C.x + Math.sin(orbit) * d, C.y + 1, C.z + Math.cos(orbit) * d);
+    const back = lineCurve.getPointAt(Math.max(0, lu - .09)).add(V(0, .9, 2.2));
+    camera.position.copy(stat).lerp(back, f);
+    look.copy(C).add(V(0, -1.9 * VY, 0)).lerp(tipP, f); roll = f * .25 * Math.sin((t - 16.4) * 3);
+  } else {                                        // 5–7 · the book
+    const bt = t - 18;
+    let cam, lk, rotY;
+    const float = Math.sin(t * 1.2) * .12;
+    if (t < 23.7) {
+      const p = easeOut(bt / 2.8);
+      rotY = lerp(-1.5, -.32, p) + (t - 18) * .025;
+      cam = V(lerp(1.5, 0, p), lerp(-.5, .3, p), lerp(25, 20, easeOut(bt / 5.7)));
+      lk = V(0, -1.9 * VY, 0);
+      book.scale.setScalar(lerp(.86, 1, easeOutBack(clamp(bt / .7))));
+    } else if (t < 25.1) {
+      const p = (t - 23.7) / 1.4; rotY = lerp(-.05, .08, p);
+      cam = V(lerp(-4.5, -3.8, p), lerp(3.6, 3.1, p), lerp(18, 16.5, p)); lk = V(0, -2.3 * VY, 0);
+      book.scale.setScalar(1);
+    } else if (t < 26.7) {
+      const p = (t - 25.1) / 1.6; rotY = lerp(.15, .5, easeOut(p));
+      cam = V(lerp(5, 4.4, p), lerp(-3.2, -2.7, p), lerp(18.5, 17, p)); lk = V(0, -3.2 * VY, 0);
+    } else if (t < 28.9) {
+      const p = (t - 26.7) / 2.2; rotY = lerp(-.45, -.3, p);
+      cam = V(lerp(-1.5, -.8, p), lerp(6.5, 5.6, p), lerp(19, 17.5, p)); lk = V(0, -1.6 * VY, 0);
+    } else {
+      const p = easeOut((t - 28.9) / 1.2); rotY = -.24 + Math.sin(t * .6) * .05;
+      cam = V(0, 0, LAND ? 21 : 25); lk = LAND ? V(0, 0, 0) : V(0, -5.6, 0);
+      book.scale.setScalar(lerp(1, LAND ? 1.02 : .86, p));
+    }
+    book.rotation.set(.05 + float * .2, rotY, Math.sin(t * .8) * .02);
+    book.position.copy(B).add(V(0, float + (LAND && t < 28.9 ? 0 : 0), 0));
+    camera.position.copy(B).add(cam); look.copy(B).add(lk);
+    bookGlow.material.opacity = .28 + .1 * Math.sin(t * 2);
+    // lights for the book
+    key.position.copy(B).add(V(-6, 8, 12)); key.target.position.copy(B);
+    rim.position.copy(B).add(V(7, 4, -5)); rim.intensity = 160;
+    const sp = clamp((t - 18.5) / 1.8);
+    sweep.position.copy(B).add(V(lerp(-9, 9, sp), lerp(3, -2, sp), 5)); sweep.intensity = sp > 0 && sp < 1 ? 220 * Math.sin(sp * Math.PI) : 0;
+    if (t >= 32) sweep.intensity = 0;
+  }
+  if (t < 18) {
+    key.position.copy(camera.position).add(V(-4, 6, 6)); key.target.position.copy(look);
+    rim.intensity = 0; sweep.intensity = 0;
+  }
+  if (LAND) { const sx = .19 * W * smooth(6.0, 6.8, t); camera.setViewOffset(W, H, sx, 0, W, H); }
+  camera.lookAt(look);
+  camera.rotateZ(roll);
+  scene.fog.density = t < 18 ? .028 : .012;
+  renderer.render(scene, camera);
+}
+
+// ---------------------------------------------------------------- seek / play
+window.DURATION = DURATION;
+window.seek = (t) => {
+  renderWorld(t); renderCaptions(t); renderCTA(t); renderFinish(t);
+  renderGrain(Math.round(t * 30));
+};
+window.READY = (async () => {
+  await document.fonts.load('600 64px Caveat'); await document.fonts.load('900 64px Montserrat');
+  await document.fonts.load('500 30px Roboto'); await document.fonts.ready;
+  buildNotes();
+  const rt = ringTexture();
+  ringFront = new THREE.Mesh(new THREE.CylinderGeometry(3.3, 3.3, .75, 160, 1, true),
+    new THREE.MeshBasicMaterial({ map: rt, transparent: true, side: THREE.FrontSide, depthWrite: false }));
+  ringBack = new THREE.Mesh(ringFront.geometry, new THREE.MeshBasicMaterial({ map: rt, transparent: true, side: THREE.BackSide, depthWrite: false }));
+  ring.add(ringBack, ringFront); scene.add(ring);
+  await buildBook();
+  window.seek(0);
+  return true;
+})();
+if (!params.has('render')) window.READY.then(() => { const t0 = performance.now();
+  const loop = () => { window.seek(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); }; loop(); });
+</script>
+</body>
+</html>

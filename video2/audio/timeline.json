@@ -1,0 +1,426 @@
+[
+ {
+  "id": "notebook",
+  "text": "A notebook full of plans.",
+  "start": 0.3,
+  "dur": 1.479,
+  "words": [
+   {
+    "w": "A",
+    "t": 0.3
+   },
+   {
+    "w": "notebook",
+    "t": 0.62
+   },
+   {
+    "w": "full",
+    "t": 0.926
+   },
+   {
+    "w": "of",
+    "t": 1.154
+   },
+   {
+    "w": "plans.",
+    "t": 1.413
+   }
+  ]
+ },
+ {
+  "id": "camera",
+  "text": "A camera roll full of screenshots.",
+  "start": 2.2,
+  "dur": 1.837,
+  "words": [
+   {
+    "w": "A",
+    "t": 2.2
+   },
+   {
+    "w": "camera",
+    "t": 2.52
+   },
+   {
+    "w": "roll",
+    "t": 2.852
+   },
+   {
+    "w": "full",
+    "t": 3.008
+   },
+   {
+    "w": "of",
+    "t": 3.282
+   },
+   {
+    "w": "screenshots.",
+    "t": 3.435
+   }
+  ]
+ },
+ {
+  "id": "head",
+  "text": "A head full of ideas.",
+  "start": 4.45,
+  "dur": 1.332,
+  "words": [
+   {
+    "w": "A",
+    "t": 4.45
+   },
+   {
+    "w": "head",
+    "t": 4.77
+   },
+   {
+    "w": "full",
+    "t": 4.89
+   },
+   {
+    "w": "of",
+    "t": 5.112
+   },
+   {
+    "w": "ideas.",
+    "t": 5.36
+   }
+  ]
+ },
+ {
+  "id": "why",
+  "text": "So why does nothing ever actually start?",
+  "start": 6.5,
+  "dur": 2.184,
+  "words": [
+   {
+    "w": "So",
+    "t": 6.5
+   },
+   {
+    "w": "why",
+    "t": 6.82
+   },
+   {
+    "w": "does",
+    "t": 7.101
+   },
+   {
+    "w": "nothing",
+    "t": 7.364
+   },
+   {
+    "w": "ever",
+    "t": 7.626
+   },
+   {
+    "w": "actually",
+    "t": 7.881
+   },
+   {
+    "w": "start?",
+    "t": 8.243
+   }
+  ]
+ },
+ {
+  "id": "lazy",
+  "text": "You're not lazy.",
+  "start": 9.7,
+  "dur": 1.009,
+  "words": [
+   {
+    "w": "You're",
+    "t": 9.7
+   },
+   {
+    "w": "not",
+    "t": 9.972
+   },
+   {
+    "w": "lazy.",
+    "t": 10.25
+   }
+  ]
+ },
+ {
+  "id": "stuck",
+  "text": "You're stuck in the cycle of planning.",
+  "start": 11.0,
+  "dur": 1.752,
+  "words": [
+   {
+    "w": "You're",
+    "t": 11.0
+   },
+   {
+    "w": "stuck",
+    "t": 11.272
+   },
+   {
+    "w": "in",
+    "t": 11.523
+   },
+   {
+    "w": "the",
+    "t": 11.792
+   },
+   {
+    "w": "cycle",
+    "t": 11.97
+   },
+   {
+    "w": "of",
+    "t": 12.192
+   },
+   {
+    "w": "planning.",
+    "t": 12.46
+   }
+  ]
+ },
+ {
+  "id": "noplan",
+  "text": "You don't need another plan.",
+  "start": 14.0,
+  "dur": 1.416,
+  "words": [
+   {
+    "w": "You",
+    "t": 14.0
+   },
+   {
+    "w": "don't",
+    "t": 14.292
+   },
+   {
+    "w": "need",
+    "t": 14.554
+   },
+   {
+    "w": "another",
+    "t": 14.876
+   },
+   {
+    "w": "plan.",
+    "t": 15.068
+   }
+  ]
+ },
+ {
+  "id": "begin",
+  "text": "You need a way to begin.",
+  "start": 16.3,
+  "dur": 1.338,
+  "words": [
+   {
+    "w": "You",
+    "t": 16.3
+   },
+   {
+    "w": "need",
+    "t": 16.592
+   },
+   {
+    "w": "a",
+    "t": 16.841
+   },
+   {
+    "w": "way",
+    "t": 17.079
+   },
+   {
+    "w": "to",
+    "t": 17.159
+   },
+   {
+    "w": "begin.",
+    "t": 17.283
+   }
+  ]
+ },
+ {
+  "id": "title",
+  "text": "The Life You Keep Planning.",
+  "start": 18.9,
+  "dur": 1.323,
+  "words": [
+   {
+    "w": "The",
+    "t": 18.9
+   },
+   {
+    "w": "Life",
+    "t": 19.117
+   },
+   {
+    "w": "You",
+    "t": 19.42
+   },
+   {
+    "w": "Keep",
+    "t": 19.631
+   },
+   {
+    "w": "Planning.",
+    "t": 19.846
+   }
+  ]
+ },
+ {
+  "id": "debut",
+  "text": "The debut book by Belinda Bright N.",
+  "start": 20.9,
+  "dur": 2.049,
+  "words": [
+   {
+    "w": "The",
+    "t": 20.9
+   },
+   {
+    "w": "debut",
+    "t": 21.117
+   },
+   {
+    "w": "book",
+    "t": 21.537
+   },
+   {
+    "w": "by",
+    "t": 21.758
+   },
+   {
+    "w": "Belinda",
+    "t": 22.046
+   },
+   {
+    "w": "Bright",
+    "t": 22.414
+   },
+   {
+    "w": "N.",
+    "t": 22.72
+   }
+  ]
+ },
+ {
+  "id": "select",
+  "text": "The SELECT method.",
+  "start": 23.7,
+  "dur": 1.176,
+  "words": [
+   {
+    "w": "The",
+    "t": 23.7
+   },
+   {
+    "w": "SELECT",
+    "t": 23.917
+   },
+   {
+    "w": "method.",
+    "t": 24.328
+   }
+  ]
+ },
+ {
+  "id": "thirty",
+  "text": "A thirty-day programme.",
+  "start": 25.1,
+  "dur": 1.397,
+  "words": [
+   {
+    "w": "A",
+    "t": 25.1
+   },
+   {
+    "w": "thirty-day",
+    "t": 25.42
+   },
+   {
+    "w": "programme.",
+    "t": 25.934
+   }
+  ]
+ },
+ {
+  "id": "step",
+  "text": "One meaningful step at a time.",
+  "start": 26.7,
+  "dur": 1.75,
+  "words": [
+   {
+    "w": "One",
+    "t": 26.7
+   },
+   {
+    "w": "meaningful",
+    "t": 27.043
+   },
+   {
+    "w": "step",
+    "t": 27.575
+   },
+   {
+    "w": "at",
+    "t": 27.832
+   },
+   {
+    "w": "a",
+    "t": 28.07
+   },
+   {
+    "w": "time.",
+    "t": 28.228
+   }
+  ]
+ },
+ {
+  "id": "out",
+  "text": "Out January the twenty-third.",
+  "start": 28.9,
+  "dur": 1.647,
+  "words": [
+   {
+    "w": "Out",
+    "t": 28.9
+   },
+   {
+    "w": "January",
+    "t": 29.237
+   },
+   {
+    "w": "the",
+    "t": 29.828
+   },
+   {
+    "w": "twenty-third.",
+    "t": 30.076
+   }
+  ]
+ },
+ {
+  "id": "preorder",
+  "text": "Pre-order now on Kindle.",
+  "start": 30.8,
+  "dur": 1.436,
+  "words": [
+   {
+    "w": "Pre-order",
+    "t": 30.8
+   },
+   {
+    "w": "now",
+    "t": 31.283
+   },
+   {
+    "w": "on",
+    "t": 31.61
+   },
+   {
+    "w": "Kindle.",
+    "t": 31.877
+   }
+  ]
+ }
+]
