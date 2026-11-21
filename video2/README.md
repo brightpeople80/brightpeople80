@@ -8,6 +8,8 @@
 | `out/trailer-v2-landscape-1920x1080.mp4` | YouTube, website, LinkedIn, X |
 
 ## What's in it
+- **Real people**: the opening uses two photographic scenes (generated in Canva): a man buried in sticky notes, and a woman scrolling saved posts in bed at night. Slow push-ins; the camera punches through the second photo into the 3D world. In landscape they appear as framed photo cards beside the words.
+- **3D book stack** matching the website mockup: front cover standing, back cover beside it, two copies lying flat with spines to camera. It assembles on "The debut book…", and the back-cover close-up lands on "the SELECT method".
 - **Real-time 3D** (three.js): a flythrough of sticky notes, screenshots and to-do lists that swirl into a tangle; a gold line pulls out of the tangle and the camera chases it into a lit 3D reveal of the book.
 - **Kinetic captions**: every word pops in when it is spoken (timed per word).
 - **British female voiceover** (Kokoro TTS, voice `bf_emma`).

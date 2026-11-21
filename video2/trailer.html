@@ -12,6 +12,15 @@
   #frame { position: relative; overflow: hidden; background: var(--navy); }
   #stage { position: absolute; inset: 0; will-change: transform; }
   #gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  /* human photo shots */
+  .ph { position: absolute; inset: 0; overflow: hidden; display: none; background: #05101f; }
+  .ph img { position: absolute; display: block; will-change: transform, filter; }
+  .ph .fg { inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ph .bg { display: none; }
+  body.landscape .ph .bg { display: block; inset: -80px; width: calc(100% + 160px); height: calc(100% + 160px);
+    object-fit: cover; filter: blur(70px) brightness(.32) saturate(1.1); }
+  body.landscape .ph .fg { inset: auto; left: 7%; top: 5%; width: auto; height: 90%; aspect-ratio: 1536 / 2720;
+    border-radius: 16px; box-shadow: 0 40px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08); }
 
   /* kinetic captions */
   .cap { position: absolute; left: 50px; right: 50px; text-align: center; transform: translateY(-50%);
@@ -71,6 +80,10 @@
 <div id="frame">
   <div id="stage">
     <canvas id="gl"></canvas>
+    <div id="photos">
+      <div class="ph" id="ph1"><img class="bg" src="../assets/people/stuck-sticky-notes.jpg" alt=""><img class="fg" src="../assets/people/stuck-sticky-notes.jpg" alt=""></div>
+      <div class="ph" id="ph2"><img class="bg" src="../assets/people/stuck-phone-night.jpg" alt=""><img class="fg" src="../assets/people/stuck-phone-night.jpg" alt=""></div>
+    </div>
     <div class="layer" id="scrim"></div>
     <div id="caps"></div>
     <div id="cta">
@@ -106,6 +119,9 @@ const lerp = (a, b, k) => a + (b - a) * k;
 const smooth = (e0, e1, x) => { const k = clamp((x - e0) / (e1 - e0)); return k * k * (3 - 2 * k); };
 const easeOut = k => 1 - Math.pow(1 - clamp(k), 3);
 const easeIn = k => Math.pow(clamp(k), 2.4);
+const bounce = k => { k = clamp(k); const n = 7.5625, d = 2.75;
+  if (k < 1 / d) return n * k * k; if (k < 2 / d) return n * (k -= 1.5 / d) * k + .75;
+  if (k < 2.5 / d) return n * (k -= 2.25 / d) * k + .9375; return n * (k -= 2.625 / d) * k + .984375; };
 const easeOutBack = k => { k = clamp(k); const c = 1.9; return 1 + (c + 1) * Math.pow(k - 1, 3) + c * Math.pow(k - 1, 2); };
 function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
   t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
@@ -263,6 +279,8 @@ let ringFront, ringBack;
 // ---------------------------------------------------------------- book
 const B = V(0, 0, -300);
 const book = new THREE.Group(); book.position.copy(B); scene.add(book);
+const stack = new THREE.Group(); stack.position.copy(B); scene.add(stack);
+let backBook, flat1, flat2, floorShadow;
 const bookGlow = glowSprite('rgba(251,195,18,.9)', 26, .32); bookGlow.position.copy(B).add(V(0, 0, -6));
 const loader = new THREE.TextureLoader();
 const loadTex = url => new Promise(res => loader.load(url, t => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; res(t); }));
@@ -274,15 +292,36 @@ async function buildBook() {
   const pages = new THREE.CanvasTexture(pc); pages.colorSpace = THREE.SRGBColorSpace;
   const cover = map => new THREE.MeshPhysicalMaterial({ map, roughness: .5, clearcoat: .6, clearcoatRoughness: .25 });
   const pageMat = new THREE.MeshStandardMaterial({ map: pages, roughness: .9 });
-  const mats = [pageMat, cover(spine), pageMat, pageMat, cover(front), cover(back)];
-  const mesh = new THREE.Mesh(new THREE.BoxGeometry(6, 9, .26), mats);
-  book.add(mesh);
+  // spine artwork as on the website mockup
+  const sc = document.createElement('canvas'); sc.width = 64; sc.height = 2216; const sg = sc.getContext('2d');
+  sg.fillStyle = '#0d1f3a'; sg.fillRect(0, 0, 64, 2216);
+  sg.translate(64, 0); sg.rotate(Math.PI / 2); sg.font = '800 34px Montserrat'; sg.textBaseline = 'middle';
+  sg.fillStyle = '#ffffff'; sg.fillText('THE LIFE YOU', 110, 32);
+  const w1 = sg.measureText('THE LIFE YOU ').width; sg.fillStyle = '#fbc312'; sg.fillText('KEEP PLANNING', 110 + w1, 32);
+  sg.fillStyle = '#ffffff'; sg.font = '800 26px Montserrat'; sg.textAlign = 'right'; sg.fillText('BELINDA BRIGHT N.', 2216 - 110, 32);
+  const spineArt = new THREE.CanvasTexture(sc); spineArt.colorSpace = THREE.SRGBColorSpace; spineArt.anisotropy = 8;
+  const mats = [pageMat, cover(spineArt), pageMat, pageMat, cover(front), cover(back)];
+  const geo = new THREE.BoxGeometry(6, 9, .26);
+  book.add(new THREE.Mesh(geo, mats));
+  // standing copy showing the back cover
+  backBook = new THREE.Mesh(geo, mats); backBook.rotation.y = Math.PI + .38; stack.add(backBook);
+  // two copies lying flat, spines to camera
+  const flatQ = new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(V(0, 0, -1), V(-1, 0, 0), V(0, 1, 0)));
+  const mkFlat = (x, z, yaw) => { const g = new THREE.Group(), m = new THREE.Mesh(geo, mats); m.quaternion.copy(flatQ);
+    g.add(m); g.position.set(x, 0, z); g.rotation.y = yaw; stack.add(g); return g; };
+  flat1 = mkFlat(.9, 4.3, .05); flat2 = mkFlat(1.15, 4.15, -.04);
+  // soft contact shadow
+  const shc = document.createElement('canvas'); shc.width = shc.height = 256; const shg = shc.getContext('2d');
+  const gr = shg.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, 'rgba(0,0,0,.9)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+  shg.fillStyle = gr; shg.fillRect(0, 0, 256, 256);
+  floorShadow = new THREE.Mesh(new THREE.PlaneGeometry(24, 15), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(shc), transparent: true, depthWrite: false, opacity: 0 }));
+  floorShadow.rotation.x = -Math.PI / 2; floorShadow.position.set(1.5, -4.49, 1.5); stack.add(floorShadow);
 }
 
 // ---------------------------------------------------------------- captions
 const SPEC = {
-  notebook: { y: 50, s: 's S/ i i i' },
-  camera:   { y: 50, s: 's S S/ i i I' },
+  notebook: { y: 19, s: 's S/ i i i' },
+  camera:   { y: 75, s: 's S S/ i i I' },
   head:     { y: 50, s: 's S/ i i I' },
   why:      { y: 73, s: 'i i i i/ i i/ X' },
   lazy:     { y: 73, s: 's s/ Z' },
@@ -301,7 +340,7 @@ window.TIMELINE.forEach((line, li) => {
   const spec = SPEC[line.id]; if (!spec) return;
   const toks = spec.s.split(' ');
   const el = document.createElement('div'); el.className = 'cap'; el.style.top = spec.y + '%';
-  const split = LAND && !['notebook', 'camera', 'head'].includes(line.id);
+  const split = LAND && line.id !== 'head';
   if (split) { el.style.left = '50%'; el.style.right = '60px'; el.style.top = '50%'; }
   let row = document.createElement('div'); row.className = 'row'; el.appendChild(row);
   const words = line.words.map((wd, i) => {
@@ -391,8 +430,8 @@ function renderGrain(f) {
   for (let i = 0; i < d.length; i += 4) { const v = r() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; }
   gctx.putImageData(gimg, 0, 0);
 }
-const HITS = [[9.68, 22], [18.0, 30], [32.0, 14], [wordT('why', 6), 12], [wordT('lazy', 2), 12], [wordT('begin', 5), 10]];
-const CUTS = [9.68, 23.7, 25.1, 26.7, 28.9];
+const HITS = [[2.15, 9], [4.35, 16], [9.68, 22], [18.0, 30], [32.0, 14], [wordT('why', 6), 12], [wordT('lazy', 2), 12], [wordT('begin', 5), 10]];
+const CUTS = [2.15, 9.68, 23.7, 25.1, 26.7, 28.9];
 function shake(t) {
   let x = 0, y = 0;
   for (const [t0, amp] of HITS) if (t >= t0) { const e = amp * Math.exp(-(t - t0) / .13);
@@ -405,9 +444,11 @@ function renderFinish(t) {
   let flash = 0;
   if (t >= 18) flash = Math.max(flash, Math.exp(-(t - 18) / .14));
   if (t >= 32) flash = Math.max(flash, .55 * Math.exp(-(t - 32) / .12));
-  for (const c of CUTS.slice(1)) if (t >= c) flash = Math.max(flash, .28 * Math.exp(-(t - c) / .06));
+  for (const c of [2.15, 23.7, 25.1, 26.7, 28.9]) if (t >= c) flash = Math.max(flash, .28 * Math.exp(-(t - c) / .06));
   flashEl.style.opacity = flash;
-  document.getElementById('scrim').style.opacity = 1 - smooth(5.9, 6.4, t);
+  const scrim = document.getElementById('scrim'), scrimY = t < 2.15 ? 19 : t < 4.35 ? 75 : 52, sxp = LAND && t < 4.35 ? 75 : 50;
+  scrim.style.opacity = 1 - smooth(5.9, 6.4, t);
+  scrim.style.background = `radial-gradient(ellipse ${LAND && t < 4.35 ? 40 : 70}% 16% at ${sxp}% ${scrimY}%, rgba(6,14,28,.85), rgba(6,14,28,0) 100%)`;
   let blur = 0, zoom = 1;
   for (const c of CUTS) if (t >= c) { const e = Math.exp(-(t - c) / .07); blur += 9 * e; zoom += .05 * e; }
   const whip = smooth(17.15, 17.95, t) * (t < 18 ? 1 : 0);
@@ -463,7 +504,7 @@ function renderWorld(t) {
 
   // ---- camera per section
   if (t < 6.3) {                                  // 1 · flythrough
-    const p = t / 6.3, z = lerp(14, -50, .35 * p + .65 * (p * p * (3 - 2 * p)));
+    const p = clamp((t - 4.35) / 1.95), z = lerp(14, -50, 1 - Math.pow(1 - p, 1.7));   // punch through the photo, then decelerate
     camera.position.set(Math.sin(t * .6) * .5, Math.cos(t * .45) * .4, z);
     look.set(Math.sin(t * .6 + .5) * .3, 0, z - 10); roll = Math.sin(t * .5) * .06;
   } else if (t < 9.68) {                          // 2 · vortex
@@ -486,30 +527,47 @@ function renderWorld(t) {
   } else {                                        // 5–7 · the book
     const bt = t - 18;
     let cam, lk, rotY;
-    const float = Math.sin(t * 1.2) * .12;
-    if (t < 23.7) {
+    const settle = smooth(20.9, 21.5, t);              // the hero stops floating once the stack lands
+    const float = Math.sin(t * 1.2) * .12 * (1 - settle);
+    const SX = 1.2, BK = V(5.4, .2, -1.8);
+    if (t < 20.9) {                                    // hero reveal
       const p = easeOut(bt / 2.8);
       rotY = lerp(-1.5, -.32, p) + (t - 18) * .025;
       cam = V(lerp(1.5, 0, p), lerp(-.5, .3, p), lerp(25, 20, easeOut(bt / 5.7)));
       lk = V(0, -1.9 * VY, 0);
       book.scale.setScalar(lerp(.86, 1, easeOutBack(clamp(bt / .7))));
-    } else if (t < 25.1) {
-      const p = (t - 23.7) / 1.4; rotY = lerp(-.05, .08, p);
-      cam = V(lerp(-4.5, -3.8, p), lerp(3.6, 3.1, p), lerp(18, 16.5, p)); lk = V(0, -2.3 * VY, 0);
-      book.scale.setScalar(1);
-    } else if (t < 26.7) {
-      const p = (t - 25.1) / 1.6; rotY = lerp(.15, .5, easeOut(p));
-      cam = V(lerp(5, 4.4, p), lerp(-3.2, -2.7, p), lerp(18.5, 17, p)); lk = V(0, -3.2 * VY, 0);
-    } else if (t < 28.9) {
-      const p = (t - 26.7) / 2.2; rotY = lerp(-.45, -.3, p);
-      cam = V(lerp(-1.5, -.8, p), lerp(6.5, 5.6, p), lerp(19, 17.5, p)); lk = V(0, -1.6 * VY, 0);
     } else {
-      const p = easeOut((t - 28.9) / 1.2); rotY = -.24 + Math.sin(t * .6) * .05;
-      cam = V(0, 0, LAND ? 21 : 25); lk = LAND ? V(0, 0, 0) : V(0, -5.6, 0);
-      book.scale.setScalar(lerp(1, LAND ? 1.02 : .86, p));
+      book.scale.setScalar(1);
+      rotY = lerp(-.2475, -.28 + .04 * Math.sin(t * .5), settle);
+      if (t < 23.7) {                                  // pull back while the stack assembles
+        const p = easeOut((t - 20.9) / 1.7);
+        cam = V(0, .3, 20.59).lerp(V(SX + .6, 2.2, LAND ? 34 : 31), p);
+        lk = V(0, -1.9 * VY, 0).lerp(V(SX, -6.5 * VY + .2, 1.5), p);
+      } else if (t < 25.1) {                           // back cover: "the SELECT method"
+        const p = (t - 23.7) / 1.4;
+        cam = BK.clone().add(V(lerp(5, 4.2, p), lerp(2.4, 2.0, p), lerp(20, 18.5, p))); lk = BK.clone().add(V(-.6, -3.0 * VY, 0));
+      } else if (t < 26.7) {                           // low angle along the spines
+        const p = (t - 25.1) / 1.6;
+        cam = V(lerp(3.5, 2.5, p), lerp(-1.2, -1.5, p), lerp(25, 23.5, p)); lk = V(1.0, -1.6 - 3.4 * VY, 2.5);
+      } else if (t < 28.9) {                           // high orbit of the whole stack
+        const p = (t - 26.7) / 2.2;
+        cam = V(lerp(-9, -7, p), lerp(6, 5, p), lerp(26, 24, p)); lk = V(SX, -1 - 4.5 * VY, 1);
+      } else {                                         // call to action
+        cam = V(SX + .5, 1.5, LAND ? 34 : 29); lk = V(SX, LAND ? 0 : -6.1, 1);
+      }
     }
-    book.rotation.set(.05 + float * .2, rotY, Math.sin(t * .8) * .02);
-    book.position.copy(B).add(V(0, float + (LAND && t < 28.9 ? 0 : 0), 0));
+    book.rotation.set((.05 + float * .2) * (1 - settle), rotY, Math.sin(t * .8) * .02 * (1 - settle));
+    book.position.copy(B).add(V(0, float, 0));
+    // the stack (matches the website mockup)
+    stack.visible = t >= 20.9;
+    if (stack.visible) {
+      backBook.position.set(BK.x + 14 * (1 - easeOut((t - 20.95) / .8)), BK.y, BK.z);
+      flat1.position.y = -4.5 + .13 + 12 * (1 - bounce((t - 21.15) / .75));
+      flat2.position.y = -4.5 + .40 + 12 * (1 - bounce((t - 21.4) / .75));
+      floorShadow.material.opacity = .75 * smooth(20.9, 21.6, t);
+      const closeUp = !LAND && t >= 23.7 && t < 25.1;   // keep the back-cover close-up clean
+      flat1.visible = flat2.visible = !closeUp;
+    }
     camera.position.copy(B).add(cam); look.copy(B).add(lk);
     bookGlow.material.opacity = .28 + .1 * Math.sin(t * 2);
     // lights for the book
@@ -530,10 +588,28 @@ function renderWorld(t) {
   renderer.render(scene, camera);
 }
 
+// ---------------------------------------------------------------- human photo shots
+const ph1 = document.getElementById('ph1'), ph2 = document.getElementById('ph2');
+function shot(el, on, scale, dx, dy, op = 1, blur = 0, bright = 1) {
+  el.style.display = on ? 'block' : 'none'; if (!on) return;
+  el.style.opacity = op;
+  const [bg, fg] = el.children;
+  const tf = `translate(${dx}%, ${dy}%) scale(${scale})`;
+  if (LAND) { fg.style.transform = `${tf} rotate(-1.5deg)`; bg.style.transform = `scale(${1 + (scale - 1) * .5})`; }
+  else fg.style.transform = tf;
+  fg.style.filter = blur > .1 || bright < .999 ? `blur(${blur}px) brightness(${bright})` : '';
+}
+function renderPhotos(t) {
+  const k1 = clamp(t / 2.15);
+  shot(ph1, t < 2.15, lerp(1.03, 1.15, k1), 0, lerp(0, -1.2, k1), 1, 0, clamp(t / .35));
+  const k2 = clamp((t - 2.15) / 2.2), q = clamp((t - 4.35) / .42);
+  shot(ph2, t >= 2.15 && t < 4.77, lerp(1.08, 1.18, k2) * (1 + 2.6 * q * q), lerp(0, -1.5, k2), 0, 1 - easeIn(q), 18 * q);
+}
+
 // ---------------------------------------------------------------- seek / play
 window.DURATION = DURATION;
 window.seek = (t) => {
-  renderWorld(t); renderCaptions(t); renderCTA(t); renderFinish(t);
+  renderWorld(t); renderPhotos(t); renderCaptions(t); renderCTA(t); renderFinish(t);
   renderGrain(Math.round(t * 30));
 };
 window.READY = (async () => {

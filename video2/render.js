@@ -19,9 +19,9 @@ const [W, H] = format === 'landscape' ? [1920, 1080] : [1080, 1920];
   const browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--allow-file-access-from-files'] });
   const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
   const url = 'file://' + path.join(__dirname, 'trailer.html') + `?render=1&format=${format}`;
+  page.on('pageerror', e => console.log('page exception:', e.message));
   await page.goto(url);
   page.on('console', m => { if (m.type() === 'error') console.log('page error:', m.text()); });
-  page.on('pageerror', e => console.log('page exception:', e.message));
   await page.waitForFunction(() => window.READY);
   await page.evaluate(() => window.READY);
   const duration = await page.evaluate(() => window.DURATION);
@@ -40,7 +40,7 @@ const [W, H] = format === 'landscape' ? [1920, 1080] : [1080, 1920];
   const audio = path.join(__dirname, 'audio', 'soundtrack.wav');
   const audioArgs = fs.existsSync(audio) ? ['-i', audio, '-map', '0:v', '-map', '1:a', '-c:a', 'aac', '-b:a', '192k', '-shortest'] : [];
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS),
-    '-c:v', 'mjpeg', '-i', '-', ...audioArgs, '-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-pix_fmt', 'yuv420p',
+    '-c:v', 'mjpeg', '-i', '-', ...audioArgs, '-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-maxrate', '14M', '-bufsize', '28M', '-pix_fmt', 'yuv420p',
     '-movflags', '+faststart', outFile], { stdio: ['pipe', 'inherit', 'inherit'] });
 
   const total = Math.round(duration * FPS);
