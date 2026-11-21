@@ -1,0 +1,52 @@
+// Renders trailer.html to MP4, frame by frame.
+// Usage:
+//   node render.js vertical            -> out/trailer-vertical-1080x1920.mp4
+//   node render.js landscape           -> out/trailer-landscape-1920x1080.mp4
+//   node render.js vertical --stills 3,8,12,17,22,27,33   -> PNG stills only
+const { chromium } = require('playwright');
+const { spawn } = require('child_process');
+const path = require('path');
+const fs = require('fs');
+
+const format = process.argv[2] || 'vertical';
+const stillsArg = process.argv.indexOf('--stills');
+const FPS = 30;
+const [W, H] = format === 'landscape' ? [1920, 1080] : [1080, 1920];
+
+(async () => {
+  const outDir = path.join(__dirname, 'out');
+  fs.mkdirSync(outDir, { recursive: true });
+  const browser = await chromium.launch();
+  const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
+  const url = 'file://' + path.join(__dirname, 'trailer.html') + `?render=1&format=${format}`;
+  await page.goto(url);
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForFunction(() => [...document.images].every(i => i.complete));
+  const duration = await page.evaluate(() => window.DURATION);
+
+  if (stillsArg > -1) {
+    for (const t of process.argv[stillsArg + 1].split(',').map(Number)) {
+      await page.evaluate(t => window.seek(t), t);
+      await page.screenshot({ path: path.join(outDir, `still-${format}-${t}s.png`) });
+    }
+    await browser.close();
+    return;
+  }
+
+  const outFile = path.join(outDir, `trailer-${format}-${W}x${H}.mp4`);
+  const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS),
+    '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-pix_fmt', 'yuv420p',
+    '-movflags', '+faststart', outFile], { stdio: ['pipe', 'inherit', 'inherit'] });
+
+  const total = Math.round(duration * FPS);
+  for (let f = 0; f < total; f++) {
+    await page.evaluate(t => window.seek(t), f / FPS);
+    const buf = await page.screenshot({ type: 'jpeg', quality: 95 });
+    if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
+    if (f % 150 === 0) console.log(`${format}: frame ${f}/${total}`);
+  }
+  ff.stdin.end();
+  await new Promise(r => ff.on('close', r));
+  await browser.close();
+  console.log('wrote', outFile);
+})();
