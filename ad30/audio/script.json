@@ -1,0 +1,11 @@
+[
+ {"id":"lazy",    "gap":0.25, "text":"You're not lazy."},
+ {"id":"unmot",   "gap":0.18, "text":"You're not unmotivated."},
+ {"id":"stuck",   "gap":0.22, "text":"You just keep getting stuck between ideas, plans, and starting over."},
+ {"id":"notes",   "gap":0.30, "text":"If your notes are full, your tabs are open, and your next step still feels unclear,"},
+ {"id":"foryou",  "gap":0.12, "text":"this book is for you."},
+ {"id":"title",   "gap":0.40, "text":"The Life You Keep Planning, by Belinda Bright N., is a practical guide to overthinking less, and finally following through."},
+ {"id":"inside",  "gap":0.28, "text":"Inside, you'll find the SELECT method, a one-project card, and a thirty-day follow-through programme."},
+ {"id":"ready",   "gap":0.30, "text":"If you're ready to stop planning and start moving, pre-order now on Amazon U.K."},
+ {"id":"price",   "gap":0.25, "text":"Kindle, three ninety-nine. Out January the twenty-third."}
+]

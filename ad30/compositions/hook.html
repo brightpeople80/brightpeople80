@@ -1,0 +1,113 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0b1a31; overflow: hidden; }
+    #root .shot { position: absolute; inset: 0; overflow: hidden; background: #0b1a31; }
+    #root .shot img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    /* starting over: a gold loop */
+    #h-loop svg { position: absolute; left: 264px; top: 400px; width: 480px; height: 480px; overflow: visible; }
+    /* tabs are open: a browser window whose tab strip fills */
+    #h-tabs .win { position: absolute; left: 120px; top: 430px; width: 768px; height: 520px; border-radius: 18px;
+      background: #f6efe2; overflow: hidden; box-shadow: 0 30px 60px rgba(0, 0, 0, .45); }
+    #h-tabs .strip { position: absolute; left: 0; right: 0; top: 0; height: 64px; background: #d9cfbd; }
+    #h-tabs .tab { position: absolute; top: 12px; height: 52px; border-radius: 12px 12px 0 0; background: #f6efe2;
+      border: 2px solid #c9bda6; border-bottom: none; font: 500 15px Roboto, sans-serif; color: #0b1a31;
+      padding: 16px 10px 0; white-space: nowrap; overflow: hidden; transform-origin: 50% 100%; }
+    #h-tabs .bar { position: absolute; left: 24px; right: 24px; top: 84px; height: 44px; border-radius: 22px; background: #e9e0cf; }
+    #h-tabs .line { position: absolute; left: 40px; height: 18px; border-radius: 9px; background: #ddd2bf; }
+  </style>
+  <div data-hf-id="hf-srfg" id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <!-- 1 · you're not lazy -->
+    <div data-hf-id="hf-ohic" id="h-s1" class="shot clip" data-start="0" data-duration="1.38" data-track-index="1">
+      <img data-hf-id="hf-aa97" id="h-s1-img" src="assets/images/stuck-sticky-notes.jpg" alt="A man at a kitchen table buried in sticky notes, head in his hands">
+    </div>
+    <!-- 2 · you're not unmotivated -->
+    <div data-hf-id="hf-jb14" id="h-s2" class="shot clip" data-start="1.38" data-duration="1.62" data-track-index="1">
+      <img data-hf-id="hf-fppx" id="h-s2-img" src="assets/images/stuck-phone-night.jpg" alt="A woman in bed at night lit by her phone">
+    </div>
+    <!-- 3 · stuck between… (notes close-up) -->
+    <div data-hf-id="hf-g38q" id="h-s3" class="shot clip" data-start="3" data-duration="1.75" data-track-index="1">
+      <img data-hf-id="hf-u07j" id="h-s3-img" src="assets/images/stuck-sticky-notes.jpg" alt="">
+    </div>
+    <!-- 4 · ideas (phone close-up) -->
+    <div data-hf-id="hf-9sid" id="h-s4" class="shot clip" data-start="4.75" data-duration="0.4" data-track-index="1">
+      <img data-hf-id="hf-45jm" id="h-s4-img" src="assets/images/stuck-phone-night.jpg" alt="">
+    </div>
+    <!-- 5 · plans (notes, tighter) -->
+    <div data-hf-id="hf-goe6" id="h-s5" class="shot clip" data-start="5.15" data-duration="0.54" data-track-index="1">
+      <img data-hf-id="hf-z64p" id="h-s5-img" src="assets/images/stuck-sticky-notes.jpg" alt="">
+    </div>
+    <!-- 6 · starting over -->
+    <div data-hf-id="hf-nkvs" id="h-loop" class="shot clip" data-start="5.69" data-duration="0.86" data-track-index="1">
+      <svg data-hf-id="hf-nhvo" viewBox="0 0 480 480" aria-hidden="true">
+        <path data-hf-id="hf-pmtc" id="h-loop-arc" d="M 400 240 A 160 160 0 1 1 330 108" fill="none" stroke="#fbc312" stroke-width="22" stroke-linecap="round" />
+        <path data-hf-id="hf-acsz" id="h-loop-head" d="M 290 70 L 344 102 L 316 160" fill="none" stroke="#fbc312" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+    <!-- 7 · notes are full -->
+    <div data-hf-id="hf-x055" id="h-s7" class="shot clip" data-start="6.55" data-duration="1.15" data-track-index="1">
+      <img data-hf-id="hf-mvuj" id="h-s7-img" src="assets/images/stuck-sticky-notes.jpg" alt="">
+    </div>
+    <!-- 8 · tabs are open -->
+    <div data-hf-id="hf-lz31" id="h-tabs" class="shot clip" data-start="7.7" data-duration="0.85" data-track-index="1">
+      <div data-hf-id="hf-smxx" class="win" id="h-win">
+        <div data-hf-id="hf-z4pj" class="strip" data-layout-ignore="">
+          <div data-hf-id="hf-gy0f" class="tab" id="h-tab0" style="left:0px;width:150px">Side hustle ideas</div>
+          <div data-hf-id="hf-whnr" class="tab" id="h-tab1" style="left:38px;width:150px">How to start a podcast</div>
+          <div data-hf-id="hf-ye3i" class="tab" id="h-tab2" style="left:76px;width:150px">Best planners 2027</div>
+          <div data-hf-id="hf-fm0y" class="tab" id="h-tab3" style="left:114px;width:150px">Notion templates</div>
+          <div data-hf-id="hf-rs2l" class="tab" id="h-tab4" style="left:152px;width:150px">Morning routine</div>
+          <div data-hf-id="hf-qe95" class="tab" id="h-tab5" style="left:190px;width:150px">Etsy shop guide</div>
+          <div data-hf-id="hf-hl1x" class="tab" id="h-tab6" style="left:228px;width:150px">Learn Spanish fast</div>
+          <div data-hf-id="hf-4oz2" class="tab" id="h-tab7" style="left:266px;width:150px">5-year plan</div>
+          <div data-hf-id="hf-9t4q" class="tab" id="h-tab8" style="left:304px;width:150px">Rebrand ideas</div>
+          <div data-hf-id="hf-xupx" class="tab" id="h-tab9" style="left:342px;width:150px">Course reviews</div>
+          <div data-hf-id="hf-bz4f" class="tab" id="h-tab10" style="left:380px;width:150px">Vision board</div>
+          <div data-hf-id="hf-sn66" class="tab" id="h-tab11" style="left:418px;width:150px">Productivity hacks</div>
+          <div data-hf-id="hf-ehbw" class="tab" id="h-tab12" style="left:456px;width:150px">Budget template</div>
+          <div data-hf-id="hf-i8ox" class="tab" id="h-tab13" style="left:494px;width:150px">YouTube channel?</div>
+          <div data-hf-id="hf-uu7r" class="tab" id="h-tab14" style="left:532px;width:150px">Side project #4</div>
+          <div data-hf-id="hf-v02x" class="tab" id="h-tab15" style="left:570px;width:150px">Read later</div>
+          <div data-hf-id="hf-8dse" class="tab" id="h-tab16" style="left:608px;width:150px">New Year plan</div>
+          <div data-hf-id="hf-g4ve" class="tab" id="h-tab17" style="left:646px;width:122px">Start Monday</div>
+        </div>
+        <div data-hf-id="hf-ufsv" class="bar"></div>
+        <div data-hf-id="hf-j7ht" class="line" style="top:170px;width:520px"></div>
+        <div data-hf-id="hf-m1aj" class="line" style="top:206px;width:610px"></div>
+        <div data-hf-id="hf-70mf" class="line" style="top:242px;width:430px"></div>
+        <div data-hf-id="hf-aopq" class="line" style="top:300px;width:560px"></div>
+        <div data-hf-id="hf-vqdl" class="line" style="top:336px;width:380px"></div>
+        <div data-hf-id="hf-p5b0" class="line" style="top:394px;width:590px"></div>
+        <div data-hf-id="hf-yjuy" class="line" style="top:430px;width:470px"></div>
+      </div>
+    </div>
+    <!-- 9 · next step still feels unclear -->
+    <div data-hf-id="hf-k69r" id="h-s9" class="shot clip" data-start="8.55" data-duration="2.05" data-track-index="1">
+      <img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:0,&quot;contrast&quot;:0,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:0},&quot;details&quot;:{&quot;vignette&quot;:0,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0.45,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-krnf" style="--hf-color-grading-blur: 0" id="h-s9-img" src="assets/images/stuck-phone-night.jpg" alt="">
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const push = (sel, t0, dur, s0, s1, ox, oy, x0 = 0, x1 = 0) =>
+      tl.fromTo(sel, { scale: s0, x: x0, transformOrigin: `${ox}% ${oy}%` },
+        { scale: s1, x: x1, duration: dur, ease: "sine.inOut" }, t0);
+    push("#h-s1-img", 0, 1.38, 1.04, 1.12, 50, 38);
+    push("#h-s2-img", 1.38, 1.62, 1.06, 1.14, 45, 50);
+    push("#h-s3-img", 3, 1.75, 2.0, 2.12, 50, 86, 0, -40);
+    push("#h-s4-img", 4.75, 0.4, 2.3, 2.42, 73, 47);
+    push("#h-s5-img", 5.15, 0.54, 2.6, 2.75, 28, 80);
+    push("#h-s7-img", 6.55, 1.15, 1.5, 1.62, 50, 76);
+    push("#h-s9-img", 8.55, 2.05, 1.5, 1.62, 42, 47);
+    // the loop draws itself round, then its arrowhead lands
+    tl.fromTo("#h-loop-arc", { strokeDasharray: 860, strokeDashoffset: 860 }, { strokeDashoffset: 0, duration: 0.5, ease: "power3.out" }, 5.72);
+    tl.fromTo("#h-loop-head", { strokeDasharray: 130, strokeDashoffset: 130 }, { strokeDashoffset: 0, duration: 0.14, ease: "power2.out" }, 6.18);
+    tl.fromTo("#h-loop svg", { rotation: -40, transformOrigin: "50% 50%" }, { rotation: 0, duration: 0.8, ease: "power3.out" }, 5.69);
+    // tabs land 40 ms apart
+    for (let i = 0; i < 18; i++) {
+      tl.fromTo(`#h-tab${i}`, { scaleY: 0, opacity: 0 }, { scaleY: 1, opacity: 1, duration: 0.12, ease: "power3.out" }, 7.72 + i * 0.04);
+    }
+    tl.fromTo("#h-win", { y: 40 }, { y: 0, duration: 0.3, ease: "power3.out" }, 7.7);
+    // unclear: the face defocuses (media treatment, animated through its CSS variable)
+    tl.to("#h-s9-img", { "--hf-color-grading-blur": 0.85, duration: 0.9, ease: "sine.inOut" }, 9.3);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

@@ -1,0 +1,446 @@
+[
+ {
+  "id": "lazy",
+  "text": "You're not lazy.",
+  "start": 0.25,
+  "dur": 1.0,
+  "words": [
+   {
+    "w": "You're",
+    "t": 0.25
+   },
+   {
+    "w": "not",
+    "t": 0.507
+   },
+   {
+    "w": "lazy.",
+    "t": 0.751
+   }
+  ]
+ },
+ {
+  "id": "unmot",
+  "text": "You're not unmotivated.",
+  "start": 1.43,
+  "dur": 1.446,
+  "words": [
+   {
+    "w": "You're",
+    "t": 1.43
+   },
+   {
+    "w": "not",
+    "t": 1.687
+   },
+   {
+    "w": "unmotivated.",
+    "t": 1.931
+   }
+  ]
+ },
+ {
+  "id": "stuck",
+  "text": "You just keep getting stuck between ideas, plans, and starting over.",
+  "start": 3.096,
+  "dur": 3.21,
+  "words": [
+   {
+    "w": "You",
+    "t": 3.096
+   },
+   {
+    "w": "just",
+    "t": 3.348
+   },
+   {
+    "w": "keep",
+    "t": 3.639
+   },
+   {
+    "w": "getting",
+    "t": 3.826
+   },
+   {
+    "w": "stuck",
+    "t": 4.191
+   },
+   {
+    "w": "between",
+    "t": 4.413
+   },
+   {
+    "w": "ideas,",
+    "t": 4.752
+   },
+   {
+    "w": "plans,",
+    "t": 5.146
+   },
+   {
+    "w": "and",
+    "t": 5.497
+   },
+   {
+    "w": "starting",
+    "t": 5.69
+   },
+   {
+    "w": "over.",
+    "t": 6.007
+   }
+  ]
+ },
+ {
+  "id": "notes",
+  "text": "If your notes are full, your tabs are open, and your next step still feels unclear,",
+  "start": 6.606,
+  "dur": 3.95,
+  "words": [
+   {
+    "w": "If",
+    "t": 6.606
+   },
+   {
+    "w": "your",
+    "t": 6.791
+   },
+   {
+    "w": "notes",
+    "t": 7.046
+   },
+   {
+    "w": "are",
+    "t": 7.333
+   },
+   {
+    "w": "full,",
+    "t": 7.557
+   },
+   {
+    "w": "your",
+    "t": 7.687
+   },
+   {
+    "w": "tabs",
+    "t": 7.898
+   },
+   {
+    "w": "are",
+    "t": 8.143
+   },
+   {
+    "w": "open,",
+    "t": 8.269
+   },
+   {
+    "w": "and",
+    "t": 8.547
+   },
+   {
+    "w": "your",
+    "t": 8.778
+   },
+   {
+    "w": "next",
+    "t": 8.858
+   },
+   {
+    "w": "step",
+    "t": 9.077
+   },
+   {
+    "w": "still",
+    "t": 9.281
+   },
+   {
+    "w": "feels",
+    "t": 9.636
+   },
+   {
+    "w": "unclear,",
+    "t": 10.035
+   }
+  ]
+ },
+ {
+  "id": "foryou",
+  "text": "this book is for you.",
+  "start": 10.676,
+  "dur": 1.069,
+  "words": [
+   {
+    "w": "this",
+    "t": 10.676
+   },
+   {
+    "w": "book",
+    "t": 11.003
+   },
+   {
+    "w": "is",
+    "t": 11.181
+   },
+   {
+    "w": "for",
+    "t": 11.38
+   },
+   {
+    "w": "you.",
+    "t": 11.533
+   }
+  ]
+ },
+ {
+  "id": "title",
+  "text": "The Life You Keep Planning, by Belinda Bright N., is a practical guide to overthinking less, and finally following through.",
+  "start": 12.145,
+  "dur": 5.92,
+  "words": [
+   {
+    "w": "The",
+    "t": 12.145
+   },
+   {
+    "w": "Life",
+    "t": 12.308
+   },
+   {
+    "w": "You",
+    "t": 12.613
+   },
+   {
+    "w": "Keep",
+    "t": 12.833
+   },
+   {
+    "w": "Planning,",
+    "t": 13.01
+   },
+   {
+    "w": "by",
+    "t": 13.292
+   },
+   {
+    "w": "Belinda",
+    "t": 13.542
+   },
+   {
+    "w": "Bright",
+    "t": 13.908
+   },
+   {
+    "w": "N.,",
+    "t": 14.17
+   },
+   {
+    "w": "is",
+    "t": 14.262
+   },
+   {
+    "w": "a",
+    "t": 14.843
+   },
+   {
+    "w": "practical",
+    "t": 14.923
+   },
+   {
+    "w": "guide",
+    "t": 15.137
+   },
+   {
+    "w": "to",
+    "t": 15.54
+   },
+   {
+    "w": "overthinking",
+    "t": 15.708
+   },
+   {
+    "w": "less,",
+    "t": 16.351
+   },
+   {
+    "w": "and",
+    "t": 16.549
+   },
+   {
+    "w": "finally",
+    "t": 16.739
+   },
+   {
+    "w": "following",
+    "t": 17.282
+   },
+   {
+    "w": "through.",
+    "t": 17.674
+   }
+  ]
+ },
+ {
+  "id": "inside",
+  "text": "Inside, you'll find the SELECT method, a one-project card, and a thirty-day follow-through programme.",
+  "start": 18.345,
+  "dur": 4.857,
+  "words": [
+   {
+    "w": "Inside,",
+    "t": 18.345
+   },
+   {
+    "w": "you'll",
+    "t": 18.844
+   },
+   {
+    "w": "find",
+    "t": 19.117
+   },
+   {
+    "w": "the",
+    "t": 19.444
+   },
+   {
+    "w": "SELECT",
+    "t": 19.586
+   },
+   {
+    "w": "method,",
+    "t": 19.769
+   },
+   {
+    "w": "a",
+    "t": 20.113
+   },
+   {
+    "w": "one-project",
+    "t": 20.337
+   },
+   {
+    "w": "card,",
+    "t": 21.068
+   },
+   {
+    "w": "and",
+    "t": 21.246
+   },
+   {
+    "w": "a",
+    "t": 21.578
+   },
+   {
+    "w": "thirty-day",
+    "t": 21.658
+   },
+   {
+    "w": "follow-through",
+    "t": 22.016
+   },
+   {
+    "w": "programme.",
+    "t": 22.563
+   }
+  ]
+ },
+ {
+  "id": "ready",
+  "text": "If you're ready to stop planning and start moving, pre-order now on Amazon U.K.",
+  "start": 23.501,
+  "dur": 3.955,
+  "words": [
+   {
+    "w": "If",
+    "t": 23.501
+   },
+   {
+    "w": "you're",
+    "t": 23.686
+   },
+   {
+    "w": "ready",
+    "t": 23.941
+   },
+   {
+    "w": "to",
+    "t": 24.216
+   },
+   {
+    "w": "stop",
+    "t": 24.426
+   },
+   {
+    "w": "planning",
+    "t": 24.603
+   },
+   {
+    "w": "and",
+    "t": 24.965
+   },
+   {
+    "w": "start",
+    "t": 25.094
+   },
+   {
+    "w": "moving,",
+    "t": 25.368
+   },
+   {
+    "w": "pre-order",
+    "t": 25.555
+   },
+   {
+    "w": "now",
+    "t": 26.086
+   },
+   {
+    "w": "on",
+    "t": 26.285
+   },
+   {
+    "w": "Amazon",
+    "t": 26.528
+   },
+   {
+    "w": "U.K.",
+    "t": 26.922
+   }
+  ]
+ },
+ {
+  "id": "price",
+  "text": "Kindle, three ninety-nine. Out January the twenty-third.",
+  "start": 27.706,
+  "dur": 2.963,
+  "words": [
+   {
+    "w": "Kindle,",
+    "t": 27.706
+   },
+   {
+    "w": "three",
+    "t": 28.115
+   },
+   {
+    "w": "ninety-nine.",
+    "t": 28.484
+   },
+   {
+    "w": "Out",
+    "t": 29.004
+   },
+   {
+    "w": "January",
+    "t": 29.432
+   },
+   {
+    "w": "the",
+    "t": 29.778
+   },
+   {
+    "w": "twenty-third.",
+    "t": 29.95
+   }
+  ]
+ }
+]

@@ -1,0 +1,84 @@
+<template>
+  <style>
+    @font-face { font-family: "Caveat"; font-weight: 600; src: url("assets/fonts/Caveat.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; }
+    #root .dim, #root .slot { position: absolute; inset: 0; }
+    #root .dimfill { position: absolute; inset: 0; background: #0b1a31; }
+    #root .card { position: absolute; left: 154px; top: 350px; width: 700px; height: 640px; border-radius: 10px;
+      background: #f6efe2; color: #0b1a31; box-shadow: 0 34px 70px rgba(0, 0, 0, .5); overflow: hidden; }
+    #root .label { position: absolute; left: 56px; top: 52px; font: 800 30px Montserrat, sans-serif; letter-spacing: .18em; color: #0b1a31; }
+    /* SELECT */
+    #in-select .big { position: absolute; left: 50px; top: 150px; font: 900 140px/1 Montserrat, sans-serif; letter-spacing: -.01em; color: #0b1a31; }
+    #in-select .big span { display: inline-block; }
+    #in-select .rule { position: absolute; left: 56px; top: 330px; width: 300px; height: 14px; background: #fbc312; transform-origin: 0 50%; }
+    #in-select .sub { position: absolute; left: 56px; top: 410px; width: 590px; font: 500 40px/1.3 Roboto, sans-serif; color: #24344f; }
+    /* one-project index card */
+    #in-card .rules { position: absolute; left: 0; right: 0; top: 150px; bottom: 0;
+      background: repeating-linear-gradient(#f6efe2 0 70px, #a9c1de 70px 72px); }
+    #in-card .margin { position: absolute; left: 110px; top: 0; bottom: 0; width: 3px; background: #e08a8a; }
+    #in-card .label { left: 140px; }
+    #in-card .hand { position: absolute; left: 140px; top: 220px; font: 600 88px/1 Caveat, cursive; color: #13305a; white-space: nowrap; }
+    #in-card .wipe { position: absolute; left: 130px; top: 200px; width: 560px; height: 140px; background: #f6efe2; transform-origin: 100% 50%; }
+    #in-card .box { position: absolute; left: 140px; top: 420px; width: 62px; height: 62px; border: 6px solid #13305a; border-radius: 6px; }
+    #in-card .tick { position: absolute; left: 150px; top: 396px; width: 70px; height: 80px; overflow: visible; }
+    #in-card .note { position: absolute; left: 230px; top: 428px; font: 600 54px Caveat, cursive; color: #13305a; }
+    /* 30-day grid */
+    #in-days .grid { position: absolute; left: 56px; top: 140px; width: 588px; display: grid; grid-template-columns: repeat(6, 88px); gap: 12px; }
+    #in-days .d { width: 88px; height: 70px; border-radius: 8px; background: #e6dcc9; position: relative; }
+    #in-days .d i { position: absolute; inset: 0; border-radius: 8px; background: #fbc312; transform-origin: 0 100%; }
+    #in-days .d b { position: absolute; left: 10px; top: 6px; z-index: 1; font: 800 30px Montserrat, sans-serif; color: #0b1a31; }
+  </style>
+  <div id="root" data-composition-id="inside" data-width="1080" data-height="1920">
+    <div id="in-dim" class="dim clip" data-start="0" data-duration="5.1" data-track-index="1"><div class="dimfill" id="in-dimfill"></div></div>
+
+    <div id="in-select-slot" class="slot clip" data-start="1.2" data-duration="0.95" data-track-index="2"><div id="in-select" class="card">
+      <div class="label">METHOD</div>
+      <div class="big" id="in-select-big"><span>S</span><span>E</span><span>L</span><span>E</span><span>C</span><span>T</span></div>
+      <div class="rule" id="in-select-rule"></div>
+    </div>
+
+    </div><div id="in-card-slot" class="slot clip" data-start="1.95" data-duration="1.45" data-track-index="2"><div id="in-card" class="card">
+      <div class="rules"></div><div class="margin"></div>
+      <div class="label">MY ONE PROJECT</div>
+      <div class="hand">Start the podcast</div>
+      <div class="wipe" id="in-card-wipe"></div>
+      <div class="box"></div>
+      <svg class="tick" viewBox="0 0 70 80" aria-hidden="true"><path id="in-card-tick" d="M 6 44 L 26 66 L 66 8" fill="none" stroke="#fbc312" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      <div class="note">only this, for now</div>
+    </div>
+
+    </div><div id="in-days-slot" class="slot clip" data-start="3.25" data-duration="1.85" data-track-index="2"><div id="in-days" class="card">
+      <div class="label">30-DAY FOLLOW-THROUGH</div>
+      <div class="grid">
+        <div class="d"><i id="in-d0" data-layout-allow-occlusion></i><b>1</b></div><div class="d"><i id="in-d1" data-layout-allow-occlusion></i><b>2</b></div><div class="d"><i id="in-d2" data-layout-allow-occlusion></i><b>3</b></div><div class="d"><i id="in-d3" data-layout-allow-occlusion></i><b>4</b></div><div class="d"><i id="in-d4" data-layout-allow-occlusion></i><b>5</b></div><div class="d"><i id="in-d5" data-layout-allow-occlusion></i><b>6</b></div>
+        <div class="d"><i id="in-d6" data-layout-allow-occlusion></i><b>7</b></div><div class="d"><i id="in-d7" data-layout-allow-occlusion></i><b>8</b></div><div class="d"><i id="in-d8" data-layout-allow-occlusion></i><b>9</b></div><div class="d"><i id="in-d9" data-layout-allow-occlusion></i><b>10</b></div><div class="d"><i id="in-d10" data-layout-allow-occlusion></i><b>11</b></div><div class="d"><i id="in-d11" data-layout-allow-occlusion></i><b>12</b></div>
+        <div class="d"><i id="in-d12" data-layout-allow-occlusion></i><b>13</b></div><div class="d"><i id="in-d13" data-layout-allow-occlusion></i><b>14</b></div><div class="d"><i id="in-d14" data-layout-allow-occlusion></i><b>15</b></div><div class="d"><i id="in-d15" data-layout-allow-occlusion></i><b>16</b></div><div class="d"><i id="in-d16" data-layout-allow-occlusion></i><b>17</b></div><div class="d"><i id="in-d17" data-layout-allow-occlusion></i><b>18</b></div>
+        <div class="d"><i id="in-d18" data-layout-allow-occlusion></i><b>19</b></div><div class="d"><i id="in-d19" data-layout-allow-occlusion></i><b>20</b></div><div class="d"><i id="in-d20" data-layout-allow-occlusion></i><b>21</b></div><div class="d"><i id="in-d21" data-layout-allow-occlusion></i><b>22</b></div><div class="d"><i id="in-d22" data-layout-allow-occlusion></i><b>23</b></div><div class="d"><i id="in-d23" data-layout-allow-occlusion></i><b>24</b></div>
+        <div class="d"><i id="in-d24" data-layout-allow-occlusion></i><b>25</b></div><div class="d"><i id="in-d25" data-layout-allow-occlusion></i><b>26</b></div><div class="d"><i id="in-d26" data-layout-allow-occlusion></i><b>27</b></div><div class="d"><i id="in-d27" data-layout-allow-occlusion></i><b>28</b></div><div class="d"><i id="in-d28" data-layout-allow-occlusion></i><b>29</b></div><div class="d"><i id="in-d29" data-layout-allow-occlusion></i><b>30</b></div>
+      </div>
+    </div></div>
+  </div>
+  <script>
+    // local 0 = 18.3 s. SELECT is spoken at 19.59 (1.29), one-project at 20.34 (2.04), thirty-day at 21.66 (3.36).
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#in-dimfill", { opacity: 0 }, { opacity: 0.62, duration: 0.25, ease: "power2.out" }, 0);
+    tl.to("#in-dimfill", { opacity: 0, duration: 0.2, ease: "power2.in" }, 4.88);
+    const enter = (sel, t) => tl.fromTo(sel, { x: 760, rotation: 7 }, { x: 0, rotation: -2, duration: 0.32, ease: "back.out(1.4)" }, t);
+    const leave = (sel, t) => tl.to(sel, { x: -820, rotation: -9, duration: 0.2, ease: "power2.in" }, t);
+    // SELECT
+    enter("#in-select", 1.2);
+    tl.fromTo("#in-select-big span", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, ease: "power3.out", stagger: 0.04 }, 1.3);
+    tl.fromTo("#in-select-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.25, ease: "power3.out" }, 1.55);
+    leave("#in-select", 1.95);
+    // one-project card: the handwriting writes on, then the box is ticked
+    enter("#in-card", 1.95);
+    tl.fromTo("#in-card-wipe", { scaleX: 1 }, { scaleX: 0, duration: 0.55, ease: "none" }, 2.12);
+    tl.fromTo("#in-card-tick", { strokeDasharray: 110, strokeDashoffset: 110 }, { strokeDashoffset: 0, duration: 0.2, ease: "power2.out" }, 2.8);
+    leave("#in-card", 3.2);
+    // 30 days fill one by one
+    enter("#in-days", 3.25);
+    for (let i = 0; i < 30; i++) tl.fromTo(`#in-d${i}`, { scaleY: 0 }, { scaleY: 1, duration: 0.08, ease: "power2.out" }, 3.45 + i * 0.04);
+    tl.to("#in-days", { y: -40, opacity: 0, duration: 0.2, ease: "power2.in" }, 4.88);
+    window.__timelines["inside"] = tl;
+  </script>
+</template>
