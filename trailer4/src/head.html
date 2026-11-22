@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Missing Something Better</title>
+<style>
+  @font-face { font-family: 'Montserrat'; font-weight: 100 900; src: url(../assets/fonts/Montserrat-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-italic.woff2) format('woff2'); }
+  @font-face { font-family: 'Caveat'; font-weight: 400 700; src: url(../assets/fonts/Caveat.woff2) format('woff2'); }
+  :root { --navy: #0b1a31; --gold: #fbc312; --ivory: #f4eddc; }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #07111f; }
+  #c { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  .layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  /* ---- layer: opening photo + option cards ---- */
+  #photo { opacity: 1; }
+  #photo img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+  #photo .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,17,31,.15), rgba(7,17,31,.0) 40%, rgba(7,17,31,.55)); }
+  .opt { position: absolute; left: 0; top: 0; padding: 18px 28px 18px 22px; border-radius: 14px; background: #f4eddc; color: #0b1a31; white-space: nowrap;
+    font: 800 40px Montserrat; box-shadow: 0 18px 40px rgba(0,0,0,.5), inset 0 0 0 3px #c99a2e; opacity: 0; }
+  .opt i { font-style: normal; color: #b8860b; margin-right: 12px; }
+  /* ---- layer: chapter title over the doors ---- */
+  #ch3 { position: absolute; left: 90px; top: 268px; width: 820px; }
+  #ch3 .chip { display: inline-block; font: 800 30px Montserrat; letter-spacing: .16em; color: #0b1a31; background: var(--gold); padding: 10px 20px; border-radius: 10px; opacity: 0; }
+  #ch3 .t { font: 600 82px/1.02 'Source Serif 4'; color: #fff; margin-top: 18px; text-shadow: 0 6px 30px rgba(3,9,20,.9); opacity: 0; }
+  #ch3 .t em { color: var(--gold); font-style: italic; }
+  /* ---- layer: contents (all 8 chapters) ---- */
+  #toc { position: absolute; left: 84px; top: 880px; width: 812px; padding: 26px 30px 18px; border-radius: 18px; background: #f4eddc;
+    box-shadow: 0 30px 70px rgba(0,0,0,.55), inset 0 0 0 3px #c99a2e; opacity: 0; }
+  #toc h3 { margin: 0 0 10px; font: 800 26px Montserrat; letter-spacing: .18em; color: #8a6a1c; }
+  #toc .row { display: flex; align-items: baseline; gap: 18px; padding: 9px 12px; border-top: 1.5px solid rgba(11,26,49,.14); font: 600 26px/1.2 Montserrat; color: #0b1a31; opacity: 0; border-radius: 8px; }
+  #toc .row b { font: 800 24px Montserrat; color: #9b7a24; width: 44px; flex: none; }
+  #toc .row.hot { background: var(--navy); color: var(--gold); }
+  #toc .row.hot b { color: var(--gold); }
+  /* ---- layer: end card ---- */
+  #endbg { position: absolute; inset: 0; opacity: 0; background: radial-gradient(900px 760px at 50% 42%, #172e54, #07111f 72%); }
+  #end > * { position: absolute; opacity: 0; }
+  #e-title { left: 64px; top: 228px; font: 600 86px/1.0 'Source Serif 4'; color: #fff; letter-spacing: -.01em; }
+  #e-author { left: 66px; top: 425px; font: 800 34px Montserrat; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; }
+  #e-stack { left: 40px; top: 500px; width: 470px; }
+  #e-reader { left: 540px; top: 740px; width: 220px; height: 320px; border-radius: 22px; background: linear-gradient(160deg,#2a2f38,#121419); box-shadow: 0 30px 60px rgba(0,0,0,.6), inset 0 0 0 2px #3a404b; }
+  #e-reader img { position: absolute; left: 15px; top: 18px; width: 190px; height: 285px; border-radius: 3px; }
+  .price { font: 800 32px Montserrat; color: #fff; white-space: nowrap; }
+  .price b { color: var(--gold); }
+  .price small { display: block; font: 600 23px Montserrat; color: var(--ivory); opacity: .85; margin-top: 4px; }
+  #e-paper { left: 70px; top: 1090px; }
+  #e-kindle { left: 545px; top: 1090px; }
+  #e-btn { left: 64px; top: 1188px; }
+  #e-btn div { position: relative; overflow: hidden; padding: 24px 38px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 44px Montserrat; white-space: nowrap;
+    box-shadow: 0 10px 0 #b8890b, 0 24px 44px rgba(0,0,0,.45); }
+  #e-btn .gl { position: absolute; top: 0; bottom: 0; width: 140px; left: -180px; background: linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent); }
+  #e-date { left: 66px; top: 1316px; font: italic 600 44px 'Source Serif 4'; color: #fff; white-space: nowrap; }
+  #e-date b { color: var(--gold); font-weight: 600; }
+  #e-url { left: 66px; top: 1380px; font: 700 31px Montserrat; color: var(--ivory); white-space: nowrap; }
+  /* ---- layer: captions ---- */
+  #caps .cap { position: absolute; left: 84px; width: 800px; top: 1458px; font: 800 48px/1.32 Montserrat; color: #fff; opacity: 0; }
+  #caps .cap span { background: rgba(7,17,31,.8); padding: 6px 18px; border-radius: 14px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  #flash { position: absolute; inset: 0; background: radial-gradient(circle at 50% 45%, #fff6d8, #fbc312 60%, #b8860b); opacity: 0; }
+</style>
+</head>
+<body>
+  <canvas id="c" width="1080" height="1920"></canvas>
+  <!-- opening photo: a person scrolling through options at night -->
+  <div class="layer" id="photo">
+    <img id="ph" src="assets/woman-phone-bed.jpg" alt="" style="transform-origin: 45% 45%">
+    <img id="ph2" src="assets/man-phone-day.jpg" alt="" style="transform-origin: 23% 34%">
+    <div class="shade"></div>
+    <div class="opt" id="o0"><i>★</i>A new job?</div>
+    <div class="opt" id="o1"><i>★</i>That online course?</div>
+    <div class="opt" id="o2"><i>★</i>Move to the coast?</div>
+    <div class="opt" id="o3"><i>★</i>The other idea?</div>
+    <div class="opt" id="o4"><i>★</i>Wait for a better time?</div>
+  </div>
+  <div class="layer" id="ch3L"><div id="ch3"><div class="chip">CHAPTER 3</div><div class="t">The fear of missing <em>something better</em></div></div></div>
+  <div class="layer" id="tocL"><div id="toc"><h3>INSIDE · 8 CHAPTERS</h3>
+    <div class="row"><b>01</b>The Life You’re Always About to Start</div>
+    <div class="row"><b>02</b>Why Planning Feels Like Progress</div>
+    <div class="row hot"><b>03</b>The Fear of Missing Something Better</div>
+    <div class="row"><b>04</b>When Your Mind Becomes Overwhelmed</div>
+    <div class="row"><b>05</b>The Psychology of Taking Action</div>
+    <div class="row"><b>06</b>Building Consistency Without Waiting for Motivation</div>
+    <div class="row"><b>07</b>Knowing When to Persist and When to Pivot</div>
+    <div class="row"><b>08</b>The 30-Day Follow-Through Programme</div>
+  </div></div>
+  <div class="layer" id="end">
+    <div id="endbg"></div>
+    <div id="e-title">The Life You<br>Keep Planning</div>
+    <div id="e-author">Belinda Bright N.</div>
+    <img id="e-stack" src="assets/book-stack-soft.png" alt="">
+    <div id="e-reader"><img src="assets/front-cover.png" alt=""></div>
+    <div id="e-paper" class="price">Paperback <b>£9.99</b><small>Coming soon</small></div>
+    <div id="e-kindle" class="price">Kindle <b>£3.99</b></div>
+    <div id="e-btn"><div>Pre-order now on Amazon UK<span class="gl"></span></div></div>
+    <div id="e-date">Out <b>23 January 2027</b></div>
+    <div id="e-url">thelifeyoukeepplanningbook.netlify.app</div>
+  </div>
+  <div class="layer" id="flashL"><div id="flash"></div></div>
+  <div class="layer" id="caps"></div>
+<script src="audio/captions.js"></script>
+<script type="module">
+import * as THREE from './vendor/three.module.js';
+import { RoomEnvironment } from './vendor/RoomEnvironment.js';
+const DURATION = 34.0;
+window.DURATION = DURATION;
+const params = new URLSearchParams(location.search);

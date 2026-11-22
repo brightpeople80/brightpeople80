@@ -1,0 +1,426 @@
+[
+ {
+  "id": "l1",
+  "text": "It's late, and you're still scrolling.",
+  "start": 0.4,
+  "dur": 1.828,
+  "words": [
+   {
+    "w": "It's",
+    "t": 0.4
+   },
+   {
+    "w": "late,",
+    "t": 0.701
+   },
+   {
+    "w": "and",
+    "t": 1.013
+   },
+   {
+    "w": "you're",
+    "t": 1.395
+   },
+   {
+    "w": "still",
+    "t": 1.475
+   },
+   {
+    "w": "scrolling.",
+    "t": 1.707
+   }
+  ]
+ },
+ {
+  "id": "l2",
+  "text": "Every option looks better than the one you're holding.",
+  "start": 2.7,
+  "dur": 2.36,
+  "words": [
+   {
+    "w": "Every",
+    "t": 2.7
+   },
+   {
+    "w": "option",
+    "t": 3.116
+   },
+   {
+    "w": "looks",
+    "t": 3.527
+   },
+   {
+    "w": "better",
+    "t": 3.764
+   },
+   {
+    "w": "than",
+    "t": 4.15
+   },
+   {
+    "w": "the",
+    "t": 4.259
+   },
+   {
+    "w": "one",
+    "t": 4.461
+   },
+   {
+    "w": "you're",
+    "t": 4.541
+   },
+   {
+    "w": "holding.",
+    "t": 4.648
+   }
+  ]
+ },
+ {
+  "id": "l3",
+  "text": "So you compare, you save, you wait, and nothing gets chosen.",
+  "start": 6.0,
+  "dur": 2.953,
+  "words": [
+   {
+    "w": "So",
+    "t": 6.0
+   },
+   {
+    "w": "you",
+    "t": 6.352
+   },
+   {
+    "w": "compare,",
+    "t": 6.531
+   },
+   {
+    "w": "you",
+    "t": 7.038
+   },
+   {
+    "w": "save,",
+    "t": 7.121
+   },
+   {
+    "w": "you",
+    "t": 7.391
+   },
+   {
+    "w": "wait,",
+    "t": 7.471
+   },
+   {
+    "w": "and",
+    "t": 7.551
+   },
+   {
+    "w": "nothing",
+    "t": 7.905
+   },
+   {
+    "w": "gets",
+    "t": 8.117
+   },
+   {
+    "w": "chosen.",
+    "t": 8.38
+   }
+  ]
+ },
+ {
+  "id": "l4",
+  "text": "That's the fear of missing something better.",
+  "start": 10.4,
+  "dur": 2.146,
+  "words": [
+   {
+    "w": "That's",
+    "t": 10.4
+   },
+   {
+    "w": "the",
+    "t": 10.844
+   },
+   {
+    "w": "fear",
+    "t": 10.984
+   },
+   {
+    "w": "of",
+    "t": 11.183
+   },
+   {
+    "w": "missing",
+    "t": 11.486
+   },
+   {
+    "w": "something",
+    "t": 11.67
+   },
+   {
+    "w": "better.",
+    "t": 12.053
+   }
+  ]
+ },
+ {
+  "id": "l5",
+  "text": "Chapter three shows why choosing feels like losing, so you can pick one path and walk it.",
+  "start": 13.3,
+  "dur": 4.78,
+  "words": [
+   {
+    "w": "Chapter",
+    "t": 13.3
+   },
+   {
+    "w": "three",
+    "t": 13.817
+   },
+   {
+    "w": "shows",
+    "t": 14.077
+   },
+   {
+    "w": "why",
+    "t": 14.554
+   },
+   {
+    "w": "choosing",
+    "t": 14.754
+   },
+   {
+    "w": "feels",
+    "t": 15.115
+   },
+   {
+    "w": "like",
+    "t": 15.494
+   },
+   {
+    "w": "losing,",
+    "t": 15.574
+   },
+   {
+    "w": "so",
+    "t": 16.024
+   },
+   {
+    "w": "you",
+    "t": 16.213
+   },
+   {
+    "w": "can",
+    "t": 16.392
+   },
+   {
+    "w": "pick",
+    "t": 16.514
+   },
+   {
+    "w": "one",
+    "t": 16.814
+   },
+   {
+    "w": "path",
+    "t": 17.055
+   },
+   {
+    "w": "and",
+    "t": 17.351
+   },
+   {
+    "w": "walk",
+    "t": 17.538
+   },
+   {
+    "w": "it.",
+    "t": 17.758
+   }
+  ]
+ },
+ {
+  "id": "l6",
+  "text": "It's one of eight chapters, from why planning feels like progress, to knowing when to persist, and when to pivot.",
+  "start": 19.2,
+  "dur": 5.65,
+  "words": [
+   {
+    "w": "It's",
+    "t": 19.2
+   },
+   {
+    "w": "one",
+    "t": 19.501
+   },
+   {
+    "w": "of",
+    "t": 19.729
+   },
+   {
+    "w": "eight",
+    "t": 20.041
+   },
+   {
+    "w": "chapters,",
+    "t": 20.128
+   },
+   {
+    "w": "from",
+    "t": 20.609
+   },
+   {
+    "w": "why",
+    "t": 20.709
+   },
+   {
+    "w": "planning",
+    "t": 20.946
+   },
+   {
+    "w": "feels",
+    "t": 21.299
+   },
+   {
+    "w": "like",
+    "t": 21.662
+   },
+   {
+    "w": "progress,",
+    "t": 21.867
+   },
+   {
+    "w": "to",
+    "t": 22.463
+   },
+   {
+    "w": "knowing",
+    "t": 22.649
+   },
+   {
+    "w": "when",
+    "t": 22.832
+   },
+   {
+    "w": "to",
+    "t": 23.098
+   },
+   {
+    "w": "persist,",
+    "t": 23.32
+   },
+   {
+    "w": "and",
+    "t": 23.913
+   },
+   {
+    "w": "when",
+    "t": 24.085
+   },
+   {
+    "w": "to",
+    "t": 24.221
+   },
+   {
+    "w": "pivot.",
+    "t": 24.325
+   }
+  ]
+ },
+ {
+  "id": "l7",
+  "text": "The Life You Keep Planning, by Belinda Bright N.",
+  "start": 26.3,
+  "dur": 2.382,
+  "words": [
+   {
+    "w": "The",
+    "t": 26.3
+   },
+   {
+    "w": "Life",
+    "t": 26.568
+   },
+   {
+    "w": "You",
+    "t": 26.832
+   },
+   {
+    "w": "Keep",
+    "t": 27.034
+   },
+   {
+    "w": "Planning,",
+    "t": 27.296
+   },
+   {
+    "w": "by",
+    "t": 27.57
+   },
+   {
+    "w": "Belinda",
+    "t": 27.843
+   },
+   {
+    "w": "Bright",
+    "t": 28.197
+   },
+   {
+    "w": "N.",
+    "t": 28.411
+   }
+  ]
+ },
+ {
+  "id": "l8",
+  "text": "Pre-order now on Amazon U.K.",
+  "start": 29.0,
+  "dur": 1.914,
+  "words": [
+   {
+    "w": "Pre-order",
+    "t": 29.0
+   },
+   {
+    "w": "now",
+    "t": 29.534
+   },
+   {
+    "w": "on",
+    "t": 29.869
+   },
+   {
+    "w": "Amazon",
+    "t": 30.082
+   },
+   {
+    "w": "U.K.",
+    "t": 30.404
+   }
+  ]
+ },
+ {
+  "id": "l9",
+  "text": "Out January the twenty-third.",
+  "start": 31.15,
+  "dur": 1.723,
+  "words": [
+   {
+    "w": "Out",
+    "t": 31.15
+   },
+   {
+    "w": "January",
+    "t": 31.508
+   },
+   {
+    "w": "the",
+    "t": 32.076
+   },
+   {
+    "w": "twenty-third.",
+    "t": 32.37
+   }
+  ]
+ }
+]
