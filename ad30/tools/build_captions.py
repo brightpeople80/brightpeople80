@@ -39,7 +39,7 @@ for gi, (style, lid, a, b) in enumerate(GROUPS):
     groups.append({'id': f'cg{gi}', 'style': style, 'start': start, 'words': ws, 'lend': line_end(lid) if b == len(words) - 1 else ws[-1]['t1']})
 for gi, g in enumerate(groups):
     nxt = groups[gi + 1]['start'] if gi + 1 < len(groups) else 99
-    g['end'] = round(min(nxt - 0.02, g['lend'] + 0.35), 3)
+    g['end'] = round(min(nxt - 0.02, g['lend'] + 0.35, 26.75), 3)   # the CTA takes over at 26.7
     g['start'] = round(g['start'], 3)
 
 out = ["""<template>
