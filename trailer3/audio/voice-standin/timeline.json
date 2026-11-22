@@ -1,0 +1,330 @@
+[
+ {
+  "id": "l1",
+  "text": "People liked Maya's meal idea.",
+  "start": 0.45,
+  "dur": 1.916,
+  "words": [
+   {
+    "w": "People",
+    "t": 0.45
+   },
+   {
+    "w": "liked",
+    "t": 0.93
+   },
+   {
+    "w": "Maya's",
+    "t": 1.22
+   },
+   {
+    "w": "meal",
+    "t": 1.645
+   },
+   {
+    "w": "idea.",
+    "t": 1.781
+   }
+  ]
+ },
+ {
+  "id": "l2",
+  "text": "Would they pay for it?",
+  "start": 2.6,
+  "dur": 1.247,
+  "words": [
+   {
+    "w": "Would",
+    "t": 2.6
+   },
+   {
+    "w": "they",
+    "t": 2.967
+   },
+   {
+    "w": "pay",
+    "t": 3.112
+   },
+   {
+    "w": "for",
+    "t": 3.441
+   },
+   {
+    "w": "it?",
+    "t": 3.587
+   }
+  ]
+ },
+ {
+  "id": "l3",
+  "text": "The price didn't work.",
+  "start": 4.9,
+  "dur": 1.293,
+  "words": [
+   {
+    "w": "The",
+    "t": 4.9
+   },
+   {
+    "w": "price",
+    "t": 5.168
+   },
+   {
+    "w": "didn't",
+    "t": 5.501
+   },
+   {
+    "w": "work.",
+    "t": 5.919
+   }
+  ]
+ },
+ {
+  "id": "l4",
+  "text": "But two people asked, Could you teach us?",
+  "start": 6.9,
+  "dur": 2.015,
+  "words": [
+   {
+    "w": "But",
+    "t": 6.9
+   },
+   {
+    "w": "two",
+    "t": 7.263
+   },
+   {
+    "w": "people",
+    "t": 7.484
+   },
+   {
+    "w": "asked,",
+    "t": 7.864
+   },
+   {
+    "w": "Could",
+    "t": 8.18
+   },
+   {
+    "w": "you",
+    "t": 8.375
+   },
+   {
+    "w": "teach",
+    "t": 8.455
+   },
+   {
+    "w": "us?",
+    "t": 8.692
+   }
+  ]
+ },
+ {
+  "id": "l5",
+  "text": "So Maya set a test: could she get eight paid bookings for one workshop?",
+  "start": 13.1,
+  "dur": 3.947,
+  "words": [
+   {
+    "w": "So",
+    "t": 13.1
+   },
+   {
+    "w": "Maya",
+    "t": 13.452
+   },
+   {
+    "w": "set",
+    "t": 13.74
+   },
+   {
+    "w": "a",
+    "t": 14.015
+   },
+   {
+    "w": "test:",
+    "t": 14.164
+   },
+   {
+    "w": "could",
+    "t": 14.401
+   },
+   {
+    "w": "she",
+    "t": 14.677
+   },
+   {
+    "w": "get",
+    "t": 14.916
+   },
+   {
+    "w": "eight",
+    "t": 15.097
+   },
+   {
+    "w": "paid",
+    "t": 15.324
+   },
+   {
+    "w": "bookings",
+    "t": 15.638
+   },
+   {
+    "w": "for",
+    "t": 16.143
+   },
+   {
+    "w": "one",
+    "t": 16.331
+   },
+   {
+    "w": "workshop?",
+    "t": 16.495
+   }
+  ]
+ },
+ {
+  "id": "l6",
+  "text": "The Life You Keep Planning shows you how to test an idea, move one project forward over thirty days, and learn as you go.",
+  "start": 18.9,
+  "dur": 6.544,
+  "words": [
+   {
+    "w": "The",
+    "t": 18.9
+   },
+   {
+    "w": "Life",
+    "t": 19.168
+   },
+   {
+    "w": "You",
+    "t": 19.432
+   },
+   {
+    "w": "Keep",
+    "t": 19.634
+   },
+   {
+    "w": "Planning",
+    "t": 19.896
+   },
+   {
+    "w": "shows",
+    "t": 20.17
+   },
+   {
+    "w": "you",
+    "t": 20.54
+   },
+   {
+    "w": "how",
+    "t": 20.62
+   },
+   {
+    "w": "to",
+    "t": 20.78
+   },
+   {
+    "w": "test",
+    "t": 20.893
+   },
+   {
+    "w": "an",
+    "t": 21.177
+   },
+   {
+    "w": "idea,",
+    "t": 21.257
+   },
+   {
+    "w": "move",
+    "t": 21.555
+   },
+   {
+    "w": "one",
+    "t": 21.801
+   },
+   {
+    "w": "project",
+    "t": 22.13
+   },
+   {
+    "w": "forward",
+    "t": 22.826
+   },
+   {
+    "w": "over",
+    "t": 23.232
+   },
+   {
+    "w": "thirty",
+    "t": 23.601
+   },
+   {
+    "w": "days,",
+    "t": 23.952
+   },
+   {
+    "w": "and",
+    "t": 24.296
+   },
+   {
+    "w": "learn",
+    "t": 24.532
+   },
+   {
+    "w": "as",
+    "t": 24.784
+   },
+   {
+    "w": "you",
+    "t": 25.065
+   },
+   {
+    "w": "go.",
+    "t": 25.145
+   }
+  ]
+ },
+ {
+  "id": "l7",
+  "text": "Take the free quiz on the book website.",
+  "start": 27.6,
+  "dur": 2.08,
+  "words": [
+   {
+    "w": "Take",
+    "t": 27.6
+   },
+   {
+    "w": "the",
+    "t": 27.974
+   },
+   {
+    "w": "free",
+    "t": 28.148
+   },
+   {
+    "w": "quiz",
+    "t": 28.471
+   },
+   {
+    "w": "on",
+    "t": 28.742
+   },
+   {
+    "w": "the",
+    "t": 28.822
+   },
+   {
+    "w": "book",
+    "t": 29.041
+   },
+   {
+    "w": "website.",
+    "t": 29.121
+   }
+  ]
+ }
+]
