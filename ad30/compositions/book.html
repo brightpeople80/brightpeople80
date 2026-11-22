@@ -4,146 +4,22 @@
     <meta charset="UTF-8" />
     <style>
       #book-root { position: absolute; inset: 0; background: #0b1a31; overflow: hidden; }
-      #book-canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; display: block; }
+      #book-video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
       #book-flash { position: absolute; inset: 0; background: #ffffff; opacity: 0; }
     </style>
   </head>
   <body>
+    <!-- The 3D book stack is pre-rendered from tools/book3d-scene.html by tools/render_book3d.mjs
+         (local 0 = 10.6 s in the film; the drop lands at local 1.4 = 12.0 s). -->
     <div id="book-root" data-composition-id="book" data-start="0" data-duration="20.9" data-width="1080" data-height="1920">
-      <canvas id="book-canvas" class="clip" data-start="0" data-duration="20.9" data-track-index="1" width="1080" height="1920"></canvas>
+      <video id="book-video" class="clip" data-start="0" data-duration="20.9" data-track-index="1" src="assets/book3d.mp4" muted playsinline></video>
       <div id="book-flash"></div>
     </div>
-
     <script>
-      (function () {
-        // Local time 0 = 10.6 s in the film. The drop lands at local 1.4 (12.0 s).
-        var clock = { t: 0 };
-        var scene = { render: null, clock: clock };
-        window.__bookScene = scene;
-        window.__hf = window.__hf || {};
-        window.__hf.buildReady = window.__hf.buildReady || {};
-        window.__hf.buildReady["book"] = new Promise(function (resolve) { scene.ready = resolve; });
-        var tl = gsap.timeline({ paused: true });
-        tl.to(clock, { t: 20.9, duration: 20.9, ease: "none", onUpdate: function () { if (scene.render) scene.render(clock.t); } }, 0);
-        tl.fromTo("#book-flash", { opacity: 0.9 }, { opacity: 0, duration: 0.2, ease: "power2.out", immediateRender: false }, 1.4);
-        window.__timelines = window.__timelines || {};
-        window.__timelines["book"] = tl;
-      })();
-    </script>
-    <script type="module">
-      const THREE = await import(new URL("assets/vendor/three.module.js", document.baseURI).href);
-      const scene3 = window.__bookScene;
-      const W = 1080, H = 1920;
-      const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
-      const lerp = (a, b, k) => a + (b - a) * k;
-      const smooth = (e0, e1, x) => { const k = clamp((x - e0) / (e1 - e0)); return k * k * (3 - 2 * k); };
-      const easeOut = (k) => 1 - Math.pow(1 - clamp(k), 3);
-      const bounce = (k) => { k = clamp(k); const n = 7.5625, d = 2.75;
-        if (k < 1 / d) return n * k * k; if (k < 2 / d) return n * (k -= 1.5 / d) * k + 0.75;
-        if (k < 2.5 / d) return n * (k -= 2.25 / d) * k + 0.9375; return n * (k -= 2.625 / d) * k + 0.984375; };
-      const V = (x, y, z) => new THREE.Vector3(x, y, z);
-      const G = (s) => s - 10.6;                        // film seconds -> local seconds
-
-      const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("book-canvas"), antialias: true, preserveDrawingBuffer: true });
-      renderer.setPixelRatio(1); renderer.setSize(W, H, false);
-      renderer.outputColorSpace = THREE.SRGBColorSpace;
-      renderer.toneMapping = THREE.NoToneMapping;
-      const scene = new THREE.Scene();
-      const NAVY = new THREE.Color("#0b1a31");
-      scene.background = NAVY; scene.fog = new THREE.Fog(NAVY, 45, 90);
-      const camera = new THREE.PerspectiveCamera(50, W / H, 0.1, 200);
-
-      const amb = new THREE.AmbientLight("#9fb4d8", 0.55);
-      const key = new THREE.DirectionalLight("#ffffff", 2.2);
-      const rim = new THREE.PointLight("#fbc312", 160, 40, 1.4);
-      const sweep = new THREE.PointLight("#fff4d6", 0, 30, 1.6);
-      scene.add(amb, key, key.target, rim, sweep);
-
-      // floor + contact shadow
-      const floor = new THREE.Mesh(new THREE.PlaneGeometry(200, 200), new THREE.MeshBasicMaterial({ color: "#0a1729" }));
-      floor.rotation.x = -Math.PI / 2; floor.position.y = -4.5; scene.add(floor);
-      const shc = document.createElement("canvas"); shc.width = shc.height = 256; const shg = shc.getContext("2d");
-      const gr = shg.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, "rgba(0,0,0,.9)"); gr.addColorStop(1, "rgba(0,0,0,0)");
-      shg.fillStyle = gr; shg.fillRect(0, 0, 256, 256);
-      const shadow = new THREE.Mesh(new THREE.PlaneGeometry(22, 14), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(shc), transparent: true, depthWrite: false, opacity: 0 }));
-      shadow.rotation.x = -Math.PI / 2; shadow.position.set(1.6, -4.49, 1.4); scene.add(shadow);
-
-      // textures
-      const loader = new THREE.TextureLoader();
-      const loadTex = (u) => loader.loadAsync(new URL(u, document.baseURI).href).then((t) => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t; });
-      await document.fonts.load("800 34px Montserrat");
-      const [front, back] = await Promise.all(["assets/images/front-cover.png", "assets/images/back-cover.png"].map(loadTex));
-      const pc = document.createElement("canvas"); pc.width = 64; pc.height = 512; const pg = pc.getContext("2d");
-      pg.fillStyle = "#f3ecdc"; pg.fillRect(0, 0, 64, 512);
-      for (let x = 0; x < 64; x += 2) { pg.fillStyle = `rgba(120,100,70,${0.05 + ((x * 37) % 11) / 110})`; pg.fillRect(x, 0, 1, 512); }
-      const pages = new THREE.CanvasTexture(pc); pages.colorSpace = THREE.SRGBColorSpace;
-      // spine art as on the website mockup
-      const sc = document.createElement("canvas"); sc.width = 64; sc.height = 2216; const sg = sc.getContext("2d");
-      sg.fillStyle = "#0d1f3a"; sg.fillRect(0, 0, 64, 2216);
-      sg.translate(64, 0); sg.rotate(Math.PI / 2); sg.font = "800 34px Montserrat"; sg.textBaseline = "middle";
-      sg.fillStyle = "#ffffff"; sg.fillText("THE LIFE YOU", 110, 32);
-      const w1 = sg.measureText("THE LIFE YOU ").width; sg.fillStyle = "#fbc312"; sg.fillText("KEEP PLANNING", 110 + w1, 32);
-      sg.fillStyle = "#ffffff"; sg.font = "800 26px Montserrat"; sg.textAlign = "right"; sg.fillText("BELINDA BRIGHT N.", 2216 - 110, 32);
-      const spine = new THREE.CanvasTexture(sc); spine.colorSpace = THREE.SRGBColorSpace; spine.anisotropy = 8;
-
-      const cover = (map) => new THREE.MeshPhysicalMaterial({ map, roughness: 0.5, clearcoat: 0.6, clearcoatRoughness: 0.25 });
-      const pageMat = new THREE.MeshStandardMaterial({ map: pages, roughness: 0.9 });
-      const mats = [pageMat, cover(spine), pageMat, pageMat, cover(front), cover(back)];
-      const geo = new THREE.BoxGeometry(6, 9, 0.26);
-
-      const hero = new THREE.Mesh(geo, mats); scene.add(hero);
-      const BK = V(4.6, 0, -1.6);
-      const backBook = new THREE.Mesh(geo, mats); backBook.rotation.y = Math.PI + 0.38; scene.add(backBook);
-      const flatQ = new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(V(0, 0, -1), V(-1, 0, 0), V(0, 1, 0)));
-      const mkFlat = (x, z, yaw) => { const g = new THREE.Group(), m = new THREE.Mesh(geo, mats); m.quaternion.copy(flatQ); g.add(m); g.position.set(x, 0, z); g.rotation.y = yaw; scene.add(g); return g; };
-      const flat1 = mkFlat(1.0, 4.0, 0.05), flat2 = mkFlat(1.25, 3.85, -0.04);
-
-      // framing (see SPEC): hero = 89 px/unit centred at y 690; stack = 73 px/unit, top at y 300
-      const HERO = { cam: V(0, 0.4, 23.1), look: V(0, -3.0, 0) };
-      const STACK = { cam: V(2.4, -2.4, 31.5), look: V(2.4, -5.0, 0) };
-      const END = { cam: V(2.4, -2.6, 35.5), look: V(2.4, -6.2, 0) };
-
-      function render(t) {
-        // the hero book: rises out of the dark, lights on at the drop
-        const rise = easeOut((t - 0) / 1.3);
-        const settle = smooth(G(13.3), G(13.9), t);
-        hero.position.set(0, lerp(-13, 0, rise) + Math.sin(t * 1.2) * 0.1 * (1 - settle), 0);
-        hero.rotation.set(0.04 * (1 - settle), lerp(-1.1, -0.34, rise) + lerp(0, 0.08, smooth(G(12), G(13.3), t)), 0);
-        const lit = smooth(G(11.97), G(12.03), t);
-        key.intensity = lerp(0.15, 2.2, lit); amb.intensity = lerp(0.12, 0.55, lit);
-        rim.intensity = lerp(260, 160, lit);
-        key.position.set(-6, 8, 12); rim.position.set(7, 4, -5);
-        const sp = clamp((t - G(12.1)) / 1.4);
-        sweep.position.set(lerp(-9, 9, sp), lerp(3, -2, sp), 6); sweep.intensity = sp > 0 && sp < 1 ? 220 * Math.sin(sp * Math.PI) : 0;
-
-        // the stack assembles on "by Belinda Bright N."
-        const show = t >= G(13.3);
-        backBook.visible = flat1.visible = flat2.visible = show;
-        backBook.position.set(BK.x + 14 * (1 - easeOut((t - G(13.35)) / 0.8)), BK.y, BK.z);
-        flat1.position.y = -4.5 + 0.13 + 12 * (1 - bounce((t - G(13.6)) / 0.75));
-        flat2.position.y = -4.5 + 0.40 + 12 * (1 - bounce((t - G(13.85)) / 0.75));
-        shadow.material.opacity = 0.75 * smooth(G(13.3), G(14.2), t);
-
-        // camera: hero, pull back to the stack, slow push and a 4 degree orbit, hold for the CTA
-        const pull = easeOut((t - G(13.3)) / 1.3), last = smooth(G(25.0), G(26.0), t);
-        const cam = HERO.cam.clone().lerp(STACK.cam, pull).lerp(END.cam, last), look = HERO.look.clone().lerp(STACK.look, pull).lerp(END.look, last);
-        const drift = smooth(G(14.6), G(25.5), t);
-        const orbit = lerp(0, 0.05, drift);
-        const dz = lerp(0, -1.2, drift);
-        const off = cam.clone().sub(look); off.z += dz;
-        off.applyAxisAngle(V(0, 1, 0), orbit);
-        camera.position.copy(look).add(off);
-        if (t < G(12)) camera.position.add(V(0, 0, lerp(2, 0, smooth(0, G(12), t))));
-        camera.lookAt(look);
-        renderer.render(scene, camera);
-      }
-
-      await renderer.compileAsync(scene, camera);
-      render(0);
-      const px = new Uint8Array(4); renderer.getContext().readPixels(0, 0, 1, 1, renderer.getContext().RGBA, renderer.getContext().UNSIGNED_BYTE, px);
-      scene3.render = render;
-      render(scene3.clock.t);
-      scene3.ready();
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#book-flash", { opacity: 0.9 }, { opacity: 0, duration: 0.2, ease: "power2.out", immediateRender: false }, 1.4);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["book"] = tl;
     </script>
   </body>
 </html>
