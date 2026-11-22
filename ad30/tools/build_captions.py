@@ -70,7 +70,7 @@ out.append("""  </div>
       if (g.start > 0) tl.fromTo(`#${g.id}-in`, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.16, ease: "power3.out" }, g.start);
       g.words.forEach((w, i) => {
         const el = `#${g.id}-w${i}`;
-        tl.fromTo(el, { opacity: 0.4, color: "#ffffff" }, { opacity: 1, color: "#fbc312", duration: 0.06, ease: "none" }, Math.max(g.start, w.t0 - 0.03));
+        tl.fromTo(el, { opacity: g.start > 0 ? 0.4 : 1, color: "#ffffff" }, { opacity: 1, color: "#fbc312", duration: 0.06, ease: "none" }, Math.max(g.start, w.t0 - 0.03));
         if (!w.hold) tl.to(el, { color: "#ffffff", duration: 0.08, ease: "none" }, Math.max(w.t0 + 0.05, w.t1 - 0.03));
         if (w.strike) tl.fromTo(`#${g.id}-s${i}`, { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: "power3.out" }, w.t0 + 0.22);
       });
