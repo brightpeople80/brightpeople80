@@ -7,7 +7,7 @@ import sys, json, numpy as np, soundfile as sf
 from scipy import signal
 
 voice_dir, out_wav = sys.argv[1], sys.argv[2]
-SR, T = 48000, 31.5
+SR, T = 48000, 35.5
 N = int(SR * T)
 rng = np.random.default_rng(23)
 L = np.zeros(N); R = np.zeros(N)          # music bus
@@ -109,7 +109,7 @@ add(crash(0.4, 0.22)[::-1], 11.62, 0.45)
 DROP = 12.0
 add(boom(3.0), DROP, 0.95, fx=True); add(crash(2.6, 0.9), DROP, 0.35, fx=True)
 prog = [(48, [60, 64, 67, 72]), (43, [59, 62, 67, 71]), (45, [57, 60, 64, 69]), (41, [57, 60, 65, 69])]  # C G Am F
-for bar, t0 in enumerate(np.arange(DROP, 30.0, 2.0)):
+for bar, t0 in enumerate(np.arange(DROP, 34.0, 2.0)):
     root, notes = prog[bar % 4]
     add(pad(notes, 2.4), t0, 0.5)
     for e in range(8):
@@ -123,12 +123,13 @@ for bar, t0 in enumerate(np.arange(DROP, 30.0, 2.0)):
         if t0 >= DROP + 4:
             add(hat(), t0 + b * 0.5 + 0.25, 0.12, pan=.25)
             if b in (1, 3): add(clap(), t0 + b * 0.5, 0.28)
-for t0, pan in ((19.5, -.5), (20.25, .5), (21.55, -.3), (23.45, .3), (27.6, -.3)):   # feature cards + CTA
+for t0, pan in ((19.5, -.5), (20.25, .5), (21.55, -.3), (23.45, .3), (26.75, -.3), (28.85, .3), (30.15, -.3), (31.65, .3)):   # feature cards + CTA
     add(whoosh(0.6), t0, 0.22, pan)
 
-# ---------- D: final sting (30 –) ----------
-add(boom(2.0), 30.0, 0.6, fx=True); add(crash(2.0, 0.9), 30.0, 0.28, fx=True)
-add(pad([48, 60, 64, 67, 72], 1.6), 30.0, 0.65)
+# ---------- D: final sting (33.8 –) ----------
+STING = 33.8
+add(boom(2.0), STING, 0.6, fx=True); add(crash(2.0, 0.9), STING, 0.28, fx=True)
+add(pad([48, 60, 64, 67, 72], 1.6), STING, 0.65)
 
 # ---------- reverb on music bus ----------
 ir_t = tt(2.2)

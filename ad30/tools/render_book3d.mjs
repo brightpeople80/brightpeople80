@@ -7,7 +7,7 @@ import fs from 'fs';
 import path from 'path';
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
-const root = process.cwd(), FPS = 30, DUR = 20.9;
+const root = process.cwd(), FPS = 30, DUR = 24.9;
 // run the scene from the project root so its asset paths resolve
 const tmp = path.join(root, '_book3d_tmp.html');
 fs.writeFileSync(tmp, fs.readFileSync(path.join(root, 'tools/book3d-scene.html'), 'utf8'));

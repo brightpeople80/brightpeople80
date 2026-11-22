@@ -3,38 +3,49 @@
     @font-face { font-family: "Source Serif 4"; font-style: italic; font-weight: 600; src: url("assets/fonts/SourceSerif4-italic.woff2") format("woff2"); }
     #root { position: absolute; inset: 0; }
     #root .item { position: absolute; left: 120px; }
-    #cta-btn { top: 930px; }
+    #cta-label { top: 878px; }
+    #cta-label-in { font: 800 26px Montserrat, sans-serif; letter-spacing: 0.14em; color: #fbc312; white-space: nowrap; text-shadow: 0 3px 14px rgba(4, 12, 26, .9); }
+    #cta-btn { top: 928px; }
     #cta-btn-in { position: relative; overflow: hidden; display: inline-block; padding: 26px 40px; border-radius: 999px; background: #fbc312;
       color: #0b1a31; font: 900 40px Montserrat, sans-serif; white-space: nowrap; box-shadow: 0 10px 0 #b8890b, 0 24px 44px rgba(0, 0, 0, .45); }
     #cta-gloss { position: absolute; top: 0; bottom: 0; left: 0; width: 34%; background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.75), rgba(255,255,255,0)); }
-    #cta-price { top: 1062px; }
-    #cta-price-in { font: 800 62px Montserrat, sans-serif; color: #ffffff; text-shadow: 0 4px 20px rgba(4, 12, 26, .8); }
-    #cta-price-in b { color: #fbc312; font-weight: 800; }
-    #cta-date { top: 1150px; }
-    #cta-date-in { font: italic 600 64px/1.1 "Source Serif 4", serif; color: #ffffff; text-shadow: 0 4px 20px rgba(4, 12, 26, .8); white-space: nowrap; }
+    #cta-kindle { top: 1052px; }
+    #cta-paper { top: 1118px; }
+    #root .price { font: 800 52px Montserrat, sans-serif; color: #ffffff; text-shadow: 0 4px 20px rgba(4, 12, 26, .8); white-space: nowrap; }
+    #root .price b { color: #fbc312; font-weight: 800; }
+    #cta-date { top: 1186px; }
+    #cta-date-in { font: italic 600 52px/1.1 "Source Serif 4", serif; color: #ffffff; text-shadow: 0 4px 20px rgba(4, 12, 26, .8); white-space: nowrap; }
     #cta-date-in b { color: #fbc312; font-weight: 600; }
   </style>
   <div id="root" data-composition-id="cta" data-width="1080" data-height="1920">
-    <div id="cta-btn" class="item clip" data-start="0.12" data-duration="5.98" data-track-index="1">
+    <div id="cta-label" class="item clip" data-start="0" data-duration="8.8" data-track-index="4">
+      <div id="cta-label-in">THE EBOOK IS READY TO PRE-ORDER</div>
+    </div>
+    <div id="cta-btn" class="item clip" data-start="0.1" data-duration="8.7" data-track-index="1">
       <div id="cta-btn-in">Pre-order on Amazon UK<span id="cta-gloss"></span></div>
     </div>
-    <div id="cta-price" class="item clip" data-start="2.26" data-duration="3.84" data-track-index="2">
-      <div id="cta-price-in">Kindle <b>£3.99</b></div>
+    <div id="cta-kindle" class="item clip" data-start="2.2" data-duration="6.6" data-track-index="2">
+      <div id="cta-kindle-in" class="price">Kindle ebook <b>£3.99</b></div>
     </div>
-    <div id="cta-date" class="item clip" data-start="3.56" data-duration="2.54" data-track-index="3">
+    <div id="cta-paper" class="item clip" data-start="3.5" data-duration="5.3" data-track-index="3">
+      <div id="cta-paper-in" class="price">Paperback <b>£9.99</b></div>
+    </div>
+    <div id="cta-date" class="item clip" data-start="5.0" data-duration="3.8" data-track-index="5">
       <div id="cta-date-in">Out <b>23 January 2027</b></div>
     </div>
   </div>
   <script>
-    // local 0 = 25.4 s. "pre-order" 25.56, "Kindle" 27.71, "Out" 29.0, final sting 30.0.
+    // local 0 = 26.7 s. "ebook" 25.79, "pre-order" 26.82, "Kindle" 28.94, "Paperback" 30.24, "Out" 31.75, sting 33.8.
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#cta-btn-in", { scale: 0.7, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.6)" }, 0.14);
+    tl.fromTo("#cta-label-in", { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "power3.out" }, 0.02);
+    tl.fromTo("#cta-btn-in", { scale: 0.7, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.6)" }, 0.12);
     tl.fromTo("#cta-gloss", { x: -260 }, { x: 760, duration: 0.6, ease: "power2.inOut" }, 0.7);
-    tl.fromTo("#cta-price-in", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 2.28);
-    tl.fromTo("#cta-date-in", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 3.58);
-    tl.to("#cta-btn-in", { scale: 1.06, duration: 0.12, ease: "power2.out" }, 4.6);
-    tl.to("#cta-btn-in", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 4.72);
-    tl.fromTo("#cta-gloss", { x: -260 }, { x: 760, duration: 0.6, ease: "power2.inOut", immediateRender: false }, 4.6);
+    tl.fromTo("#cta-kindle-in", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 2.22);
+    tl.fromTo("#cta-paper-in", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 3.52);
+    tl.fromTo("#cta-date-in", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 5.03);
+    tl.to("#cta-btn-in", { scale: 1.06, duration: 0.12, ease: "power2.out" }, 7.1);
+    tl.to("#cta-btn-in", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 7.22);
+    tl.fromTo("#cta-gloss", { x: -260 }, { x: 760, duration: 0.6, ease: "power2.inOut", immediateRender: false }, 7.1);
     window.__timelines["cta"] = tl;
   </script>
 </template>

@@ -20,7 +20,7 @@ GROUPS = [
     ('cap', 'foryou', 0, 4),
     ('cap', 'title', 0, 4), ('cap', 'title', 5, 8), ('cap', 'title', 9, 12), ('cap', 'title', 13, 15), ('cap', 'title', 16, 19),
     ('cap', 'inside', 0, 2), ('cap', 'inside', 3, 5), ('cap', 'inside', 6, 8), ('cap', 'inside', 9, 11), ('cap', 'inside', 12, 13),
-    ('cap', 'ready', 0, 2), ('cap', 'ready', 3, 5), ('cap', 'ready', 6, 8),
+    ('cap', 'ready', 0, 2), ('cap', 'ready', 3, 5), ('cap', 'ready', 6, 8), ('cap', 'ready', 9, 12),
 ]
 
 def line_end(lid):

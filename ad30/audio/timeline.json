@@ -345,9 +345,9 @@
  },
  {
   "id": "ready",
-  "text": "If you're ready to stop planning and start moving, pre-order now on Amazon U.K.",
+  "text": "If you're ready to stop planning and start moving, the ebook is ready to pre-order now on Amazon U.K.",
   "start": 23.501,
-  "dur": 3.955,
+  "dur": 5.191,
   "words": [
    {
     "w": "If",
@@ -386,60 +386,92 @@
     "t": 25.368
    },
    {
-    "w": "pre-order",
+    "w": "the",
     "t": 25.555
    },
    {
+    "w": "ebook",
+    "t": 25.792
+   },
+   {
+    "w": "is",
+    "t": 25.949
+   },
+   {
+    "w": "ready",
+    "t": 26.24
+   },
+   {
+    "w": "to",
+    "t": 26.615
+   },
+   {
+    "w": "pre-order",
+    "t": 26.822
+   },
+   {
     "w": "now",
-    "t": 26.086
+    "t": 27.319
    },
    {
     "w": "on",
-    "t": 26.285
+    "t": 27.544
    },
    {
     "w": "Amazon",
-    "t": 26.528
+    "t": 27.659
    },
    {
     "w": "U.K.",
-    "t": 26.922
+    "t": 28.107
    }
   ]
  },
  {
   "id": "price",
-  "text": "Kindle, three ninety-nine. Out January the twenty-third.",
-  "start": 27.706,
-  "dur": 2.963,
+  "text": "Kindle, three ninety-nine. Paperback, nine ninety-nine. Out January the twenty-third.",
+  "start": 28.943,
+  "dur": 4.628,
   "words": [
    {
     "w": "Kindle,",
-    "t": 27.706
+    "t": 28.943
    },
    {
     "w": "three",
-    "t": 28.115
+    "t": 29.352
    },
    {
     "w": "ninety-nine.",
-    "t": 28.484
+    "t": 29.721
+   },
+   {
+    "w": "Paperback,",
+    "t": 30.241
+   },
+   {
+    "w": "nine",
+    "t": 30.787
+   },
+   {
+    "w": "ninety-nine.",
+    "t": 31.135
    },
    {
     "w": "Out",
-    "t": 29.004
+    "t": 31.752
    },
    {
     "w": "January",
-    "t": 29.432
+    "t": 31.876
    },
    {
     "w": "the",
-    "t": 29.778
+    "t": 32.418
    },
    {
     "w": "twenty-third.",
-    "t": 29.95
+    "t": 32.643
    }
   ]
  }
