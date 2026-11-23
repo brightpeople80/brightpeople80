@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Meet the Author 3D</title>
+<style>
+  @font-face { font-family: 'Montserrat'; font-weight: 100 900; src: url(../assets/fonts/Montserrat-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-italic.woff2) format('woff2'); }
+  @font-face { font-family: 'Caveat'; font-weight: 400 700; src: url(../assets/fonts/Caveat.woff2) format('woff2'); }
+  :root { --navy: #0b1a31; --gold: #fbc312; --ivory: #f4eddc; --brass: #c99a2e; }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #07111f; }
+  #c { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  .layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .kicker { font: 800 28px Montserrat; letter-spacing: .2em; color: var(--gold); }
+  /* lower third for the author */
+  #lt { position: absolute; left: 80px; top: 1150px; opacity: 0; }
+  #lt .name { font: 600 92px/1 'Source Serif 4'; color: #fff; text-shadow: 0 6px 30px rgba(0,0,0,.75); margin-top: 12px; }
+  #lt .rule { height: 6px; background: var(--gold); border-radius: 3px; margin-top: 16px; width: 0; }
+  #lt .role { font: 600 32px/1.35 Montserrat; color: var(--ivory); margin-top: 16px; text-shadow: 0 3px 16px rgba(0,0,0,.8); }
+  #lt .role b { color: var(--gold); font-weight: 800; }
+  #ltshade { position: absolute; inset: 0; opacity: 0; background: linear-gradient(180deg, transparent 50%, rgba(7,17,31,.85) 80%); }
+  /* the promise: the writing image with the quote */
+  #ph { opacity: 0; }
+  #ph img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; transform-origin: 25% 75%; }
+  #ph .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,17,31,.45), rgba(7,17,31,0) 30%, rgba(7,17,31,0) 55%, rgba(7,17,31,.85)); }
+  #q1 { position: absolute; left: 80px; top: 270px; width: 900px; font: 600 74px/1.08 'Source Serif 4'; color: #fff; text-shadow: 0 6px 30px rgba(0,0,0,.8); opacity: 0; }
+  #q2 { position: absolute; left: 80px; top: 1180px; width: 900px; font: italic 600 74px/1.08 'Source Serif 4'; color: var(--gold); text-shadow: 0 6px 30px rgba(0,0,0,.85); opacity: 0; }
+  /* end card */
+  #endbg { position: absolute; inset: 0; opacity: 0; background: radial-gradient(900px 760px at 50% 42%, rgba(23,46,84,.86), rgba(7,17,31,.97) 72%); }
+  #e > * { position: absolute; opacity: 0; }
+  #e-title { left: 64px; top: 210px; font: 600 86px/1.0 'Source Serif 4'; color: #fff; }
+  #e-by { left: 64px; top: 404px; display: flex; align-items: center; gap: 18px; font: 800 32px Montserrat; letter-spacing: .12em; color: var(--gold); }
+  #e-by img { width: 74px; height: 74px; border-radius: 50%; object-fit: cover; object-position: 50% 18%; box-shadow: 0 0 0 3px var(--gold); }
+  #e-stack { left: 40px; top: 515px; width: 450px; }
+  #e-reader { left: 530px; top: 735px; width: 220px; height: 320px; border-radius: 22px; background: linear-gradient(160deg,#2a2f38,#121419); box-shadow: 0 30px 60px rgba(0,0,0,.6), inset 0 0 0 2px #3a404b; }
+  #e-reader img { position: absolute; left: 15px; top: 18px; width: 190px; height: 285px; border-radius: 3px; }
+  .price { font: 800 32px Montserrat; color: #fff; white-space: nowrap; }
+  .price b { color: var(--gold); }
+  .price small { display: block; font: 600 23px Montserrat; color: var(--ivory); opacity: .85; margin-top: 4px; }
+  #e-paper { left: 70px; top: 1080px; }
+  #e-kindle { left: 535px; top: 1080px; }
+  #e-avail { left: 66px; top: 1172px; font: italic 600 46px 'Source Serif 4'; color: #fff; white-space: nowrap; }
+  #e-avail b { color: var(--gold); font-weight: 600; }
+  #e-btn { left: 64px; top: 1250px; }
+  #e-btn div { position: relative; overflow: hidden; padding: 22px 34px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 38px Montserrat; white-space: nowrap; box-shadow: 0 9px 0 #b8890b, 0 22px 40px rgba(0,0,0,.45); }
+  #e-btn .gl { position: absolute; top: 0; bottom: 0; width: 140px; left: -180px; background: linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent); }
+  #e-url { left: 66px; top: 1372px; font: 700 31px Montserrat; color: var(--ivory); white-space: nowrap; }
+  #e-url b { color: var(--gold); font-weight: 800; }
+  #dip { position: absolute; inset: 0; background: #07111f; opacity: 0; }
+  #caps .cap { position: absolute; left: 84px; width: 800px; top: 1458px; font: 800 48px/1.32 Montserrat; color: #fff; opacity: 0; }
+  #caps .cap span { background: rgba(7,17,31,.8); padding: 6px 18px; border-radius: 14px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+</style>
+</head>
+<body>
+  <canvas id="c" width="1080" height="1920"></canvas>
+  <div class="layer"><div id="ltshade"></div><div id="lt"><div class="kicker">MEET THE AUTHOR</div><div class="name">Belinda Bright N.</div><div class="rule" id="ltr"></div>
+    <div class="role">Independent author of<br><b>The Life You Keep Planning</b></div></div></div>
+  <div class="layer" id="ph"><img id="phimg" src="assets/woman-writing.jpg" alt=""><div class="shade"></div>
+    <div id="q1">You don’t need to do everything.</div><div id="q2">You need to give what matters a fair chance.</div></div>
+  <div class="layer" id="end"><div id="endbg"></div><div id="e">
+    <div id="e-title">The Life You<br>Keep Planning</div>
+    <div id="e-by"><img src="assets/author-belinda.jpg" alt="">Belinda Bright N.</div>
+    <img id="e-stack" src="assets/book-stack-soft.png" alt="">
+    <div id="e-reader"><img src="assets/front-cover.png" alt=""></div>
+    <div id="e-paper" class="price">Paperback <b>£9.99</b><small>Coming soon</small></div>
+    <div id="e-kindle" class="price">Kindle <b>£3.99</b></div>
+    <div id="e-avail">Available from <b>23 January 2027</b></div>
+    <div id="e-btn"><div>Kindle pre-order on Amazon UK<span class="gl"></span></div></div>
+    <div id="e-url">Author’s website: <b>thelifeyoukeepplanningbook.netlify.app</b></div>
+  </div></div>
+  <div class="layer"><div id="dip"></div></div>
+  <div class="layer" id="caps"></div>
+<script src="audio/captions.js"></script>
+<script type="module">
+import * as THREE from './vendor/three.module.js';
+import { RoomEnvironment } from './vendor/RoomEnvironment.js';
+const DURATION = 46.5;
+window.DURATION = DURATION;
+const params = new URLSearchParams(location.search);
