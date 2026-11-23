@@ -1,0 +1,574 @@
+[
+ {
+  "id": "l1",
+  "text": "There are people with dreams they haven't forgotten, ideas they still believe in, and plans they've been meaning to start.",
+  "start": 0.4,
+  "dur": 6.308,
+  "words": [
+   {
+    "w": "There",
+    "t": 0.4
+   },
+   {
+    "w": "are",
+    "t": 0.794
+   },
+   {
+    "w": "people",
+    "t": 0.965
+   },
+   {
+    "w": "with",
+    "t": 1.307
+   },
+   {
+    "w": "dreams",
+    "t": 1.558
+   },
+   {
+    "w": "they",
+    "t": 1.84
+   },
+   {
+    "w": "haven't",
+    "t": 1.977
+   },
+   {
+    "w": "forgotten,",
+    "t": 2.35
+   },
+   {
+    "w": "ideas",
+    "t": 2.668
+   },
+   {
+    "w": "they",
+    "t": 3.415
+   },
+   {
+    "w": "still",
+    "t": 3.517
+   },
+   {
+    "w": "believe",
+    "t": 3.868
+   },
+   {
+    "w": "in,",
+    "t": 4.315
+   },
+   {
+    "w": "and",
+    "t": 4.475
+   },
+   {
+    "w": "plans",
+    "t": 4.764
+   },
+   {
+    "w": "they've",
+    "t": 5.038
+   },
+   {
+    "w": "been",
+    "t": 5.311
+   },
+   {
+    "w": "meaning",
+    "t": 5.391
+   },
+   {
+    "w": "to",
+    "t": 5.854
+   },
+   {
+    "w": "start.",
+    "t": 6.083
+   }
+  ]
+ },
+ {
+  "id": "l2",
+  "text": "But somewhere between preparing and doing, life gets in the way.",
+  "start": 7.258,
+  "dur": 3.184,
+  "words": [
+   {
+    "w": "But",
+    "t": 7.258
+   },
+   {
+    "w": "somewhere",
+    "t": 7.621
+   },
+   {
+    "w": "between",
+    "t": 8.001
+   },
+   {
+    "w": "preparing",
+    "t": 8.467
+   },
+   {
+    "w": "and",
+    "t": 8.854
+   },
+   {
+    "w": "doing,",
+    "t": 9.067
+   },
+   {
+    "w": "life",
+    "t": 9.218
+   },
+   {
+    "w": "gets",
+    "t": 9.547
+   },
+   {
+    "w": "in",
+    "t": 9.85
+   },
+   {
+    "w": "the",
+    "t": 9.97
+   },
+   {
+    "w": "way.",
+    "t": 10.136
+   }
+  ]
+ },
+ {
+  "id": "l3",
+  "text": "Meet Belinda Bright N., independent author of The Life You Keep Planning.",
+  "start": 11.142,
+  "dur": 3.999,
+  "words": [
+   {
+    "w": "Meet",
+    "t": 11.142
+   },
+   {
+    "w": "Belinda",
+    "t": 11.537
+   },
+   {
+    "w": "Bright",
+    "t": 12.06
+   },
+   {
+    "w": "N.,",
+    "t": 12.362
+   },
+   {
+    "w": "independent",
+    "t": 12.534
+   },
+   {
+    "w": "author",
+    "t": 13.211
+   },
+   {
+    "w": "of",
+    "t": 13.488
+   },
+   {
+    "w": "The",
+    "t": 14.03
+   },
+   {
+    "w": "Life",
+    "t": 14.194
+   },
+   {
+    "w": "You",
+    "t": 14.274
+   },
+   {
+    "w": "Keep",
+    "t": 14.421
+   },
+   {
+    "w": "Planning.",
+    "t": 14.617
+   }
+  ]
+ },
+ {
+  "id": "l4",
+  "text": "Her debut book explores why we overthink, chase new ideas and struggle to follow through.",
+  "start": 15.691,
+  "dur": 4.827,
+  "words": [
+   {
+    "w": "Her",
+    "t": 15.691
+   },
+   {
+    "w": "debut",
+    "t": 16.025
+   },
+   {
+    "w": "book",
+    "t": 16.404
+   },
+   {
+    "w": "explores",
+    "t": 16.682
+   },
+   {
+    "w": "why",
+    "t": 17.14
+   },
+   {
+    "w": "we",
+    "t": 17.22
+   },
+   {
+    "w": "overthink,",
+    "t": 17.461
+   },
+   {
+    "w": "chase",
+    "t": 17.915
+   },
+   {
+    "w": "new",
+    "t": 18.186
+   },
+   {
+    "w": "ideas",
+    "t": 18.346
+   },
+   {
+    "w": "and",
+    "t": 19.012
+   },
+   {
+    "w": "struggle",
+    "t": 19.284
+   },
+   {
+    "w": "to",
+    "t": 19.6
+   },
+   {
+    "w": "follow",
+    "t": 19.881
+   },
+   {
+    "w": "through.",
+    "t": 20.153
+   }
+  ]
+ },
+ {
+  "id": "l5",
+  "text": "But it doesn't stop at understanding the problem.",
+  "start": 21.018,
+  "dur": 2.15,
+  "words": [
+   {
+    "w": "But",
+    "t": 21.018
+   },
+   {
+    "w": "it",
+    "t": 21.382
+   },
+   {
+    "w": "doesn't",
+    "t": 21.505
+   },
+   {
+    "w": "stop",
+    "t": 21.913
+   },
+   {
+    "w": "at",
+    "t": 21.997
+   },
+   {
+    "w": "understanding",
+    "t": 22.187
+   },
+   {
+    "w": "the",
+    "t": 22.626
+   },
+   {
+    "w": "problem.",
+    "t": 22.806
+   }
+  ]
+ },
+ {
+  "id": "l6",
+  "text": "It introduces practical tools, including the SELECT method and a thirty-day follow-through programme.",
+  "start": 23.468,
+  "dur": 5.474,
+  "words": [
+   {
+    "w": "It",
+    "t": 23.468
+   },
+   {
+    "w": "introduces",
+    "t": 23.695
+   },
+   {
+    "w": "practical",
+    "t": 24.528
+   },
+   {
+    "w": "tools,",
+    "t": 24.885
+   },
+   {
+    "w": "including",
+    "t": 25.273
+   },
+   {
+    "w": "the",
+    "t": 25.773
+   },
+   {
+    "w": "SELECT",
+    "t": 25.961
+   },
+   {
+    "w": "method",
+    "t": 26.401
+   },
+   {
+    "w": "and",
+    "t": 26.849
+   },
+   {
+    "w": "a",
+    "t": 27.072
+   },
+   {
+    "w": "thirty-day",
+    "t": 27.152
+   },
+   {
+    "w": "follow-through",
+    "t": 27.688
+   },
+   {
+    "w": "programme.",
+    "t": 28.274
+   }
+  ]
+ },
+ {
+  "id": "l7",
+  "text": "Because you don't need to do everything.",
+  "start": 29.642,
+  "dur": 1.758,
+  "words": [
+   {
+    "w": "Because",
+    "t": 29.642
+   },
+   {
+    "w": "you",
+    "t": 30.098
+   },
+   {
+    "w": "don't",
+    "t": 30.313
+   },
+   {
+    "w": "need",
+    "t": 30.615
+   },
+   {
+    "w": "to",
+    "t": 30.73
+   },
+   {
+    "w": "do",
+    "t": 30.879
+   },
+   {
+    "w": "everything.",
+    "t": 30.976
+   }
+  ]
+ },
+ {
+  "id": "l8",
+  "text": "You need to give what matters a fair chance.",
+  "start": 31.699,
+  "dur": 2.315,
+  "words": [
+   {
+    "w": "You",
+    "t": 31.699
+   },
+   {
+    "w": "need",
+    "t": 31.991
+   },
+   {
+    "w": "to",
+    "t": 32.256
+   },
+   {
+    "w": "give",
+    "t": 32.442
+   },
+   {
+    "w": "what",
+    "t": 32.522
+   },
+   {
+    "w": "matters",
+    "t": 32.889
+   },
+   {
+    "w": "a",
+    "t": 33.184
+   },
+   {
+    "w": "fair",
+    "t": 33.324
+   },
+   {
+    "w": "chance.",
+    "t": 33.48
+   }
+  ]
+ },
+ {
+  "id": "l9",
+  "text": "The Life You Keep Planning. Available from the twenty-third of January, twenty twenty-seven.",
+  "start": 34.815,
+  "dur": 4.851,
+  "words": [
+   {
+    "w": "The",
+    "t": 34.815
+   },
+   {
+    "w": "Life",
+    "t": 35.083
+   },
+   {
+    "w": "You",
+    "t": 35.347
+   },
+   {
+    "w": "Keep",
+    "t": 35.549
+   },
+   {
+    "w": "Planning.",
+    "t": 35.811
+   },
+   {
+    "w": "Available",
+    "t": 36.084
+   },
+   {
+    "w": "from",
+    "t": 36.795
+   },
+   {
+    "w": "the",
+    "t": 37.037
+   },
+   {
+    "w": "twenty-third",
+    "t": 37.255
+   },
+   {
+    "w": "of",
+    "t": 37.782
+   },
+   {
+    "w": "January,",
+    "t": 38.014
+   },
+   {
+    "w": "twenty",
+    "t": 38.44
+   },
+   {
+    "w": "twenty-seven.",
+    "t": 38.819
+   }
+  ]
+ },
+ {
+  "id": "l10",
+  "text": "Discover the book on the author's website, or find the Kindle pre-order on Amazon U.K.",
+  "start": 40.166,
+  "dur": 4.841,
+  "words": [
+   {
+    "w": "Discover",
+    "t": 40.166
+   },
+   {
+    "w": "the",
+    "t": 40.697
+   },
+   {
+    "w": "book",
+    "t": 40.955
+   },
+   {
+    "w": "on",
+    "t": 41.151
+   },
+   {
+    "w": "the",
+    "t": 41.354
+   },
+   {
+    "w": "author's",
+    "t": 41.477
+   },
+   {
+    "w": "website,",
+    "t": 41.898
+   },
+   {
+    "w": "or",
+    "t": 42.382
+   },
+   {
+    "w": "find",
+    "t": 42.715
+   },
+   {
+    "w": "the",
+    "t": 42.801
+   },
+   {
+    "w": "Kindle",
+    "t": 42.907
+   },
+   {
+    "w": "pre-order",
+    "t": 43.105
+   },
+   {
+    "w": "on",
+    "t": 43.787
+   },
+   {
+    "w": "Amazon",
+    "t": 43.921
+   },
+   {
+    "w": "U.K.",
+    "t": 44.313
+   }
+  ]
+ }
+]

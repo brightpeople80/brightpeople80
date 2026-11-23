@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Meet the Author</title>
+<style>
+  @font-face { font-family: 'Montserrat'; font-weight: 100 900; src: url(../assets/fonts/Montserrat-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-italic.woff2) format('woff2'); }
+  @font-face { font-family: 'Caveat'; font-weight: 400 700; src: url(../assets/fonts/Caveat.woff2) format('woff2'); }
+  :root { --navy: #0b1a31; --gold: #fbc312; --ivory: #f4eddc; --brass: #c99a2e; }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #07111f; }
+  .sc { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+  .paper { background: url(assets/navy-paper.png) 0 0 / 1080px 1920px, #13284a; }
+  .paper::after { content: ''; position: absolute; inset: 0; background: radial-gradient(90% 70% at 50% 40%, transparent 40%, rgba(4,10,22,.75)); }
+  .photo { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+  .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,17,31,.35), rgba(7,17,31,0) 30%, rgba(7,17,31,0) 55%, rgba(7,17,31,.85)); }
+  .card { position: absolute; padding: 16px 26px; border-radius: 14px; background: url(assets/ivory-paper.png), var(--ivory); color: var(--navy); white-space: nowrap;
+    font: 800 36px Montserrat; box-shadow: 0 18px 40px rgba(0,0,0,.5), inset 0 0 0 3px var(--brass); opacity: 0; }
+  .card i { font-style: normal; color: #b8860b; margin-right: 12px; }
+  .brass { position: absolute; padding: 14px 30px; border-radius: 8px; font: 800 40px Montserrat; letter-spacing: .14em; color: #3c2a0c;
+    background: linear-gradient(135deg, #e2c27a, #b08a3e 50%, #d6b061); box-shadow: 0 10px 26px rgba(0,0,0,.5), inset 0 0 0 3px rgba(70,45,10,.4); text-shadow: 0 2px 0 rgba(255,240,190,.6); }
+  .kicker { font: 800 28px Montserrat; letter-spacing: .2em; color: var(--gold); }
+  .serif { font-family: 'Source Serif 4'; }
+  #caps .cap { position: absolute; left: 84px; width: 800px; top: 1458px; font: 800 48px/1.32 Montserrat; color: #fff; opacity: 0; }
+  #caps .cap span { background: rgba(7,17,31,.8); padding: 6px 18px; border-radius: 14px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  /* scene: author */
+  #s3 .lt { position: absolute; left: 80px; top: 1130px; }
+  #s3 .name { font: 600 96px/1 'Source Serif 4'; color: #fff; text-shadow: 0 6px 30px rgba(0,0,0,.6); margin-top: 14px; }
+  #s3 .role { font: 600 32px/1.35 Montserrat; color: var(--ivory); margin-top: 18px; }
+  #s3 .role b { color: var(--gold); font-weight: 800; }
+  #s3 .rule { height: 6px; background: var(--gold); border-radius: 3px; margin-top: 18px; width: 0; }
+  /* scene: book */
+  #cover { position: absolute; left: 300px; top: 250px; width: 480px; height: 720px; box-shadow: 0 40px 80px rgba(0,0,0,.6), -6px 0 0 #0b1a31; border-radius: 2px 6px 6px 2px; }
+  .chip { position: absolute; left: 90px; padding: 14px 24px 14px 20px; border-radius: 12px; font: 700 38px Montserrat; color: #fff; background: rgba(7,17,31,.65);
+    box-shadow: inset 0 0 0 2px rgba(251,195,18,.6); opacity: 0; white-space: nowrap; }
+  .chip b { color: var(--gold); }
+  /* scene: tools */
+  #ticket { position: absolute; left: 90px; top: 560px; width: 900px; height: 380px; border-radius: 16px; background: url(assets/ivory-paper.png), var(--ivory);
+    box-shadow: 0 30px 60px rgba(0,0,0,.55), inset 0 0 0 5px var(--brass); opacity: 0; }
+  #ticket .stub { position: absolute; left: 0; top: 0; bottom: 0; width: 170px; border-right: 4px dashed rgba(11,26,49,.4); }
+  #ticket .stub span { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%) rotate(-90deg); font: 800 34px Montserrat; letter-spacing: .14em; color: var(--navy); white-space: nowrap; }
+  #ticket .k { position: absolute; left: 220px; top: 70px; font: 800 30px Montserrat; letter-spacing: .14em; color: var(--navy); }
+  #ticket .t { position: absolute; left: 216px; top: 120px; font: 700 96px/1 'Source Serif 4'; color: #b8860b; text-shadow: 0 -2px 0 rgba(255,255,255,.7), 0 3px 0 rgba(60,40,10,.4); }
+  #ticket .t em { display: block; }
+  #cal { position: absolute; left: 90px; top: 990px; width: 900px; height: 420px; border-radius: 16px; overflow: hidden; background: url(assets/ivory-paper.png), var(--ivory);
+    box-shadow: 0 30px 60px rgba(0,0,0,.55), inset 0 0 0 5px var(--brass); opacity: 0; }
+  #cal .hd { height: 96px; background: var(--navy); color: var(--gold); font: 800 40px/96px Montserrat; text-align: center; }
+  #cal .grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px; padding: 20px 26px; }
+  #cal .d { height: 86px; border-radius: 8px; border: 2.5px solid rgba(11,26,49,.25); font: 800 26px Montserrat; color: var(--navy); padding: 6px 0 0 10px; box-sizing: border-box; }
+  #cal .d.on { background: var(--gold); border-color: var(--gold); }
+  /* scene: quote */
+  #q1 { position: absolute; left: 80px; top: 270px; width: 900px; font: 600 74px/1.08 'Source Serif 4'; color: #fff; text-shadow: 0 6px 30px rgba(0,0,0,.8); opacity: 0; }
+  #q2 { position: absolute; left: 80px; top: 1180px; width: 900px; font: italic 600 74px/1.08 'Source Serif 4'; color: var(--gold); text-shadow: 0 6px 30px rgba(0,0,0,.85); opacity: 0; }
+  /* scene: end */
+  #e > * { position: absolute; opacity: 0; }
+  #e-title { left: 64px; top: 210px; font: 600 86px/1.0 'Source Serif 4'; color: #fff; }
+  #e-by { left: 64px; top: 404px; display: flex; align-items: center; gap: 18px; font: 800 32px Montserrat; letter-spacing: .12em; color: var(--gold); }
+  #e-by img { width: 74px; height: 74px; border-radius: 50%; object-fit: cover; object-position: 50% 18%; box-shadow: 0 0 0 3px var(--gold); }
+  #e-stack { left: 40px; top: 515px; width: 450px; }
+  #e-reader { left: 530px; top: 735px; width: 220px; height: 320px; border-radius: 22px; background: linear-gradient(160deg,#2a2f38,#121419); box-shadow: 0 30px 60px rgba(0,0,0,.6), inset 0 0 0 2px #3a404b; }
+  #e-reader img { position: absolute; left: 15px; top: 18px; width: 190px; height: 285px; border-radius: 3px; }
+  .price { font: 800 32px Montserrat; color: #fff; white-space: nowrap; }
+  .price b { color: var(--gold); }
+  .price small { display: block; font: 600 23px Montserrat; color: var(--ivory); opacity: .85; margin-top: 4px; }
+  #e-paper { left: 70px; top: 1080px; }
+  #e-kindle { left: 535px; top: 1080px; }
+  #e-avail { left: 66px; top: 1172px; font: italic 600 46px 'Source Serif 4'; color: #fff; white-space: nowrap; }
+  #e-avail b { color: var(--gold); font-weight: 600; }
+  #e-btn { left: 64px; top: 1250px; }
+  #e-btn div { position: relative; overflow: hidden; padding: 22px 34px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 38px Montserrat; white-space: nowrap; box-shadow: 0 9px 0 #b8890b, 0 22px 40px rgba(0,0,0,.45); }
+  #e-btn .gl { position: absolute; top: 0; bottom: 0; width: 140px; left: -180px; background: linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent); }
+  #e-url { left: 66px; top: 1372px; font: 700 31px Montserrat; color: var(--ivory); white-space: nowrap; }
+  #e-url b { color: var(--gold); font-weight: 800; }
+</style>
+</head>
+<body>
+<!-- 1. people with dreams (Canva-generated image) -->
+<div class="sc" id="s1">
+  <img class="photo" id="s1img" src="assets/woman-night-scroll.jpg" alt=""><div class="shade"></div>
+  <div class="card" id="c1" style="left:70px;top:250px"><i>★</i>Dreams they haven’t forgotten</div>
+  <div class="card" id="c2" style="left:150px;top:360px"><i>★</i>Ideas they still believe in</div>
+  <div class="card" id="c3" style="left:70px;top:470px"><i>★</i>Plans they’ve been meaning to start</div>
+</div>
+<!-- 2. between preparing and doing -->
+<div class="sc paper" id="s2">
+  <div class="brass" id="prep" style="left:300px;top:430px">PREPARING</div>
+  <div class="brass" id="doing" style="left:380px;top:1220px">DOING</div>
+  <svg width="1080" height="1920" style="position:absolute;left:0;top:0">
+    <path id="p-straight" d="M 540 540 L 540 820" fill="none" stroke="#fbc312" stroke-width="9" stroke-linecap="round"/>
+    <path id="p-tangle" d="M 540 820 C 540 900, 660 900, 640 840 S 470 760, 450 860 S 610 1010, 650 930 S 480 860, 470 950 S 600 1060, 590 990 S 500 930, 520 1010" fill="none" stroke="#fbc312" stroke-width="9" stroke-linecap="round"/>
+  </svg>
+</div>
+<!-- 3. meet the author (author's own photo) -->
+<div class="sc" id="s3">
+  <img class="photo" id="s3img" src="assets/author-belinda.jpg" alt=""><div class="shade"></div>
+  <div class="lt"><div class="kicker" id="s3k">MEET THE AUTHOR</div><div class="name" id="s3n">Belinda Bright N.</div><div class="rule" id="s3r"></div>
+    <div class="role" id="s3role">Independent author of<br><b>The Life You Keep Planning</b></div></div>
+</div>
+<!-- 4. the debut book -->
+<div class="sc paper" id="s4">
+  <img id="cover" src="assets/front-cover.png" alt="">
+  <div class="chip" id="ch1" style="top:1030px">Why we <b>overthink</b></div>
+  <div class="chip" id="ch2" style="top:1120px">Why we <b>chase new ideas</b></div>
+  <div class="chip" id="ch3" style="top:1210px">Why we <b>struggle to follow through</b></div>
+</div>
+<!-- 5. practical tools -->
+<div class="sc paper" id="s5">
+  <div class="kicker" id="s5k" style="position:absolute;left:92px;top:470px;opacity:0">PRACTICAL TOOLS INSIDE</div>
+  <div id="ticket"><div class="stub"><span>ADMIT ONE</span></div><div class="k">TOOL 01</div><div class="t">The SELECT<em>method</em></div></div>
+  <div id="cal"><div class="hd">30-Day Follow-Through Programme</div><div class="grid" id="grid"></div></div>
+</div>
+<!-- 6. the promise (Canva-generated image) -->
+<div class="sc" id="s6">
+  <img class="photo" id="s6img" src="assets/woman-writing.jpg" alt=""><div class="shade"></div>
+  <div id="q1">You don’t need to do everything.</div>
+  <div id="q2">You need to give what matters a fair chance.</div>
+</div>
+<!-- 7. end card -->
+<div class="sc paper" id="s7"><div id="e">
+  <div id="e-title">The Life You<br>Keep Planning</div>
+  <div id="e-by"><img src="assets/author-belinda.jpg" alt="">Belinda Bright N.</div>
+  <img id="e-stack" src="assets/book-stack-soft.png" alt="">
+  <div id="e-reader"><img src="assets/front-cover.png" alt=""></div>
+  <div id="e-paper" class="price">Paperback <b>£9.99</b><small>Coming soon</small></div>
+  <div id="e-kindle" class="price">Kindle <b>£3.99</b></div>
+  <div id="e-avail">Available from <b>23 January 2027</b></div>
+  <div id="e-btn"><div>Kindle pre-order on Amazon UK<span class="gl"></span></div></div>
+  <div id="e-url">Author’s website: <b>thelifeyoukeepplanningbook.netlify.app</b></div>
+</div></div>
+<div class="sc" id="caps" style="opacity:1"></div>
+<script src="audio/captions.js"></script>
+<script>
+const DURATION = 46.5; window.DURATION = DURATION;
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const k = (t, a, b) => clamp((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const bo = x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const $ = id => document.getElementById(id);
+// scene windows [id, in, out]; 0.35 s cross-dissolves
+const SC = [['s1', 0, 7.1], ['s2', 6.95, 10.95], ['s3', 10.8, 15.55], ['s4', 15.4, 23.35], ['s5', 23.2, 29.5], ['s6', 29.35, 34.65], ['s7', 34.5, 99]];
+const pop = (id, t, a, dy = 30, dur = .4) => { const el = $(id), x = eo(k(t, a, a + dur)); el.style.opacity = x; el.style.transform = `translateY(${((1 - x) * dy).toFixed(1)}px)`; return x; };
+const grid = $('grid'); for (let i = 1; i <= 30; i++) { const d = document.createElement('div'); d.className = 'd'; d.textContent = i; grid.appendChild(d); }
+const days = [...grid.children];
+const pS = $('p-straight'), pT = $('p-tangle'), LS = pS.getTotalLength(), LT = pT.getTotalLength();
+let CAPS = [];
+function render(t) {
+  for (const [id, a, b] of SC) { const o = Math.min(k(t, a, a + .35), 1 - k(t, b - .35, b)); const el = $(id); el.style.opacity = o.toFixed(3); el.style.display = o <= 0 ? 'none' : ''; }
+  // 1
+  $('s1img').style.transform = `scale(${lerp(1.04, 1.14, eio(k(t, 0, 7.1))).toFixed(4)})`;
+  [['c1', 1.5, -2], ['c2', 2.62, 2], ['c3', 4.72, -1]].forEach(([id, a, r]) => { const x = bo(k(t, a, a + .4)); const el = $(id); el.style.opacity = clamp(x * 2);
+    el.style.transform = `translateY(${((1 - clamp(x)) * 40 - k(t, a, 7.1) * 30).toFixed(1)}px) rotate(${r}deg) scale(${(.6 + .4 * x).toFixed(3)})`; });
+  // 2
+  pop('prep', t, 7.4, 30); const dz = pop('doing', t, 7.7, 30); $('doing').style.opacity = (dz * (1 - .55 * k(t, 9.3, 10.1))).toFixed(3);
+  pS.style.strokeDasharray = LS; pS.style.strokeDashoffset = LS * (1 - eio(k(t, 8.4, 9.2)));
+  pT.style.strokeDasharray = LT; pT.style.strokeDashoffset = LT * (1 - eio(k(t, 9.2, 10.4)));
+  // 3
+  $('s3img').style.transform = `scale(${lerp(1.02, 1.1, eio(k(t, 10.8, 15.6))).toFixed(4)})`; $('s3img').style.transformOrigin = '45% 25%';
+  pop('s3k', t, 11.15, 20); pop('s3n', t, 11.55, 30, .5); $('s3r').style.width = `${(380 * eio(k(t, 11.9, 12.5))).toFixed(1)}px`; pop('s3role', t, 12.9, 20);
+  // 4
+  const cv = $('cover'), ci = eo(k(t, 15.5, 16.2)), cOut = eio(k(t, 21.0, 22.2));
+  cv.style.transform = `perspective(1600px) translateY(${((1 - ci) * 80 - cOut * 60).toFixed(1)}px) rotateY(${lerp(-16, 8, eio(k(t, 15.5, 23.3))).toFixed(2)}deg) scale(${lerp(.92, 1, ci) * lerp(1, .86, cOut)})`;
+  [['ch1', 17.4], ['ch2', 17.86], ['ch3', 19.25]].forEach(([id, a], i) => { const x = pop(id, t, a, 0, .35); const out = eio(k(t, 21.0 + i * .08, 21.5 + i * .08));
+    $(id).style.opacity = (x * (1 - out)).toFixed(3); $(id).style.transform = `translateX(${((1 - x) * -60 + out * 120).toFixed(1)}px)`; });
+  // 5
+  pop('s5k', t, 23.7, 16); pop('ticket', t, 25.85, 50, .45); pop('cal', t, 27.0, 50, .45);
+  const on = Math.floor(30 * k(t, 27.6, 29.0)); days.forEach((d, i) => d.classList.toggle('on', i < on));
+  // 6
+  $('s6img').style.transform = `scale(${lerp(1.02, 1.12, eio(k(t, 29.35, 34.6))).toFixed(4)})`; $('s6img').style.transformOrigin = '25% 75%';
+  pop('q1', t, 29.65, 30, .5); pop('q2', t, 31.7, 30, .5);
+  // 7
+  const E = (id, a, dy = 30) => pop(id, t, a, dy, .45);
+  E('e-title', 34.8); E('e-by', 35.3, 20); E('e-stack', 35.1, 140); E('e-reader', 35.4, 140); E('e-paper', 35.9, 20); E('e-kindle', 36.0, 20);
+  E('e-avail', 36.1, 20); E('e-url', 41.3, 20); E('e-btn', 42.85, 30);
+  const pl = Math.sin(Math.PI * k(t, 43.0, 43.5)); $('e-btn').style.transform += ` scale(${(1 + .05 * pl).toFixed(4)})`; $('e-btn').style.transformOrigin = '0 50%';
+  document.querySelector('#e-btn .gl').style.left = `${lerp(-180, 900, eio(k(t, 43.1, 43.8)))}px`;
+  // captions
+  for (const c of CAPS) { const a = eo(k(t, c.s - .04, c.s + .12)) * (1 - k(t, c.e - .1, c.e)); c.el.style.opacity = a; c.el.style.transform = `translateY(${((1 - eo(k(t, c.s - .04, c.s + .16))) * 14).toFixed(1)}px)`; }
+}
+window.seek = t => render(t);
+window.READY = (async () => {
+  await Promise.all(['800 40px Montserrat', '600 40px "Source Serif 4"', 'italic 600 40px "Source Serif 4"'].map(f => document.fonts.load(f)));
+  CAPS = (window.CAPS_DATA || []).map(c => ({ ...c }));
+  for (const c of CAPS) { const d = document.createElement('div'); d.className = 'cap'; const s = document.createElement('span'); s.textContent = c.text; d.appendChild(s); $('caps').appendChild(d); c.el = d; }
+  for (const img of document.images) if (!img.complete) await new Promise(r => { img.onload = r; img.onerror = r; });
+  render(0); return true;
+})();
+if (!new URLSearchParams(location.search).has('render')) READY.then(() => { const t0 = performance.now(); const loop = () => { render(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); }; loop(); });
+</script>
+</body>
+</html>
