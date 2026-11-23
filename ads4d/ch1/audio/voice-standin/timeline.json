@@ -1,0 +1,286 @@
+[
+ {
+  "id": "l1",
+  "text": "Nine forty-three, Sunday evening. The idea that could change everything is finally on paper.",
+  "start": 0.5,
+  "dur": 5.256,
+  "words": [
+   {
+    "w": "Nine",
+    "t": 0.5
+   },
+   {
+    "w": "forty-three,",
+    "t": 0.916
+   },
+   {
+    "w": "Sunday",
+    "t": 1.581
+   },
+   {
+    "w": "evening.",
+    "t": 1.979
+   },
+   {
+    "w": "The",
+    "t": 2.067
+   },
+   {
+    "w": "idea",
+    "t": 2.915
+   },
+   {
+    "w": "that",
+    "t": 3.036
+   },
+   {
+    "w": "could",
+    "t": 3.312
+   },
+   {
+    "w": "change",
+    "t": 3.488
+   },
+   {
+    "w": "everything",
+    "t": 3.91
+   },
+   {
+    "w": "is",
+    "t": 4.402
+   },
+   {
+    "w": "finally",
+    "t": 4.654
+   },
+   {
+    "w": "on",
+    "t": 4.978
+   },
+   {
+    "w": "paper.",
+    "t": 5.146
+   }
+  ]
+ },
+ {
+  "id": "l2",
+  "text": "For two hours, the future feels possible. Then Monday arrives.",
+  "start": 6.1,
+  "dur": 3.53,
+  "words": [
+   {
+    "w": "For",
+    "t": 6.1
+   },
+   {
+    "w": "two",
+    "t": 6.411
+   },
+   {
+    "w": "hours,",
+    "t": 6.649
+   },
+   {
+    "w": "the",
+    "t": 7.054
+   },
+   {
+    "w": "future",
+    "t": 7.243
+   },
+   {
+    "w": "feels",
+    "t": 7.537
+   },
+   {
+    "w": "possible.",
+    "t": 7.724
+   },
+   {
+    "w": "Then",
+    "t": 8.12
+   },
+   {
+    "w": "Monday",
+    "t": 8.783
+   },
+   {
+    "w": "arrives.",
+    "t": 9.04
+   }
+  ]
+ },
+ {
+  "id": "l3",
+  "text": "Work runs late. By Thursday, there's a newer idea.",
+  "start": 10.4,
+  "dur": 2.894,
+  "words": [
+   {
+    "w": "Work",
+    "t": 10.4
+   },
+   {
+    "w": "runs",
+    "t": 10.772
+   },
+   {
+    "w": "late.",
+    "t": 11.148
+   },
+   {
+    "w": "By",
+    "t": 11.441
+   },
+   {
+    "w": "Thursday,",
+    "t": 11.709
+   },
+   {
+    "w": "there's",
+    "t": 12.109
+   },
+   {
+    "w": "a",
+    "t": 12.514
+   },
+   {
+    "w": "newer",
+    "t": 12.594
+   },
+   {
+    "w": "idea.",
+    "t": 12.674
+   }
+  ]
+ },
+ {
+  "id": "l4",
+  "text": "Thinking explores what might happen. A well-chosen action helps reveal what actually happens.",
+  "start": 14.0,
+  "dur": 5.225,
+  "words": [
+   {
+    "w": "Thinking",
+    "t": 14.0
+   },
+   {
+    "w": "explores",
+    "t": 14.515
+   },
+   {
+    "w": "what",
+    "t": 15.111
+   },
+   {
+    "w": "might",
+    "t": 15.298
+   },
+   {
+    "w": "happen.",
+    "t": 15.469
+   },
+   {
+    "w": "A",
+    "t": 15.73
+   },
+   {
+    "w": "well-chosen",
+    "t": 16.224
+   },
+   {
+    "w": "action",
+    "t": 16.692
+   },
+   {
+    "w": "helps",
+    "t": 17.058
+   },
+   {
+    "w": "reveal",
+    "t": 17.463
+   },
+   {
+    "w": "what",
+    "t": 17.833
+   },
+   {
+    "w": "actually",
+    "t": 18.155
+   },
+   {
+    "w": "happens.",
+    "t": 18.532
+   }
+  ]
+ },
+ {
+  "id": "l5",
+  "text": "Chapter one of The Life You Keep Planning. Pre-order the Kindle edition on Amazon U.K.",
+  "start": 19.9,
+  "dur": 4.719,
+  "words": [
+   {
+    "w": "Chapter",
+    "t": 19.9
+   },
+   {
+    "w": "one",
+    "t": 20.417
+   },
+   {
+    "w": "of",
+    "t": 20.651
+   },
+   {
+    "w": "The",
+    "t": 20.922
+   },
+   {
+    "w": "Life",
+    "t": 21.107
+   },
+   {
+    "w": "You",
+    "t": 21.234
+   },
+   {
+    "w": "Keep",
+    "t": 21.356
+   },
+   {
+    "w": "Planning.",
+    "t": 21.542
+   },
+   {
+    "w": "Pre-order",
+    "t": 21.896
+   },
+   {
+    "w": "the",
+    "t": 22.601
+   },
+   {
+    "w": "Kindle",
+    "t": 22.801
+   },
+   {
+    "w": "edition",
+    "t": 22.974
+   },
+   {
+    "w": "on",
+    "t": 23.504
+   },
+   {
+    "w": "Amazon",
+    "t": 23.704
+   },
+   {
+    "w": "U.K.",
+    "t": 24.06
+   }
+  ]
+ }
+]

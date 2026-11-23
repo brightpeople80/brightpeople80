@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chapter 1 Ad</title>
+<style>
+  @font-face { font-family: 'Montserrat'; font-weight: 100 900; src: url(../../assets/fonts/Montserrat-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; src: url(../../assets/fonts/SourceSerif4-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 200 900; src: url(../../assets/fonts/SourceSerif4-italic.woff2) format('woff2'); }
+  :root { --navy: #0b1a31; --gold: #fbc312; --ivory: #f4eddc; --brass: #c99a2e; }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #07111f; }
+  .sc { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+  .paper { background: url(assets/navy-paper.png) 0 0 / 1080px 1920px, #13284a; }
+  .full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+  .vig { position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 45%, transparent 45%, rgba(5,10,20,.75)); }
+  .warm { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,170,80,.10), rgba(0,0,0,0) 50%, rgba(5,10,20,.6)); mix-blend-mode: normal; }
+  .stamp { position: absolute; left: 80px; top: 250px; font: 800 44px Montserrat; letter-spacing: .18em; color: #fff; text-shadow: 0 3px 16px rgba(0,0,0,.8); }
+  .stamp b { color: var(--gold); font-weight: 800; }
+  .stamp i { display: inline-block; width: 16px; height: 44px; background: var(--gold); vertical-align: -6px; margin-left: 6px; font-style: normal; }
+  #log { position: absolute; left: 80px; top: 560px; width: 920px; }
+  #log div { font: 700 44px/1.3 Montserrat; color: #fff; margin-bottom: 44px; opacity: 0; text-shadow: 0 3px 18px rgba(0,0,0,.85); }
+  #log div b { display: block; font: 800 30px Montserrat; letter-spacing: .2em; color: var(--gold); margin-bottom: 6px; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+  #pc { position: absolute; inset: 0; }
+  #q1 { position: absolute; left: 80px; width: 920px; top: 520px; font: 800 82px/1.08 Montserrat; color: #fff; opacity: 0; }
+  #q2 { position: absolute; left: 80px; width: 920px; top: 880px; font: 800 82px/1.08 Montserrat; color: var(--gold); opacity: 0; }
+  #qchip { position: absolute; left: 80px; top: 390px; opacity: 0; }
+  .chip { display: inline-block; font: 800 26px Montserrat; letter-spacing: .14em; color: var(--navy); background: var(--gold); padding: 10px 18px; border-radius: 10px; }
+  #qsrc { position: absolute; left: 80px; top: 1320px; font: 700 28px Montserrat; letter-spacing: .1em; color: var(--ivory); opacity: 0; }
+  #cv { position: absolute; left: 290px; top: 340px; width: 500px; height: 750px; box-shadow: 0 50px 100px rgba(0,0,0,.65), -7px 0 0 #0b1a31; border-radius: 2px 6px 6px 2px; }
+  #cvchip { position: absolute; left: 0; right: 0; top: 1150px; text-align: center; opacity: 0; }
+  #cvt { position: absolute; left: 60px; right: 60px; top: 1235px; text-align: center; font: 600 40px/1.25 'Source Serif 4'; color: #fff; opacity: 0; }
+  /* scene: end */
+  #e > * { position: absolute; opacity: 0; }
+  #e-title { left: 64px; top: 210px; font: 600 86px/1.0 'Source Serif 4'; color: #fff; }
+  #e-by { left: 64px; top: 404px; display: flex; align-items: center; gap: 18px; font: 800 32px Montserrat; letter-spacing: .12em; color: var(--gold); }
+  #e-by img { width: 74px; height: 74px; border-radius: 50%; object-fit: cover; object-position: 50% 22%; box-shadow: 0 0 0 3px var(--gold); }
+  #e-stack { left: 40px; top: 515px; width: 405px; }
+  #e-reader { left: 470px; top: 700px; width: 200px; height: 290px; border-radius: 22px; background: linear-gradient(160deg,#2a2f38,#121419); box-shadow: 0 30px 60px rgba(0,0,0,.6), inset 0 0 0 2px #3a404b; }
+  #e-reader img { position: absolute; left: 14px; top: 16px; width: 172px; height: 258px; border-radius: 3px; }
+  .price { font: 800 32px Montserrat; color: #fff; white-space: nowrap; }
+  .price b { color: var(--gold); }
+  .price small { display: block; font: 600 23px Montserrat; color: var(--ivory); opacity: .85; margin-top: 4px; }
+  #e-fmt { left: 66px; top: 1046px; }
+  #e-fmt .row { font: 800 30px/46px Montserrat; color: #fff; white-space: nowrap; }
+  #e-fmt .row b { color: var(--gold); font-weight: 800; }
+  #e-fmt .row i { font-style: normal; font-weight: 600; color: var(--ivory); }
+  #e-avail { left: 66px; top: 1196px; font: italic 600 46px 'Source Serif 4'; color: #fff; white-space: nowrap; }
+  #e-avail b { color: var(--gold); font-weight: 600; }
+  #e-btn { left: 64px; top: 1274px; }
+  #e-btn div { position: relative; overflow: hidden; padding: 22px 34px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 38px Montserrat; white-space: nowrap; box-shadow: 0 9px 0 #b8890b, 0 22px 40px rgba(0,0,0,.45); }
+  #e-btn .gl { position: absolute; top: 0; bottom: 0; width: 140px; left: -180px; background: linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent); }
+  #e-url { left: 66px; top: 1390px; font: 700 31px Montserrat; color: var(--ivory); white-space: nowrap; }
+  #e-url b { color: var(--gold); font-weight: 800; }
+  #caps .cap { position: absolute; left: 84px; width: 800px; top: 1458px; font: 800 48px/1.32 Montserrat; color: #fff; opacity: 0; }
+  #caps .cap span { background: rgba(7,17,31,.8); padding: 6px 18px; border-radius: 14px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  #grain { position: absolute; inset: 0; background: url(assets/navy-paper.png) 0 0 / 540px 960px; mix-blend-mode: overlay; opacity: .45; pointer-events: none; }
+</style>
+</head>
+<body>
+<!-- 1-2. Sunday evening (Canva-generated image) -->
+<div class="sc" id="s1"><img class="full" id="i1" src="assets/sunday-notebook.jpg" alt=""><div class="warm"></div><div class="vig"></div>
+  <div class="stamp"><b>SUN</b> · <span id="t1"></span><i id="cur1"></i></div></div>
+<!-- 3. Monday (Canva-generated image; the clock in the picture reads 8:45) -->
+<div class="sc" id="s3"><img class="full" id="i3" src="assets/monday-rain.jpg" alt=""><div class="vig"></div>
+  <div class="stamp"><b>MON</b> · <span id="t3"></span></div></div>
+<!-- 4. the week slips (the book's own beats) -->
+<div class="sc" id="s4"><img class="full" src="assets/monday-rain.jpg" alt="" style="filter: blur(26px) brightness(.32)">
+  <div id="log"><div id="g1"><b>MON · 19:40</b>Work runs late.</div><div id="g2"><b>TUE</b>Can’t decide which task comes first.</div><div id="g3"><b>THU</b>Researching something new.</div></div></div>
+<!-- 5. the book's line, in the navy and gold particle style -->
+<div class="sc paper" id="s5"><canvas id="pc" width="1080" height="1920"></canvas>
+  <div id="qchip"><span class="chip">CHAPTER 1</span></div>
+  <div id="q1">Thinking explores what might happen.</div>
+  <div id="q2">A well-chosen action helps reveal what actually happens.</div>
+  <div id="qsrc">FROM <i>THE LIFE YOU KEEP PLANNING</i></div></div>
+<!-- 6. the real cover -->
+<div class="sc paper" id="s6"><img id="cv" src="assets/front-cover.png" alt="">
+  <div id="cvchip"><span class="chip">CHAPTER 1</span></div><div id="cvt">The Life You’re Always About to Start</div></div>
+<div class="sc paper" id="s7"><div id="e">
+  <div id="e-title">The Life You<br>Keep Planning</div>
+  <div id="e-by"><img src="assets/author-portrait.jpg" alt="">Belinda Bright N.</div>
+  <img id="e-stack" src="assets/book-stack-soft.png" alt="">
+  <div id="e-reader"><img src="assets/front-cover.png" alt=""></div>
+    <div id="e-fmt"><div class="row">Kindle eBook <b>£3.99</b> <i>· Pre-order now</i></div><div class="row">Paperback <b>£9.99</b> <i>· Out 23 January 2027</i></div><div class="row">Hardcover <i>· Coming soon</i></div></div>
+  <div id="e-avail">Available from <b>23 January 2027</b></div>
+  <div id="e-btn"><div>Kindle pre-order on Amazon UK<span class="gl"></span></div></div>
+  <div id="e-url">Author’s website: <b>thelifeyoukeepplanningbook.netlify.app</b></div>
+</div></div>
+<div id="flash"></div>
+<div class="sc" id="caps" style="opacity:1"></div>
+<div id="grain"></div>
+<script src="audio/captions.js"></script>
+<script>
+const DURATION = 28.0; window.DURATION = DURATION;
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const k = (t, a, b) => clamp((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const $ = id => document.getElementById(id);
+const SC = [['s1', 0, 8.32], ['s3', 8.28, 10.45], ['s4', 10.3, 13.95], ['s5', 13.8, 19.6], ['s6', 19.45, 21.45], ['s7', 21.3, 99]];
+const pop = (id, t, a, dy = 30, dur = .45) => { const el = $(id), x = eo(k(t, a, a + dur)); el.style.opacity = x; el.style.transform = `translateY(${((1 - x) * dy).toFixed(1)}px)`; return x; };
+// deterministic gold particles
+let seed = 11; const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+const P = Array.from({ length: 140 }, () => ({ x: rnd() * 1080, y: rnd() * 1920, r: 1 + rnd() * 3.2, v: 8 + rnd() * 30, a: .4 + rnd() * .55, ph: rnd() * 6.28 }));
+const pc = $('pc').getContext('2d');
+function particles(t) {
+  pc.clearRect(0, 0, 1080, 1920);
+  const g = pc.createLinearGradient(0, 300, 1080, 1500); g.addColorStop(0, 'rgba(251,195,18,0)'); g.addColorStop(.5, 'rgba(251,195,18,.32)'); g.addColorStop(1, 'rgba(251,195,18,0)');
+  pc.strokeStyle = g; pc.lineWidth = 3;
+  for (let j = 0; j < 3; j++) { pc.beginPath(); for (let x = 0; x <= 1080; x += 20) { const y = 300 + j * 90 + Math.sin(x / 180 + t * .6 + j) * 70; x ? pc.lineTo(x, y) : pc.moveTo(x, y); } pc.stroke(); }
+  for (const p of P) { const y = (p.y - p.v * t + 1920) % 1920, x = p.x + Math.sin(t * .8 + p.ph) * 14;
+    pc.fillStyle = `rgba(251,195,18,${(p.a * (.6 + .4 * Math.sin(t * 2 + p.ph))).toFixed(3)})`; pc.beginPath(); pc.arc(x, y, p.r, 0, 6.29); pc.fill(); }
+}
+const type = (id, txt, t, a, cps = 14) => { $(id).textContent = txt.slice(0, Math.floor(clamp((t - a) * cps, 0, txt.length))); };
+let CAPS = [];
+function render(t) {
+  for (const [id, a, b] of SC) { const o = Math.min(id === 's3' ? 1 : k(t, a, a + .3), 1 - k(t, b - .3, b)); const el = $(id); el.style.opacity = (t >= a ? o : 0).toFixed(3); el.style.display = t < a || o <= 0 ? 'none' : ''; }
+  // Sunday: slow push towards the notebook; the clock rolls on from 21:43 to 23:43
+  $('i1').style.transformOrigin = '42% 78%'; $('i1').style.transform = `scale(${lerp(1.0, 1.18, eio(k(t, 0, 8.3))).toFixed(4)})`;
+  const mins = 21 * 60 + 43 + Math.floor(120 * eio(k(t, 6.3, 7.4)));
+  type('t1', `${String(Math.floor(mins / 60)).padStart(2, '0')}:${String(mins % 60).padStart(2, '0')}`, t, .35, 10);
+  $('cur1').style.opacity = Math.floor(t * 2) % 2 ? 1 : 0;
+  // Monday: a hard cut with a flash on "Monday"
+  $('flash').style.opacity = Math.max(0, 1 - Math.abs(t - 8.3) / .12).toFixed(3);
+  $('i3').style.transform = `scale(${lerp(1.08, 1.0, eo(k(t, 8.28, 10.4))).toFixed(4)})`; type('t3', '08:45', t, 8.4, 12);
+  // the week slips
+  pop('g1', t, 10.35, 24); pop('g2', t, 11.0, 24); pop('g3', t, 11.6, 24);
+  // the book's line
+  if (t > 13.7 && t < 19.7) particles(t);
+  pop('qchip', t, 14.0, 16); pop('q1', t, 14.1, 30, .5); pop('q2', t, 15.4, 30, .5); pop('qsrc', t, 17.0, 16);
+  // the real cover
+  const cv = eo(k(t, 19.5, 20.1)); $('cv').style.transform = `perspective(1600px) translateY(${((1 - cv) * 90).toFixed(1)}px) rotateY(${lerp(-18, 6, eio(k(t, 19.5, 21.5))).toFixed(2)}deg) scale(${lerp(.9, 1, cv).toFixed(3)})`;
+  pop('cvchip', t, 19.7, 16); pop('cvt', t, 20.0, 16);
+  // end card
+  const E = (id, a, dy = 30) => pop(id, t, a, dy);
+  E('e-title', 21.4); E('e-by', 21.7, 20); E('e-stack', 21.5, 140); E('e-reader', 21.75, 140); E('e-fmt', 22.05, 20); E('e-avail', 22.2, 20); E('e-btn', 22.3); E('e-url', 22.5, 20);
+  const pl = Math.sin(Math.PI * k(t, 22.6, 23.1)); $('e-btn').style.transform += ` scale(${(1 + .05 * pl).toFixed(4)})`; $('e-btn').style.transformOrigin = '0 50%';
+  document.querySelector('#e-btn .gl').style.left = `${lerp(-180, 900, eio(k(t, 22.7, 23.4)))}px`;
+  for (const c of CAPS) { const a = eo(k(t, c.s - .04, c.s + .12)) * (1 - k(t, c.e - .1, c.e)); c.el.style.opacity = a; c.el.style.transform = `translateY(${((1 - eo(k(t, c.s - .04, c.s + .16))) * 14).toFixed(1)}px)`; }
+}
+window.seek = t => render(t);
+window.READY = (async () => {
+  await Promise.all(['800 40px Montserrat', '700 40px Montserrat', '600 40px "Source Serif 4"', 'italic 600 40px "Source Serif 4"'].map(f => document.fonts.load(f)));
+  CAPS = (window.CAPS_DATA || []).map(c => ({ ...c }));
+  for (const c of CAPS) { const d = document.createElement('div'); d.className = 'cap'; const s = document.createElement('span'); s.textContent = c.text; d.appendChild(s); $('caps').appendChild(d); c.el = d; }
+  for (const img of document.images) if (!img.complete) await new Promise(r => { img.onload = r; img.onerror = r; });
+  render(0); return true;
+})();
+if (!new URLSearchParams(location.search).has('render')) READY.then(() => { const t0 = performance.now(); const loop = () => { render(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); }; loop(); });
+</script>
+</body>
+</html>
