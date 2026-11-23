@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chapter 5 Ad</title>
+<style>
+  @font-face { font-family: 'Montserrat'; font-weight: 100 900; src: url(../../assets/fonts/Montserrat-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; src: url(../../assets/fonts/SourceSerif4-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 200 900; src: url(../../assets/fonts/SourceSerif4-italic.woff2) format('woff2'); }
+  :root { --navy: #0b1a31; --gold: #fbc312; --ivory: #f4eddc; --brass: #c99a2e; }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #07111f; }
+  .sc { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+  .paper { background: url(assets/navy-paper.png) 0 0 / 1080px 1920px, #13284a; }
+  .ivory { background: url(assets/ivory-paper.png), #f4eddc; }
+  .chip { display: inline-block; font: 800 26px Montserrat; letter-spacing: .14em; color: var(--navy); background: var(--gold); padding: 10px 18px; border-radius: 10px; }
+  /* the phone */
+  #phone { position: absolute; left: 250px; top: 230px; width: 580px; height: 1160px; border-radius: 74px; background: #0d0f13; box-shadow: 0 50px 110px rgba(0,0,0,.6), inset 0 0 0 4px #2b2f36; }
+  #scr { position: absolute; left: 16px; top: 16px; right: 16px; bottom: 16px; border-radius: 60px; overflow: hidden; background: #f6f6f3; font-family: Montserrat; color: #121821; }
+  .sb { height: 70px; padding: 22px 46px 0; font: 700 26px Montserrat; display: flex; justify-content: space-between; color: #121821; }
+  .view { position: absolute; left: 0; right: 0; top: 70px; bottom: 0; padding: 20px 36px; }
+  .h { font: 800 52px Montserrat; margin: 10px 0 24px; }
+  .mrow { background: #fff; border-radius: 22px; padding: 24px 26px; box-shadow: 0 2px 0 rgba(0,0,0,.05); position: relative; }
+  .mrow .to { font: 800 28px Montserrat; } .mrow .sub { font: 700 26px Montserrat; margin-top: 8px; } .mrow .pre { font: 500 24px/1.35 Montserrat; color: #6b7280; margin-top: 8px; }
+  .mrow .when { position: absolute; right: 24px; top: 26px; font: 700 24px Montserrat; color: #9b7314; }
+  .draft { display: inline-block; margin-top: 12px; font: 800 20px Montserrat; letter-spacing: .1em; color: #b42318; background: #fde8e7; padding: 6px 12px; border-radius: 8px; }
+  .fld { border-bottom: 2px solid #e5e5e0; padding: 16px 0; font: 600 26px Montserrat; color: #6b7280; } .fld b { color: #121821; }
+  #body { font: 500 31px/1.5 Montserrat; padding-top: 22px; color: #121821; }
+  #body .doubt { background-image: linear-gradient(#ffd7d4, #ffd7d4); background-repeat: no-repeat; background-size: 0% 100%; }
+  #flag { position: absolute; left: 60px; top: 560px; font: 800 26px Montserrat; color: #b42318; background: #fff; border: 3px solid #f4a29a; border-radius: 14px; padding: 8px 14px; opacity: 0; }
+  #sched { position: absolute; left: 36px; right: 36px; bottom: 40px; background: #121821; color: #fff; border-radius: 22px; padding: 22px 26px; font: 700 26px Montserrat; opacity: 0; }
+  #send { position: absolute; right: 36px; top: 96px; width: 84px; height: 84px; border-radius: 50%; background: #2f6fe4; color: #fff; font: 900 40px/84px Montserrat; text-align: center; }
+  #sent { position: absolute; left: 60px; right: 60px; top: 520px; background: #121821; color: #fff; border-radius: 26px; padding: 28px; text-align: center; font: 800 40px Montserrat; opacity: 0; }
+  #sent b { color: var(--gold); }
+  #daychip { position: absolute; left: 80px; top: 110px; opacity: 0; }
+  #daychip .chip { font-size: 34px; }
+  /* the photo */
+  .full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+  .vig { position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 45%, transparent 40%, rgba(5,10,20,.8)); }
+  /* the book's line, on paper */
+  #qchip { position: absolute; left: 80px; top: 360px; opacity: 0; }
+  #q1 { position: absolute; left: 80px; width: 920px; top: 470px; font: 700 84px/1.06 'Source Serif 4'; color: #0b1a31; opacity: 0; }
+  #q2 { position: absolute; left: 80px; width: 920px; top: 760px; font: italic 600 64px/1.15 'Source Serif 4'; color: #8a6512; opacity: 0; }
+  #qrule { position: absolute; left: 82px; top: 735px; height: 6px; width: 0; background: var(--gold); border-radius: 3px; }
+  #qsrc { position: absolute; left: 80px; top: 1250px; font: 700 28px Montserrat; letter-spacing: .1em; color: #23406e; opacity: 0; }
+  #cv { position: absolute; left: 290px; top: 340px; width: 500px; height: 750px; box-shadow: 0 50px 100px rgba(0,0,0,.65), -7px 0 0 #0b1a31; border-radius: 2px 6px 6px 2px; }
+  #cvchip { position: absolute; left: 0; right: 0; top: 1150px; text-align: center; opacity: 0; }
+  #cvt { position: absolute; left: 60px; right: 60px; top: 1235px; text-align: center; font: 600 40px/1.25 'Source Serif 4'; color: #fff; opacity: 0; }
+  /* scene: end */
+  #e > * { position: absolute; opacity: 0; }
+  #e-title { left: 64px; top: 210px; font: 600 86px/1.0 'Source Serif 4'; color: #fff; }
+  #e-by { left: 64px; top: 404px; display: flex; align-items: center; gap: 18px; font: 800 32px Montserrat; letter-spacing: .12em; color: var(--gold); }
+  #e-by img { width: 74px; height: 74px; border-radius: 50%; object-fit: cover; object-position: 50% 22%; box-shadow: 0 0 0 3px var(--gold); }
+  #e-stack { left: 40px; top: 515px; width: 405px; }
+  #e-reader { left: 470px; top: 700px; width: 200px; height: 290px; border-radius: 22px; background: linear-gradient(160deg,#2a2f38,#121419); box-shadow: 0 30px 60px rgba(0,0,0,.6), inset 0 0 0 2px #3a404b; }
+  #e-reader img { position: absolute; left: 14px; top: 16px; width: 172px; height: 258px; border-radius: 3px; }
+  .price { font: 800 32px Montserrat; color: #fff; white-space: nowrap; }
+  .price b { color: var(--gold); }
+  .price small { display: block; font: 600 23px Montserrat; color: var(--ivory); opacity: .85; margin-top: 4px; }
+  #e-fmt { left: 66px; top: 1046px; }
+  #e-fmt .row { font: 800 30px/46px Montserrat; color: #fff; white-space: nowrap; }
+  #e-fmt .row b { color: var(--gold); font-weight: 800; }
+  #e-fmt .row i { font-style: normal; font-weight: 600; color: var(--ivory); }
+  #e-avail { left: 66px; top: 1196px; font: italic 600 46px 'Source Serif 4'; color: #fff; white-space: nowrap; }
+  #e-avail b { color: var(--gold); font-weight: 600; }
+  #e-btn { left: 64px; top: 1274px; }
+  #e-btn div { position: relative; overflow: hidden; padding: 22px 34px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 38px Montserrat; white-space: nowrap; box-shadow: 0 9px 0 #b8890b, 0 22px 40px rgba(0,0,0,.45); }
+  #e-btn .gl { position: absolute; top: 0; bottom: 0; width: 140px; left: -180px; background: linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent); }
+  #e-url { left: 66px; top: 1390px; font: 700 31px Montserrat; color: var(--ivory); white-space: nowrap; }
+  #e-url b { color: var(--gold); font-weight: 800; }
+  #caps .cap { position: absolute; left: 84px; width: 800px; top: 1458px; font: 800 48px/1.32 Montserrat; color: #fff; opacity: 0; }
+  #caps .cap span { background: rgba(7,17,31,.8); padding: 6px 18px; border-radius: 14px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+</style>
+</head>
+<body>
+<!-- 1, 2 and 5: the phone (drafts list, compose, send) -->
+<div class="sc paper" id="sp">
+  <div id="daychip"><span class="chip" id="dayt">DAY 1</span></div>
+  <div id="phone"><div id="scr">
+    <div class="sb"><span id="clock">21:12</span><span>●●● ▮</span></div>
+    <div class="view" id="vList"><div class="h">Drafts</div>
+      <div class="mrow"><div class="to">To: Sam</div><div class="when" id="when">Mon</div><div class="sub">Quick question about the workshop space</div>
+        <div class="pre">Hi Sam, I’m planning a small workshop and wondered if…</div><div class="draft">DRAFT</div></div></div>
+    <div class="view" id="vEdit" style="opacity:0"><div class="h" style="font-size:40px">New message</div><div id="send">↑</div>
+      <div class="fld">To: <b>Sam</b></div><div class="fld">Subject: <b>Quick question about the workshop space</b></div>
+      <div id="body">Hi Sam,<br><br>I’m planning a small workshop and wondered if your space might be free on a weekday evening. <span class="doubt" id="dz"><span id="dtxt">Could we talk this week?</span></span><br><br>Thanks,<br>Maya</div>
+      <div id="flag">too direct?</div>
+      <div id="sched">⏱ Schedule send: <span style="color:#fbc312">tomorrow, 09:00</span></div>
+      <div id="sent">Sent <b>✓</b></div></div>
+  </div></div>
+</div>
+<!-- 3. the thumb over Send (Canva-generated image) -->
+<div class="sc" id="s3"><img class="full" id="i3" src="assets/thumb-send.jpg" alt=""><div class="vig"></div></div>
+<!-- 4. the book's line, on ivory paper -->
+<div class="sc ivory" id="s4"><div id="qchip"><span class="chip">CHAPTER 5</span></div>
+  <div id="q1">Confidence can grow through experience.</div><div id="qrule"></div>
+  <div id="q2">You do not have to manufacture full confidence as a condition of gaining experience.</div>
+  <div id="qsrc">FROM <i>THE LIFE YOU KEEP PLANNING</i></div></div>
+<!-- 6. the real cover -->
+<div class="sc paper" id="s6"><img id="cv" src="assets/front-cover.png" alt="">
+  <div id="cvchip"><span class="chip">CHAPTER 5</span></div><div id="cvt">The Psychology of Taking Action</div></div>
+<div class="sc paper" id="s7"><div id="e">
+  <div id="e-title">The Life You<br>Keep Planning</div>
+  <div id="e-by"><img src="assets/author-portrait.jpg" alt="">Belinda Bright N.</div>
+  <img id="e-stack" src="assets/book-stack-soft.png" alt="">
+  <div id="e-reader"><img src="assets/front-cover.png" alt=""></div>
+    <div id="e-fmt"><div class="row">Kindle eBook <b>£3.99</b> <i>· Pre-order now</i></div><div class="row">Paperback <b>£9.99</b> <i>· Out 23 January 2027</i></div><div class="row">Hardcover <i>· Coming soon</i></div></div>
+  <div id="e-avail">Available from <b>23 January 2027</b></div>
+  <div id="e-btn"><div>Kindle pre-order on Amazon UK<span class="gl"></span></div></div>
+  <div id="e-url">Author’s website: <b>thelifeyoukeepplanningbook.netlify.app</b></div>
+</div></div>
+<div class="sc" id="caps" style="opacity:1"></div>
+<div id="grain" style="position:absolute;inset:0;background:url(assets/navy-paper.png) 0 0/540px 960px;mix-blend-mode:overlay;opacity:.3;pointer-events:none"></div>
+<script src="audio/captions.js"></script>
+<script>
+const DURATION = 31.5; window.DURATION = DURATION;
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const k = (t, a, b) => clamp((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const bo = x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const $ = id => document.getElementById(id);
+const pop = (id, t, a, dy = 30, dur = .45) => { const el = $(id), x = eo(k(t, a, a + dur)); el.style.opacity = x; el.style.transform = `translateY(${((1 - x) * dy).toFixed(1)}px)`; return x; };
+const vis = (id, o) => { $(id).style.opacity = o.toFixed(3); $(id).style.display = o <= 0 ? 'none' : ''; };
+let CAPS = [];
+function render(t) {
+  const win = (a, b) => Math.min(k(t, a, a + .3), 1 - k(t, b - .3, b));
+  vis('sp', Math.max(win(0, 8.85), win(22.4, 24.3)) * (t < 8.85 || t > 22.4 ? 1 : 0));
+  vis('s3', win(8.7, 15.15)); vis('s4', win(15.0, 22.55)); vis('s6', win(24.15, 26.0)); vis('s7', t >= 25.85 ? win(25.85, 99) : 0);
+  // the phone floats in; the draft ages from Monday to Thursday
+  const pin = eo(k(t, 0, .6)); $('phone').style.transform = `translateY(${((1 - pin) * 160).toFixed(1)}px) rotate(${lerp(3, -1.5, eio(k(t, 0, 8.8))).toFixed(2)}deg)`;
+  const days = ['Mon', 'Tue', 'Wed', 'Thu'], di = t < 22 ? Math.min(3, Math.floor(clamp((t - 1.5) / .32, 0, 3.99))) : 3;
+  $('when').textContent = t < 1.5 ? 'Mon' : days[di]; $('dayt').textContent = `DAY ${di + 1} IN DRAFTS`; pop('daychip', t, 1.4, 16);
+  if (t > 22.4) $('dayt').textContent = 'TODAY';
+  $('clock').textContent = t < 4.2 ? '21:12' : t < 22.4 ? '22:47' : '09:03';
+  // compose: the doubt highlight, the rewrite, the "tomorrow" instinct
+  const ed = t > 4.2; vis('vList', ed ? 0 : 1); vis('vEdit', ed ? 1 : 0);
+  $('dz').style.backgroundSize = `${(100 * eio(k(t, 5.4, 6.1))).toFixed(1)}% 100%`;
+  pop('flag', t, 5.95, 12, .3); $('flag').style.top = '575px'; $('flag').style.left = '300px';
+  const full = 'Could we talk this week?', rew = 'Would it be possible, perhaps, to chat at some point?';
+  let txt = full;
+  if (t > 6.5 && t < 22.4) { const del = Math.floor(clamp((t - 6.5) * 40, 0, full.length)); txt = full.slice(0, full.length - del); if (del >= full.length) txt = rew.slice(0, Math.floor(clamp((t - 7.1) * 30, 0, rew.length))); }
+  if (t >= 22.4) txt = full;
+  $('dtxt').textContent = txt;
+  pop('sched', t, 7.45, 30, .3);
+  // the payoff: Send pressed, sent
+  if (t >= 22.4) { $('sched').style.opacity = 0; $('flag').style.opacity = 0; $('dz').style.backgroundSize = '0% 100%'; }
+  const pr = Math.sin(Math.PI * k(t, 22.95, 23.25)); $('send').style.transform = `scale(${(1 - .18 * pr).toFixed(3)})`;
+  const st = bo(k(t, 23.2, 23.6)); $('sent').style.opacity = t > 23.2 ? clamp(st * 2) : 0; $('sent').style.transform = `scale(${Math.max(.01, st).toFixed(3)})`;
+  // the thumb photo: slow push towards Send
+  $('i3').style.transformOrigin = '30% 62%'; $('i3').style.transform = `scale(${lerp(1.0, 1.16, eio(k(t, 8.7, 15.1))).toFixed(4)})`;
+  // the line on paper
+  pop('qchip', t, 15.2, 16); pop('q1', t, 15.3, 30, .5); $('qrule').style.width = `${(520 * eio(k(t, 16.6, 17.2))).toFixed(1)}px`; pop('q2', t, 17.5, 30, .5); pop('qsrc', t, 19.6, 16);
+  // the cover
+  const cv = eo(k(t, 24.2, 24.8)); $('cv').style.transform = `perspective(1600px) translateY(${((1 - cv) * 90).toFixed(1)}px) rotateY(${lerp(-18, 6, eio(k(t, 24.2, 26))).toFixed(2)}deg) scale(${lerp(.9, 1, cv).toFixed(3)})`;
+  pop('cvchip', t, 24.4, 16); pop('cvt', t, 24.6, 16);
+  // end card
+  const E = (id, a, dy = 30) => pop(id, t, a, dy);
+  E('e-title', 25.95); E('e-by', 26.2, 20); E('e-stack', 26.0, 140); E('e-reader', 26.25, 140); E('e-fmt', 26.5, 20); E('e-avail', 26.65, 20); E('e-btn', 26.75); E('e-url', 26.95, 20);
+  const pl = Math.sin(Math.PI * k(t, 27.1, 27.6)); $('e-btn').style.transform += ` scale(${(1 + .05 * pl).toFixed(4)})`; $('e-btn').style.transformOrigin = '0 50%';
+  document.querySelector('#e-btn .gl').style.left = `${lerp(-180, 900, eio(k(t, 27.2, 27.9)))}px`;
+  for (const c of CAPS) { const a = eo(k(t, c.s - .04, c.s + .12)) * (1 - k(t, c.e - .1, c.e)); c.el.style.opacity = a; c.el.style.transform = `translateY(${((1 - eo(k(t, c.s - .04, c.s + .16))) * 14).toFixed(1)}px)`; }
+}
+window.seek = t => render(t);
+window.READY = (async () => {
+  await Promise.all(['800 40px Montserrat', '700 40px Montserrat', '500 40px Montserrat', '700 40px "Source Serif 4"', 'italic 600 40px "Source Serif 4"'].map(f => document.fonts.load(f)));
+  CAPS = (window.CAPS_DATA || []).map(c => ({ ...c }));
+  for (const c of CAPS) { const d = document.createElement('div'); d.className = 'cap'; const s = document.createElement('span'); s.textContent = c.text; d.appendChild(s); $('caps').appendChild(d); c.el = d; }
+  for (const img of document.images) if (!img.complete) await new Promise(r => { img.onload = r; img.onerror = r; });
+  render(0); return true;
+})();
+if (!new URLSearchParams(location.search).has('render')) READY.then(() => { const t0 = performance.now(); const loop = () => { render(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); }; loop(); });
+</script>
+</body>
+</html>

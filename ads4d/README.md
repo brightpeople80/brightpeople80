@@ -9,6 +9,7 @@ The narration is a temporary voice (`audio/voice-standin/`). Every end card uses
 
 | Ad | Hook | Status |
 |---|---|---|
+| `ch5/` | Chapter 5, "The email that stayed in drafts": an animated phone (drafts ageing from Mon to Thu, a "too direct?" doubt, the rewrite, schedule send), the thumb over Send, the book's line on ivory paper, then Send pressed. **Male voice (Daniel)** | done (31.5 s) |
 | `ch1/` | Chapter 1, "The notebook full of tomorrow": a cinematic diary (SUN 21:43, then a hard cut to MON 08:45), the week slipping, the book's line in navy and gold particles | done (28 s) |
 | `ch6/` | Chapter 6, "The morning after the breakthrough": editorial photo cards (Monday / Tuesday), the START–MIDDLE–DONE timeline, the book's line, the real cover | done (26 s) |
 | `notes/` | "Notes full. Tabs open. Nothing started." A tower of idea notes; the gold line circles it, pulls one out, the rest collapse, and it becomes the bookmark | done |
