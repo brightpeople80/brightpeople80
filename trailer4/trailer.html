@@ -64,7 +64,7 @@
   <canvas id="c" width="1080" height="1920"></canvas>
   <!-- opening photo: a person scrolling through options at night -->
   <div class="layer" id="photo">
-    <img id="ph" src="assets/woman-phone-bed.jpg" alt="">
+    <img id="ph" src="assets/woman-night-scroll.jpg" alt="">
     <img id="ph3" src="assets/woman-writing.jpg" alt="" style="display:none">
     <div class="shade"></div>
     <div id="warm"></div>
@@ -267,7 +267,7 @@ let CAPS = [];
 const PEEKS = [[0, 6.2], [1, 6.9], [3, 7.5], [2, 8.1], [4, 8.6], [1, 9.2], [0, 9.7]];   // door, time: the line peeks at each option
 const OPT = [[0, 2.85, 70, 250, -3], [1, 3.15, 450, 272, 3], [2, 3.45, 80, 372, -2], [3, 3.75, 545, 394, 3], [4, 4.05, 230, 492, -2]];
 // her shots: [in, out, scale from, scale to, origin x %, origin y %, grade]
-const HER = [[0, 5.6, 1.04, 1.12, 45, 45, '', 'ph'], [7.8, 9.05, 1.9, 2.02, 58, 47, 'cool', 'ph'], [17.75, 19.12, 1.02, 1.14, 22, 78, 'warm', 'ph3']];
+const HER = [[0, 5.6, 1.04, 1.12, 50, 50, '', 'ph'], [7.8, 9.05, 1.9, 2.02, 52, 44, 'cool', 'ph'], [17.75, 19.12, 1.02, 1.14, 22, 78, 'warm', 'ph3']];
 function render(t) {
   setCamera(t);
   // ---- doors
@@ -304,12 +304,12 @@ function render(t) {
     const img = $(imgId); img.style.transformOrigin = `${ox}% ${oy}%`; img.style.transform = `scale(${lerp(s0, s1, eio(u)).toFixed(4)})`;
     img.style.filter = grade === 'cool' ? 'brightness(.78) saturate(.6) hue-rotate(-12deg)' : grade === 'warm' ? `brightness(${(1 + .18 * eio(u)).toFixed(3)}) saturate(1.15)` : '';
     $('warm').style.opacity = grade === 'warm' ? (.15 + .35 * eio(u)).toFixed(3) : 0;
-    if (t0 === 0 && t >= 2.72) { img.style.transformOrigin = '40% 64%'; img.style.transform = `scale(${lerp(1.14, 1.22, eio(k(t, 2.72, 5.6))).toFixed(4)})`; }
+    if (t0 === 0 && t >= 2.72) { img.style.transformOrigin = '38% 58%'; img.style.transform = `scale(${lerp(1.14, 1.22, eio(k(t, 2.72, 5.6))).toFixed(4)})`; }
   }
   for (const [i, t0, x, y, rot] of OPT) {
     const el = $('o' + i), a = eo(k(t, t0, t0 + .35)), up = k(t, t0 + .35, 5.6);
     el.style.opacity = a * (1 - k(t, 4.75, 5.2));
-    el.style.transform = `translate(${lerp(300, x, a).toFixed(1)}px, ${(lerp(1150, y, a) - up * 50).toFixed(1)}px) rotate(${rot}deg) scale(${lerp(.35, 1, a).toFixed(3)})`;
+    el.style.transform = `translate(${lerp(300, x, a).toFixed(1)}px, ${(lerp(1080, y, a) - up * 50).toFixed(1)}px) rotate(${rot}deg) scale(${lerp(.35, 1, a).toFixed(3)})`;
   }
   // ---- DOM: chapter 3 title
   const ct = eo(k(t, 10.85, 11.3)), cOut = eio(k(t, 16.2, 16.6));
