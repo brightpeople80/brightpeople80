@@ -1,0 +1,282 @@
+[
+ {
+  "id": "l1",
+  "text": "Monday. The breakthrough. The avoided email, finally sent.",
+  "start": 0.35,
+  "dur": 3.38,
+  "words": [
+   {
+    "w": "Monday.",
+    "t": 0.35
+   },
+   {
+    "w": "The",
+    "t": 0.877
+   },
+   {
+    "w": "breakthrough.",
+    "t": 1.252
+   },
+   {
+    "w": "The",
+    "t": 1.555
+   },
+   {
+    "w": "avoided",
+    "t": 1.938
+   },
+   {
+    "w": "email,",
+    "t": 2.242
+   },
+   {
+    "w": "finally",
+    "t": 2.688
+   },
+   {
+    "w": "sent.",
+    "t": 3.204
+   }
+  ]
+ },
+ {
+  "id": "l2",
+  "text": "Tuesday evening. Tired, and the next task has none of the drama.",
+  "start": 4.4,
+  "dur": 3.577,
+  "words": [
+   {
+    "w": "Tuesday",
+    "t": 4.4
+   },
+   {
+    "w": "evening.",
+    "t": 4.923
+   },
+   {
+    "w": "Tired,",
+    "t": 5.5
+   },
+   {
+    "w": "and",
+    "t": 5.89
+   },
+   {
+    "w": "the",
+    "t": 6.073
+   },
+   {
+    "w": "next",
+    "t": 6.243
+   },
+   {
+    "w": "task",
+    "t": 6.38
+   },
+   {
+    "w": "has",
+    "t": 6.615
+   },
+   {
+    "w": "none",
+    "t": 6.988
+   },
+   {
+    "w": "of",
+    "t": 7.084
+   },
+   {
+    "w": "the",
+    "t": 7.266
+   },
+   {
+    "w": "drama.",
+    "t": 7.524
+   }
+  ]
+ },
+ {
+  "id": "l3",
+  "text": "This is where many goals become vulnerable.",
+  "start": 8.7,
+  "dur": 2.23,
+  "words": [
+   {
+    "w": "This",
+    "t": 8.7
+   },
+   {
+    "w": "is",
+    "t": 9.079
+   },
+   {
+    "w": "where",
+    "t": 9.254
+   },
+   {
+    "w": "many",
+    "t": 9.445
+   },
+   {
+    "w": "goals",
+    "t": 9.836
+   },
+   {
+    "w": "become",
+    "t": 10.084
+   },
+   {
+    "w": "vulnerable.",
+    "t": 10.346
+   }
+  ]
+ },
+ {
+  "id": "l4",
+  "text": "The habit to protect is not perfect performance. It is a reliable return to the next useful action.",
+  "start": 11.4,
+  "dur": 5.598,
+  "words": [
+   {
+    "w": "The",
+    "t": 11.4
+   },
+   {
+    "w": "habit",
+    "t": 11.668
+   },
+   {
+    "w": "to",
+    "t": 12.001
+   },
+   {
+    "w": "protect",
+    "t": 12.22
+   },
+   {
+    "w": "is",
+    "t": 12.581
+   },
+   {
+    "w": "not",
+    "t": 12.799
+   },
+   {
+    "w": "perfect",
+    "t": 13.044
+   },
+   {
+    "w": "performance.",
+    "t": 13.291
+   },
+   {
+    "w": "It",
+    "t": 13.74
+   },
+   {
+    "w": "is",
+    "t": 14.336
+   },
+   {
+    "w": "a",
+    "t": 14.526
+   },
+   {
+    "w": "reliable",
+    "t": 14.606
+   },
+   {
+    "w": "return",
+    "t": 14.933
+   },
+   {
+    "w": "to",
+    "t": 15.49
+   },
+   {
+    "w": "the",
+    "t": 15.673
+   },
+   {
+    "w": "next",
+    "t": 15.806
+   },
+   {
+    "w": "useful",
+    "t": 16.08
+   },
+   {
+    "w": "action.",
+    "t": 16.424
+   }
+  ]
+ },
+ {
+  "id": "l5",
+  "text": "Chapter six of The Life You Keep Planning. Pre-order the Kindle edition on Amazon U.K.",
+  "start": 17.6,
+  "dur": 4.823,
+  "words": [
+   {
+    "w": "Chapter",
+    "t": 17.6
+   },
+   {
+    "w": "six",
+    "t": 18.117
+   },
+   {
+    "w": "of",
+    "t": 18.34
+   },
+   {
+    "w": "The",
+    "t": 18.671
+   },
+   {
+    "w": "Life",
+    "t": 18.857
+   },
+   {
+    "w": "You",
+    "t": 18.937
+   },
+   {
+    "w": "Keep",
+    "t": 19.088
+   },
+   {
+    "w": "Planning.",
+    "t": 19.29
+   },
+   {
+    "w": "Pre-order",
+    "t": 19.629
+   },
+   {
+    "w": "the",
+    "t": 20.362
+   },
+   {
+    "w": "Kindle",
+    "t": 20.548
+   },
+   {
+    "w": "edition",
+    "t": 20.737
+   },
+   {
+    "w": "on",
+    "t": 21.252
+   },
+   {
+    "w": "Amazon",
+    "t": 21.421
+   },
+   {
+    "w": "U.K.",
+    "t": 21.838
+   }
+  ]
+ }
+]
