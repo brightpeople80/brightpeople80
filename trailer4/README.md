@@ -1,0 +1,23 @@
+# Chapter 3 trailer: "The Fear of Missing Something Better"
+
+`out/chapter3-trailer-vertical-1080x1920.mp4`: 1080×1920, 30 fps, 34 s.
+
+## Story
+| Time | Shot | Narration |
+|---|---|---|
+| 0–2.7 | Woman scrolling in bed at night | It's late, and you're still scrolling. |
+| 2.7–5.5 | Man holding his phone. Option cards rise: a new job, a course, the coast, the other idea, a better time | Every option looks better than the one you're holding. |
+| 5.5–13 | A corridor of paper doors labelled NEW JOB, A COURSE, THE IDEA, MOVE AWAY and LATER. The gold line peeks into each one and can't choose | So you compare, you save, you wait… That's the fear of missing something better. |
+| 13–19 | **Chapter 3.** The line picks THE IDEA, the other doors fold flat, the chosen door opens to light, and a path appears | Chapter three shows why choosing feels like losing, so you can pick one path and walk it. |
+| 19–26 | The book with the contents card for all 8 chapters. Chapter 3 is highlighted, and 2 and 7 light up as they're named | It's one of eight chapters… |
+| 26–34 | End card: book stack, e-reader, paperback £9.99 · coming soon, Kindle £3.99, **Pre-order now on Amazon UK**, out 23 January 2027, the website | The Life You Keep Planning… Pre-order now on Amazon UK. Out January the twenty-third. |
+
+## Build
+Edit the page in `src/`, then run `tools/assemble.sh` to build `trailer.html` from `src/head.html`, `src/helpers.js` and `src/scene.js`.
+
+The narration is a temporary British AI voice in `audio/voice-standin/`. To make the soundtrack and captions, run `python audio/make_audio.py audio/voice-standin` and `python3 tools/build_captions.py`.
+
+`node render.js` renders the video. Add `--stills 3,9,15` for PNG frames only.
+
+## Photos
+`assets/woman-phone-bed.jpg` and `assets/man-phone-day.jpg` were cropped from screenshots the author supplied. Confirm the usage rights before running this as a paid ad.
