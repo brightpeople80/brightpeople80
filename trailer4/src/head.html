@@ -15,9 +15,11 @@
   /* ---- layer: opening photo + option cards ---- */
   #photo { opacity: 1; }
   #photo img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+  #warm { position: absolute; inset: 0; opacity: 0; mix-blend-mode: soft-light;
+    background: radial-gradient(80% 60% at 70% 30%, rgba(255,214,120,.95), rgba(251,195,18,.55) 55%, rgba(120,60,0,.4)); }
   #photo .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,17,31,.15), rgba(7,17,31,.0) 40%, rgba(7,17,31,.55)); }
   .opt { position: absolute; left: 0; top: 0; padding: 18px 28px 18px 22px; border-radius: 14px; background: #f4eddc; color: #0b1a31; white-space: nowrap;
-    font: 800 40px Montserrat; box-shadow: 0 18px 40px rgba(0,0,0,.5), inset 0 0 0 3px #c99a2e; opacity: 0; }
+    font: 800 34px Montserrat; box-shadow: 0 18px 40px rgba(0,0,0,.5), inset 0 0 0 3px #c99a2e; opacity: 0; }
   .opt i { font-style: normal; color: #b8860b; margin-right: 12px; }
   /* ---- layer: chapter title over the doors ---- */
   #ch3 { position: absolute; left: 90px; top: 268px; width: 820px; }
@@ -62,9 +64,9 @@
   <canvas id="c" width="1080" height="1920"></canvas>
   <!-- opening photo: a person scrolling through options at night -->
   <div class="layer" id="photo">
-    <img id="ph" src="assets/woman-phone-bed.jpg" alt="" style="transform-origin: 45% 45%">
-    <img id="ph2" src="assets/man-phone-day.jpg" alt="" style="transform-origin: 23% 34%">
+    <img id="ph" src="assets/woman-phone-bed.jpg" alt="">
     <div class="shade"></div>
+    <div id="warm"></div>
     <div class="opt" id="o0"><i>★</i>A new job?</div>
     <div class="opt" id="o1"><i>★</i>That online course?</div>
     <div class="opt" id="o2"><i>★</i>Move to the coast?</div>

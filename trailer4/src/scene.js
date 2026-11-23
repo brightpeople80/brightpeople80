@@ -77,7 +77,9 @@ const $ = id => document.getElementById(id);
 const capsEl = $('caps');
 let CAPS = [];
 const PEEKS = [[0, 6.2], [1, 6.9], [3, 7.5], [2, 8.1], [4, 8.6], [1, 9.2], [0, 9.7]];   // door, time: the line peeks at each option
-const OPT = [[0, 2.85, 110, 800, -4], [1, 3.15, 330, 940, 3], [2, 3.45, 90, 1080, -2], [3, 3.75, 350, 1220, 4], [4, 4.05, 130, 1360, -3]];
+const OPT = [[0, 2.85, 70, 250, -3], [1, 3.15, 450, 272, 3], [2, 3.45, 80, 372, -2], [3, 3.75, 545, 394, 3], [4, 4.05, 230, 492, -2]];
+// her shots: [in, out, scale from, scale to, origin x %, origin y %, grade]
+const HER = [[0, 5.6, 1.04, 1.12, 45, 45, ''], [7.8, 9.05, 1.9, 2.02, 58, 47, 'cool'], [17.85, 19.12, 1.14, 1.3, 52, 44, 'warm']];
 function render(t) {
   setCamera(t);
   // ---- doors
@@ -102,15 +104,23 @@ function render(t) {
   B.book.visible = t > 19.0;
   renderer.render(scene, camera);
 
-  // ---- DOM: opening photo + options
-  const ph = $('photo'), phOut = eio(k(t, 4.9, 5.6));
-  ph.style.opacity = 1 - phOut; ph.style.display = phOut >= 1 ? 'none' : '';
-  $('ph').style.transform = `scale(${(1.04 + .08 * eio(k(t, 0, 2.9))).toFixed(4)})`;
-  const p2 = eio(k(t, 2.5, 2.75)); $('ph2').style.opacity = p2; $('ph2').style.transform = `scale(${(1.02 + .08 * eio(k(t, 2.5, 5.6))).toFixed(4)})`;
+  // ---- DOM: her story. One person carries the film: scrolling, stuck, then choosing
+  let shot = null; for (const sh of HER) if (t >= sh[0] - .12 && t < sh[1] + .12) shot = sh;
+  const ph = $('photo');
+  if (!shot) ph.style.display = 'none';
+  else {
+    const [t0, t1, s0, s1, ox, oy, grade] = shot, u = k(t, t0, t1);
+    ph.style.display = ''; ph.style.opacity = Math.min(k(t, t0 - .12, t0 + .05), 1 - k(t, t1 - .05, t1 + .12), 1).toFixed(3);
+    if (t0 === 0) ph.style.opacity = (1 - k(t, 4.9, 5.6)).toFixed(3);
+    const img = $('ph'); img.style.transformOrigin = `${ox}% ${oy}%`; img.style.transform = `scale(${lerp(s0, s1, eio(u)).toFixed(4)})`;
+    img.style.filter = grade === 'cool' ? 'brightness(.78) saturate(.6) hue-rotate(-12deg)' : grade === 'warm' ? `brightness(${(1 + .18 * eio(u)).toFixed(3)}) saturate(1.15)` : '';
+    $('warm').style.opacity = grade === 'warm' ? (.35 + .55 * eio(u)).toFixed(3) : 0;
+    if (t0 === 0 && t >= 2.72) { img.style.transformOrigin = '40% 64%'; img.style.transform = `scale(${lerp(1.14, 1.22, eio(k(t, 2.72, 5.6))).toFixed(4)})`; }
+  }
   for (const [i, t0, x, y, rot] of OPT) {
     const el = $('o' + i), a = eo(k(t, t0, t0 + .35)), up = k(t, t0 + .35, 5.6);
     el.style.opacity = a * (1 - k(t, 4.75, 5.2));
-    el.style.transform = `translate(${lerp(200, x, a).toFixed(1)}px, ${(lerp(640, y, a) - up * 60).toFixed(1)}px) rotate(${rot}deg) scale(${lerp(.35, 1, a).toFixed(3)})`;
+    el.style.transform = `translate(${lerp(300, x, a).toFixed(1)}px, ${(lerp(1150, y, a) - up * 50).toFixed(1)}px) rotate(${rot}deg) scale(${lerp(.35, 1, a).toFixed(3)})`;
   }
   // ---- DOM: chapter 3 title
   const ct = eo(k(t, 10.85, 11.3)), cOut = eio(k(t, 16.2, 16.6));

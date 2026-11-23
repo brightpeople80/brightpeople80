@@ -2,7 +2,7 @@ window.CAPS_DATA = [
  {
   "text": "It’s late, and you’re still scrolling.",
   "s": 0.35,
-  "e": 1.707
+  "e": 2.578
  },
  {
   "text": "Every option looks better",
@@ -22,7 +22,7 @@ window.CAPS_DATA = [
  {
   "text": "and nothing gets chosen.",
   "s": 7.501,
-  "e": 8.38
+  "e": 9.303
  },
  {
   "text": "That’s the fear of missing something better.",
@@ -37,7 +37,7 @@ window.CAPS_DATA = [
  {
   "text": "so you can pick one path and walk it.",
   "s": 15.974,
-  "e": 17.758
+  "e": 18.43
  },
  {
   "text": "It’s one of eight chapters,",

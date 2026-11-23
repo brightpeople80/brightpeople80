@@ -1,10 +1,10 @@
 """Writes audio/captions.js (short caption phrases) from audio/timeline.json. Run from the project root."""
 import json
 TL = {l['id']: l for l in json.load(open('audio/timeline.json'))}
-P = [('l1', 0, 4, 'It’s late, and you’re still scrolling.'), ('l2', 0, 3, 'Every option looks better'), ('l2', 4, 8, 'than the one you’re holding.'),
-     ('l3', 0, 6, 'So you compare, you save, you wait,'), ('l3', 7, 9, 'and nothing gets chosen.'),
+P = [('l1', 0, 5, 'It’s late, and you’re still scrolling.'), ('l2', 0, 3, 'Every option looks better'), ('l2', 4, 8, 'than the one you’re holding.'),
+     ('l3', 0, 6, 'So you compare, you save, you wait,'), ('l3', 7, 10, 'and nothing gets chosen.'),
      ('l4', 0, 6, 'That’s the fear of missing something better.'),
-     ('l5', 0, 7, 'Chapter 3 shows why choosing feels like losing,'), ('l5', 8, 15, 'so you can pick one path and walk it.'),
+     ('l5', 0, 7, 'Chapter 3 shows why choosing feels like losing,'), ('l5', 8, 16, 'so you can pick one path and walk it.'),
      ('l6', 0, 4, 'It’s one of eight chapters,'), ('l6', 5, 10, 'from why planning feels like progress,'), ('l6', 11, 19, 'to knowing when to persist, and when to pivot.'),
      ('l7', 0, 8, 'The Life You Keep Planning, by Belinda Bright N.'), ('l8', 0, 4, 'Pre-order now on Amazon UK.'), ('l9', 0, 3, 'Out 23 January 2027.')]
 out = []
