@@ -16,7 +16,7 @@ function paperCard(w, h, draw) {
 }
 async function build() {
   await Promise.all(['800 60px Montserrat', '900 60px Montserrat', '700 60px Montserrat', '600 60px "Source Serif 4"', 'italic 700 60px "Source Serif 4"', '600 60px Caveat'].map(f => document.fonts.load(f)));
-  const [frontT, spineT, backT, authorT] = await Promise.all(['assets/front-cover.png', 'assets/spine.png', 'assets/back-cover.png', 'assets/author-belinda.jpg'].map(loadTex));
+  const [frontT, spineT, backT, authorT] = await Promise.all(['assets/front-cover.png', 'assets/spine.png', 'assets/back-cover.png', 'assets/author-portrait.jpg'].map(loadTex));
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(600, 400), M.table); floor.rotation.x = -Math.PI / 2; floor.position.x = 60; floor.receiveShadow = true; scene.add(floor);
 
   // ---- A: the SOMEDAY drawer and three cards
@@ -48,10 +48,10 @@ async function build() {
 
   // ---- C: the author's portrait, framed and standing on the table
   B.frame = new THREE.Group(); B.frame.position.set(80, 0, 0); B.frame.rotation.x = -.06; scene.add(B.frame);
-  const outer = box(7.4, 12.9, .5, M.brass); outer.position.set(0, 6.6, 0); B.frame.add(outer);
-  const mat = box(6.9, 12.4, .06, M.ivory); mat.position.set(0, 6.6, .27); B.frame.add(mat);
-  const photo = new THREE.Mesh(new THREE.PlaneGeometry(6.1, 11.0), new THREE.MeshStandardMaterial({ map: authorT, roughness: .6 })); photo.position.set(0, 6.6, .31); B.frame.add(photo);
-  const foot = box(7.4, .4, 2.2, M.navy); foot.position.set(0, .2, -.6); B.frame.add(foot);
+  const outer = box(9.0, 11.1, .5, M.brass); outer.position.set(0, 5.75, 0); B.frame.add(outer);
+  const mat = box(8.5, 10.6, .06, M.ivory); mat.position.set(0, 5.75, .27); B.frame.add(mat);
+  const photo = new THREE.Mesh(new THREE.PlaneGeometry(7.6, 9.5), new THREE.MeshStandardMaterial({ map: authorT, roughness: .6 })); photo.position.set(0, 5.85, .31); B.frame.add(photo);
+  const foot = box(9.0, .4, 2.2, M.navy); foot.position.set(0, .2, -.6); B.frame.add(foot);
   B.namePlate = brassPlate('BELINDA BRIGHT N.', 5.0, .95); B.namePlate.position.set(80, .62, 3.0); B.namePlate.rotation.x = -1.05; scene.add(B.namePlate);
   const spot = new THREE.SpotLight('#ffe7bf', 70, 50, .45, .6, 1.2); spot.position.set(74, 20, 16); spot.target = B.frame; spot.castShadow = true; scene.add(spot);
 
@@ -103,7 +103,7 @@ async function build() {
 const CAM = [
   [0.0, [0, 5.75, -9.2], 3, 2, 19], [0.6, [0, 5.75, -9.2], 2, 2, 18.5], [1.5, [0, 8.6, -6], 2, 6, 24], [5.0, [0, 10.4, -5], -4, 8, 30], [7.1, [0, 10.4, -5], -7, 9, 31],
   [7.12, [40.8, -3.2, 1.5], 6, 40, 35], [10.93, [40.8, -3.2, 1.5], -5, 42, 33],
-  [10.95, [80, 6.3, 0], -24, 6, 28], [15.53, [80, 6.4, 0], 0, 2, 19.5],
+  [10.95, [80, 4.2, 0], -24, 6, 30], [15.53, [80, 4.3, 0], 0, 2, 22.5],
   [15.55, [120, 7.4, 3], -12, 2, 27], [16.9, [120, 7.4, 3], 0, 2, 25.5], [17.8, [119, 9.2, 1.5], 0, 44, 30], [29.3, [119, 9.4, 1.5], 0, 44, 31],
   [34.5, [120, 8.6, 3], -22, 6, 30], [46.5, [120, 8.6, 3], 16, 6, 30],
 ];
@@ -173,7 +173,7 @@ function render(t) {
   const dim = eio(k(t, 34.6, 35.2));
   canvas.style.filter = dim > 0 ? `blur(${(dim * 8).toFixed(2)}px) brightness(${(1 - dim * .3).toFixed(3)})` : '';
   $('endbg').style.opacity = dim;
-  S('e-title', 34.8); S('e-by', 35.3, 20); S('e-stack', 35.1, 140); S('e-reader', 35.4, 140); S('e-paper', 35.9, 20); S('e-kindle', 36.0, 20);
+  S('e-title', 34.8); S('e-by', 35.3, 20); S('e-stack', 35.1, 140); S('e-reader', 35.4, 140); S('e-fmt', 35.9, 20);
   S('e-avail', 36.1, 20); S('e-url', 41.3, 20); S('e-btn', 42.85);
   const pl = Math.sin(Math.PI * k(t, 43.0, 43.5)); $('e-btn').style.transform += ` scale(${(1 + .05 * pl).toFixed(4)})`; $('e-btn').style.transformOrigin = '0 50%';
   document.querySelector('#e-btn .gl').style.left = `${lerp(-180, 900, eio(k(t, 43.1, 43.8)))}px`;

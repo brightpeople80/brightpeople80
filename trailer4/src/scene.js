@@ -142,7 +142,7 @@ function render(t) {
   $('endbg').style.opacity = dim;
   const S = (id, a, b, dy = 40) => { const el = $(id), x = eo(k(t, a, b)); el.style.opacity = x; el.style.transform = `translateY(${((1 - x) * dy).toFixed(1)}px)`; };
   S('e-title', 26.0, 26.45); S('e-author', 26.15, 26.55, 20); S('e-stack', 26.1, 26.7, 140); S('e-reader', 26.35, 26.85, 140);
-  S('e-paper', 26.6, 26.95, 20); S('e-kindle', 26.65, 27.0, 20); S('e-btn', 26.5, 26.9, 30); S('e-date', 26.7, 27.05, 20); S('e-url', 26.75, 27.1, 20);
+  S('e-fmt', 26.6, 26.95, 20); S('e-btn', 26.5, 26.9, 30); S('e-date', 26.7, 27.05, 20); S('e-url', 26.75, 27.1, 20);
   const pulse = Math.sin(Math.PI * k(t, 29.0, 29.5));
   $('e-btn').style.transform += ` scale(${(1 + .05 * pulse).toFixed(4)})`; $('e-btn').style.transformOrigin = '0 50%';
   document.querySelector('#e-btn .gl').style.left = `${lerp(-180, 900, eio(k(t, 29.1, 29.8)))}px`;

@@ -39,19 +39,21 @@
   #end > * { position: absolute; opacity: 0; }
   #e-title { left: 64px; top: 228px; font: 600 86px/1.0 'Source Serif 4'; color: #fff; letter-spacing: -.01em; }
   #e-author { left: 66px; top: 425px; font: 800 34px Montserrat; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; }
-  #e-stack { left: 40px; top: 500px; width: 470px; }
-  #e-reader { left: 540px; top: 740px; width: 220px; height: 320px; border-radius: 22px; background: linear-gradient(160deg,#2a2f38,#121419); box-shadow: 0 30px 60px rgba(0,0,0,.6), inset 0 0 0 2px #3a404b; }
-  #e-reader img { position: absolute; left: 15px; top: 18px; width: 190px; height: 285px; border-radius: 3px; }
+  #e-stack { left: 40px; top: 500px; width: 405px; }
+  #e-reader { left: 470px; top: 700px; width: 200px; height: 290px; border-radius: 22px; background: linear-gradient(160deg,#2a2f38,#121419); box-shadow: 0 30px 60px rgba(0,0,0,.6), inset 0 0 0 2px #3a404b; }
+  #e-reader img { position: absolute; left: 14px; top: 16px; width: 172px; height: 258px; border-radius: 3px; }
   .price { font: 800 32px Montserrat; color: #fff; white-space: nowrap; }
   .price b { color: var(--gold); }
   .price small { display: block; font: 600 23px Montserrat; color: var(--ivory); opacity: .85; margin-top: 4px; }
-  #e-paper { left: 70px; top: 1090px; }
-  #e-kindle { left: 545px; top: 1090px; }
-  #e-btn { left: 64px; top: 1188px; }
-  #e-btn div { position: relative; overflow: hidden; padding: 24px 38px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 44px Montserrat; white-space: nowrap;
+  #e-fmt { left: 66px; top: 1046px; }
+  #e-fmt .row { font: 800 30px/46px Montserrat; color: #fff; white-space: nowrap; }
+  #e-fmt .row b { color: var(--gold); font-weight: 800; }
+  #e-fmt .row i { font-style: normal; font-weight: 600; color: var(--ivory); }
+  #e-btn { left: 64px; top: 1196px; }
+  #e-btn div { position: relative; overflow: hidden; padding: 24px 38px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 40px Montserrat; white-space: nowrap;
     box-shadow: 0 10px 0 #b8890b, 0 24px 44px rgba(0,0,0,.45); }
   #e-btn .gl { position: absolute; top: 0; bottom: 0; width: 140px; left: -180px; background: linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent); }
-  #e-date { left: 66px; top: 1316px; font: italic 600 44px 'Source Serif 4'; color: #fff; white-space: nowrap; }
+  #e-date { left: 66px; top: 1312px; font: italic 600 44px 'Source Serif 4'; color: #fff; white-space: nowrap; }
   #e-date b { color: var(--gold); font-weight: 600; }
   #e-url { left: 66px; top: 1380px; font: 700 31px Montserrat; color: var(--ivory); white-space: nowrap; }
   /* ---- layer: captions ---- */
@@ -91,9 +93,8 @@
     <div id="e-author">Belinda Bright N.</div>
     <img id="e-stack" src="assets/book-stack-soft.png" alt="">
     <div id="e-reader"><img src="assets/front-cover.png" alt=""></div>
-    <div id="e-paper" class="price">Paperback <b>£9.99</b><small>Coming soon</small></div>
-    <div id="e-kindle" class="price">Kindle <b>£3.99</b></div>
-    <div id="e-btn"><div>Pre-order now on Amazon UK<span class="gl"></span></div></div>
+    <div id="e-fmt"><div class="row">Kindle eBook <b>£3.99</b> <i>· Pre-order now</i></div><div class="row">Paperback <b>£9.99</b> <i>· Out 23 January 2027</i></div><div class="row">Hardcover <i>· Coming soon</i></div></div>
+    <div id="e-btn"><div>Kindle pre-order on Amazon UK<span class="gl"></span></div></div>
     <div id="e-date">Out <b>23 January 2027</b></div>
     <div id="e-url">thelifeyoukeepplanningbook.netlify.app</div>
   </div>
@@ -330,7 +331,7 @@ function render(t) {
   $('endbg').style.opacity = dim;
   const S = (id, a, b, dy = 40) => { const el = $(id), x = eo(k(t, a, b)); el.style.opacity = x; el.style.transform = `translateY(${((1 - x) * dy).toFixed(1)}px)`; };
   S('e-title', 26.0, 26.45); S('e-author', 26.15, 26.55, 20); S('e-stack', 26.1, 26.7, 140); S('e-reader', 26.35, 26.85, 140);
-  S('e-paper', 26.6, 26.95, 20); S('e-kindle', 26.65, 27.0, 20); S('e-btn', 26.5, 26.9, 30); S('e-date', 26.7, 27.05, 20); S('e-url', 26.75, 27.1, 20);
+  S('e-fmt', 26.6, 26.95, 20); S('e-btn', 26.5, 26.9, 30); S('e-date', 26.7, 27.05, 20); S('e-url', 26.75, 27.1, 20);
   const pulse = Math.sin(Math.PI * k(t, 29.0, 29.5));
   $('e-btn').style.transform += ` scale(${(1 + .05 * pulse).toFixed(4)})`; $('e-btn').style.transformOrigin = '0 50%';
   document.querySelector('#e-btn .gl').style.left = `${lerp(-180, 900, eio(k(t, 29.1, 29.8)))}px`;
