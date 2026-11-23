@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Notes Full Ad</title>
+<style>
+  @font-face { font-family: 'Montserrat'; font-weight: 100 900; src: url(../../assets/fonts/Montserrat-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; src: url(../../assets/fonts/SourceSerif4-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 200 900; src: url(../../assets/fonts/SourceSerif4-italic.woff2) format('woff2'); }
+  @font-face { font-family: 'Caveat'; font-weight: 400 700; src: url(../../assets/fonts/Caveat.woff2) format('woff2'); }
+  :root { --navy: #0b1a31; --gold: #fbc312; --ivory: #f4eddc; --brass: #c99a2e; }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #07111f; }
+  #c { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  .layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  /* the hook: big words at the top for the first lines */
+  .hook { position: absolute; left: 80px; top: 270px; width: 920px; }
+  .hook span { display: block; font: 800 96px/1.04 Montserrat; color: #fff; opacity: 0; text-shadow: 0 6px 30px rgba(3,9,20,.9); }
+  .hook span.g { color: var(--gold); }
+  /* end card */
+  #endbg { position: absolute; inset: 0; opacity: 0; background: radial-gradient(900px 760px at 50% 42%, rgba(23,46,84,.86), rgba(7,17,31,.97) 72%); }
+  #e > * { position: absolute; opacity: 0; }
+  #e-title { left: 64px; top: 210px; font: 600 86px/1.0 'Source Serif 4'; color: #fff; }
+  #e-by { left: 64px; top: 404px; display: flex; align-items: center; gap: 18px; font: 800 32px Montserrat; letter-spacing: .12em; color: var(--gold); }
+  #e-by img { width: 74px; height: 74px; border-radius: 50%; object-fit: cover; object-position: 50% 22%; box-shadow: 0 0 0 3px var(--gold); }
+  #e-stack { left: 40px; top: 515px; width: 405px; }
+  #e-reader { left: 470px; top: 700px; width: 200px; height: 290px; border-radius: 22px; background: linear-gradient(160deg,#2a2f38,#121419); box-shadow: 0 30px 60px rgba(0,0,0,.6), inset 0 0 0 2px #3a404b; }
+  #e-reader img { position: absolute; left: 14px; top: 16px; width: 172px; height: 258px; border-radius: 3px; }
+  .price { font: 800 32px Montserrat; color: #fff; white-space: nowrap; }
+  .price b { color: var(--gold); }
+  .price small { display: block; font: 600 23px Montserrat; color: var(--ivory); opacity: .85; margin-top: 4px; }
+  #e-fmt { left: 66px; top: 1046px; }
+  #e-fmt .row { font: 800 30px/46px Montserrat; color: #fff; white-space: nowrap; }
+  #e-fmt .row b { color: var(--gold); font-weight: 800; }
+  #e-fmt .row i { font-style: normal; font-weight: 600; color: var(--ivory); }
+  #e-avail { left: 66px; top: 1196px; font: italic 600 46px 'Source Serif 4'; color: #fff; white-space: nowrap; }
+  #e-avail b { color: var(--gold); font-weight: 600; }
+  #e-btn { left: 64px; top: 1274px; }
+  #e-btn div { position: relative; overflow: hidden; padding: 22px 34px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 38px Montserrat; white-space: nowrap; box-shadow: 0 9px 0 #b8890b, 0 22px 40px rgba(0,0,0,.45); }
+  #e-btn .gl { position: absolute; top: 0; bottom: 0; width: 140px; left: -180px; background: linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent); }
+  #e-url { left: 66px; top: 1390px; font: 700 31px Montserrat; color: var(--ivory); white-space: nowrap; }
+  #e-url b { color: var(--gold); font-weight: 800; }
+  #caps .cap { position: absolute; left: 84px; width: 800px; top: 1458px; font: 800 48px/1.32 Montserrat; color: #fff; opacity: 0; }
+  #caps .cap span { background: rgba(7,17,31,.8); padding: 6px 18px; border-radius: 14px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+</style>
+</head>
+<body>
+  <canvas id="c" width="1080" height="1920"></canvas>
+  <div class="layer"><div class="hook" id="h1"><span>Notes full.</span><span>Tabs open.</span><span class="g">Nothing started.</span></div>
+    <div class="hook" id="h2"><span>It’s not laziness.</span><span class="g">It’s a pattern.</span></div></div>
+  <div class="layer" id="end"><div id="endbg"></div><div id="e">
+    <div id="e-title">The Life You<br>Keep Planning</div>
+    <div id="e-by"><img src="assets/author-portrait.jpg" alt="">Belinda Bright N.</div>
+    <img id="e-stack" src="assets/book-stack-soft.png" alt="">
+    <div id="e-reader"><img src="assets/front-cover.png" alt=""></div>
+    <div id="e-fmt"><div class="row">Kindle eBook <b>£3.99</b> <i>· Pre-order now</i></div><div class="row">Paperback <b>£9.99</b> <i>· Out 23 January 2027</i></div><div class="row">Hardcover <i>· Coming soon</i></div></div>
+    <div id="e-avail">Available from <b>23 January 2027</b></div>
+    <div id="e-btn"><div>Kindle pre-order on Amazon UK<span class="gl"></span></div></div>
+    <div id="e-url">Author’s website: <b>thelifeyoukeepplanningbook.netlify.app</b></div>
+  </div></div>
+  <div class="layer" id="caps"></div>
+<script src="audio/captions.js"></script>
+<script type="module">
+import * as THREE from './vendor/three.module.js';
+import { RoomEnvironment } from './vendor/RoomEnvironment.js';
+const DURATION = 15.5;
+window.DURATION = DURATION;
+const params = new URLSearchParams(location.search);
+// ------------------------------------------------------------------ helpers
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const k = (t, a, b) => clamp((t - a) / (b - a));
+const sm = x => x * x * (3 - 2 * x);
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const bo = x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+let seed = 7; const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+
+// ------------------------------------------------------------------ renderer
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(1080, 1920, false);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.NoToneMapping;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#07111f');
+scene.fog = new THREE.Fog('#07111f', 90, 180);
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environmentIntensity = 0.3;
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+const camera = new THREE.PerspectiveCamera(40, 1080 / 1920, 0.5, 300);
+
+scene.add(new THREE.HemisphereLight('#c9d6f0', '#0b1424', 0.32));
+const key = new THREE.DirectionalLight('#ffe9c4', 1.15);
+key.position.set(-14, 26, 16); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 6; key.shadow.bias = -0.0006;
+Object.assign(key.shadow.camera, { left: -22, right: 22, top: 22, bottom: -22, near: 1, far: 80 });
+scene.add(key);
+const rim = new THREE.DirectionalLight('#8fb3ff', 0.55); rim.position.set(16, 10, -14); scene.add(rim);
+const fill = new THREE.PointLight('#ffd38a', 6, 40, 1.6); fill.position.set(4, 9, 14); scene.add(fill);
+
+// ------------------------------------------------------------------ textures
+function canvasTex(w, h, draw, repeat) {
+  const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+  const g = cv.getContext('2d'); draw(g, w, h);
+  const tx = new THREE.CanvasTexture(cv); tx.colorSpace = THREE.SRGBColorSpace; tx.anisotropy = 8;
+  if (repeat) { tx.wrapS = tx.wrapT = THREE.RepeatWrapping; tx.repeat.set(repeat, repeat); }
+  tx.userData = { cv, g, draw }; return tx;
+}
+const grain = (g, w, h, base, amt) => { g.fillStyle = base; g.fillRect(0, 0, w, h);
+  const id = g.getImageData(0, 0, w, h); for (let i = 0; i < id.data.length; i += 4) { const n = (rnd() - .5) * amt; id.data[i] += n; id.data[i + 1] += n; id.data[i + 2] += n; } g.putImageData(id, 0, 0); };
+const brushed = (g, w, h) => { const gr = g.createLinearGradient(0, 0, w, h); gr.addColorStop(0, '#d9b56a'); gr.addColorStop(.5, '#b08a3e'); gr.addColorStop(1, '#cfa75a');
+  g.fillStyle = gr; g.fillRect(0, 0, w, h);
+  for (let i = 0; i < h * 1.4; i++) { g.strokeStyle = `rgba(${rnd() < .5 ? '255,240,200' : '60,40,10'},${rnd() * .12})`; g.lineWidth = rnd() * 1.4; const y = rnd() * h; g.beginPath(); g.moveTo(0, y); g.lineTo(w, y + (rnd() - .5) * 2); g.stroke(); } };
+const loadTex = src => new Promise(r => new THREE.TextureLoader().load(src, t => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; r(t); }));
+
+const navyTex = canvasTex(256, 256, (g, w, h) => grain(g, w, h, '#13284a', 14), 6);
+const tableTex = canvasTex(256, 256, (g, w, h) => grain(g, w, h, '#0e2140', 12), 40);
+const ivoryTex = canvasTex(256, 256, (g, w, h) => grain(g, w, h, '#f1e9d6', 10), 3);
+const brassTex = canvasTex(512, 256, brushed);
+const M = {
+  navy: new THREE.MeshStandardMaterial({ map: navyTex, roughness: .92, metalness: 0 }),
+  navyDeep: new THREE.MeshStandardMaterial({ color: '#0d1d36', map: navyTex, roughness: .95 }),
+  ivory: new THREE.MeshStandardMaterial({ color: '#eee5cf', map: ivoryTex, roughness: .96 }),
+  brass: new THREE.MeshStandardMaterial({ map: brassTex, metalness: .85, roughness: .32, envMapIntensity: 3.5 }),
+  gold: new THREE.MeshStandardMaterial({ color: '#fbc312', emissive: '#f2b200', emissiveIntensity: .75, metalness: .3, roughness: .35 }),
+  table: new THREE.MeshStandardMaterial({ map: tableTex, roughness: 1 }),
+};
+const box = (w, h, d, mat) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.castShadow = m.receiveShadow = true; return m; };
+const unitBox = mat => box(1, 1, 1, mat);
+const faceMats = (side, front, back) => [side, side, side, side, front, back || side];
+
+// ------------------------------------------------------------------ gold line
+const Y = V(0, 1, 0);
+function seg(r = .07) { const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 1, 10), M.gold); m.visible = false; scene.add(m); return m; }
+function setSeg(m, a, b, f = 1) {
+  if (f <= 0.001) { m.visible = false; return; }
+  const e = a.clone().lerp(b, f), d = e.clone().sub(a), L = d.length(); if (L < 1e-4) { m.visible = false; return; }
+  m.visible = true; m.position.copy(a).add(e).multiplyScalar(.5); m.quaternion.setFromUnitVectors(Y, d.normalize()); m.scale.set(1, L, 1);
+}
+function tube(points, r = .07, segs = 240) {
+  const curve = new THREE.CatmullRomCurve3(points, false, 'catmullrom', .25);
+  const g = new THREE.TubeGeometry(curve, segs, r, 8, false); const m = new THREE.Mesh(g, M.gold); m.userData.segs = segs; scene.add(m); return m;
+}
+const drawTube = (m, f) => { m.visible = f > 0.002; m.geometry.setDrawRange(0, Math.floor(clamp(f) * m.userData.segs) * 8 * 6); };
+const dot = () => { const m = new THREE.Mesh(new THREE.SphereGeometry(.16, 16, 12), M.gold); m.visible = false; scene.add(m); return m; };
+
+// ------------------------------------------------------------------ Ad 1: "Notes full. Tabs open. Nothing started."
+// A tower of idea notes piles up; the gold line circles it (the pattern), pulls ONE note out,
+// the rest collapse, and the chosen note becomes the bookmark in the book.
+const B = {};
+const IDEAS = ['Start a podcast', 'Etsy shop', 'Learn French', 'YouTube channel', 'Online course', 'Rebrand', 'App idea', 'Write a blog',
+  'Side hustle', 'Bake sale', 'Run a 10k', 'Photography', 'Newsletter', 'Coaching', 'Move abroad', 'Candle brand', 'Learn to code', 'Book club',
+  'Pottery class', 'Start the podcast', 'Garden plan', 'Vintage shop', 'Mentoring', 'Recipe book', 'Dropshipping', 'Day trading'];
+const CHOSEN = 19;                                  // "Start the podcast"
+const N = IDEAS.length;
+async function build() {
+  await Promise.all(['800 60px Montserrat', '700 60px Caveat', '600 60px "Source Serif 4"'].map(f => document.fonts.load(f)));
+  const [frontT, spineT, backT] = await Promise.all(['assets/front-cover.png', 'assets/spine.png', 'assets/back-cover.png'].map(loadTex));
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(200, 200), M.table); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+  // the notes: gold and ivory squares with a handwritten idea each
+  B.notes = IDEAS.map((idea, i) => {
+    const gold = i === CHOSEN || i % 3 === 0;
+    const t = canvasTex(420, 420, (g, w, h) => { grain(g, w, h, gold ? '#f7d672' : '#f4eddc', 9);
+      g.fillStyle = 'rgba(0,0,0,.06)'; g.fillRect(0, 0, w, 46);
+      g.fillStyle = i === CHOSEN ? '#0b1a31' : '#23406e'; g.textAlign = 'center'; g.textBaseline = 'middle';
+      const words = idea.split(' '); const lines = words.length > 2 ? [words.slice(0, 2).join(' '), words.slice(2).join(' ')] : [idea];
+      g.font = `700 ${lines.length > 1 ? 92 : 100}px Caveat`;
+      lines.forEach((l, j) => { let s = 100; g.font = `700 ${s}px Caveat`; while (g.measureText(l).width > w * .86) { s -= 4; g.font = `700 ${s}px Caveat`; } g.fillText(l, w / 2, h / 2 + (j - (lines.length - 1) / 2) * 96 + 10); });
+      if (i === CHOSEN) { g.strokeStyle = '#0b1a31'; g.lineWidth = 7; g.beginPath(); g.moveTo(80, 330); g.quadraticCurveTo(210, 352, 340, 326); g.stroke(); } });
+    const m = box(1.9, 1.9, .03, faceMats(new THREE.MeshStandardMaterial({ color: gold ? '#f2cf68' : '#ece3cc', roughness: .9 }), new THREE.MeshStandardMaterial({ map: t, roughness: .9 })));
+    scene.add(m);
+    // stacked pose: a leaning, messy tower that faces the camera
+    const y = .55 + i * .23, a = i * 1.7;
+    m.userData.stack = { p: V(Math.sin(a) * .35, y, Math.cos(a * 1.3) * .25), r: new THREE.Euler(-.25 + Math.sin(i * 2.1) * .2, Math.sin(i * 1.3) * .5, Math.sin(i * .7) * .3) };
+    // collapsed pose: scattered flat on the table
+    const ang = i * 2.4, rad = 2.2 + (i % 5) * .7;
+    m.userData.flat = { p: V(Math.cos(ang) * rad, .02 + i * .004, Math.sin(ang) * rad * .7 + .5), r: new THREE.Euler(-Math.PI / 2, 0, i * .9) };
+    return m;
+  });
+  // the pattern: a gold spiral circling the tower
+  const sp = []; for (let i = 0; i <= 200; i++) { const u = i / 200, a = u * Math.PI * 2 * 3.4; sp.push(V(Math.cos(a) * 1.9, .4 + u * 6.2, Math.sin(a) * 1.6)); }
+  B.spiral = tube(sp, .06, 400);
+  B.pull = seg(.06);
+  // the book that rises once one idea is chosen
+  const book = new THREE.Group(); scene.add(book); B.book = book;
+  const pagesT = canvasTex(64, 512, (g, w, h) => { g.fillStyle = '#efe6d0'; g.fillRect(0, 0, w, h); for (let x = 0; x < w; x += 2) { g.fillStyle = `rgba(120,100,70,${.08 + rnd() * .12})`; g.fillRect(x, 0, 1, h); } });
+  const pagesTH = canvasTex(512, 64, (g, w, h) => { g.fillStyle = '#efe6d0'; g.fillRect(0, 0, w, h); for (let y = 0; y < h; y += 2) { g.fillStyle = `rgba(120,100,70,${.08 + rnd() * .12})`; g.fillRect(0, y, w, 1); } });
+  const pe = new THREE.MeshStandardMaterial({ map: pagesT, roughness: 1 }), peh = new THREE.MeshStandardMaterial({ map: pagesTH, roughness: 1 });
+  const bk = new THREE.Mesh(new THREE.BoxGeometry(6, 9, .55), [pe, new THREE.MeshStandardMaterial({ map: spineT, roughness: .55 }), peh, peh,
+    new THREE.MeshStandardMaterial({ map: frontT, roughness: .5, envMapIntensity: .3 }), new THREE.MeshStandardMaterial({ map: backT, roughness: .55 })]);
+  bk.castShadow = bk.receiveShadow = true; book.add(bk);
+  const bookSpot = new THREE.SpotLight('#ffe7bf', 45, 60, .5, .6, 1.2); bookSpot.position.set(-8, 24, 20); bookSpot.target = book; scene.add(bookSpot);
+}
+// camera: [time, look, azimuth°, elevation°, distance]
+const CAM = [
+  [0.0, [0, 5.6, 0], 30, 14, 16.5], [3.4, [0, 6.0, 0], 0, 16, 18.5], [6.4, [0, 5.2, 0], -25, 18, 18],
+  [8.4, [0.5, 3.0, 1.2], -10, 26, 21], [9.6, [0, 3.0, 0], 0, 8, 23], [11.4, [0, 3.0, 0], 6, 6, 21], [15.5, [0, 3.0, 0], 12, 6, 21.5]];
+function setCamera(t) {
+  let i = 0; while (i < CAM.length - 2 && t > CAM[i + 1][0]) i++;
+  const A = CAM[i], Bk = CAM[i + 1], u = eio(k(t, A[0], Bk[0]));
+  const look = V(...A[1].map((v, j) => lerp(v, Bk[1][j], u)));
+  const az = lerp(A[2], Bk[2], u) * Math.PI / 180, el = lerp(A[3], Bk[3], u) * Math.PI / 180, d = lerp(A[4], Bk[4], u);
+  camera.position.set(look.x + d * Math.cos(el) * Math.sin(az), look.y + d * Math.sin(el), look.z + d * Math.cos(el) * Math.cos(az));
+  camera.lookAt(look); camera.updateMatrixWorld();
+}
+function viewPoint(sx, sy, dist) { const v = V(sx, sy, .5).unproject(camera).sub(camera.position).normalize(); return camera.position.clone().add(v.multiplyScalar(dist)); }
+const $ = id => document.getElementById(id);
+let CAPS = [];
+const q = new THREE.Quaternion(), q2 = new THREE.Quaternion();
+function render(t) {
+  setCamera(t);
+  const wob = Math.sin(Math.PI * k(t, 3.6, 5.6)) * .05;
+  const pull = eio(k(t, 8.35, 9.0)), collapse = k(t, 8.75, 9.7), toBook = eio(k(t, 9.9, 10.8));
+  B.notes.forEach((m, i) => {
+    const t0 = .15 + i * .095, drop = bo(k(t, t0, t0 + .32)), S = m.userData.stack, F = m.userData.flat;
+    m.visible = t > t0;
+    const p = S.p.clone(); p.y += (1 - clamp(drop)) * 6; p.x += Math.sin(t * 3 + i) * wob * i * .1;
+    q.setFromEuler(S.r);
+    if (i === CHOSEN) {
+      // pulled out towards the camera, then tucked into the top of the book as a bookmark
+      const front = viewPoint(.0, .1, 11), mark = V(1.3, 9.85, -.02);
+      p.lerp(front, pull); if (pull > 0) q.slerp(q2.copy(camera.quaternion), pull);
+      if (toBook > 0) { p.lerp(mark, toBook); q.slerp(q2.setFromEuler(new THREE.Euler(0, 0, -.12)), toBook); }
+      m.scale.setScalar(lerp(1, 1.35, pull) * lerp(1, .55, toBook));
+    } else {
+      const c = clamp((collapse - (N - i) * .012) * 1.6);
+      const ce = c * c; p.lerp(F.p, ce); q.slerp(q2.setFromEuler(F.r), ce);
+    }
+    m.position.copy(p); m.quaternion.copy(q);
+  });
+  drawTube(B.spiral, t < 8.6 ? eio(k(t, 3.55, 5.5)) * (1 - k(t, 8.2, 8.6)) : 0);
+  const chosen = B.notes[CHOSEN];
+  if (t > 8.2 && t < 9.4) setSeg(B.pull, V(0, 6.6, 0), chosen.position, eio(k(t, 8.2, 8.5))); else B.pull.visible = false;
+  const rise = eo(k(t, 9.4, 10.2));
+  B.book.visible = t > 9.35; B.book.position.set(0, lerp(-4.6, 4.5, rise), 0); B.book.rotation.y = lerp(.5, -.12, rise) + .05 * Math.sin(t * .6);
+  renderer.render(scene, camera);
+
+  // hook headlines
+  const W = (sel, i, a, out) => { const el = document.querySelectorAll(sel + ' span')[i], x = eo(k(t, a, a + .25)); el.style.opacity = (x * (1 - k(t, out, out + .25))).toFixed(3); el.style.transform = `translateY(${((1 - x) * 26).toFixed(1)}px)`; };
+  W('#h1', 0, .3, 3.15); W('#h1', 1, .95, 3.15); W('#h1', 2, 1.78, 3.15);
+  W('#h2', 0, 3.5, 6.2); W('#h2', 1, 4.62, 6.2);
+  // end card
+  const dim = eio(k(t, 11.2, 11.8));
+  canvas.style.filter = dim > 0 ? `blur(${(dim * 8).toFixed(2)}px) brightness(${(1 - dim * .3).toFixed(3)})` : '';
+  $('endbg').style.opacity = dim;
+  const S = (id, a, dy = 30) => { const el = $(id), x = eo(k(t, a, a + .45)); el.style.opacity = x; el.style.transform = `translateY(${((1 - x) * dy).toFixed(1)}px)`; };
+  S('e-title', 11.4); S('e-by', 11.7, 20); S('e-stack', 11.5, 140); S('e-reader', 11.75, 140); S('e-fmt', 12.0, 20); S('e-avail', 12.2, 20); S('e-btn', 12.4); S('e-url', 12.6, 20);
+  const pl = Math.sin(Math.PI * k(t, 12.85, 13.35)); $('e-btn').style.transform += ` scale(${(1 + .05 * pl).toFixed(4)})`; $('e-btn').style.transformOrigin = '0 50%';
+  document.querySelector('#e-btn .gl').style.left = `${lerp(-180, 900, eio(k(t, 12.9, 13.6)))}px`;
+  for (const c of CAPS) { const a = eo(k(t, c.s - .04, c.s + .12)) * (1 - k(t, c.e - .1, c.e)); c.el.style.opacity = a; c.el.style.transform = `translateY(${((1 - eo(k(t, c.s - .04, c.s + .16))) * 14).toFixed(1)}px)`; }
+}
+window.seek = (t) => render(t);
+window.READY = (async () => {
+  await build();
+  CAPS = (window.CAPS_DATA || []).map(c => ({ ...c }));
+  for (const c of CAPS) { const d = document.createElement('div'); d.className = 'cap'; const sp = document.createElement('span'); sp.textContent = c.text; d.appendChild(sp); $('caps').appendChild(d); c.el = d; }
+  for (const img of document.images) if (!img.complete) await new Promise(r => { img.onload = r; img.onerror = r; });
+  window.seek(0); return true;
+})();
+if (!params.has('render')) window.READY.then(() => { const t0 = performance.now(); const loop = () => { window.seek(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); }; loop(); });
+</script>
+</body>
+</html>

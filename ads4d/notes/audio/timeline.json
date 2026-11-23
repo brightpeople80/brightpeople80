@@ -1,0 +1,174 @@
+[
+ {
+  "id": "l1",
+  "text": "Notes full. Tabs open. Nothing started.",
+  "start": 0.35,
+  "dur": 2.52,
+  "words": [
+   {
+    "w": "Notes",
+    "t": 0.35
+   },
+   {
+    "w": "full.",
+    "t": 0.833
+   },
+   {
+    "w": "Tabs",
+    "t": 0.983
+   },
+   {
+    "w": "open.",
+    "t": 1.503
+   },
+   {
+    "w": "Nothing",
+    "t": 1.805
+   },
+   {
+    "w": "started.",
+    "t": 2.123
+   }
+  ]
+ },
+ {
+  "id": "l2",
+  "text": "It's not laziness. It's a pattern.",
+  "start": 3.55,
+  "dur": 1.854,
+  "words": [
+   {
+    "w": "It's",
+    "t": 3.55
+   },
+   {
+    "w": "not",
+    "t": 3.851
+   },
+   {
+    "w": "laziness.",
+    "t": 4.117
+   },
+   {
+    "w": "It's",
+    "t": 4.659
+   },
+   {
+    "w": "a",
+    "t": 5.004
+   },
+   {
+    "w": "pattern.",
+    "t": 5.096
+   }
+  ]
+ },
+ {
+  "id": "l3",
+  "text": "The Life You Keep Planning shows you how to pick one idea, and finally follow through.",
+  "start": 6.45,
+  "dur": 4.282,
+  "words": [
+   {
+    "w": "The",
+    "t": 6.45
+   },
+   {
+    "w": "Life",
+    "t": 6.718
+   },
+   {
+    "w": "You",
+    "t": 6.982
+   },
+   {
+    "w": "Keep",
+    "t": 7.184
+   },
+   {
+    "w": "Planning",
+    "t": 7.446
+   },
+   {
+    "w": "shows",
+    "t": 7.72
+   },
+   {
+    "w": "you",
+    "t": 8.09
+   },
+   {
+    "w": "how",
+    "t": 8.17
+   },
+   {
+    "w": "to",
+    "t": 8.33
+   },
+   {
+    "w": "pick",
+    "t": 8.443
+   },
+   {
+    "w": "one",
+    "t": 8.603
+   },
+   {
+    "w": "idea,",
+    "t": 8.734
+   },
+   {
+    "w": "and",
+    "t": 9.181
+   },
+   {
+    "w": "finally",
+    "t": 9.725
+   },
+   {
+    "w": "follow",
+    "t": 10.045
+   },
+   {
+    "w": "through.",
+    "t": 10.236
+   }
+  ]
+ },
+ {
+  "id": "l4",
+  "text": "Pre-order the Kindle edition on Amazon U.K.",
+  "start": 12.0,
+  "dur": 2.556,
+  "words": [
+   {
+    "w": "Pre-order",
+    "t": 12.0
+   },
+   {
+    "w": "the",
+    "t": 12.534
+   },
+   {
+    "w": "Kindle",
+    "t": 12.879
+   },
+   {
+    "w": "edition",
+    "t": 13.148
+   },
+   {
+    "w": "on",
+    "t": 13.523
+   },
+   {
+    "w": "Amazon",
+    "t": 13.696
+   },
+   {
+    "w": "U.K.",
+    "t": 13.992
+   }
+  ]
+ }
+]

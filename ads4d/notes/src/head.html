@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Notes Full Ad</title>
+<style>
+  @font-face { font-family: 'Montserrat'; font-weight: 100 900; src: url(../../assets/fonts/Montserrat-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; src: url(../../assets/fonts/SourceSerif4-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 200 900; src: url(../../assets/fonts/SourceSerif4-italic.woff2) format('woff2'); }
+  @font-face { font-family: 'Caveat'; font-weight: 400 700; src: url(../../assets/fonts/Caveat.woff2) format('woff2'); }
+  :root { --navy: #0b1a31; --gold: #fbc312; --ivory: #f4eddc; --brass: #c99a2e; }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #07111f; }
+  #c { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  .layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  /* the hook: big words at the top for the first lines */
+  .hook { position: absolute; left: 80px; top: 270px; width: 920px; }
+  .hook span { display: block; font: 800 96px/1.04 Montserrat; color: #fff; opacity: 0; text-shadow: 0 6px 30px rgba(3,9,20,.9); }
+  .hook span.g { color: var(--gold); }
+  /* end card */
+  #endbg { position: absolute; inset: 0; opacity: 0; background: radial-gradient(900px 760px at 50% 42%, rgba(23,46,84,.86), rgba(7,17,31,.97) 72%); }
+  #e > * { position: absolute; opacity: 0; }
+  #e-title { left: 64px; top: 210px; font: 600 86px/1.0 'Source Serif 4'; color: #fff; }
+  #e-by { left: 64px; top: 404px; display: flex; align-items: center; gap: 18px; font: 800 32px Montserrat; letter-spacing: .12em; color: var(--gold); }
+  #e-by img { width: 74px; height: 74px; border-radius: 50%; object-fit: cover; object-position: 50% 22%; box-shadow: 0 0 0 3px var(--gold); }
+  #e-stack { left: 40px; top: 515px; width: 405px; }
+  #e-reader { left: 470px; top: 700px; width: 200px; height: 290px; border-radius: 22px; background: linear-gradient(160deg,#2a2f38,#121419); box-shadow: 0 30px 60px rgba(0,0,0,.6), inset 0 0 0 2px #3a404b; }
+  #e-reader img { position: absolute; left: 14px; top: 16px; width: 172px; height: 258px; border-radius: 3px; }
+  .price { font: 800 32px Montserrat; color: #fff; white-space: nowrap; }
+  .price b { color: var(--gold); }
+  .price small { display: block; font: 600 23px Montserrat; color: var(--ivory); opacity: .85; margin-top: 4px; }
+  #e-fmt { left: 66px; top: 1046px; }
+  #e-fmt .row { font: 800 30px/46px Montserrat; color: #fff; white-space: nowrap; }
+  #e-fmt .row b { color: var(--gold); font-weight: 800; }
+  #e-fmt .row i { font-style: normal; font-weight: 600; color: var(--ivory); }
+  #e-avail { left: 66px; top: 1196px; font: italic 600 46px 'Source Serif 4'; color: #fff; white-space: nowrap; }
+  #e-avail b { color: var(--gold); font-weight: 600; }
+  #e-btn { left: 64px; top: 1274px; }
+  #e-btn div { position: relative; overflow: hidden; padding: 22px 34px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 38px Montserrat; white-space: nowrap; box-shadow: 0 9px 0 #b8890b, 0 22px 40px rgba(0,0,0,.45); }
+  #e-btn .gl { position: absolute; top: 0; bottom: 0; width: 140px; left: -180px; background: linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent); }
+  #e-url { left: 66px; top: 1390px; font: 700 31px Montserrat; color: var(--ivory); white-space: nowrap; }
+  #e-url b { color: var(--gold); font-weight: 800; }
+  #caps .cap { position: absolute; left: 84px; width: 800px; top: 1458px; font: 800 48px/1.32 Montserrat; color: #fff; opacity: 0; }
+  #caps .cap span { background: rgba(7,17,31,.8); padding: 6px 18px; border-radius: 14px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+</style>
+</head>
+<body>
+  <canvas id="c" width="1080" height="1920"></canvas>
+  <div class="layer"><div class="hook" id="h1"><span>Notes full.</span><span>Tabs open.</span><span class="g">Nothing started.</span></div>
+    <div class="hook" id="h2"><span>It’s not laziness.</span><span class="g">It’s a pattern.</span></div></div>
+  <div class="layer" id="end"><div id="endbg"></div><div id="e">
+    <div id="e-title">The Life You<br>Keep Planning</div>
+    <div id="e-by"><img src="assets/author-portrait.jpg" alt="">Belinda Bright N.</div>
+    <img id="e-stack" src="assets/book-stack-soft.png" alt="">
+    <div id="e-reader"><img src="assets/front-cover.png" alt=""></div>
+    <div id="e-fmt"><div class="row">Kindle eBook <b>£3.99</b> <i>· Pre-order now</i></div><div class="row">Paperback <b>£9.99</b> <i>· Out 23 January 2027</i></div><div class="row">Hardcover <i>· Coming soon</i></div></div>
+    <div id="e-avail">Available from <b>23 January 2027</b></div>
+    <div id="e-btn"><div>Kindle pre-order on Amazon UK<span class="gl"></span></div></div>
+    <div id="e-url">Author’s website: <b>thelifeyoukeepplanningbook.netlify.app</b></div>
+  </div></div>
+  <div class="layer" id="caps"></div>
+<script src="audio/captions.js"></script>
+<script type="module">
+import * as THREE from './vendor/three.module.js';
+import { RoomEnvironment } from './vendor/RoomEnvironment.js';
+const DURATION = 15.5;
+window.DURATION = DURATION;
+const params = new URLSearchParams(location.search);
