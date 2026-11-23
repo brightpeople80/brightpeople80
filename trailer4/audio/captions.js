@@ -60,13 +60,13 @@ window.CAPS_DATA = [
   "e": 28.93
  },
  {
-  "text": "Pre-order now on Amazon UK.",
+  "text": "Pre-order the Kindle edition on Amazon UK.",
   "s": 28.95,
-  "e": 31.08
+  "e": 31.78
  },
  {
   "text": "Out 23 January 2027.",
-  "s": 31.1,
-  "e": 33.223
+  "s": 31.8,
+  "e": 33.923
  }
 ];

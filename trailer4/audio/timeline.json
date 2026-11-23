@@ -373,53 +373,61 @@
  },
  {
   "id": "l8",
-  "text": "Pre-order now on Amazon U.K.",
+  "text": "Pre-order the Kindle edition on Amazon U.K.",
   "start": 29.0,
-  "dur": 1.914,
+  "dur": 2.556,
   "words": [
    {
     "w": "Pre-order",
     "t": 29.0
    },
    {
-    "w": "now",
+    "w": "the",
     "t": 29.534
    },
    {
+    "w": "Kindle",
+    "t": 29.879
+   },
+   {
+    "w": "edition",
+    "t": 30.148
+   },
+   {
     "w": "on",
-    "t": 29.869
+    "t": 30.523
    },
    {
     "w": "Amazon",
-    "t": 30.082
+    "t": 30.696
    },
    {
     "w": "U.K.",
-    "t": 30.404
+    "t": 30.992
    }
   ]
  },
  {
   "id": "l9",
   "text": "Out January the twenty-third.",
-  "start": 31.15,
+  "start": 31.85,
   "dur": 1.723,
   "words": [
    {
     "w": "Out",
-    "t": 31.15
+    "t": 31.85
    },
    {
     "w": "January",
-    "t": 31.508
+    "t": 32.208
    },
    {
     "w": "the",
-    "t": 32.076
+    "t": 32.776
    },
    {
     "w": "twenty-third.",
-    "t": 32.37
+    "t": 33.07
    }
   ]
  }
