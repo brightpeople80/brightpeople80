@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Way to Begin 16x9</title>
+<style>
+  @font-face { font-family: 'Montserrat'; font-weight: 100 900; src: url(../assets/fonts/Montserrat-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-italic.woff2) format('woff2'); }
+  @font-face { font-family: 'Caveat'; font-weight: 400 700; src: url(../assets/fonts/Caveat.woff2) format('woff2'); }
+  :root { --navy: #0b1a31; --gold: #fbc312; --ivory: #f4eddc; }
+  html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #07111f; }
+  #c { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+  .layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  /* big on-screen lines (muted-first: the message works without sound) */
+  .line { position: absolute; left: 120px; font: 600 104px/1.05 'Source Serif 4'; color: #fff; text-shadow: 0 6px 36px rgba(0,0,0,.85); opacity: 0; }
+  .line em { color: var(--gold); font-style: italic; }
+  #ph { opacity: 1; }
+  #ph img { position: absolute; inset: 0; width: 1920px; height: 1080px; object-fit: cover; transform-origin: 50% 70%; }
+  #ph .sh { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,10,20,.8), rgba(5,10,20,.2) 60%, rgba(5,10,20,.1)); }
+  #lt { position: absolute; left: 120px; top: 760px; opacity: 0; }
+  #lt .t { font: 600 84px/1 'Source Serif 4'; color: #fff; text-shadow: 0 6px 30px rgba(0,0,0,.8); }
+  #lt .a { font: 800 34px Montserrat; letter-spacing: .18em; color: var(--gold); margin-top: 18px; }
+  /* end card (landscape) */
+  #endbg { position: absolute; inset: 0; opacity: 0; background: radial-gradient(1200px 800px at 30% 50%, rgba(23,46,84,.92), rgba(7,17,31,.98) 75%); }
+  #e > * { position: absolute; opacity: 0; }
+  #e-cover { left: 200px; top: 150px; width: 520px; height: 780px; box-shadow: 0 50px 100px rgba(0,0,0,.6), -8px 0 0 #0b1a31; border-radius: 2px 6px 6px 2px; }
+  #e-title { left: 880px; top: 170px; font: 600 92px/1.0 'Source Serif 4'; color: #fff; }
+  #e-by { left: 884px; top: 384px; font: 800 34px Montserrat; letter-spacing: .16em; color: var(--gold); }
+  #e-fmt { left: 884px; top: 470px; }
+  #e-fmt .row { font: 800 40px/62px Montserrat; color: #fff; white-space: nowrap; }
+  #e-fmt .row b { color: var(--gold); }
+  #e-fmt .row i { font-style: normal; font-weight: 600; color: var(--ivory); }
+  #e-date { left: 884px; top: 490px; font: italic 600 64px 'Source Serif 4'; color: #fff; white-space: nowrap; }
+  #e-date b { color: var(--gold); font-weight: 600; }
+  #e-btn { left: 884px; top: 720px; }
+  #e-btn div { position: relative; overflow: hidden; padding: 26px 44px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 46px Montserrat; white-space: nowrap; box-shadow: 0 10px 0 #b8890b, 0 24px 44px rgba(0,0,0,.45); }
+  #e-btn .gl { position: absolute; top: 0; bottom: 0; width: 160px; left: -200px; background: linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent); }
+</style>
+</head>
+<body>
+  <canvas id="c" width="1920" height="1080"></canvas>
+  <!-- 0-5 s: the opening image (generated in Canva by the author) -->
+  <div class="layer" id="ph"><img id="phimg" src="assets/sunday-notebook-16x9.jpg" alt=""><div class="sh"></div></div>
+  <div class="layer">
+    <div class="line" id="l1" style="top:150px">You don’t need<br>another plan.</div>
+    <div class="line" id="l2" style="top:150px">You need a way<br>to <em>begin.</em></div>
+    <div id="lt"><div class="t">The Life You Keep Planning</div><div class="a">BELINDA BRIGHT N.</div></div>
+  </div>
+  <div class="layer" id="end"><div id="endbg"></div><div id="e">
+    <img id="e-cover" src="assets/front-cover.png" alt="">
+    <div id="e-title">The Life You<br>Keep Planning</div>
+    <div id="e-by">BELINDA BRIGHT N.</div>
+    <div id="e-fmt"><div class="row">Kindle eBook <b>£3.99</b> <i>· Pre-order now</i></div><div class="row">Paperback <b>£9.99</b> <i>· Out 23 January 2027</i></div><div class="row">Hardcover <i>· Coming soon</i></div></div>
+    <div id="e-date">Out <b>23 January 2027</b></div>
+    <div id="e-btn"><div>Pre-order on Amazon UK<span class="gl"></span></div></div>
+  </div></div>
+<script type="module">
+import * as THREE from './vendor/three.module.js';
+import { RoomEnvironment } from './vendor/RoomEnvironment.js';
+const params = new URLSearchParams(location.search);
+const W = 1920, H = 1080, DURATION = 25.0; window.DURATION = DURATION;
+const PRICES = params.get('prices') !== '0';     // ?prices=0 -> version without prices
+document.getElementById(PRICES ? 'e-date' : 'e-fmt').remove();
+// ------------------------------------------------------------------ helpers
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const k = (t, a, b) => clamp((t - a) / (b - a));
+const sm = x => x * x * (3 - 2 * x);
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const bo = x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+let seed = 7; const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+
+// ------------------------------------------------------------------ renderer
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.NoToneMapping;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#07111f');
+scene.fog = new THREE.Fog('#07111f', 90, 180);
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environmentIntensity = 0.3;
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+const camera = new THREE.PerspectiveCamera(32, W / H, 0.1, 300);
+
+scene.add(new THREE.HemisphereLight('#c9d6f0', '#0b1424', 0.32));
+const key = new THREE.DirectionalLight('#ffe9c4', 1.15);
+key.position.set(-14, 26, 16); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 6; key.shadow.bias = -0.0006;
+Object.assign(key.shadow.camera, { left: -22, right: 22, top: 22, bottom: -22, near: 1, far: 80 });
+scene.add(key);
+const rim = new THREE.DirectionalLight('#8fb3ff', 0.55); rim.position.set(16, 10, -14); scene.add(rim);
+const fill = new THREE.PointLight('#ffd38a', 6, 40, 1.6); fill.position.set(4, 9, 14); scene.add(fill);
+
+// ------------------------------------------------------------------ textures
+function canvasTex(w, h, draw, repeat) {
+  const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+  const g = cv.getContext('2d'); draw(g, w, h);
+  const tx = new THREE.CanvasTexture(cv); tx.colorSpace = THREE.SRGBColorSpace; tx.anisotropy = 8;
+  if (repeat) { tx.wrapS = tx.wrapT = THREE.RepeatWrapping; tx.repeat.set(repeat, repeat); }
+  tx.userData = { cv, g, draw }; return tx;
+}
+const grain = (g, w, h, base, amt) => { g.fillStyle = base; g.fillRect(0, 0, w, h);
+  const id = g.getImageData(0, 0, w, h); for (let i = 0; i < id.data.length; i += 4) { const n = (rnd() - .5) * amt; id.data[i] += n; id.data[i + 1] += n; id.data[i + 2] += n; } g.putImageData(id, 0, 0); };
+const brushed = (g, w, h) => { const gr = g.createLinearGradient(0, 0, w, h); gr.addColorStop(0, '#d9b56a'); gr.addColorStop(.5, '#b08a3e'); gr.addColorStop(1, '#cfa75a');
+  g.fillStyle = gr; g.fillRect(0, 0, w, h);
+  for (let i = 0; i < h * 1.4; i++) { g.strokeStyle = `rgba(${rnd() < .5 ? '255,240,200' : '60,40,10'},${rnd() * .12})`; g.lineWidth = rnd() * 1.4; const y = rnd() * h; g.beginPath(); g.moveTo(0, y); g.lineTo(w, y + (rnd() - .5) * 2); g.stroke(); } };
+const loadTex = src => new Promise(r => new THREE.TextureLoader().load(src, t => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; r(t); }));
+
+const navyTex = canvasTex(256, 256, (g, w, h) => grain(g, w, h, '#13284a', 14), 6);
+const tableTex = canvasTex(256, 256, (g, w, h) => grain(g, w, h, '#0e2140', 12), 40);
+const ivoryTex = canvasTex(256, 256, (g, w, h) => grain(g, w, h, '#f1e9d6', 10), 3);
+const brassTex = canvasTex(512, 256, brushed);
+const M = {
+  navy: new THREE.MeshStandardMaterial({ map: navyTex, roughness: .92, metalness: 0 }),
+  navyDeep: new THREE.MeshStandardMaterial({ color: '#0d1d36', map: navyTex, roughness: .95 }),
+  ivory: new THREE.MeshStandardMaterial({ color: '#eee5cf', map: ivoryTex, roughness: .96 }),
+  brass: new THREE.MeshStandardMaterial({ map: brassTex, metalness: .85, roughness: .32, envMapIntensity: 3.5 }),
+  gold: new THREE.MeshStandardMaterial({ color: '#fbc312', emissive: '#f2b200', emissiveIntensity: .75, metalness: .3, roughness: .35 }),
+  table: new THREE.MeshStandardMaterial({ map: tableTex, roughness: 1 }),
+};
+const box = (w, h, d, mat) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.castShadow = m.receiveShadow = true; return m; };
+const unitBox = mat => box(1, 1, 1, mat);
+const faceMats = (side, front, back) => [side, side, side, side, front, back || side];
+
+// ------------------------------------------------------------------ gold line
+const Y = V(0, 1, 0);
+function seg(r = .07) { const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 1, 10), M.gold); m.visible = false; scene.add(m); return m; }
+function setSeg(m, a, b, f = 1) {
+  if (f <= 0.001) { m.visible = false; return; }
+  const e = a.clone().lerp(b, f), d = e.clone().sub(a), L = d.length(); if (L < 1e-4) { m.visible = false; return; }
+  m.visible = true; m.position.copy(a).add(e).multiplyScalar(.5); m.quaternion.setFromUnitVectors(Y, d.normalize()); m.scale.set(1, L, 1);
+}
+function tube(points, r = .07, segs = 240) {
+  const curve = new THREE.CatmullRomCurve3(points, false, 'catmullrom', .25);
+  const g = new THREE.TubeGeometry(curve, segs, r, 8, false); const m = new THREE.Mesh(g, M.gold); m.userData.segs = segs; scene.add(m); return m;
+}
+const drawTube = (m, f) => { m.visible = f > 0.002; m.geometry.setDrawRange(0, Math.floor(clamp(f) * m.userData.segs) * 8 * 6); };
+const dot = () => { const m = new THREE.Mesh(new THREE.SphereGeometry(.16, 16, 12), M.gold); m.visible = false; scene.add(m); return m; };
+
+// ------------------------------------------------------------------ 3D: a blank notebook, one sticky note, then the book
+scene.fog = null; scene.background = new THREE.Color('#0a1729');
+const B = {};
+async function build() {
+  await Promise.all(['700 80px Caveat', '800 40px Montserrat', '600 40px "Source Serif 4"'].map(f => document.fonts.load(f)));
+  const [frontT, spineT, backT] = await Promise.all(['assets/front-cover.png', 'assets/spine.png', 'assets/back-cover.png'].map(loadTex));
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(120, 120), M.table); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+  // an open notebook with blank ruled pages and a brass spiral
+  const pageT = canvasTex(700, 940, (g, w, h) => { grain(g, w, h, '#f4eddc', 6); g.strokeStyle = 'rgba(35,64,110,.16)'; g.lineWidth = 3; for (let y = 120; y < h - 40; y += 54) { g.beginPath(); g.moveTo(40, y); g.lineTo(w - 40, y); g.stroke(); } });
+  const nb = new THREE.Group(); scene.add(nb); B.nb = nb;
+  const cov = box(14.6, .18, 9.8, M.navy); cov.position.y = .09; nb.add(cov);
+  for (const sx of [-1, 1]) { const p = box(7, .16, 9.4, faceMats(M.ivory, M.ivory)); p.position.set(sx * 3.6, .26, 0); nb.add(p);
+    const top = new THREE.Mesh(new THREE.PlaneGeometry(7, 9.4), new THREE.MeshStandardMaterial({ map: pageT, roughness: .95 })); top.rotation.x = -Math.PI / 2; top.position.set(sx * 3.6, .345, 0); top.receiveShadow = true; nb.add(top); }
+  for (let i = 0; i < 12; i++) { const r = new THREE.Mesh(new THREE.TorusGeometry(.32, .07, 8, 20), M.brass); r.rotation.y = Math.PI / 2; r.position.set(0, .45, -4.1 + i * .75); nb.add(r); }
+  // the one sticky note, with its handwriting revealed left to right
+  B.noteT = canvasTex(600, 600, (g, w, h) => drawNote(g, w, h, 0));
+  function drawNote(g, w, h, f) { grain(g, w, h, '#f7d672', 8); g.fillStyle = 'rgba(0,0,0,.06)'; g.fillRect(0, 0, w, 60);
+    g.save(); g.beginPath(); g.rect(0, 0, 40 + (w - 40) * f, h); g.clip();
+    g.fillStyle = '#0b1a31'; g.font = '700 108px Caveat'; g.textAlign = 'center'; g.fillText('Begin:', w / 2, 250); g.font = '700 84px Caveat'; g.fillText('10 minutes today', w / 2, 380);
+    g.strokeStyle = '#0b1a31'; g.lineWidth = 7; g.beginPath(); g.moveTo(110, 430); g.quadraticCurveTo(300, 455, 490, 425); g.stroke(); g.restore(); }
+  B.drawNote = drawNote; B.noteF = -1;
+  B.note = box(3.6, .04, 3.6, faceMats(new THREE.MeshStandardMaterial({ color: '#f2cf68', roughness: .9 }), new THREE.MeshStandardMaterial({ color: '#f2cf68' })));
+  B.note.material[2] = new THREE.MeshStandardMaterial({ map: B.noteT, roughness: .9 });       // +y face carries the writing
+  scene.add(B.note);
+  // the book (real cover)
+  const pagesT = canvasTex(64, 512, (g, w, h) => { g.fillStyle = '#efe6d0'; g.fillRect(0, 0, w, h); for (let x = 0; x < w; x += 2) { g.fillStyle = `rgba(120,100,70,${.08 + rnd() * .12})`; g.fillRect(x, 0, 1, h); } });
+  const pagesTH = canvasTex(512, 64, (g, w, h) => { g.fillStyle = '#efe6d0'; g.fillRect(0, 0, w, h); for (let y = 0; y < h; y += 2) { g.fillStyle = `rgba(120,100,70,${.08 + rnd() * .12})`; g.fillRect(0, y, w, 1); } });
+  const pe = new THREE.MeshStandardMaterial({ map: pagesT, roughness: 1 }), peh = new THREE.MeshStandardMaterial({ map: pagesTH, roughness: 1 });
+  const book = new THREE.Mesh(new THREE.BoxGeometry(6, 9, .55), [pe, new THREE.MeshStandardMaterial({ map: spineT, roughness: .55 }), peh, peh,
+    new THREE.MeshStandardMaterial({ map: frontT, roughness: .5, envMapIntensity: .3 }), new THREE.MeshStandardMaterial({ map: backT, roughness: .55 })]);
+  book.castShadow = book.receiveShadow = true; scene.add(book); B.book = book;
+  const spot = new THREE.SpotLight('#ffe7bf', 40, 60, .55, .6, 1.2); spot.position.set(4, 22, 16); spot.target = nb; scene.add(spot);
+}
+// camera keys: [t, position, look]
+const CAM = [[5.0, V(-6.6, 20, 10.5), V(-6.0, 0, .4)], [11.6, V(-5.4, 18, 9), V(-4.6, 0, .4)], [12.6, V(-11, 9.5, 21), V(-11.5, 4.4, 0)], [18.0, V(-12.4, 9.0, 19.5), V(-11.8, 4.4, 0)], [25, V(-13, 8.8, 19), V(-12, 4.4, 0)]];
+function setCamera(t) {
+  let i = 0; while (i < CAM.length - 2 && t > CAM[i + 1][0]) i++;
+  const [t0, p0, l0] = CAM[i], [t1, p1, l1] = CAM[i + 1], u = eio(k(t, t0, t1));
+  camera.position.copy(p0).lerp(p1, u); camera.lookAt(l0.clone().lerp(l1, u)); camera.updateMatrixWorld();
+}
+const $ = id => document.getElementById(id);
+function render(t) {
+  setCamera(t);
+  // the sticky note drops onto the right-hand page, then is written on
+  const d = bo(k(t, 5.5, 6.25)); B.note.visible = t > 5.4;
+  B.note.position.set(3.6, lerp(9, .4, clamp(d)), .2); B.note.rotation.set(0, lerp(.9, -.12, clamp(d)), 0);
+  const f = Math.round(eio(k(t, 6.6, 8.8)) * 60) / 60;
+  if (f !== B.noteF) { B.noteF = f; const u = B.noteT.userData; B.drawNote(u.g, u.cv.width, u.cv.height, f); B.noteT.needsUpdate = true; }
+  // the book stands up beside the notebook
+  const r = eo(k(t, 11.8, 12.9)); B.book.visible = t > 11.7;
+  B.book.position.set(-6.5, lerp(-4.6, 4.6, r), 0); B.book.rotation.set(0, lerp(.6, .22, r) - .08 * k(t, 12.9, 25), 0);
+  renderer.render(scene, camera);
+  // DOM
+  const ph = 1 - k(t, 4.9, 5.4); $('ph').style.opacity = ph.toFixed(3); $('ph').style.display = ph <= 0 ? 'none' : '';
+  $('phimg').style.transform = `scale(${lerp(1.02, 1.12, eio(k(t, 0, 5.4))).toFixed(4)})`;
+  const L = (id, a, b) => { const x = eo(k(t, a, a + .5)) * (1 - k(t, b - .3, b)); $(id).style.opacity = x.toFixed(3); $(id).style.transform = `translateY(${((1 - eo(k(t, a, a + .5))) * 30).toFixed(1)}px)`; };
+  L('l1', .3, 5.1); L('l2', 5.5, 11.6); L('lt', 13.0, 17.9);
+  const dim = eio(k(t, 17.9, 18.5)); canvas.style.filter = dim > 0 ? `blur(${(dim * 9).toFixed(2)}px) brightness(${(1 - dim * .35).toFixed(3)})` : '';
+  $('endbg').style.opacity = dim;
+  const S = (id, a, dy = 30) => { const el = $(id); if (!el) return; const x = eo(k(t, a, a + .45)); el.style.opacity = x; el.style.transform = `translateY(${((1 - x) * dy).toFixed(1)}px)`; };
+  S('e-cover', 18.2, 120); S('e-title', 18.4); S('e-by', 18.65, 20); S('e-fmt', 18.9, 20); S('e-date', 18.9, 20); S('e-btn', 19.3);
+  const pl = Math.sin(Math.PI * k(t, 20.0, 20.5)); $('e-btn').style.transform += ` scale(${(1 + .05 * pl).toFixed(4)})`; $('e-btn').style.transformOrigin = '0 50%';
+  document.querySelector('#e-btn .gl').style.left = `${lerp(-200, 1000, eio(k(t, 20.1, 20.9)))}px`;
+}
+window.seek = t => render(t);
+window.READY = (async () => { await build(); for (const img of document.images) if (!img.complete) await new Promise(r => { img.onload = r; img.onerror = r; }); render(0); return true; })();
+if (!params.has('render')) window.READY.then(() => { const t0 = performance.now(); const loop = () => { render(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); }; loop(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Way to Begin 16x9</title>
+<style>
+  @font-face { font-family: 'Montserrat'; font-weight: 100 900; src: url(../assets/fonts/Montserrat-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-italic.woff2) format('woff2'); }
+  @font-face { font-family: 'Caveat'; font-weight: 400 700; src: url(../assets/fonts/Caveat.woff2) format('woff2'); }
+  :root { --navy: #0b1a31; --gold: #fbc312; --ivory: #f4eddc; }
+  html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #07111f; }
+  #c { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+  .layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  /* big on-screen lines (muted-first: the message works without sound) */
+  .line { position: absolute; left: 120px; font: 600 104px/1.05 'Source Serif 4'; color: #fff; text-shadow: 0 6px 36px rgba(0,0,0,.85); opacity: 0; }
+  .line em { color: var(--gold); font-style: italic; }
+  #ph { opacity: 1; }
+  #ph img { position: absolute; inset: 0; width: 1920px; height: 1080px; object-fit: cover; transform-origin: 50% 70%; }
+  #ph .sh { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,10,20,.8), rgba(5,10,20,.2) 60%, rgba(5,10,20,.1)); }
+  #lt { position: absolute; left: 120px; top: 760px; opacity: 0; }
+  #lt .t { font: 600 84px/1 'Source Serif 4'; color: #fff; text-shadow: 0 6px 30px rgba(0,0,0,.8); }
+  #lt .a { font: 800 34px Montserrat; letter-spacing: .18em; color: var(--gold); margin-top: 18px; }
+  /* end card (landscape) */
+  #endbg { position: absolute; inset: 0; opacity: 0; background: radial-gradient(1200px 800px at 30% 50%, rgba(23,46,84,.92), rgba(7,17,31,.98) 75%); }
+  #e > * { position: absolute; opacity: 0; }
+  #e-cover { left: 200px; top: 150px; width: 520px; height: 780px; box-shadow: 0 50px 100px rgba(0,0,0,.6), -8px 0 0 #0b1a31; border-radius: 2px 6px 6px 2px; }
+  #e-title { left: 880px; top: 170px; font: 600 92px/1.0 'Source Serif 4'; color: #fff; }
+  #e-by { left: 884px; top: 384px; font: 800 34px Montserrat; letter-spacing: .16em; color: var(--gold); }
+  #e-fmt { left: 884px; top: 470px; }
+  #e-fmt .row { font: 800 40px/62px Montserrat; color: #fff; white-space: nowrap; }
+  #e-fmt .row b { color: var(--gold); }
+  #e-fmt .row i { font-style: normal; font-weight: 600; color: var(--ivory); }
+  #e-date { left: 884px; top: 490px; font: italic 600 64px 'Source Serif 4'; color: #fff; white-space: nowrap; }
+  #e-date b { color: var(--gold); font-weight: 600; }
+  #e-btn { left: 884px; top: 720px; }
+  #e-btn div { position: relative; overflow: hidden; padding: 26px 44px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 46px Montserrat; white-space: nowrap; box-shadow: 0 10px 0 #b8890b, 0 24px 44px rgba(0,0,0,.45); }
+  #e-btn .gl { position: absolute; top: 0; bottom: 0; width: 160px; left: -200px; background: linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent); }
+</style>
+</head>
+<body>
+  <canvas id="c" width="1920" height="1080"></canvas>
+  <!-- 0-5 s: the opening image (generated in Canva by the author) -->
+  <div class="layer" id="ph"><img id="phimg" src="assets/sunday-notebook-16x9.jpg" alt=""><div class="sh"></div></div>
+  <div class="layer">
+    <div class="line" id="l1" style="top:150px">You don’t need<br>another plan.</div>
+    <div class="line" id="l2" style="top:150px">You need a way<br>to <em>begin.</em></div>
+    <div id="lt"><div class="t">The Life You Keep Planning</div><div class="a">BELINDA BRIGHT N.</div></div>
+  </div>
+  <div class="layer" id="end"><div id="endbg"></div><div id="e">
+    <img id="e-cover" src="assets/front-cover.png" alt="">
+    <div id="e-title">The Life You<br>Keep Planning</div>
+    <div id="e-by">BELINDA BRIGHT N.</div>
+    <div id="e-fmt"><div class="row">Kindle eBook <b>£3.99</b> <i>· Pre-order now</i></div><div class="row">Paperback <b>£9.99</b> <i>· Out 23 January 2027</i></div><div class="row">Hardcover <i>· Coming soon</i></div></div>
+    <div id="e-date">Out <b>23 January 2027</b></div>
+    <div id="e-btn"><div>Pre-order on Amazon UK<span class="gl"></span></div></div>
+  </div></div>
+<script type="module">
+import * as THREE from './vendor/three.module.js';
+import { RoomEnvironment } from './vendor/RoomEnvironment.js';
+const params = new URLSearchParams(location.search);
+const W = 1920, H = 1080, DURATION = 25.0; window.DURATION = DURATION;
+const PRICES = params.get('prices') !== '0';     // ?prices=0 -> version without prices
+document.getElementById(PRICES ? 'e-date' : 'e-fmt').remove();
