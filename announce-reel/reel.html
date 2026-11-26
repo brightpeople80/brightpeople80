@@ -44,6 +44,10 @@
   /* link in bio */
   #bio { position: absolute; left: 0; right: 0; top: 1110px; text-align: center; opacity: 0; }
   #bio div { display: inline-block; padding: 22px 40px; border-radius: 999px; background: #fffaf1; color: var(--navy); font: 900 52px Montserrat; box-shadow: 0 16px 40px rgba(0,0,0,.3); }
+  #wcv { position: absolute; left: 380px; top: 330px; width: 320px; height: 480px; border-radius: 2px 6px 6px 2px; box-shadow: 0 36px 60px rgba(60,40,10,.3), -5px 0 0 #0b1a31; }
+  #web { position: absolute; left: 70px; right: 70px; top: 880px; text-align: center; opacity: 0; }
+  #web .u { font: 800 60px/1.15 Montserrat; color: var(--navy); margin-top: 14px; overflow-wrap: anywhere; }
+  #web .u b { color: #a87d0a; }
   /* end card */
   #ecv { position: absolute; left: 340px; top: 230px; width: 400px; height: 600px; border-radius: 2px 6px 6px 2px; box-shadow: 0 40px 70px rgba(60,40,10,.35), -6px 0 0 #0b1a31; }
   #e > * { position: absolute; left: 0; right: 0; text-align: center; opacity: 0; }
@@ -58,7 +62,9 @@
   #e-b span { display: inline-block; padding: 24px 44px; border-radius: 999px; background: var(--navy); color: #fff; font: 900 42px Montserrat; }
   /* captions */
   #caps .cap { position: absolute; left: 90px; width: 900px; top: 1488px; text-align: center; font: 700 44px/1.3 Montserrat; opacity: 0; }
-  #caps .cap span { background: rgba(18,22,32,.72); color: #fff; padding: 6px 18px; border-radius: 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  #caps .cap { font: 800 50px/1.32 Montserrat; }
+  #caps .cap .w { display: inline-block; margin: 0 6px; color: #fff; opacity: 0; text-shadow: 0 3px 14px rgba(0,0,0,.75), 0 1px 3px rgba(0,0,0,.9); }
+  #caps .cap .w.on { color: #ffd65c; }
   #grain { position: absolute; inset: 0; pointer-events: none; opacity: .16; mix-blend-mode: multiply; }
   #fade { position: absolute; inset: 0; background: #fbf6ec; opacity: 0; pointer-events: none; }
 </style>
@@ -78,6 +84,8 @@
   <div id="date"><div class="kick k">KINDLE PRE-ORDER NOW</div><div class="s">Out 23 January 2027</div><div class="p">Paperback coming soon</div></div></div>
 <div class="sc" id="sF"><img class="full" id="av2" alt="" style="object-position:50% 24%"><div class="warm"></div>
   <div id="bio"><div>🔗 LINK IN BIO</div></div></div>
+<div class="sc cream" id="sW"><img id="wcv" src="assets/front-cover.png" alt="">
+  <div id="web"><div class="kick">FIND OUT MORE</div><div class="u">thelifeyoukeepplanningbook<br><b>.netlify.app</b></div></div></div>
 <div class="sc cream" id="sG"><img id="ecv" src="assets/front-cover.png" alt=""><div id="e">
   <div id="e-h">The countdown begins</div>
   <div id="e-d">23 <b>·</b> 01 <b>·</b> 2027</div>
@@ -95,14 +103,14 @@ const eo = x => 1 - Math.pow(1 - x, 3), eio = x => x < .5 ? 4 * x * x * x : 1 - 
 const $ = id => document.getElementById(id), at = (i, f = 0) => S[i].o + S[i].d * f, end = i => S[i].o + S[i].d;
 // scene windows: each starts a beat before its sentence; soft 0.35 s dissolves
 const W = [['sA', 0, at(2) - .2], ['sB', at(2) - .2, at(3) - .15], ['sC', at(3) - .35, at(4) - .15], ['sA', at(4) - .35, at(5) - .15],
-  ['sD', at(5) - .35, at(6) - .15], ['sE', at(6) - .35, at(7) - .15], ['sF', at(7) - .35, at(8) - .15], ['sG', at(8) - .35, 999]];
+  ['sD', at(5) - .35, at(6) - .15], ['sE', at(6) - .35, at(7) - .15], ['sF', at(7) - .35, at(8) - .15], ['sW', at(8) - .24, at(9) - .15], ['sG', at(9) - .35, 999]];
 const pop = (id, t, a, dy = 24, dur = .5) => { const x = eo(k(t, a, a + dur)); $(id).style.opacity = x.toFixed(3); $(id).style.transform = `translateY(${((1 - x) * dy).toFixed(1)}px)`; return x; };
 const gctx = $('grain').getContext('2d'); let gseed = 1;
 function grain(f) { const id = gctx.createImageData(540, 960); let s = (f * 9301 + 49297) % 233280; for (let i = 0; i < id.data.length; i += 4) { s = (s * 9301 + 49297) % 233280; const v = 128 + (s / 233280 - .5) * 120; id.data[i] = id.data[i + 1] = id.data[i + 2] = v; id.data[i + 3] = 255; } gctx.putImageData(id, 0, 0); }
 let CAPS = [], cur = -1;
 function render(t) {
   const op = {}; for (const [id, a, b] of W) { const D = .24; const o = Math.min(k(t, a, a + D), 1 - k(t, b - D, b)); op[id] = Math.max(op[id] || 0, o); }
-  for (const id of ['sA', 'sB', 'sC', 'sD', 'sE', 'sF', 'sG']) { const o = op[id] || 0; $(id).style.opacity = o.toFixed(3); $(id).style.display = o <= 0 ? 'none' : ''; }
+  for (const id of ['sA', 'sB', 'sC', 'sD', 'sE', 'sF', 'sW', 'sG']) { const o = op[id] || 0; $(id).style.opacity = o.toFixed(3); $(id).style.display = o <= 0 ? 'none' : ''; }
   if (t < .3) $('sA').style.opacity = 1;
   // the author: lip-synced frames; a gentle push-in that resets at each return
   const f = TL.avMap[Math.min(TL.avMap.length - 1, Math.round(t * 30))];
@@ -110,6 +118,7 @@ function render(t) {
   const seg = t < at(4) - .35 ? [0, at(2)] : [at(4) - .35, at(5)];
   $('av').style.transform = `scale(${lerp(1.02, 1.10, eio(k(t, seg[0], seg[1]))).toFixed(4)})`;
   $('av2').style.transform = `scale(${lerp(1.08, 1.14, eio(k(t, at(7) - .35, at(8)))).toFixed(4)})`;
+  const wx = eo(k(t, at(8) - .2, at(8) + .4)); $('wcv').style.transform = `translateY(${((1 - wx) * 50).toFixed(1)}px) rotate(${lerp(3, -2, wx).toFixed(2)}deg)`; pop('web', t, at(8, .35), 30);
   pop('t0', t, .5, 18); $('t0').style.opacity = (eo(k(t, .5, 1.1)) * (1 - k(t, at(1) - .45, at(1) - .15))).toFixed(3);
   pop('t1', t, at(1) + .1, 24); $('t1').style.opacity = (eo(k(t, at(1) + .1, at(1) + .6)) * (1 - k(t, at(2) - .38, at(2) - .22)) * (t > at(4) - .4 ? 0 : 1)).toFixed(3);
   // the book on cream
@@ -126,9 +135,11 @@ function render(t) {
   // link in bio
   const b = Math.min(1, Math.max(0, (k(t, at(7), at(7) + .35)))); $('bio').style.opacity = b; $('bio').style.transform = `scale(${(.8 + .2 * eo(b) + .04 * Math.sin(Math.PI * k(t, at(7) + .4, at(7) + .9))).toFixed(3)})`;
   // end card
-  const ex = eo(k(t, at(8) - .3, at(8) + .4)); $('ecv').style.transform = `translateY(${((1 - ex) * 60).toFixed(1)}px) scale(${lerp(.95, 1, ex)})`;
-  pop('e-h', t, at(8)); pop('e-d', t, at(8, .5)); pop('e-f', t, end(8) + .2, 16); pop('e-u', t, end(8) + .5, 16); pop('e-b', t, end(8) + .8, 16);
-  for (const c of CAPS) { const a = eo(k(t, c.s, c.s + .12)) * (1 - k(t, c.e - .14, c.e - .06)); c.el.style.opacity = a; }
+  const ex = eo(k(t, at(9) - .3, at(9) + .4)); $('ecv').style.transform = `translateY(${((1 - ex) * 60).toFixed(1)}px) scale(${lerp(.95, 1, ex)})`;
+  pop('e-h', t, at(9)); pop('e-d', t, at(9, .5)); pop('e-f', t, end(9) + .2, 16); pop('e-u', t, end(9) + .5, 16); pop('e-b', t, end(9) + .8, 16);
+  for (const c of CAPS) { const out = 1 - k(t, c.e - .14, c.e - .06); c.el.style.opacity = (t >= c.s - .05 ? out : 0).toFixed(3);
+    c.ws.forEach((w, i) => { const x = k(t, w.t0 - .02, w.t0 + .16), nx = i + 1 < c.ws.length ? c.ws[i + 1].t0 : c.e; w.el.style.opacity = clamp(x * 1.6).toFixed(3);
+      w.el.style.transform = `translateY(${((1 - eo(x)) * 22).toFixed(1)}px) scale(${(1 + .14 * Math.sin(Math.PI * clamp(x))).toFixed(3)})`; w.el.classList.toggle('on', t >= w.t0 && t < nx); }); }
   $('fade').style.opacity = clamp(1 - t / .4) * 0;
   grain(Math.floor(t * 12));
 }
@@ -136,7 +147,7 @@ window.seek = async t => { render(t); for (const id of ['av', 'av2']) { const im
 window.READY = (async () => {
   await Promise.all(['700 40px Caveat', '800 40px Montserrat', '600 40px "Source Serif 4"', 'italic 600 40px "Source Serif 4"'].map(f => document.fonts.load(f)));
   CAPS = (TL.caps || []).map(c => ({ ...c }));
-  for (const c of CAPS) { const d = document.createElement('div'); d.className = 'cap'; const s = document.createElement('span'); s.textContent = c.text; d.appendChild(s); $('caps').appendChild(d); c.el = d; }
+  for (const c of CAPS) { const d = document.createElement('div'); d.className = 'cap'; c.ws = (c.w || [[c.text, c.s]]).map(([w, t0]) => { const s = document.createElement('span'); s.className = 'w'; s.textContent = w; d.appendChild(s); d.appendChild(document.createTextNode(' ')); return { el: s, t0 }; }); $('caps').appendChild(d); c.el = d; }
   for (const img of document.images) if (img.src && !img.complete) await new Promise(r => { img.onload = r; img.onerror = r; });
   await window.seek(0); return true;
 })();

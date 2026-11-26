@@ -17,8 +17,9 @@ SENT = ["I've been waiting so long to say this out loud.",
         "Inside, you'll find the SELECT method and a thirty-day follow-through programme.",
         "The Kindle edition is available to pre-order now, and it's out on the twenty-third of January, twenty twenty-seven.",
         "The link is in my bio.",
+        "You can also find out more on my website, the life you keep planning book, dot netlify, dot app.",
         "Let the countdown begin."]
-GAP = [0.4, 0.55, 0.7, 0.8, 0.7, 0.7, 0.8, 0.6, 0.6]
+GAP = [0.4, 0.55, 0.7, 0.8, 0.7, 0.7, 0.8, 0.6, 0.6, 0.6]
 HOLD = 4.5                                     # end screen stays on after the last word
 
 # ---- audio of the master, and speech energy
@@ -108,6 +109,7 @@ CAP = [["I've been waiting so long", "to say this out loud."],
        ["Inside, you'll find the SELECT method", "and a 30-day follow-through programme."],
        ["The Kindle edition is available", "to pre-order now,", "and it's out on 23 January 2027."],
        ["The link is in my bio."],
+       ["You can also find out more on my website,", "thelifeyoukeepplanningbook.netlify.app"],
        ["Let the countdown begin."]]
 caps = []
 for s, parts in zip(out, CAP):
@@ -115,6 +117,10 @@ for s, parts in zip(out, CAP):
     for p in parts:
         d = s['d'] * len(p) / tot; caps.append({'text': p, 's': round(c - .03, 3), 'e': round(c + d - .02, 3)}); c += d
 kw = []
+for c in caps:
+    ws = c['text'].split(); tot = sum(len(w) + 1 for w in ws); x = c['s'] + .03; span = c['e'] - c['s'] - .1
+    c['w'] = []
+    for w in ws: c['w'].append([w, round(x, 3)]); x += span * (len(w) + 1) / tot
 open('timeline.js', 'w').write('window.TL = ' + json.dumps({'duration': DUR, 'segs': out, 'avMap': avmap, 'caps': caps, 'words': kw}) + ';\n')
 print('duration', DUR)
 for i, s in enumerate(out): print(i, s, SENT[i][:50])
