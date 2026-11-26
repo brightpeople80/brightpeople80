@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Belinda Author Promo</title>
+<style>
+  @font-face { font-family: 'Montserrat'; font-weight: 100 900; src: url(../assets/fonts/Montserrat-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-italic.woff2) format('woff2'); }
+  :root { --navy: #0b1a31; --gold: #fbc312; --ivory: #f4eddc; }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #07111f; }
+  #c { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  .layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  /* the author (HeyGen digital twin, lip-synced) */
+  #avwrap { position: absolute; overflow: hidden; opacity: 0; }
+  #av { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+  #avbg { position: absolute; inset: 0; background: radial-gradient(70% 50% at 50% 30%, rgba(23,46,84,0), rgba(7,17,31,.35)); }
+  #avring { position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 6px var(--gold); pointer-events: none; }
+  #avgrad { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,17,31,.25), rgba(7,17,31,0) 25%, rgba(7,17,31,0) 55%, rgba(7,17,31,.85)); }
+  #avtag { position: absolute; font: 800 24px Montserrat; letter-spacing: .14em; color: var(--gold); white-space: nowrap; opacity: 0; text-shadow: 0 2px 10px rgba(0,0,0,.8); }
+  /* lower third on the introduction */
+  #lt { position: absolute; left: 80px; top: 1180px; opacity: 0; }
+  #lt .k { font: 800 28px Montserrat; letter-spacing: .22em; color: var(--gold); }
+  #lt .n { font: 600 92px/1 'Source Serif 4'; color: #fff; margin-top: 10px; text-shadow: 0 6px 30px rgba(0,0,0,.7); }
+  #lt .r { height: 6px; width: 0; background: var(--gold); border-radius: 3px; margin-top: 16px; }
+  #lt .b { font: 600 32px Montserrat; color: var(--ivory); margin-top: 14px; }
+  #lt .b i { color: var(--gold); font-style: italic; font-family: 'Source Serif 4'; font-weight: 600; font-size: 38px; }
+  /* big keywords */
+  .kw { position: absolute; left: 0; right: 0; text-align: center; font: 900 72px/1.05 Montserrat; letter-spacing: .02em; color: #fff; opacity: 0; text-shadow: 0 6px 30px rgba(0,0,0,.7); }
+  .kw.g { color: var(--gold); }
+  /* the launch block */
+  #pb { position: absolute; left: 0; right: 0; top: 1190px; text-align: center; opacity: 0; }
+  #pb .a { font: 800 34px Montserrat; letter-spacing: .2em; color: var(--ivory); }
+  #pb .b { font: 900 92px/1 Montserrat; color: #fff; margin-top: 10px; }
+  #ld { position: absolute; left: 0; right: 0; top: 1190px; text-align: center; opacity: 0; }
+  #ld .a { font: 800 34px Montserrat; letter-spacing: .2em; color: var(--ivory); }
+  #ld .b { font: 900 104px/1 Montserrat; color: var(--gold); margin-top: 10px; letter-spacing: .01em; }
+  /* end screen */
+  #endbg { position: absolute; inset: 0; opacity: 0; background: radial-gradient(900px 800px at 50% 40%, #172e54, #07111f 72%); }
+  #e > * { position: absolute; opacity: 0; }
+  #e-cover { left: 300px; top: 200px; width: 480px; height: 720px; box-shadow: 0 50px 100px rgba(0,0,0,.65), -7px 0 0 #0b1a31; border-radius: 2px 6px 6px 2px; }
+  #e-title { left: 0; right: 0; top: 980px; text-align: center; font: 900 66px/1.05 Montserrat; color: #fff; letter-spacing: .01em; }
+  #e-by { left: 0; right: 0; top: 1060px; text-align: center; font: italic 600 44px 'Source Serif 4'; color: var(--gold); }
+  #e-fmt { left: 0; right: 0; top: 1140px; text-align: center; }
+  #e-fmt div { font: 700 36px/56px Montserrat; color: #fff; }
+  #e-fmt b { color: var(--gold); }
+  #e-btn { left: 0; right: 0; top: 1330px; text-align: center; }
+  #e-btn div { display: inline-block; position: relative; overflow: hidden; padding: 26px 46px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 44px Montserrat; white-space: nowrap; box-shadow: 0 10px 0 #b8890b, 0 24px 44px rgba(0,0,0,.45); }
+  #e-btn .gl { position: absolute; top: 0; bottom: 0; width: 160px; left: -200px; background: linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent); }
+  /* captions */
+  #caps .cap { position: absolute; left: 84px; width: 800px; top: 1478px; font: 800 46px/1.3 Montserrat; color: #fff; opacity: 0; }
+  #caps .cap span { background: rgba(7,17,31,.82); padding: 6px 18px; border-radius: 14px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+</style>
+</head>
+<body>
+  <canvas id="c" width="1080" height="1920"></canvas>
+  <div class="layer">
+    <div class="kw" id="k1" style="top:640px">TOO MANY IDEAS</div>
+    <div class="kw" id="k2" style="top:640px">OVERTHINKING</div>
+    <div class="kw g" id="k3" style="top:640px">NOT ENOUGH<br>FOLLOW-THROUGH</div>
+    <div class="kw" id="w1" style="top:1010px">CLARITY</div>
+    <div class="kw" id="w2" style="top:1100px">CHOICE</div>
+    <div class="kw" id="w3" style="top:1190px">ACTION</div>
+    <div class="kw g" id="w4" style="top:1280px">FOLLOW-THROUGH</div>
+    <div id="pb"><div class="a">KINDLE PRE-ORDER NOW</div><div class="b">PAPERBACK<br>COMING SOON</div></div>
+    <div id="ld"><div class="a">OFFICIAL LAUNCH</div><div class="b">23 JANUARY 2027</div></div>
+  </div>
+  <div class="layer" id="end"><div id="endbg"></div><div id="e">
+    <img id="e-cover" src="assets/front-cover.png" alt="">
+    <div id="e-title">THE LIFE YOU<br>KEEP PLANNING</div>
+    <div id="e-by" style="top:1110px">By Belinda Bright N.</div>
+    <div id="e-fmt" style="top:1190px"><div>Kindle pre-order available now: <b>£3.99</b></div><div>Paperback coming soon: <b>£9.99</b></div><div>Official launch: <b>23 January 2027</b></div></div>
+    <div id="e-btn" style="top:1400px"><div>PRE-ORDER ON AMAZON KINDLE<span class="gl"></span></div></div>
+  </div></div>
+  <div class="layer">
+    <div id="avwrap"><img id="av" alt=""><div id="avbg"></div><div id="avgrad"></div><div id="avring"></div></div>
+    <div id="avtag">BELINDA BRIGHT N. · AUTHOR</div>
+    <div id="lt"><div class="k">MEET THE AUTHOR</div><div class="n">Belinda Bright N.</div><div class="r" id="ltr"></div><div class="b">Author of <i>The Life You Keep Planning</i></div></div>
+  </div>
+  <div class="layer" id="caps"></div>
+<script src="timeline.js"></script>
+<script type="module">
+import * as THREE from './vendor/three.module.js';
+import { RoomEnvironment } from './vendor/RoomEnvironment.js';
+const params = new URLSearchParams(location.search);
+const W = 1080, H = 1920;
+const TL = window.TL, DURATION = TL.duration; window.DURATION = DURATION;

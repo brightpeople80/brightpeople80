@@ -1,0 +1,125 @@
+
+// ------------------------------------------------------------------ world
+scene.fog = null; scene.background = new THREE.Color('#0a1729');
+const B = {};
+const S = TL.segs;                                   // 11 spoken sentences, placed on the output timeline
+const at = (i, f = 0) => S[i].o + S[i].d * f;        // a moment inside sentence i
+const end = i => S[i].o + S[i].d;
+async function build() {
+  await Promise.all(['900 60px Montserrat', '800 60px Montserrat', '600 60px "Source Serif 4"', 'italic 600 60px "Source Serif 4"'].map(f => document.fonts.load(f)));
+  const [frontT, spineT, backT] = await Promise.all(['assets/front-cover.png', 'assets/spine.png', 'assets/back-cover.png'].map(loadTex));
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(600, 300), M.table); floor.rotation.x = -Math.PI / 2; floor.position.x = 60; floor.receiveShadow = true; scene.add(floor);
+  // ---- A: overload. Floating notebooks, idea cards, three competing paths
+  const A = new THREE.Group(); scene.add(A); B.A = A;
+  const pageT = canvasTex(400, 560, (g, w, h) => { grain(g, w, h, '#f4eddc', 6); g.strokeStyle = 'rgba(35,64,110,.18)'; g.lineWidth = 3; for (let y = 70; y < h - 20; y += 34) { g.beginPath(); g.moveTo(24, y); g.lineTo(w - 24, y); g.stroke(); }
+    g.strokeStyle = 'rgba(35,64,110,.55)'; g.lineWidth = 5; for (let i = 0; i < 6; i++) { g.beginPath(); g.moveTo(40, 100 + i * 68); g.lineTo(40 + 120 + rnd() * 200, 100 + i * 68); g.stroke(); } });
+  B.books = [[-3.6, 9.5, -2, .5], [3.4, 11.5, -4, -.6], [-2.2, 6.2, 1.5, .25], [3.0, 7.2, 1.0, -.3], [0.2, 13.0, -6, .1], [-4.6, 12.6, -6, .8]].map(([x, y, z, r], i) => {
+    const g = new THREE.Group(); g.position.set(x, y, z); g.userData = { y, r, ph: i * 1.3 };
+    const cov = box(3.0, .14, 4.1, M.navy); g.add(cov);
+    const pg = new THREE.Mesh(new THREE.PlaneGeometry(2.8, 3.9), new THREE.MeshStandardMaterial({ map: pageT, roughness: .95 })); pg.rotation.x = -Math.PI / 2; pg.position.y = .08; g.add(pg);
+    A.add(g); return g; });
+  const IDEAS = ['Start a podcast', 'New course?', 'Side business', 'Rebrand', 'Move abroad', 'Write a book', 'Launch an app', 'Learn to code'];
+  B.cards = IDEAS.map((s, i) => { const t = canvasTex(520, 200, (g, w, h) => { grain(g, w, h, i % 3 ? '#f4eddc' : '#f7d672', 8); g.fillStyle = '#0b1a31'; g.font = '800 54px Montserrat'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(s, w / 2, h / 2 + 4); });
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(3.1, 1.2), new THREE.MeshStandardMaterial({ map: t, roughness: .9, side: THREE.DoubleSide })); m.userData = { a: i / IDEAS.length * Math.PI * 2, r: 3.4 + (i % 3) * .6, y: 5.6 + (i % 4) * 1.2 }; A.add(m); return m; });
+  // three competing pathways on the floor, diverging from one point
+  B.paths = [-.55, 0, .55].map(a => { const pts = []; for (let i = 0; i <= 40; i++) { const u = i / 40; pts.push(V(Math.sin(a) * u * 14 + Math.sin(u * 6 + a * 4) * .6 * u, .05, 6 - u * 16)); }
+    const m = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 120, .07, 8), new THREE.MeshStandardMaterial({ color: '#e9e2cf', roughness: .6, emissive: '#4a4536', emissiveIntensity: .4 })); m.userData.segs = 120; A.add(m); return m; });
+  // ---- B: the tangle that untangles into the cover's gold arrow (x = 60)
+  const N = 160, TA = [], TB = [];
+  for (let i = 0; i < N; i++) { const u = i / (N - 1);
+    const loops = u < .62 ? u / .62 : 1, a = loops * Math.PI * 2 * 5.5, r = 2.2 * (1 - .35 * Math.sin(loops * 9)) * (u < .62 ? 1 : 1 - (u - .62) / .38 * .6);
+    TA.push(V(60 - 2.0 + Math.cos(a) * r + (u > .62 ? (u - .62) * 16 : 0), 8.5 + Math.sin(a) * r * .85 + Math.sin(a * 2.3) * .5 + (u > .62 ? (u - .62) * 3 : 0), Math.sin(a * 1.7) * 1.2));
+    TB.push(V(60 - 5.2 + u * 10.4, 7.4 + Math.sin((u - .1) * Math.PI * .9) * 1.6 + u * 1.4, 0)); }
+  B.TA = TA; B.TB = TB; B.lineMat = new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: .35, emissive: '#ffffff', emissiveIntensity: .35 });
+  B.line = new THREE.Mesh(new THREE.BufferGeometry(), B.lineMat); scene.add(B.line); B.lineM = -1;
+  B.head = new THREE.Mesh(new THREE.ConeGeometry(.55, 1.3, 3), B.lineMat); B.head.scale.set(1, 1, .25); scene.add(B.head);
+  // ---- C: the real book (x = 120)
+  const book = new THREE.Group(); book.position.set(120, 7.2, 0); scene.add(book); B.book = book;
+  const pagesT = canvasTex(64, 512, (g, w, h) => { g.fillStyle = '#efe6d0'; g.fillRect(0, 0, w, h); for (let x = 0; x < w; x += 2) { g.fillStyle = `rgba(120,100,70,${.08 + rnd() * .12})`; g.fillRect(x, 0, 1, h); } });
+  const pagesTH = canvasTex(512, 64, (g, w, h) => { g.fillStyle = '#efe6d0'; g.fillRect(0, 0, w, h); for (let y = 0; y < h; y += 2) { g.fillStyle = `rgba(120,100,70,${.08 + rnd() * .12})`; g.fillRect(0, y, w, 1); } });
+  const pe = new THREE.MeshStandardMaterial({ map: pagesT, roughness: 1 }), peh = new THREE.MeshStandardMaterial({ map: pagesTH, roughness: 1 });
+  const bk = new THREE.Mesh(new THREE.BoxGeometry(6, 9, .55), [pe, new THREE.MeshStandardMaterial({ map: spineT, roughness: .55 }), peh, peh,
+    new THREE.MeshStandardMaterial({ map: frontT, roughness: .5, envMapIntensity: .3 }), new THREE.MeshStandardMaterial({ map: backT, roughness: .55 })]);
+  bk.castShadow = bk.receiveShadow = true; book.add(bk);
+  const spot = new THREE.SpotLight('#ffe7bf', 60, 70, .5, .6, 1.2); spot.position.set(112, 26, 22); spot.target = book; spot.castShadow = true; scene.add(spot);
+  const rim = new THREE.SpotLight('#9fb8ff', 25, 60, .5, .8, 1.2); rim.position.set(132, 16, -14); rim.target = book; scene.add(rim);
+}
+function setLine(m) {
+  if (Math.abs(m - B.lineM) < .004) return; B.lineM = m;
+  const pts = B.TA.map((p, i) => p.clone().lerp(B.TB[i], m));
+  B.line.geometry.dispose(); B.line.geometry = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 400, .1 + .04 * m, 10, false);
+}
+function look(pos, tgt) { camera.position.copy(pos); camera.lookAt(tgt); camera.updateMatrixWorld(); }
+const $ = id => document.getElementById(id);
+// avatar layouts (px): full, pip (left circle, clear of the right-side app buttons), side (card beside the book)
+const LAY = { full: [0, 0, 1080, 1920, 0], pip: [72, 250, 300, 300, 150], side: [64, 360, 430, 760, 26], end: [72, 200, 180, 180, 90] };
+const mixL = (a, b, u) => a.map((v, i) => lerp(v, b[i], u));
+let CAPS = [], avCur = -1;
+function avatar(t) {
+  // which layout, with eased transitions
+  let L = LAY.full;
+  const toPip = eio(k(t, at(1) - .5, at(1) + .1)), toSide = eio(k(t, at(6) - .45, at(6) + .05)), back = eio(k(t, at(7) - .9, at(7) - .35)), toEnd = eio(k(t, end(8) + .2, at(9) - .1));
+  L = mixL(LAY.full, LAY.pip, toPip); if (toSide > 0) L = mixL(L, LAY.side, toSide); if (back > 0) L = mixL(L, LAY.pip, back); if (toEnd > 0) L = mixL(L, LAY.end, toEnd);
+  const w = $('avwrap'); Object.assign(w.style, { left: L[0] + 'px', top: L[1] + 'px', width: L[2] + 'px', height: L[3] + 'px', borderRadius: L[4] + 'px' });
+  const vis = Math.min(k(t, 0, .25), 1 - k(t, end(10) + .4, end(10) + 1.0)); w.style.opacity = vis.toFixed(3);
+  $('avring').style.opacity = clamp(toPip * 2); $('avgrad').style.opacity = (1 - toPip * (1 - toSide)).toFixed(3);
+  const tag = $('avtag'); tag.style.left = (L[0] + L[2] + 20) + 'px'; tag.style.top = (L[1] + L[3] / 2 - 14) + 'px';
+  tag.style.opacity = (clamp((toPip - .8) * 5) * (1 - toSide) * (1 - toEnd) * vis).toFixed(3);
+  const f = TL.avMap[Math.min(TL.avMap.length - 1, Math.max(0, Math.round(t * 30)))];
+  if (f !== avCur) { avCur = f; $('av').src = `assets/av/f${String(f).padStart(5, '0')}.jpg`; }
+}
+function render(t) {
+  // ---- choose the 3D shot
+  if (t < at(4) - .2) {                                           // A: overload
+    const u = k(t, at(1) - .3, at(4)); look(V(lerp(2, -2, u), lerp(10.5, 9.4, u), lerp(24, 19.5, eio(u))), V(0, lerp(8.6, 8.0, u), -1));
+    B.books.forEach((g, i) => { g.position.y = g.userData.y + Math.sin(t * .7 + g.userData.ph) * .35; g.rotation.set(-.35 + Math.sin(t * .4 + i) * .15, g.userData.r + t * .06, Math.sin(t * .5 + i) * .1); });
+    B.cards.forEach((m, i) => { const a = m.userData.a + t * .18 * (i % 2 ? 1 : -1); m.position.set(Math.cos(a) * m.userData.r, m.userData.y + Math.sin(t * .9 + i) * .3, Math.sin(a) * m.userData.r * .7 - 1); m.lookAt(camera.position); });
+    const ap = eio(k(t, at(1), at(2))); B.paths.forEach(p => drawTube(p, ap));
+  } else if (t < at(6) - .2) {                                    // B: the tangle, then the gold arrow
+    const m = eio(k(t, at(4, .15), at(5, .55)));
+    setLine(m);
+    const c = new THREE.Color('#ffffff').lerp(new THREE.Color('#fbc312'), eio(k(t, at(5, .1), at(5, .6))));
+    B.lineMat.color.copy(c); B.lineMat.emissive.copy(c); B.lineMat.emissiveIntensity = lerp(.35, .65, k(t, at(5), at(5, .6)));
+    const hv = eo(k(t, at(5, .45), at(5, .65))); B.head.visible = hv > .01;
+    const p1 = B.TB[B.TB.length - 1], p0 = B.TB[B.TB.length - 4], dir = p1.clone().sub(p0).normalize();
+    B.head.position.copy(p1).add(dir.clone().multiplyScalar(.5)); B.head.quaternion.setFromUnitVectors(V(0, 1, 0), dir); B.head.scale.set(hv, hv, hv * .25);
+    const u = k(t, at(4) - .2, at(6)); look(V(60 + lerp(-1.2, 1.2, u), 8.6, lerp(23, 20.5, eio(u))), V(60, 8.6 - (t > at(5) ? 1.4 * eio(k(t, at(5), at(5, .4))) : 0), 0));
+  } else {                                                        // C: the book
+    const r = eo(k(t, at(6) - .2, at(6, .35)));
+    B.book.rotation.y = lerp(-1.1, -.28, r) + .32 * eio(k(t, at(6, .35), at(9))) + .06 * Math.sin(t * .5);
+    B.book.position.y = lerp(5.2, 7.2, r);
+    const side = 1 - eio(k(t, at(7) - .9, at(7) - .3));               // beside the author, then centre
+    look(V(120 - 2.6 * side, 8.6, lerp(30, 28, k(t, at(6), at(9)))), V(120 - 2.6 * side, 7.0 - 2.4 * (1 - side), 0));
+  }
+  renderer.render(scene, camera);
+  // quick dip to navy at each shot change
+  const dips = [at(1) - .3, at(4) - .2, at(6) - .2]; let dp = 0; for (const d of dips) dp = Math.max(dp, 1 - Math.abs(t - d) / .22);
+  canvas.style.filter = `brightness(${(1 - .9 * clamp(dp)).toFixed(3)})`;
+  avatar(t);
+  // ---- type
+  const S1 = (id, a, b, dy = 24) => { const x = eo(k(t, a, a + .4)) * (1 - k(t, b - .3, b)); $(id).style.opacity = x.toFixed(3); $(id).style.transform = `translateY(${((1 - eo(k(t, a, a + .4))) * dy).toFixed(1)}px)`; };
+  S1('lt', .4, at(1) - .35); $('ltr').style.width = `${(380 * eio(k(t, .7, 1.3))).toFixed(1)}px`;
+  S1('k1', at(1, .45), at(2) - .05); S1('k2', at(2) + .05, at(3) - .05); S1('k3', at(3) + .05, at(4) - .1);
+  const wn = ['w1', 'w2', 'w3', 'w4'], wt = TL.words || [at(5, .45), at(5, .6), at(5, .75), at(5, .88)];
+  wn.forEach((id, i) => S1(id, wt[i], at(6) - .15, 20));
+  S1('pb', at(7) - .05, at(8) - .2); S1('ld', at(8, .35), end(8) + .9);
+  // ---- end screen (holds well over 4 s)
+  const e0 = end(8) + .6, dim = eio(k(t, e0, e0 + .6));
+  $('endbg').style.opacity = dim; canvas.style.filter += dim > 0 ? ` blur(${(dim * 10).toFixed(2)}px)` : '';
+  const E = (id, a, dy = 30) => { const x = eo(k(t, a, a + .45)); $(id).style.opacity = x; $(id).style.transform = `translateY(${((1 - x) * dy).toFixed(1)}px)`; };
+  E('e-cover', e0 + .2, 120); E('e-title', e0 + .45); E('e-by', e0 + .6, 20); E('e-fmt', e0 + .8, 20); E('e-btn', at(10));
+  const pl = Math.sin(Math.PI * k(t, end(10) + .1, end(10) + .6)); $('e-btn').style.transform += ` scale(${(1 + .05 * pl).toFixed(4)})`;
+  document.querySelector('#e-btn .gl').style.left = `${lerp(-200, 1000, eio(k(t, end(10) + .2, end(10) + 1.0)))}px`;
+  for (const c of CAPS) { const a = eo(k(t, c.s - .04, c.s + .12)) * (1 - k(t, c.e - .1, c.e)); c.el.style.opacity = a; }
+}
+window.seek = async t => { render(t); const img = $('av'); if (!img.complete) await new Promise(r => { img.onload = r; img.onerror = r; }); };
+window.READY = (async () => {
+  await build();
+  CAPS = (TL.caps || []).map(c => ({ ...c }));
+  for (const c of CAPS) { const d = document.createElement('div'); d.className = 'cap'; const s = document.createElement('span'); s.textContent = c.text; d.appendChild(s); $('caps').appendChild(d); c.el = d; }
+  await window.seek(0); return true;
+})();
+if (!params.has('render')) window.READY.then(() => { const t0 = performance.now(); const loop = () => { render(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); }; loop(); });
+</script>
+</body>
+</html>
