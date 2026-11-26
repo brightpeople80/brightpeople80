@@ -89,7 +89,7 @@ function render(t) {
     B.book.rotation.y = lerp(-1.1, -.28, r) + .32 * eio(k(t, at(6, .35), at(9))) + .06 * Math.sin(t * .5);
     B.book.position.y = lerp(5.2, 7.2, r);
     const side = 1 - eio(k(t, at(7) - .9, at(7) - .3));               // beside the author, then centre
-    look(V(120 - 2.6 * side, 8.6, lerp(30, 28, k(t, at(6), at(9)))), V(120 - 2.6 * side, 7.0 - 2.4 * (1 - side), 0));
+    const cx = 120 - 1.9 * side - 1.0 * (1 - side); look(V(cx, 8.6, lerp(37, 38, 1 - side)), V(cx, lerp(6.4, 4.7, 1 - side), 0));
   }
   renderer.render(scene, camera);
   // quick dip to navy at each shot change
@@ -110,7 +110,7 @@ function render(t) {
   E('e-cover', e0 + .2, 120); E('e-title', e0 + .45); E('e-by', e0 + .6, 20); E('e-fmt', e0 + .8, 20); E('e-btn', at(10));
   const pl = Math.sin(Math.PI * k(t, end(10) + .1, end(10) + .6)); $('e-btn').style.transform += ` scale(${(1 + .05 * pl).toFixed(4)})`;
   document.querySelector('#e-btn .gl').style.left = `${lerp(-200, 1000, eio(k(t, end(10) + .2, end(10) + 1.0)))}px`;
-  for (const c of CAPS) { const a = eo(k(t, c.s - .04, c.s + .12)) * (1 - k(t, c.e - .1, c.e)); c.el.style.opacity = a; }
+  for (const c of CAPS) { const a = eo(k(t, c.s, c.s + .12)) * (1 - k(t, c.e - .14, c.e - .06)); c.el.style.opacity = a; }
 }
 window.seek = async t => { render(t); const img = $('av'); if (!img.complete) await new Promise(r => { img.onload = r; img.onerror = r; }); };
 window.READY = (async () => {

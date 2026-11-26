@@ -5,7 +5,7 @@ To use the final Joanna recording, place its sentence WAVs + timeline.json in a 
 import sys, json, numpy as np, soundfile as sf
 from scipy import signal
 
-SR, T = 48000, 64.91
+SR, T = 48000, 64.88
 N = int(SR * T)
 rng = np.random.default_rng(11)
 out = sys.argv[1] if len(sys.argv) > 1 else 'audio/music.wav'

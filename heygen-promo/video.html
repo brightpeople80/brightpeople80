@@ -14,6 +14,7 @@
   /* the author (HeyGen digital twin, lip-synced) */
   #avwrap { position: absolute; overflow: hidden; opacity: 0; }
   #av { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+  #avbg { position: absolute; inset: 0; background: radial-gradient(70% 50% at 50% 30%, rgba(23,46,84,0), rgba(7,17,31,.35)); }
   #avring { position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 6px var(--gold); pointer-events: none; }
   #avgrad { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,17,31,.25), rgba(7,17,31,0) 25%, rgba(7,17,31,0) 55%, rgba(7,17,31,.85)); }
   #avtag { position: absolute; font: 800 24px Montserrat; letter-spacing: .14em; color: var(--gold); white-space: nowrap; opacity: 0; text-shadow: 0 2px 10px rgba(0,0,0,.8); }
@@ -25,13 +26,14 @@
   #lt .b { font: 600 32px Montserrat; color: var(--ivory); margin-top: 14px; }
   #lt .b i { color: var(--gold); font-style: italic; font-family: 'Source Serif 4'; font-weight: 600; font-size: 38px; }
   /* big keywords */
-  .kw { position: absolute; left: 0; right: 0; text-align: center; font: 900 76px/1.05 Montserrat; letter-spacing: .02em; color: #fff; opacity: 0; text-shadow: 0 6px 30px rgba(0,0,0,.7); }
+  .kw { position: absolute; left: 0; right: 0; text-align: center; font: 900 72px/1.05 Montserrat; letter-spacing: .02em; color: #fff; opacity: 0; text-shadow: 0 6px 30px rgba(0,0,0,.7); }
+  #k1, #k2, #k3 { left: 90px; right: 90px; padding: 22px 0; border-radius: 22px; background: rgba(7,17,31,.82); box-shadow: 0 20px 50px rgba(0,0,0,.45), inset 0 0 0 2px rgba(251,195,18,.4); }
   .kw.g { color: var(--gold); }
   /* the launch block */
-  #pb { position: absolute; left: 0; right: 0; top: 1130px; text-align: center; opacity: 0; }
+  #pb { position: absolute; left: 0; right: 0; top: 1190px; text-align: center; opacity: 0; }
   #pb .a { font: 800 34px Montserrat; letter-spacing: .2em; color: var(--ivory); }
   #pb .b { font: 900 92px/1 Montserrat; color: #fff; margin-top: 10px; }
-  #ld { position: absolute; left: 0; right: 0; top: 1130px; text-align: center; opacity: 0; }
+  #ld { position: absolute; left: 0; right: 0; top: 1190px; text-align: center; opacity: 0; }
   #ld .a { font: 800 34px Montserrat; letter-spacing: .2em; color: var(--ivory); }
   #ld .b { font: 900 104px/1 Montserrat; color: var(--gold); margin-top: 10px; letter-spacing: .01em; }
   /* end screen */
@@ -54,13 +56,13 @@
 <body>
   <canvas id="c" width="1080" height="1920"></canvas>
   <div class="layer">
-    <div class="kw" id="k1" style="top:300px">TOO MANY IDEAS</div>
-    <div class="kw" id="k2" style="top:300px">OVERTHINKING</div>
-    <div class="kw g" id="k3" style="top:300px">NOT ENOUGH<br>FOLLOW-THROUGH</div>
-    <div class="kw" id="w1" style="top:230px">CLARITY</div>
-    <div class="kw" id="w2" style="top:330px">CHOICE</div>
-    <div class="kw" id="w3" style="top:430px">ACTION</div>
-    <div class="kw g" id="w4" style="top:530px">FOLLOW-THROUGH</div>
+    <div class="kw" id="k1" style="top:640px">TOO MANY IDEAS</div>
+    <div class="kw" id="k2" style="top:640px">OVERTHINKING</div>
+    <div class="kw g" id="k3" style="top:640px">NOT ENOUGH<br>FOLLOW-THROUGH</div>
+    <div class="kw" id="w1" style="top:1010px">CLARITY</div>
+    <div class="kw" id="w2" style="top:1100px">CHOICE</div>
+    <div class="kw" id="w3" style="top:1190px">ACTION</div>
+    <div class="kw g" id="w4" style="top:1280px">FOLLOW-THROUGH</div>
     <div id="pb"><div class="a">KINDLE PRE-ORDER NOW</div><div class="b">PAPERBACK<br>COMING SOON</div></div>
     <div id="ld"><div class="a">OFFICIAL LAUNCH</div><div class="b">23 JANUARY 2027</div></div>
   </div>
@@ -72,7 +74,7 @@
     <div id="e-btn" style="top:1400px"><div>PRE-ORDER ON AMAZON KINDLE<span class="gl"></span></div></div>
   </div></div>
   <div class="layer">
-    <div id="avwrap"><img id="av" alt=""><div id="avgrad"></div><div id="avring"></div></div>
+    <div id="avwrap"><img id="av" alt=""><div id="avbg"></div><div id="avgrad"></div><div id="avring"></div></div>
     <div id="avtag">BELINDA BRIGHT N. · AUTHOR</div>
     <div id="lt"><div class="k">MEET THE AUTHOR</div><div class="n">Belinda Bright N.</div><div class="r" id="ltr"></div><div class="b">Author of <i>The Life You Keep Planning</i></div></div>
   </div>
@@ -186,7 +188,7 @@ async function build() {
     A.add(g); return g; });
   const IDEAS = ['Start a podcast', 'New course?', 'Side business', 'Rebrand', 'Move abroad', 'Write a book', 'Launch an app', 'Learn to code'];
   B.cards = IDEAS.map((s, i) => { const t = canvasTex(520, 200, (g, w, h) => { grain(g, w, h, i % 3 ? '#f4eddc' : '#f7d672', 8); g.fillStyle = '#0b1a31'; g.font = '800 54px Montserrat'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(s, w / 2, h / 2 + 4); });
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(3.1, 1.2), new THREE.MeshStandardMaterial({ map: t, roughness: .9, side: THREE.DoubleSide })); m.userData = { a: i / IDEAS.length * Math.PI * 2, r: 4.6 + (i % 3) * .9, y: 6.5 + (i % 4) * 1.6 }; A.add(m); return m; });
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(3.1, 1.2), new THREE.MeshStandardMaterial({ map: t, roughness: .9, side: THREE.DoubleSide })); m.userData = { a: i / IDEAS.length * Math.PI * 2, r: 3.4 + (i % 3) * .6, y: 5.6 + (i % 4) * 1.2 }; A.add(m); return m; });
   // three competing pathways on the floor, diverging from one point
   B.paths = [-.55, 0, .55].map(a => { const pts = []; for (let i = 0; i <= 40; i++) { const u = i / 40; pts.push(V(Math.sin(a) * u * 14 + Math.sin(u * 6 + a * 4) * .6 * u, .05, 6 - u * 16)); }
     const m = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 120, .07, 8), new THREE.MeshStandardMaterial({ color: '#e9e2cf', roughness: .6, emissive: '#4a4536', emissiveIntensity: .4 })); m.userData.segs = 120; A.add(m); return m; });
@@ -218,7 +220,7 @@ function setLine(m) {
 function look(pos, tgt) { camera.position.copy(pos); camera.lookAt(tgt); camera.updateMatrixWorld(); }
 const $ = id => document.getElementById(id);
 // avatar layouts (px): full, pip (left circle, clear of the right-side app buttons), side (card beside the book)
-const LAY = { full: [0, 0, 1080, 1920, 0], pip: [72, 250, 300, 300, 150], side: [64, 300, 470, 820, 26], end: [72, 250, 220, 220, 110] };
+const LAY = { full: [0, 0, 1080, 1920, 0], pip: [72, 250, 300, 300, 150], side: [64, 360, 430, 760, 26], end: [72, 200, 180, 180, 90] };
 const mixL = (a, b, u) => a.map((v, i) => lerp(v, b[i], u));
 let CAPS = [], avCur = -1;
 function avatar(t) {
@@ -255,7 +257,7 @@ function render(t) {
     B.book.rotation.y = lerp(-1.1, -.28, r) + .32 * eio(k(t, at(6, .35), at(9))) + .06 * Math.sin(t * .5);
     B.book.position.y = lerp(5.2, 7.2, r);
     const side = 1 - eio(k(t, at(7) - .9, at(7) - .3));               // beside the author, then centre
-    look(V(120 - 3.8 * side, 8.6, lerp(24, 22, k(t, at(6), at(9)))), V(120 - 3.8 * side, 7.6 - .6 * (1 - side), 0));
+    const cx = 120 - 1.9 * side - 1.0 * (1 - side); look(V(cx, 8.6, lerp(37, 38, 1 - side)), V(cx, lerp(6.4, 4.7, 1 - side), 0));
   }
   renderer.render(scene, camera);
   // quick dip to navy at each shot change
@@ -276,7 +278,7 @@ function render(t) {
   E('e-cover', e0 + .2, 120); E('e-title', e0 + .45); E('e-by', e0 + .6, 20); E('e-fmt', e0 + .8, 20); E('e-btn', at(10));
   const pl = Math.sin(Math.PI * k(t, end(10) + .1, end(10) + .6)); $('e-btn').style.transform += ` scale(${(1 + .05 * pl).toFixed(4)})`;
   document.querySelector('#e-btn .gl').style.left = `${lerp(-200, 1000, eio(k(t, end(10) + .2, end(10) + 1.0)))}px`;
-  for (const c of CAPS) { const a = eo(k(t, c.s - .04, c.s + .12)) * (1 - k(t, c.e - .1, c.e)); c.el.style.opacity = a; }
+  for (const c of CAPS) { const a = eo(k(t, c.s, c.s + .12)) * (1 - k(t, c.e - .14, c.e - .06)); c.el.style.opacity = a; }
 }
 window.seek = async t => { render(t); const img = $('av'); if (!img.complete) await new Promise(r => { img.onload = r; img.onerror = r; }); };
 window.READY = (async () => {
