@@ -45,6 +45,7 @@
   #e-fmt { left: 0; right: 0; top: 1140px; text-align: center; }
   #e-fmt div { font: 700 36px/56px Montserrat; color: #fff; }
   #e-fmt b { color: var(--gold); }
+  #e-url { left: 0; right: 0; text-align: center; font: 800 34px Montserrat; color: var(--gold); letter-spacing: .01em; }
   #e-btn { left: 0; right: 0; top: 1330px; text-align: center; }
   #e-btn div { display: inline-block; position: relative; overflow: hidden; padding: 26px 46px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 900 44px Montserrat; white-space: nowrap; box-shadow: 0 10px 0 #b8890b, 0 24px 44px rgba(0,0,0,.45); }
   #e-btn .gl { position: absolute; top: 0; bottom: 0; width: 160px; left: -200px; background: linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent); }
@@ -70,8 +71,9 @@
     <img id="e-cover" src="assets/front-cover.png" alt="">
     <div id="e-title">THE LIFE YOU<br>KEEP PLANNING</div>
     <div id="e-by" style="top:1110px">By Belinda Bright N.</div>
-    <div id="e-fmt" style="top:1190px"><div>Kindle pre-order available now: <b>£3.99</b></div><div>Paperback coming soon: <b>£9.99</b></div><div>Official launch: <b>23 January 2027</b></div></div>
-    <div id="e-btn" style="top:1400px"><div>PRE-ORDER ON AMAZON KINDLE<span class="gl"></span></div></div>
+    <div id="e-url" style="top:1172px">thelifeyoukeepplanningbook.netlify.app</div>
+    <div id="e-fmt" style="top:1232px"><div>Kindle pre-order available now: <b>£3.99</b></div><div>Paperback coming soon: <b>£9.99</b></div><div>Official launch: <b>23 January 2027</b></div></div>
+    <div id="e-btn" style="top:1420px"><div>PRE-ORDER ON AMAZON KINDLE<span class="gl"></span></div></div>
   </div></div>
   <div class="layer">
     <div id="avwrap"><img id="av" alt=""><div id="avbg"></div><div id="avgrad"></div><div id="avring"></div></div>
@@ -275,10 +277,10 @@ function render(t) {
   const e0 = end(8) + .6, dim = eio(k(t, e0, e0 + .6));
   $('endbg').style.opacity = dim; canvas.style.filter += dim > 0 ? ` blur(${(dim * 10).toFixed(2)}px)` : '';
   const E = (id, a, dy = 30) => { const x = eo(k(t, a, a + .45)); $(id).style.opacity = x; $(id).style.transform = `translateY(${((1 - x) * dy).toFixed(1)}px)`; };
-  E('e-cover', e0 + .2, 120); E('e-title', e0 + .45); E('e-by', e0 + .6, 20); E('e-fmt', e0 + .8, 20); E('e-btn', at(10));
+  E('e-cover', e0 + .2, 120); E('e-title', e0 + .45); E('e-by', e0 + .6, 20); E('e-url', e0 + .7, 20); E('e-fmt', e0 + .85, 20); E('e-btn', at(10));
   const pl = Math.sin(Math.PI * k(t, end(10) + .1, end(10) + .6)); $('e-btn').style.transform += ` scale(${(1 + .05 * pl).toFixed(4)})`;
   document.querySelector('#e-btn .gl').style.left = `${lerp(-200, 1000, eio(k(t, end(10) + .2, end(10) + 1.0)))}px`;
-  for (const c of CAPS) { const a = eo(k(t, c.s, c.s + .12)) * (1 - k(t, c.e - .14, c.e - .06)); c.el.style.opacity = a; }
+  for (const c of CAPS) { const a = eo(k(t, c.s, c.s + .12)) * (1 - k(t, c.e - .14, c.e - .06)); c.el.style.opacity = a; c.el.style.top = (t > e0 ? 1560 : 1478) + 'px'; }
 }
 window.seek = async t => { render(t); const img = $('av'); if (!img.complete) await new Promise(r => { img.onload = r; img.onerror = r; }); };
 window.READY = (async () => {

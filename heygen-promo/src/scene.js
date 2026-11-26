@@ -107,10 +107,10 @@ function render(t) {
   const e0 = end(8) + .6, dim = eio(k(t, e0, e0 + .6));
   $('endbg').style.opacity = dim; canvas.style.filter += dim > 0 ? ` blur(${(dim * 10).toFixed(2)}px)` : '';
   const E = (id, a, dy = 30) => { const x = eo(k(t, a, a + .45)); $(id).style.opacity = x; $(id).style.transform = `translateY(${((1 - x) * dy).toFixed(1)}px)`; };
-  E('e-cover', e0 + .2, 120); E('e-title', e0 + .45); E('e-by', e0 + .6, 20); E('e-fmt', e0 + .8, 20); E('e-btn', at(10));
+  E('e-cover', e0 + .2, 120); E('e-title', e0 + .45); E('e-by', e0 + .6, 20); E('e-url', e0 + .7, 20); E('e-fmt', e0 + .85, 20); E('e-btn', at(10));
   const pl = Math.sin(Math.PI * k(t, end(10) + .1, end(10) + .6)); $('e-btn').style.transform += ` scale(${(1 + .05 * pl).toFixed(4)})`;
   document.querySelector('#e-btn .gl').style.left = `${lerp(-200, 1000, eio(k(t, end(10) + .2, end(10) + 1.0)))}px`;
-  for (const c of CAPS) { const a = eo(k(t, c.s, c.s + .12)) * (1 - k(t, c.e - .14, c.e - .06)); c.el.style.opacity = a; }
+  for (const c of CAPS) { const a = eo(k(t, c.s, c.s + .12)) * (1 - k(t, c.e - .14, c.e - .06)); c.el.style.opacity = a; c.el.style.top = (t > e0 ? 1560 : 1478) + 'px'; }
 }
 window.seek = async t => { render(t); const img = $('av'); if (!img.complete) await new Promise(r => { img.onload = r; img.onerror = r; }); };
 window.READY = (async () => {
