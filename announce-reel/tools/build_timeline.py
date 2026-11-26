@@ -63,10 +63,14 @@ for i in range(len(SENT)):
     v0 = s0 + (on[0] / 100 if len(on) else 0) - .06; v1 = s0 + (on[-1] / 100 if len(on) else s1 - s0) + .12
     segs_src.append((max(0, v0), min(s1, v1)))
 
+# ---- natural pacing: keep the take continuous (no inserted pauses, so the face never loops)
+NATURAL = True
 # ---- place on the output timeline
 out, t = [], 0.0
+LEAD = 0.25
 for i, (v0, v1) in enumerate(segs_src):
-    t += GAP[i]; out.append({'o': round(t, 3), 'd': round(v1 - v0, 3), 'src': round(v0, 3)}); t += v1 - v0
+    if NATURAL: out.append({'o': round(v0 + LEAD, 3), 'd': round(v1 - v0, 3), 'src': round(v0, 3)}); t = v1 + LEAD
+    else: t += GAP[i]; out.append({'o': round(t, 3), 'd': round(v1 - v0, 3), 'src': round(v0, 3)}); t += v1 - v0
 DUR = round(t + HOLD, 2)
 
 # ---- narration with the new spacing
@@ -84,6 +88,7 @@ def srcf(x): return max(1, min(nsrc, int(round(x * FPS)) + 1))
 avmap = []
 for fo in range(int(DUR * FPS)):
     tt = fo / FPS; f = None
+    if NATURAL: avmap.append(srcf(min(max(0, tt - LEAD), nsrc / FPS - .05))); continue
     for j, s in enumerate(out):
         if s['o'] <= tt < s['o'] + s['d']: f = srcf(s['src'] + tt - s['o']); break
     if f is None:                                # a pause: rock gently through the nearest silent source frames
