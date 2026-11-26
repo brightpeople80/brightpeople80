@@ -17,7 +17,7 @@ SENT = ["I've been waiting so long to say this out loud.",
         "Inside, you'll find the SELECT method and a thirty-day follow-through programme.",
         "The Kindle edition is available to pre-order now, and it's out on the twenty-third of January, twenty twenty-seven.",
         "The link is in my bio.",
-        "You can also find out more on my website, the life you keep planning book, dot netlify, dot app.",
+        "You can also find out more on my website.",
         "Let the countdown begin."]
 GAP = [0.4, 0.55, 0.7, 0.8, 0.7, 0.7, 0.8, 0.6, 0.6, 0.6]
 HOLD = 4.5                                     # end screen stays on after the last word
@@ -109,7 +109,7 @@ CAP = [["I've been waiting so long", "to say this out loud."],
        ["Inside, you'll find the SELECT method", "and a 30-day follow-through programme."],
        ["The Kindle edition is available", "to pre-order now,", "and it's out on 23 January 2027."],
        ["The link is in my bio."],
-       ["You can also find out more on my website,", "thelifeyoukeepplanningbook", ".netlify.app"],
+       ["You can also find out more on my website."],
        ["Let the countdown begin."]]
 caps = []
 for s, parts in zip(out, CAP):
