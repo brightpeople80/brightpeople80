@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Book Announcement Reel</title>
+<style>
+  @font-face { font-family: 'Montserrat'; font-weight: 100 900; src: url(../assets/fonts/Montserrat-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 200 900; src: url(../assets/fonts/SourceSerif4-italic.woff2) format('woff2'); }
+  @font-face { font-family: 'Caveat'; font-weight: 400 700; src: url(../assets/fonts/Caveat.woff2) format('woff2'); }
+  :root { --navy: #0b1a31; --gold: #d9a514; --cream: #f3ece0; --ink: #1c2433; }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--cream); }
+  .sc { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+  .cream { background: radial-gradient(120% 80% at 50% 35%, #fbf6ec, #efe6d6 70%, #e6dbc7); }
+  .full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+  .warm { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,214,160,.10), rgba(0,0,0,0) 45%, rgba(20,14,8,.45)); }
+  .hand { position: absolute; font: 700 84px/1.05 Caveat; color: #fff; text-shadow: 0 3px 18px rgba(0,0,0,.45); opacity: 0; }
+  .serif { font-family: 'Source Serif 4'; }
+  .kick { font: 800 26px Montserrat; letter-spacing: .3em; color: var(--gold); }
+  /* author */
+  #av { object-position: 50% 24%; }
+  #t0 { left: 80px; top: 250px; }
+  #t1 { position: absolute; left: 80px; top: 1150px; opacity: 0; }
+  #t1 .k { color: #f7d36a; }
+  #t1 .s { font: italic 600 110px/1 'Source Serif 4'; color: #fff; margin-top: 12px; text-shadow: 0 6px 30px rgba(0,0,0,.5); }
+  /* the book on cream */
+  #cv { position: absolute; left: 310px; top: 300px; width: 460px; height: 690px; border-radius: 2px 6px 6px 2px; box-shadow: 0 50px 80px rgba(60,40,10,.35), -6px 0 0 #0b1a31; }
+  #s2t { position: absolute; left: 0; right: 0; top: 1060px; text-align: center; opacity: 0; }
+  #s2t .s { font: 600 76px/1.05 'Source Serif 4'; color: var(--ink); margin-top: 16px; }
+  #s2t .s i { color: var(--gold); }
+  /* the notebook */
+  #t3 { left: 90px; top: 300px; width: 900px; color: #fff8e8; }
+  /* inside */
+  .card { position: absolute; left: 110px; width: 860px; padding: 40px 44px; border-radius: 18px; background: #fffaf1; box-shadow: 0 30px 60px rgba(60,40,10,.18), inset 0 0 0 2px rgba(217,165,20,.35); opacity: 0; }
+  .card .k { font: 800 24px Montserrat; letter-spacing: .26em; color: var(--gold); }
+  .card .s { font: 600 64px/1.08 'Source Serif 4'; color: var(--ink); margin-top: 12px; }
+  #s5h { position: absolute; left: 110px; top: 300px; font: italic 600 70px 'Source Serif 4'; color: var(--ink); opacity: 0; }
+  /* date */
+  #stack { position: absolute; left: 140px; top: 260px; width: 800px; }
+  #date { position: absolute; left: 110px; right: 110px; top: 1010px; padding: 34px 40px; border-radius: 22px; background: var(--navy); text-align: center; opacity: 0; box-shadow: 0 30px 60px rgba(11,26,49,.3); }
+  #date .k { color: #f7d36a; }
+  #date .s { font: 800 84px/1.05 Montserrat; color: #fff; margin-top: 10px; }
+  #date .p { font: 600 34px Montserrat; color: #e9dfcb; margin-top: 12px; }
+  /* link in bio */
+  #bio { position: absolute; left: 0; right: 0; top: 1110px; text-align: center; opacity: 0; }
+  #bio div { display: inline-block; padding: 22px 40px; border-radius: 999px; background: #fffaf1; color: var(--navy); font: 900 52px Montserrat; box-shadow: 0 16px 40px rgba(0,0,0,.3); }
+  /* end card */
+  #ecv { position: absolute; left: 340px; top: 230px; width: 400px; height: 600px; border-radius: 2px 6px 6px 2px; box-shadow: 0 40px 70px rgba(60,40,10,.35), -6px 0 0 #0b1a31; }
+  #e > * { position: absolute; left: 0; right: 0; text-align: center; opacity: 0; }
+  #e-h { top: 880px; font: italic 600 72px 'Source Serif 4'; color: var(--ink); }
+  #e-d { top: 975px; font: 900 92px Montserrat; color: var(--navy); letter-spacing: .04em; }
+  #e-d b { color: var(--gold); }
+  #e-f { top: 1105px; }
+  #e-f div { font: 700 36px/56px Montserrat; color: var(--ink); }
+  #e-f b { color: #a87d0a; }
+  #e-u { top: 1290px; font: 800 34px Montserrat; color: var(--navy); }
+  #e-b { top: 1360px; }
+  #e-b span { display: inline-block; padding: 24px 44px; border-radius: 999px; background: var(--navy); color: #fff; font: 900 42px Montserrat; }
+  /* captions */
+  #caps .cap { position: absolute; left: 90px; width: 900px; top: 1488px; text-align: center; font: 700 44px/1.3 Montserrat; opacity: 0; }
+  #caps .cap span { background: rgba(18,22,32,.72); color: #fff; padding: 6px 18px; border-radius: 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  #grain { position: absolute; inset: 0; pointer-events: none; opacity: .16; mix-blend-mode: multiply; }
+  #fade { position: absolute; inset: 0; background: #fbf6ec; opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="sc" id="sA"><img class="full" id="av" alt=""><div class="warm"></div>
+  <div class="hand" id="t0">a little announcement… ✨</div>
+  <div id="t1"><div class="kick k">FINALLY</div><div class="s">My first book.</div></div></div>
+<div class="sc cream" id="sB"><img id="cv" src="assets/front-cover.png" alt="">
+  <div id="s2t"><div class="kick">IT’S CALLED</div><div class="s">The Life You<br><i>Keep Planning</i></div></div></div>
+<div class="sc" id="sC"><img class="full" id="nb" src="assets/sunday-notebook.jpg" alt=""><div class="warm"></div>
+  <div class="hand" id="t3">a notebook full of plans…<br>and never quite started.</div></div>
+<div class="sc cream" id="sD"><div id="s5h">Inside, you’ll find…</div>
+  <div class="card" id="c1" style="top:470px"><div class="k">A SIMPLE DECISION TOOL</div><div class="s">The SELECT method</div></div>
+  <div class="card" id="c2" style="top:760px"><div class="k">ONE PROJECT, ONE MONTH</div><div class="s">A 30-day follow-through programme</div></div></div>
+<div class="sc cream" id="sE"><img id="stack" src="assets/book-stack-soft.png" alt="">
+  <div id="date"><div class="kick k">KINDLE PRE-ORDER NOW</div><div class="s">Out 23 January 2027</div><div class="p">Paperback coming soon</div></div></div>
+<div class="sc" id="sF"><img class="full" id="av2" alt="" style="object-position:50% 24%"><div class="warm"></div>
+  <div id="bio"><div>🔗 LINK IN BIO</div></div></div>
+<div class="sc cream" id="sG"><img id="ecv" src="assets/front-cover.png" alt=""><div id="e">
+  <div id="e-h">The countdown begins</div>
+  <div id="e-d">23 <b>·</b> 01 <b>·</b> 2027</div>
+  <div id="e-f"><div>Kindle pre-order now: <b>£3.99</b></div><div>Paperback coming soon: <b>£9.99</b></div></div>
+  <div id="e-u">thelifeyoukeepplanningbook.netlify.app</div>
+  <div id="e-b"><span>Pre-order on Amazon Kindle</span></div></div></div>
+<div class="sc" id="caps" style="opacity:1"></div>
+<canvas id="grain" width="540" height="960" style="width:1080px;height:1920px"></canvas>
+<div id="fade"></div>
+<script src="timeline.js"></script>
+<script>
+const TL = window.TL, S = TL.segs, DURATION = TL.duration; window.DURATION = DURATION;
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x)), lerp = (a, b, k) => a + (b - a) * k, k = (t, a, b) => clamp((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - x, 3), eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const $ = id => document.getElementById(id), at = (i, f = 0) => S[i].o + S[i].d * f, end = i => S[i].o + S[i].d;
+// scene windows: each starts a beat before its sentence; soft 0.35 s dissolves
+const W = [['sA', 0, at(2) - .15], ['sB', at(2) - .35, at(3) - .15], ['sC', at(3) - .35, at(4) - .15], ['sA', at(4) - .35, at(5) - .15],
+  ['sD', at(5) - .35, at(6) - .15], ['sE', at(6) - .35, at(7) - .15], ['sF', at(7) - .35, at(8) - .15], ['sG', at(8) - .35, 999]];
+const pop = (id, t, a, dy = 24, dur = .5) => { const x = eo(k(t, a, a + dur)); $(id).style.opacity = x.toFixed(3); $(id).style.transform = `translateY(${((1 - x) * dy).toFixed(1)}px)`; return x; };
+const gctx = $('grain').getContext('2d'); let gseed = 1;
+function grain(f) { const id = gctx.createImageData(540, 960); let s = (f * 9301 + 49297) % 233280; for (let i = 0; i < id.data.length; i += 4) { s = (s * 9301 + 49297) % 233280; const v = 128 + (s / 233280 - .5) * 120; id.data[i] = id.data[i + 1] = id.data[i + 2] = v; id.data[i + 3] = 255; } gctx.putImageData(id, 0, 0); }
+let CAPS = [], cur = -1;
+function render(t) {
+  const op = {}; for (const [id, a, b] of W) { const o = Math.min(k(t, a, a + .35), 1 - k(t, b - .35, b)); op[id] = Math.max(op[id] || 0, o); }
+  for (const id of ['sA', 'sB', 'sC', 'sD', 'sE', 'sF', 'sG']) { const o = op[id] || 0; $(id).style.opacity = o.toFixed(3); $(id).style.display = o <= 0 ? 'none' : ''; }
+  if (t < .3) $('sA').style.opacity = 1;
+  // the author: lip-synced frames; a gentle push-in that resets at each return
+  const f = TL.avMap[Math.min(TL.avMap.length - 1, Math.round(t * 30))];
+  if (f !== cur) { cur = f; const src = `assets/av/f${String(f).padStart(5, '0')}.jpg`; $('av').src = src; $('av2').src = src; }
+  const seg = t < at(4) - .35 ? [0, at(2)] : [at(4) - .35, at(5)];
+  $('av').style.transform = `scale(${lerp(1.02, 1.10, eio(k(t, seg[0], seg[1]))).toFixed(4)})`;
+  $('av2').style.transform = `scale(${lerp(1.08, 1.14, eio(k(t, at(7) - .35, at(8)))).toFixed(4)})`;
+  pop('t0', t, .5, 18); $('t0').style.opacity = (eo(k(t, .5, 1.1)) * (1 - k(t, at(1) - .2, at(1) + .1))).toFixed(3);
+  pop('t1', t, at(1) + .1, 24); if (t > at(4) - .4) $('t1').style.opacity = 0;
+  // the book on cream
+  const cvx = eo(k(t, at(2) - .3, at(2) + .5));
+  $('cv').style.transform = `translateY(${((1 - cvx) * 80).toFixed(1)}px) rotate(${lerp(-3, 0, cvx).toFixed(2)}deg) scale(${lerp(.94, 1, cvx) * lerp(1, 1.04, k(t, at(2), at(3)))})`;
+  pop('s2t', t, at(2, .25));
+  // the notebook
+  $('nb').style.transformOrigin = '45% 75%'; $('nb').style.transform = `scale(${lerp(1.0, 1.14, eio(k(t, at(3) - .35, at(4)))).toFixed(4)})`;
+  pop('t3', t, at(3, .35), 18);
+  // inside
+  pop('s5h', t, at(5) - .1, 16); pop('c1', t, at(5, .25), 40); pop('c2', t, at(5, .55), 40);
+  // date
+  $('stack').style.transform = `scale(${lerp(.96, 1.02, eio(k(t, at(6) - .35, at(7)))).toFixed(4)})`; pop('date', t, at(6, .45), 40);
+  // link in bio
+  const b = Math.min(1, Math.max(0, (k(t, at(7), at(7) + .35)))); $('bio').style.opacity = b; $('bio').style.transform = `scale(${(.8 + .2 * eo(b) + .04 * Math.sin(Math.PI * k(t, at(7) + .4, at(7) + .9))).toFixed(3)})`;
+  // end card
+  const ex = eo(k(t, at(8) - .3, at(8) + .4)); $('ecv').style.transform = `translateY(${((1 - ex) * 60).toFixed(1)}px) scale(${lerp(.95, 1, ex)})`;
+  pop('e-h', t, at(8)); pop('e-d', t, at(8, .5)); pop('e-f', t, end(8) + .2, 16); pop('e-u', t, end(8) + .5, 16); pop('e-b', t, end(8) + .8, 16);
+  for (const c of CAPS) { const a = eo(k(t, c.s, c.s + .12)) * (1 - k(t, c.e - .14, c.e - .06)); c.el.style.opacity = a; }
+  $('fade').style.opacity = clamp(1 - t / .4) * 0;
+  grain(Math.floor(t * 12));
+}
+window.seek = async t => { render(t); for (const id of ['av', 'av2']) { const img = $(id); if (img.src && !img.complete) await new Promise(r => { img.onload = r; img.onerror = r; }); } };
+window.READY = (async () => {
+  await Promise.all(['700 40px Caveat', '800 40px Montserrat', '600 40px "Source Serif 4"', 'italic 600 40px "Source Serif 4"'].map(f => document.fonts.load(f)));
+  CAPS = (TL.caps || []).map(c => ({ ...c }));
+  for (const c of CAPS) { const d = document.createElement('div'); d.className = 'cap'; const s = document.createElement('span'); s.textContent = c.text; d.appendChild(s); $('caps').appendChild(d); c.el = d; }
+  for (const img of document.images) if (img.src && !img.complete) await new Promise(r => { img.onload = r; img.onerror = r; });
+  await window.seek(0); return true;
+})();
+if (!new URLSearchParams(location.search).has('render')) READY.then(() => { const t0 = performance.now(); const loop = () => { render(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); }; loop(); });
+</script>
+</body>
+</html>
