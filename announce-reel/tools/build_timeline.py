@@ -109,7 +109,7 @@ CAP = [["I've been waiting so long", "to say this out loud."],
        ["Inside, you'll find the SELECT method", "and a 30-day follow-through programme."],
        ["The Kindle edition is available", "to pre-order now,", "and it's out on 23 January 2027."],
        ["The link is in my bio."],
-       ["You can also find out more on my website,", "thelifeyoukeepplanningbook.netlify.app"],
+       ["You can also find out more on my website,", "thelifeyoukeepplanningbook", ".netlify.app"],
        ["Let the countdown begin."]]
 caps = []
 for s, parts in zip(out, CAP):
