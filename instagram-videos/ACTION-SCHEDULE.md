@@ -15,6 +15,7 @@ All times UK. **Who:** C = Claude (strategist), B = Belinda (author).
 | **Before Tue 1 Dec, 10:00** | Set the Instagram bio link to **thelifeyoukeepplanningbook.netlify.app** (needed for the single "link in my bio" CTA) | B | ✅ Done (checked 28 Nov) |
 | Tue 1 Dec, 10:00 | Discover the Book carousel publishes (Metricool) | auto | ✅ Scheduled |
 | Tue 1 Dec | Pin Discover the Book last, so it shows first | B | To do |
+| **Sat 28 Nov, 20:20** | Talking-photo Reel "56 days until launch" (story version, AI label on) published via Metricool, post id 445773927 | auto | ✅ Scheduled
 | **Wed 2 Dec, 10:00** (proposed) | Museum **Reel** as a Trial Reel (after the fix passes QA), then share to feed | B approves → C schedules | Waiting for approval |
 | Mon 30 Nov, 7 Dec, 14 Dec | Weekly traffic review (Windsor.ai + Metricool) | C | Planned |
 | Open | Highlights: post the 18 story frames and add them to the five Highlights | B (C can schedule the stories) | Waiting for decision |
