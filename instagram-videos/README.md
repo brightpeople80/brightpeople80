@@ -2,6 +2,8 @@
 
 Finished Reels for *The Life You Keep Planning*, one folder per video.
 
+**Working rule:** no new concepts or scripts. Existing videos are improved to the gold standard and checked with **`QA-ACCEPTANCE.md`** (gates, 13-point scorecard, categories A Accept · B Improve · C Rework · D Retire).
+
 | # | Video | Length | Status |
 |---|---|---|---|
 | 01 | [Museum of Unfinished Dreams](01-museum-of-unfinished-dreams/) | 64 s | Approved (gold standard) |
