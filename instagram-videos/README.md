@@ -14,6 +14,7 @@ Finished Reels for *The Life You Keep Planning*, one folder per video.
 - **`TRAFFIC-PLAN.md`**: how to drive traffic to the page and website, with a 14-day schedule and targets.
 - **`ACTION-SCHEDULE.md`**: every campaign action with its date, owner and status.
 - **`GOLD-STANDARD.md`**: the recipe every new video follows.
+- **`AUTHOR-BIO.md`**: the author bio in her own words (use it everywhere a bio is needed).
 - **`ALREADY-USED.md`**: concepts, lines, scenes and effects from all 16 videos that must not be repeated.
 
 Each new video gets its own numbered folder with the final MP4, its `BRIEF.md` (the eight-point test) and its `SCRIPT.md`. All future scripts are saved here.
