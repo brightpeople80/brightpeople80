@@ -2,12 +2,12 @@
 
 Only verified facts are used. Nothing about Belinda's life, job, location or background has been added; send those details to include them.
 
-## Author bio (short, for this post)
+## Author bio (official, from the book)
 
-> **About the author**
-> Belinda Bright N. is an independent author. *The Life You Keep Planning* is her debut book. She wrote it for people with dreams they haven't forgotten, ideas they still believe in, and plans they've been meaning to start.
+> **About the Author**
+> Belinda Bright N. writes about turning ideas into action for busy people building something on the side. *The Life You Keep Planning* is her guide to beginning, returning and making better decisions without waiting for perfect motivation.
 
-Sources: "Independent author" and "debut book" (Meet the author script E06 and Highlight hl-author-1, written by Belinda); the "dreams… ideas… plans" line (her own Meet the author script, Highlight hl-author-2).
+Source: "About the Author", page 64 of the Advance Reader Copy (Google Drive). The copyright page also says "Independently published". Use this wording wherever a bio is needed.
 
 ## Instagram caption (ready to paste)
 
@@ -16,14 +16,14 @@ Sources: "Independent author" and "debut book" (Meet the author script E06 and H
 
 I wrote The Life You Keep Planning for anyone with a notebook full of plans and a life still on pause. Too many ideas. Overthinking every step. Scared of picking the wrong one. I know that feeling well.
 
-A bit about me: I'm Belinda Bright N. This is my debut book, and I'm publishing it independently. I wrote it for people with dreams they haven't forgotten, ideas they still believe in, and plans they've been meaning to start.
+A bit about me: I'm Belinda Bright N., and I write about turning ideas into action for busy people building something on the side. This is my debut book, and I'm publishing it independently.
 
 It's out on 23 January 2027. The Kindle pre-order is open now, link in my bio.
 
 #thelifeyoukeepplanning #overthinking #booktok
 ```
 
-- Humanised 28 Nov (ig-human): 89.3 -> 98.6 PASS.
+- Humanised 28 Nov (ig-human): 89.3 -> 98.6 PASS; with the official bio line: 92.7 PASS.
 - One CTA only (link in bio). Facts checked: 56 days from 28 Nov = 23 Jan; Kindle pre-order open; first (debut) book.
 - Switch on Instagram's **AI info** label when posting.
 
