@@ -6,7 +6,7 @@ All times UK. **Who:** C = Claude (strategist), B = Belinda (author).
 
 | When | Action | Who | Status |
 |---|---|---|---|
-| **Sat 28 Nov, 14:00** | **Fix the Museum Reel's safe-zone problems:** raise low text (end card 35–41 s, finale 55–56 s, website 58–64 s), trim the 2.5 s pause at 40.8 s, smooth the dip at 43 s. Re-run QA, update the log, send the fixed Reel. No HeyGen credits needed. | C | ⏰ Scheduled (automatic reminder set) |
+| **Sat 28 Nov, 14:00** | **Fix the Museum Reel's safe-zone problems:** raise low text (end card 35–41 s, finale 55–56 s, website 58–64 s), trim the 2.5 s pause at 40.8 s, smooth the dip at 43 s. Re-run QA, update the log, send the fixed Reel. No HeyGen credits needed. | C | ✅ Done 28 Nov: QA passed (93%, A · Accept), 61.9 s |
 | Sat 28 Nov (today) | Traffic plan days 1–14 start: share today's post to Stories and personal accounts, follow 5 relevant accounts a day (lists in `TRAFFIC-PLAN.md`), update the name field (see `TRAFFIC-PLAN.md`) | B | To do |
 | Sun 29 Nov, 10:00 | Museum of Unfinished Dreams carousel publishes (Metricool) | auto | ✅ Scheduled |
 | Sun 29 Nov | Pin the Museum carousel once live | B | To do |

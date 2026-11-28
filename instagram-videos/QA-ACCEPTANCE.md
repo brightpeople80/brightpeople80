@@ -105,11 +105,12 @@ The same upgrade kit applies to each video. It reuses the gold standard's struct
 ### 28 Nov 2026 · 01 Museum of Unfinished Dreams (gold standard)
 | Finding | Evidence | Fix | Status |
 |---|---|---|---|
-| G3: end card button and "Amazon UK · link in bio" below 1,440 px (35–41 s) | frame review | Raise the end-card text block | ❌ open |
-| G3: finale "Pre-order your copy today" and "link in bio" below 1,440 px (55–56 s) | frame review | Raise | ❌ open |
-| G3: website captions and address below 1,440 px (58–64 s) | caption scan | Raise captions, shrink phone | ❌ open |
-| 2.5 s dead air at 40.8–43.3 s | silencedetect | Shorten the end-card hold | ⚠️ open |
-| Dip to dark at 43.0 s (fade-in from black) | brightness per frame | Crossfade instead | ⚠️ minor |
+| G3: end card button and "Amazon UK · link in bio" below 1,440 px (35–41 s) | frame review | Cover smaller and higher, text block moved to 960 px | ✅ fixed 28 Nov |
+| G3: finale "Pre-order your copy today" and "link in bio" below 1,440 px (55–56 s) | frame review | Cards, button and line raised 60–70 px | ✅ fixed 28 Nov |
+| G3: website captions and address below 1,440 px (58–64 s) | caption scan | Phone shortened, captions at 1,248 px, address at 1,390 px | ✅ fixed 28 Nov (scan 31 s–end: lowest text 1,428 px) |
+| 2.5 s dead air at 40.8–43.3 s | silencedetect | End-card hold 12 s → 10.3 s, then 0.5 s crossfade | ✅ fixed (no silence > 1.5 s) |
+| Dip to dark at 43.0 s (fade-in from black) | brightness per frame | 0.5 s crossfade into the finale | ✅ fixed (darkest frame 43.6, was 16) |
 | Bright scenery flagged at 9.0 s | frame review | None (false alarm) | ✅ |
 
-**Category until fixed: C · Rework (G3).** All open fixes are in the code-rendered sections, so they need no HeyGen credits.
+**Fixed 28 Nov (scheduled task, 14:00):** `museum-reel/v2/compose-v4.sh` → `instagram-videos/01-museum-of-unfinished-dreams/museum-of-unfinished-dreams-final-9x16.mp4` (61.9 s). Story, scenes, voice and wording unchanged. qa_check: format ✅ loudness ✅ length ✅ black ✅ silence ✅; safe zone ✅ for all text (its only flag, 1,792 px at 9.0 s, is the candle and cushions in the scenery, a known false alarm of the white-pixel scan).
+**Score:** F1 2 · F2 2 · F3 2 · F4 1 · F5 1 · F6 2 · F7 2 · P1 2 · P2 2 · P3 2 · P4 2 · P5 2 · P6 2 · P7 2 = **26/28 (93%) → A · Accept** (F5 depends on the bio link opening the website, which it now does).

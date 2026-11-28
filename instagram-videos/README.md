@@ -6,7 +6,7 @@ Finished Reels for *The Life You Keep Planning*, one folder per video.
 
 | # | Video | Length | Status |
 |---|---|---|---|
-| 01 | [Museum of Unfinished Dreams](01-museum-of-unfinished-dreams/) | 64 s | Approved (gold standard) |
+| 01 | [Museum of Unfinished Dreams](01-museum-of-unfinished-dreams/) | 62 s | Approved (gold standard), QA fix 28 Nov: 93%, A · Accept |
 | E14 | [Author promo (upgraded)](E14-author-promo/) | 72 s | QA 96%, A · Accept (awaiting your approval) |
 
 **Earlier videos (E01–E15):** every script made before the gold standard is in [`earlier-videos/SCRIPTS.md`](earlier-videos/SCRIPTS.md).
