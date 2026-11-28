@@ -1,0 +1,25 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><style>
+@font-face{font-family:"Montserrat";src:url("../../instagram-foundation/assets/Montserrat-normal.woff2") format("woff2");font-weight:100 900}
+@font-face{font-family:"Source Serif 4";src:url("../../instagram-foundation/assets/SourceSerif4-italic.woff2") format("woff2");font-weight:200 900;font-style:italic}
+*{margin:0;padding:0;box-sizing:border-box}html,body{background:transparent}
+.f{position:relative;width:1080px;height:1920px;font-family:Montserrat,Arial,sans-serif}
+.card{position:absolute;left:70px;right:70px;top:250px;height:280px;border-radius:28px;background:rgba(9,29,53,.92);border:3px solid #fbc312;
+ display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px 44px;gap:10px;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.k{font-weight:800;font-size:26px;letter-spacing:.22em;text-transform:uppercase;color:#fbc312}
+.t{font-weight:700;font-size:44px;line-height:1.18;color:#fff}
+.q{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:46px;line-height:1.2;color:#f4eddc}
+.cap{position:absolute;left:60px;right:60px;top:1330px;text-align:center}
+.cap span{display:inline-block;font-weight:800;font-size:50px;line-height:1.2;color:#fff;padding:10px 22px;border-radius:16px;background:rgba(9,29,53,.78)}
+</style></head><body><div id="r"></div><script>
+const C={
+ c1:['56 days to launch','My first book is almost here'],
+ c2:['My story',"I've never been short of ideas"],
+ c3:['For years','New plans every day.<br>Folders full of possibilities.<br>Very few finished.'],
+ c4:['One sentence at a seminar','<span class="q">&ldquo;How you do anything is how you do everything.&rdquo;</span>'],
+ c5:['So I changed one thing','I finished one thing at a time, starting with this book'],
+ c6:['Out 23 January 2027','Kindle pre-order now · link in bio'],
+};
+const p=new URLSearchParams(location.search),id=p.get('id');
+if(C[id]) document.getElementById('r').innerHTML=`<div class="f"><div class="card"><div class="k">${C[id][0]}</div><div class="t">${C[id][1]}</div></div></div>`;
+else document.getElementById('r').innerHTML=`<div class="f"><div class="cap"><span>${p.get('cap')}</span></div></div>`;
+</script></body></html>
