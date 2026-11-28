@@ -2,7 +2,15 @@
 
 Single source for every bio, caption, Highlight and end card. Written by Belinda (28 Nov 2026). Do not add facts that are not here.
 
-## Full bio (author's own words, use verbatim)
+## Full bio, first person (use this version on Instagram and in videos)
+
+> I'm Belinda Bright N., and I've never been short of ideas. For years, new plans arrived every day, yet my actions told a different story: folders full of possibilities, and very few finished.
+>
+> For a long time I believed something was wrong with the way I thought. Then a single sentence at a seminar changed my thinking: how you do anything is how you do everything. I stopped asking what was wrong with me and started asking better questions: What if I finish one thing at a time? What if I finish the book I started a year ago?
+>
+> That shift became the SELECT method, and The Life You Keep Planning is the book I finally finished. I write for people who see many possibilities but struggle to choose just one, and my message is simple: you don't need perfect circumstances to begin.
+
+## Full bio, third person (author's own words; for press, Amazon and the book)
 
 > Belinda Bright N. has never been short of ideas. For years, new plans arrived every day, yet her actions told a different story: folders full of possibilities, and very few finished.
 > 
