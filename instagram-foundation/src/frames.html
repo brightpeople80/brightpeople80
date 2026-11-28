@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Foundation frames</title>
+<style>
+@font-face{font-family:"Montserrat";src:url("../assets/Montserrat-normal.woff2") format("woff2");font-weight:100 900}
+@font-face{font-family:"Source Serif 4";src:url("../assets/SourceSerif4-normal.woff2") format("woff2");font-weight:200 900}
+@font-face{font-family:"Source Serif 4";src:url("../assets/SourceSerif4-italic.woff2") format("woff2");font-weight:200 900;font-style:italic}
+:root{--navy:#0b1a31;--navy2:#13284a;--gold:#fbc312;--gold-deep:#c99a2e;--cream:#f4eddc;--white:#ffffff;--ink:#0b1a31}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#000}
+.frame{position:relative;overflow:hidden;font-family:"Montserrat",Arial,sans-serif;color:var(--white)}
+.feed{width:1080px;height:1350px}
+.story{width:1080px;height:1920px}
+.navy{background:radial-gradient(120% 90% at 30% 10%,var(--navy2) 0%,var(--navy) 60%,#07111f 100%)}
+.cream{background:var(--cream);color:var(--ink)}
+.gold-bg{background:var(--gold);color:var(--ink)}
+.pad{position:absolute;inset:96px 96px 150px 96px;display:flex;flex-direction:column;justify-content:center;gap:40px}
+.story .pad{inset:300px 100px 380px 100px}
+.kicker{font-weight:700;font-size:30px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.cream .kicker{color:var(--gold-deep)}
+.h1{font-weight:800;font-size:96px;line-height:1.02;letter-spacing:-.01em;text-transform:uppercase}
+.h2{font-weight:800;font-size:72px;line-height:1.08;letter-spacing:-.005em}
+.h3{font-weight:700;font-size:54px;line-height:1.15}
+.serif{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-weight:400}
+.lead{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:52px;line-height:1.3;color:var(--cream)}
+.cream .lead{color:#3a404b}
+.body{font-weight:500;font-size:44px;line-height:1.35;color:var(--cream)}
+.cream .body{color:#2a2f38}
+.gold{color:var(--gold)}
+.cream .gold{color:var(--gold-deep)}
+.rule{width:120px;height:6px;background:var(--gold);border-radius:3px}
+.lines{display:flex;flex-direction:column;gap:22px}
+.lines .h2 + .h2{margin-top:0}
+.dim{opacity:.55}
+.foot{position:absolute;left:96px;right:96px;bottom:64px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:24px;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,237,220,.6)}
+.cream .foot{color:rgba(11,26,49,.5)}
+.foot .n{font-variant-numeric:tabular-nums;letter-spacing:.08em}
+.swipe{display:inline-flex;align-items:center;gap:14px;font-weight:700;font-size:30px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.list{display:flex;flex-direction:column;gap:28px}
+.list .it{display:flex;gap:28px;align-items:flex-start;font-weight:600;font-size:46px;line-height:1.25}
+.list .it .b{flex:0 0 22px;height:22px;margin-top:16px;border-radius:50%;background:var(--gold)}
+.cover-img{position:absolute;filter:drop-shadow(0 40px 60px rgba(0,0,0,.55))}
+.tangle{position:absolute}
+/* museum placard */
+.placard{background:#fffdf7;border:2px solid #d9cdb0;box-shadow:0 30px 60px rgba(60,40,10,.18);padding:72px 70px;display:flex;flex-direction:column;gap:34px;color:var(--ink)}
+.placard .no{font-weight:700;font-size:32px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep)}
+.placard .t{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:88px;line-height:1.1}
+.placard .meta{display:grid;grid-template-columns:230px 1fr;gap:18px 24px;font-size:42px;line-height:1.35}
+.placard .meta dt{font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:30px;padding-top:8px;color:#6b6250}
+.placard .meta dd{font-weight:500}
+.placard .q{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:50px;line-height:1.35;color:#3a404b;border-top:2px solid #e6dcc4;padding-top:22px}
+.frame-gilt{position:absolute;inset:60px;border:14px solid var(--gold-deep);outline:4px solid rgba(251,195,18,.35);outline-offset:14px}
+.chip{display:inline-block;background:var(--gold);color:var(--ink);font-weight:800;font-size:34px;letter-spacing:.06em;padding:20px 34px;border-radius:999px;text-transform:uppercase}
+.price{display:flex;flex-direction:column;gap:18px}
+.price .row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid rgba(244,237,220,.2);padding-bottom:18px;font-size:44px;font-weight:600}
+.price .row b{color:var(--gold);font-weight:800}
+.hl-icon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:640px;height:640px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px}
+.hl-icon svg{width:300px;height:300px}
+.hl-icon .lbl{font-weight:800;font-size:58px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.portrait{position:absolute;inset:0;background-size:cover;background-position:center 20%}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,17,31,0) 30%,rgba(7,17,31,.85) 62%,#07111f 100%)}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const TANGLE = (w, color) => `<svg class="tangle" viewBox="0 0 600 260" width="${w}" style="LEFT" fill="none" stroke="${color}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M140 120c-60-40-110 10-90 50s110 50 140 0-50-110-110-60-10 120 70 110 120-80 40-120-150 10-120 70 140 60 160-10-60-100-110-40 0 110 80 90"/>
+<path d="M200 150c60 40 140 60 230 30s110-50 140-60"/>
+<path d="M540 98l32 22-38 14" />
+</svg>`;
+const tangle = (w, style, color='#fbc312') => TANGLE(w, color).replace('style="LEFT"', `style="${style}"`);
+const foot = (n, total, label='The Life You Keep Planning') => `<div class="foot"><span>${label}</span><span class="n">${n} / ${total}</span></div>`;
+const ICONS = {
+  start:`<svg viewBox="0 0 100 100" fill="none" stroke="#fbc312" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 62c10-18 22-6 30-16s-2-20 8-24 18 10 12 18"/><path d="M48 70h34"/><path d="M70 58l12 12-12 12"/></svg>`,
+  book:`<svg viewBox="0 0 100 100" fill="none" stroke="#fbc312" stroke-width="6" stroke-linejoin="round"><path d="M50 26c-10-8-24-10-36-8v56c12-2 26 0 36 8 10-8 24-10 36-8V18c-12-2-26 0-36 8z"/><path d="M50 26v56"/></svg>`,
+  select:`<svg viewBox="0 0 100 100" fill="none" stroke="#fbc312" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="28" r="8"/><circle cx="24" cy="72" r="8"/><circle cx="76" cy="50" r="12"/><path d="M32 30l30 14M32 70l30-14" stroke-dasharray="2 10"/><path d="M70 50l5 5 9-11"/></svg>`,
+  author:`<svg viewBox="0 0 100 100" fill="none" stroke="#fbc312" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M70 14l16 16-46 46-22 6 6-22z"/><path d="M62 22l16 16"/><path d="M18 88h64"/></svg>`,
+  launch:`<svg viewBox="0 0 100 100" fill="none" stroke="#fbc312" stroke-width="6" stroke-linejoin="round"><rect x="14" y="20" width="72" height="66" rx="8"/><path d="M14 38h72M32 12v14M68 12v14" stroke-linecap="round"/><text x="50" y="76" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="30" fill="#fbc312" stroke="none">23</text></svg>`
+};
+const hlCover = (key, label) => `<div class="frame story navy"><div class="hl-icon">${ICONS[key]}<div class="lbl">${label}</div></div></div>`;
+
+const F = {
+/* ---------- POST 1: THE PLANNING TRAP (6) ---------- */
+'p1-01':()=>`<div class="frame feed navy"><div class="pad" style="justify-content:flex-start;padding-top:60px">
+  <div class="kicker">If you plan more than you start</div>
+  <div class="h1">The<br>planning<br><span class="gold">trap</span></div>
+  <div class="lead">It feels like progress.<br>That's why it's so hard to see.</div></div>
+  ${tangle(760,'left:160px;bottom:200px')}
+  <div class="foot"><span class="swipe">Swipe &rarr;</span><span class="n">1 / 6</span></div></div>`,
+'p1-02':()=>`<div class="frame feed navy"><div class="pad"><div class="kicker">Step 1</div><div class="lines">
+  <div class="h2">You make a plan.</div><div class="h2">It feels good.</div><div class="h2 gold">Like you've already started.</div></div></div>${foot(2,6)}</div>`,
+'p1-03':()=>`<div class="frame feed navy"><div class="pad"><div class="kicker">Step 2</div><div class="lines">
+  <div class="h2">Then a better idea arrives.</div><div class="h2 gold">So you make a new plan.</div></div>
+  <div class="lead">The first one isn't finished. It's just quietly put away.</div></div>${foot(3,6)}</div>`,
+'p1-04':()=>`<div class="frame feed navy"><div class="pad"><div class="kicker">Step 3</div><div class="lines">
+  <div class="h2">New notebook.</div><div class="h2">New app.</div><div class="h2">New Monday.</div></div>
+  <div class="rule"></div><div class="h3">The plan keeps getting better.<br><span class="gold">Your days stay the same.</span></div></div>${foot(4,6)}</div>`,
+'p1-05':()=>`<div class="frame feed cream"><div class="pad"><div class="kicker">The truth</div>
+  <div class="h2">Planning isn't the problem.</div>
+  <div class="h2">Planning <span class="serif gold" style="font-weight:600">instead of</span> starting is.</div>
+  <div class="lead">A plan can't fail. That's what makes it so comfortable to stay inside.</div></div>${foot(5,6)}</div>`,
+'p1-06':()=>`<div class="frame feed navy"><div class="pad"><div class="kicker">Your way out today</div>
+  <div class="list"><div class="it"><span class="b"></span><span>Choose one idea. Just one.</span></div>
+  <div class="it"><span class="b"></span><span>Do the smallest first step.</span></div>
+  <div class="it"><span class="b"></span><span>Let it be imperfect.</span></div></div>
+  <div class="rule"></div>
+  <div class="lead">You don't need another plan.<br><span class="gold">You need a way to begin.</span></div></div>
+  <div class="foot"><span>Save this for your next fresh start</span><span class="n">6 / 6</span></div></div>`,
+
+/* ---------- POST 2: MUSEUM OF UNFINISHED DREAMS (7) ---------- */
+'p2-01':()=>`<div class="frame feed navy"><div class="frame-gilt"></div><div class="pad" style="inset:150px;align-items:center;text-align:center;gap:34px">
+  <div class="kicker">Now open</div>
+  <div class="serif" style="font-size:44px;color:var(--cream)">Welcome to the</div>
+  <div class="h1" style="font-size:92px">Museum of<br><span class="gold">Unfinished<br>Dreams</span></div>
+  <div class="rule"></div>
+  <div class="body" style="font-size:36px">Admission free. You've probably<br>visited before.</div></div>
+  <div class="foot" style="bottom:90px;left:150px;right:150px"><span class="swipe">Enter &rarr;</span><span class="n">1 / 7</span></div></div>`,
+'p2-02':()=>`<div class="frame feed cream"><div class="pad" style="justify-content:center">
+  <div class="placard"><div class="no">Exhibit 01</div><div class="t">The January Notebook</div>
+  <dl class="meta"><dt>Medium</dt><dd>Paper, good intentions</dd><dt>Status</dt><dd>Six pages used</dd></dl>
+  <div class="q">&ldquo;This year will be different.&rdquo;</div></div></div>${foot(2,7,'Museum of Unfinished Dreams')}</div>`,
+'p2-03':()=>`<div class="frame feed cream"><div class="pad">
+  <div class="placard"><div class="no">Exhibit 02</div><div class="t">The Business Name</div>
+  <dl class="meta"><dt>Medium</dt><dd>Domain, logo draft, excitement</dd><dt>Status</dt><dd>Never launched</dd></dl>
+  <div class="q">&ldquo;I just need to get the website right first.&rdquo;</div></div></div>${foot(3,7,'Museum of Unfinished Dreams')}</div>`,
+'p2-04':()=>`<div class="frame feed cream"><div class="pad">
+  <div class="placard"><div class="no">Exhibit 03</div><div class="t">The Saved Folder</div>
+  <dl class="meta"><dt>Medium</dt><dd>Screenshots, bookmarks, &ldquo;for later&rdquo;</dd><dt>Status</dt><dd>Never opened again</dd></dl>
+  <div class="q">&ldquo;I'll come back to this when I have time.&rdquo;</div></div></div>${foot(4,7,'Museum of Unfinished Dreams')}</div>`,
+'p2-05':()=>`<div class="frame feed cream"><div class="pad">
+  <div class="placard"><div class="no">Exhibit 04</div><div class="t">The Online Course</div>
+  <dl class="meta"><dt>Medium</dt><dd>Bought in a sale</dd><dt>Status</dt><dd>Stopped at module two</dd></dl>
+  <div class="q">&ldquo;I'll finish it once things calm down.&rdquo;</div></div></div>${foot(5,7,'Museum of Unfinished Dreams')}</div>`,
+'p2-06':()=>`<div class="frame feed navy"><div class="pad"><div class="kicker">A note from the curator</div>
+  <div class="h2">Every exhibit here was a good idea.</div>
+  <div class="h2 gold">None of them failed.</div>
+  <div class="lead">They were simply never given a fair chance to be finished.</div></div>${foot(6,7,'Museum of Unfinished Dreams')}</div>`,
+'p2-07':()=>`<div class="frame feed navy"><div class="pad"><div class="kicker">Before you leave</div>
+  <div class="h2">You don't need a new exhibit.</div>
+  <div class="h3 gold">Choose one that's already here and finish it.</div>
+  <div class="rule"></div>
+  <div class="body">Which exhibit is yours?<br>Tell me in the comments.</div></div>
+  ${foot(7,7,'Museum of Unfinished Dreams')}</div>`,
+
+/* ---------- POST 3: DISCOVER THE BOOK (6) ---------- */
+'p3-01':()=>`<div class="frame feed navy">
+  <img class="cover-img" src="../assets/front-cover.png" style="width:440px;right:80px;top:300px;transform:rotate(3deg)">
+  <div class="pad" style="right:560px;gap:30px"><div class="kicker">The book</div>
+  <div class="h2" style="font-size:58px">You don't need another plan.</div>
+  <div class="h2 gold" style="font-size:58px">You need a way to begin.</div>
+  <div class="body" style="font-size:34px">Out 23 January 2027</div></div>
+  <div class="foot"><span class="swipe">Look inside &rarr;</span><span class="n">1 / 6</span></div></div>`,
+'p3-02':()=>`<div class="frame feed cream"><div class="pad"><div class="kicker">Written for you if you</div>
+  <div class="list">
+  <div class="it"><span class="b"></span><span>overthink every decision</span></div>
+  <div class="it"><span class="b"></span><span>collect more ideas than you can use</span></div>
+  <div class="it"><span class="b"></span><span>keep starting again from the beginning</span></div>
+  <div class="it"><span class="b"></span><span>fear choosing the wrong path</span></div>
+  <div class="it"><span class="b"></span><span>struggle to follow through</span></div></div></div>${foot(2,6)}</div>`,
+'p3-03':()=>`<div class="frame feed navy"><div class="pad"><div class="kicker">What's inside</div>
+  <div class="lines">
+  <div class="h3"><span class="gold">8</span> chapters on why planning can replace doing</div>
+  <div class="h3">The <span class="gold">SELECT</span> method for choosing what matters</div>
+  <div class="h3">A <span class="gold">30-day</span> follow-through programme</div></div></div>${foot(3,6)}</div>`,
+'p3-04':()=>`<div class="frame feed navy"><div class="pad"><div class="kicker">Tools you can use straight away</div>
+  <div class="list">
+  <div class="it"><span class="b"></span><span>The One-Project Card</span></div>
+  <div class="it"><span class="b"></span><span>The Action and Evidence Log</span></div>
+  <div class="it"><span class="b"></span><span>A 10-question reflection exercise</span></div></div>
+  <div class="lead">Because you don't need to do everything. You need to give what matters a fair chance.</div></div>${foot(4,6)}</div>`,
+'p3-05':()=>`<div class="frame feed navy">
+  <img class="cover-img" src="../assets/book-stack-soft.png" style="width:360px;left:96px;top:110px">
+  <div class="pad" style="top:640px;bottom:130px;justify-content:flex-end;gap:30px">
+  <div class="h3">The Life You Keep Planning</div><div class="serif" style="font-size:40px;color:var(--cream);margin-top:-14px">by Belinda Bright N.</div>
+  <div class="price"><div class="row"><span>Kindle</span><b>£3.99 &middot; pre-order now</b></div>
+  <div class="row"><span>Paperback</span><b>£9.99 &middot; coming soon</b></div></div>
+  <div class="body" style="font-size:36px">Out 23 January 2027</div></div>${foot(5,6)}</div>`,
+'p3-06':()=>`<div class="frame feed gold-bg"><div class="pad" style="align-items:flex-start">
+  <div class="kicker" style="color:var(--navy)">One small step</div>
+  <div class="h2">Pre-order the Kindle edition on Amazon UK.</div>
+  <div class="lead" style="color:var(--navy)">The link is in the bio.</div></div>
+  <div class="foot" style="color:rgba(11,26,49,.6)"><span>The Life You Keep Planning</span><span class="n">6 / 6</span></div></div>`,
+
+/* ---------- HIGHLIGHT COVERS ---------- */
+'hl-cover-start':()=>hlCover('start','Start Here'),
+'hl-cover-book':()=>hlCover('book','The Book'),
+'hl-cover-select':()=>hlCover('select','SELECT'),
+'hl-cover-author':()=>hlCover('author','Author'),
+'hl-cover-launch':()=>hlCover('launch','Launch'),
+
+/* ---------- HIGHLIGHT STORIES ---------- */
+'hl-start-1':()=>`<div class="frame story navy"><div class="pad"><div class="kicker">Start here</div>
+  <div class="h2">This page is for people who plan more than they start.</div>
+  <div class="lead">If that's you, you're in the right place.</div></div>${tangle(700,'left:190px;bottom:420px')}</div>`,
+'hl-start-2':()=>`<div class="frame story navy"><div class="pad"><div class="kicker">What you'll find here</div>
+  <div class="list">
+  <div class="it"><span class="b"></span><span>Short, honest lessons on overthinking</span></div>
+  <div class="it"><span class="b"></span><span>Ways to choose between too many ideas</span></div>
+  <div class="it"><span class="b"></span><span>Small steps that help you follow through</span></div></div></div></div>`,
+'hl-start-3':()=>`<div class="frame story cream"><div class="pad"><div class="kicker">Where to begin</div>
+  <div class="h2">Read the three pinned posts on the grid.</div>
+  <div class="lead">Then pick one idea you've been planning, and give it ten minutes today.</div></div></div>`,
+
+'hl-book-1':()=>`<div class="frame story navy">
+  <img class="cover-img" src="../assets/front-cover.png" style="width:620px;left:230px;top:300px">
+  <div class="pad" style="top:1300px;bottom:380px;gap:20px;text-align:center;align-items:center">
+  <div class="kicker">The debut book</div>
+  <div class="lead">Out 23 January 2027</div></div></div>`,
+'hl-book-2':()=>`<div class="frame story navy"><div class="pad"><div class="kicker">What it explores</div>
+  <div class="lines"><div class="h3">Why we overthink</div><div class="h3">Why we chase new ideas</div><div class="h3 gold">Why we struggle to follow through</div></div>
+  <div class="rule"></div>
+  <div class="lead">And what to do about it.</div></div></div>`,
+'hl-book-3':()=>`<div class="frame story navy"><div class="pad"><div class="kicker">What's inside</div>
+  <div class="list">
+  <div class="it"><span class="b"></span><span>Eight chapters</span></div>
+  <div class="it"><span class="b"></span><span>The SELECT method</span></div>
+  <div class="it"><span class="b"></span><span>A 30-day follow-through programme</span></div>
+  <div class="it"><span class="b"></span><span>The One-Project Card</span></div>
+  <div class="it"><span class="b"></span><span>The Action and Evidence Log</span></div>
+  <div class="it"><span class="b"></span><span>A 10-question reflection exercise</span></div></div></div></div>`,
+'hl-book-4':()=>`<div class="frame story navy"><div class="pad"><div class="kicker">Get the book</div>
+  <div class="price"><div class="row"><span>Kindle</span><b>£3.99</b></div><div class="row"><span>Paperback</span><b>£9.99</b></div></div>
+  <div class="body">Kindle pre-order is open now on Amazon UK. The paperback is coming soon.</div>
+  <span class="chip" style="align-self:flex-start">Link in bio</span></div></div>`,
+
+'hl-select-1':()=>`<div class="frame story navy"><div class="pad"><div class="kicker">The SELECT method</div>
+  <div class="h2">When every idea feels important, how do you choose?</div>
+  <div class="lead">SELECT is the method in the book for choosing what matters, so you can stop restarting and start finishing.</div></div></div>`,
+'hl-select-2':()=>`<div class="frame story cream"><div class="pad"><div class="kicker">Why it matters</div>
+  <div class="h2">You don't need to do everything.</div>
+  <div class="h2 gold">You need to give what matters a fair chance.</div>
+  <div class="lead">The full method is inside The Life You Keep Planning.</div></div></div>`,
+
+'hl-author-1':()=>`<div class="frame story navy"><div class="portrait" style="background-image:url('../assets/author-portrait.jpg')"></div><div class="shade"></div>
+  <div class="pad" style="top:1180px;bottom:300px;gap:18px;justify-content:flex-start">
+  <div class="kicker">Meet the author</div><div class="h2">Belinda Bright N.</div>
+  <div class="body" style="font-size:40px">Independent author of The Life You Keep Planning.</div></div></div>`,
+'hl-author-2':()=>`<div class="frame story navy"><div class="pad"><div class="kicker">Why this book</div>
+  <div class="lead" style="font-size:58px">&ldquo;There are people with dreams they haven't forgotten, ideas they still believe in, and plans they've been meaning to start.&rdquo;</div>
+  <div class="body">This book is for them.</div></div></div>`,
+
+'hl-launch-1':()=>`<div class="frame story navy"><div class="pad" style="align-items:center;text-align:center"><div class="kicker">Launch day</div>
+  <div style="font-weight:800;font-size:300px;line-height:1;color:var(--gold)">23</div>
+  <div class="h2">January 2027</div>
+  <div class="lead">The Life You Keep Planning is released.</div></div></div>`,
+'hl-launch-2':()=>`<div class="frame story navy"><div class="pad"><div class="kicker">Before launch day</div>
+  <div class="h2">Kindle pre-orders are open now.</div>
+  <div class="body">Pre-order on Amazon UK for £3.99 and the book arrives on your Kindle on 23 January 2027.</div>
+  <span class="chip" style="align-self:flex-start">Link in bio</span></div></div>`,
+};
+
+const id = new URLSearchParams(location.search).get('id');
+document.getElementById('root').innerHTML = F[id] ? F[id]() : '';
+window.FRAME_IDS = Object.keys(F);
+</script>
+</body>
+</html>
