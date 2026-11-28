@@ -14,7 +14,7 @@ Instagram shows feed posts (photos, carousels) mainly to **followers**, and an a
 |---|---|---|---|
 | 1 | **Reels first** | C | Post every QA-accepted video as a Reel; test each as a **Trial Reel** first (non-followers only). The Museum Reel goes first, after today's 2 pm fix. |
 | 2 | **First 100 followers from your own network** | B | Share each post to your personal Instagram, Facebook, WhatsApp status and LinkedIn with one line: "I've written a book. Follow the page for the launch." Ask close friends to follow, **save and share** (the strongest signals). |
-| 3 | **Follow your audience** | B | The account follows 0 accounts, so Instagram doesn't yet know who it's for. Follow 20 relevant UK accounts a day (bookstagram UK, self-help authors, productivity and overthinking pages). |
+| 3 | **Follow your audience** | B | The account follows 0 accounts, so Instagram doesn't yet know who it's for. Follow **5 relevant accounts a day** (author's choice, 28 Nov; also safer for a new account). Keep about 3 reader accounts for every 1 author-community account. Daily lists in the table below. |
 | 4 | **Daily 20-minute engagement round** | B (C drafts) | 10 genuine comments a day on posts in the niche (I draft them with `/ig-comment`); reply to every comment on your posts **within the first hour**. |
 | 5 | **Stories every day** | B / C | 2–3 stories a day: share each new post, a poll, and a **link sticker to the website** (stories are the only place besides the bio with a tappable link). Use the 18 Highlight frames already made. |
 | 6 | **Profile conversion** | B | Name field with search words, e.g. *"Overthinking → Action \| Book 2027"* (Instagram search reads it). Bio last line: *"Free quiz + Kindle pre-order ↓"*. Pin the three foundation carousels. Consider the handle **@thelifeyoukeepplanning** (no dot) if it is free; the current dot makes it hard to find. |
@@ -26,13 +26,13 @@ Instagram shows feed posts (photos, carousels) mainly to **followers**, and an a
 ## 14-day schedule
 | Date | Content (10:00 unless stated) | Daily actions |
 |---|---|---|
-| **Sat 28 Nov** | 14:00 Museum Reel safe-zone fix (C) | B: share today's post to Stories + personal accounts; follow 20 accounts; change name field |
+| **Sat 28 Nov** | 14:00 Museum Reel safe-zone fix (C) | B: share today's post to Stories + personal accounts; follow 5 accounts (list below); change name field |
 | **Sun 29 Nov** | Museum carousel (scheduled) | B: pin it; Story share + poll; 10 comments |
-| **Mon 30 Nov** | Planning Trap carousel (scheduled) · C: first weekly review | B: pin; Story share; 10 comments; follow 20 |
+| **Mon 30 Nov** | Planning Trap carousel (scheduled) · C: first weekly review | B: pin; Story share; 10 comments; follow 5 |
 | **Tue 1 Dec** | Discover the Book carousel (scheduled) | B: pin last; Story with link sticker to website |
 | **Wed 2 Dec** | **Museum Reel** (after QA) as a Trial Reel, then share to feed if it performs | B: reply to every comment in the first hour |
 | Thu 3 Dec | Stories: "Start Here" + "The Book" Highlight frames | C: 5 collaboration messages drafted; B sends |
-| Fri 4 Dec | Museum Reel to TikTok / Shorts / Facebook (if connected) | B: 10 comments; follow 20 |
+| Fri 4 Dec | Museum Reel to TikTok / Shorts / Facebook (if connected) | B: 10 comments; follow 5 |
 | Sat 5 – Sun 6 Dec | Stories: "SELECT" + "Author" + "Launch" Highlight frames | B: Story polls ("Which exhibit is yours?") |
 | **Mon 7 Dec** | C: weekly review + adjust | |
 | Tue 8 – Sun 13 Dec | Next QA-accepted upgraded video(s) as Reels (credit-free upgrades: E15 and chapter ads, once approved) | Daily routine continues; 5 more collaboration messages |
@@ -47,3 +47,13 @@ Instagram shows feed posts (photos, carousels) mainly to **followers**, and an a
 | Link taps (bio + stickers) | 50 | Instagram insights |
 | Kindle pre-orders | 10 | KDP pre-order report |
 These are starting targets for an account at 0 followers; they are revised at each Monday review.
+
+## Follow list (5 a day, handles checked 28 Nov)
+| Day | Accounts |
+|---|---|
+| Sat 28 Nov | @oliverburkeman_ · @mattzhaig (not @matthaig1, a fake) · @waterstones · @penguinukbooks · @readingagency |
+| Sun 29 Nov | @penguinlifebooks (UK, not @penguinlifeus) · @drjulie · @realtalk.therapist · @thediaryofaceopodcast · @bookmarkonthewall (UK bookstagrammer, features debuts: collaboration candidate) |
+| Mon 30 Nov | Author community: @jfpennauthor · @indieauthoralli · @selfpubform · @amazonkdp · @reedsy_hq |
+| From Tue 1 Dec | New list of 5 reader accounts a day, prepared by C |
+
+Avoid "make money with AI books" accounts: readers increasingly distrust them, and the association could hurt the book's credibility.
