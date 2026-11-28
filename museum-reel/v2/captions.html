@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Montserrat";src:url("../../instagram-foundation/assets/Montserrat-normal.woff2") format("woff2");font-weight:100 900}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:transparent}
+.f{position:relative;width:1080px;height:1920px;font-family:"Montserrat",Arial,sans-serif}
+.band{position:absolute;left:0;right:0;top:1060px;height:520px;background:linear-gradient(180deg,rgba(7,17,31,0) 0%,rgba(7,17,31,.55) 45%,rgba(7,17,31,.55) 75%,rgba(7,17,31,0) 100%)}
+.c{position:absolute;left:80px;right:80px;top:1230px;text-align:center;color:#fff;font-weight:800;font-size:66px;line-height:1.14;letter-spacing:-.005em;text-wrap:balance;
+   text-shadow:0 4px 22px rgba(7,17,31,.9),0 2px 4px rgba(7,17,31,.95)}
+.c .g{color:#fbc312}
+.top{position:absolute;left:80px;right:80px;top:250px;text-align:center}
+.top .k{font-weight:700;font-size:30px;letter-spacing:.24em;text-transform:uppercase;color:#fbc312;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+</style></head><body><div id="r"></div>
+<script>
+const C={
+ k1:['Welcome to the Museum of <span class="g">Unfinished Dreams</span>',true],
+ k2:['Every exhibit in here once felt <span class="g">urgent.</span>'],
+ k3:['The notebook you bought <span class="g">in January.</span>'],
+ k4:['Six pages, <span class="g">then nothing.</span>'],
+ k5:['The business name you registered, <span class="g">but never launched.</span>'],
+ k6:['The course you paid for, <span class="g">still paused at module two.</span>'],
+ k7:['The folder of ideas you saved <span class="g">for later.</span>'],
+ k8:['None of them failed.'],
+ k9:['They just never got <span class="g">a fair chance.</span>'],
+ k10:['Here’s what I’ve learned.'],
+ k11:['You don’t need <span class="g">another plan.</span>'],
+ k12:['You need <span class="g">a way to begin.</span>'],
+ k13:['So don’t add a new exhibit.'],
+ k14:['Choose one that’s <span class="g">already here,</span>'],
+ k15:['and take the smallest first step <span class="g">today.</span>'],
+};
+const id=new URLSearchParams(location.search).get('id'); const c=C[id];
+document.getElementById('r').innerHTML = c ? `<div class="f"><div class="band"></div>${c[1]?'<div class="top"><div class="k">Now open</div></div>':''}<div class="c">${c[0]}</div></div>` : '';
+window.IDS=Object.keys(C);
+</script></body></html>
