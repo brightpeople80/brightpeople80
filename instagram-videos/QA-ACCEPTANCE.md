@@ -43,6 +43,7 @@ Scored from each video's script, build files and six sampled frames.
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **01 Museum** | 2 | 2 | 2 | 1 | 1 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | **24 (92%)** | ✅ | **A · Accept** (bio link must open the website) |
 | E14 Author promo | 2 | 2 | 1 | 2 | 1 | 2 | 0 | 2 | 1 | 2 | 1 | 1 | 2 | **19 (73%)** | ✅ | **B · Improve** |
+| **E14 Author promo (upgraded)** | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 1 | **25 (96%)** | ✅ | **A · Accept** (72 s, slightly over 65 s) |
 | E15 Announcement | 2 | 2 | 1 | 1 | 2 | 2 | 0 | 2 | 2 | 2 | 1 | 1 | 1 | **19 (73%)** | ✅ | **B · Improve** |
 | E03 30-second ad | 1 | 2 | 2 | 2 | 1 | 0 | 0 | 0 | 1 | 2 | 2 | 0 | 1 | 14 (54%) | ❌ G1 | **C · Rework** |
 | E04 Maya | 2 | 1 | 1 | 2 | 2 | 1 | 0 | 0 | 1 | 1 | 0 | 2 | 1 | 14 (54%) | ✅ | **C · Rework** |

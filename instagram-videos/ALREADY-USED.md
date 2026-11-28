@@ -68,10 +68,11 @@ Sources: **01** = Museum of Unfinished Dreams (gold standard); **E01–E15** = e
 
 ## Website reasons already used
 - The free quiz — E04, 01
+- The free One-Project Card, filled in on a phone ("My side business" / "Write down one first step") — E14 upgraded
 - "Find out more on my website" (general) — E06, E07, E15
 
 ## Still unused (ideas for next videos)
-- **Website:** the One-Project Card *as an interactive tool* (name your priority, pick a five-minute action), the reader email list, the front/back cover viewer.
+- **Website:** the reader email list, the front/back cover viewer.
 - **Book content in depth:** what each SELECT step actually is; the 30-day roadmap by week (Start small, Park new ideas, Act with doubt, Review & return); the Action and Evidence Log; the three patterns as characters (The Collector, The Perfect Planner, The Restarter); "most sessions take 5–15 minutes"; the programme allowing for missed days.
 - **Chapters not yet featured:** 2, 4, 7 and 8 (need the author's chapter summaries).
 - **Recognition examples:** waiting until you feel ready; buying tools before starting (the new laptop, the planner, the app); asking everyone's opinion before deciding; restarting from day one after missing a day; a new idea arriving halfway through a project.
