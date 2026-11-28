@@ -11,6 +11,7 @@ Finished Reels for *The Life You Keep Planning*, one folder per video.
 
 **Earlier videos (E01–E15):** every script made before the gold standard is in [`earlier-videos/SCRIPTS.md`](earlier-videos/SCRIPTS.md).
 
+- **`TRAFFIC-PLAN.md`**: how to drive traffic to the page and website, with a 14-day schedule and targets.
 - **`ACTION-SCHEDULE.md`**: every campaign action with its date, owner and status.
 - **`GOLD-STANDARD.md`**: the recipe every new video follows.
 - **`ALREADY-USED.md`**: concepts, lines, scenes and effects from all 16 videos that must not be repeated.
