@@ -9,7 +9,7 @@
 | **G2 Honesty** | No invented reviews, results, sales, awards or quotes; the quiz is "self-reflection", not a test. |
 | **G3 Format** | Instagram videos are 1080×1920 (9:16), H.264 + AAC, captions inside the safe zone. |
 
-## 2. Scorecard (13 criteria, 0–2 each, maximum 26)
+## 2. Scorecard (14 criteria, 0–2 each, maximum 28)
 **0** = missing · **1** = partly there · **2** = meets the gold standard
 
 | # | Criterion | 2 points means |
@@ -27,13 +27,14 @@
 | P4 | Offer | Kindle £3.99, paperback £9.99 coming soon and 23 January 2027, spoken and on screen |
 | P5 | Website | A specific free reason to visit, with the address on screen |
 | P6 | Length and format | 45–65 s, 9:16 |
+| P7 | Visual production quality | Cinematic, consistent 3D animation at the level of 01 (added 28 Nov after review of E14) |
 
 ## 3. Acceptance categories
 | Category | Rule | What happens |
 |---|---|---|
-| **A · Accept** | ≥ 85% (22+) and all gates passed | Ready to post |
-| **B · Improve** | 65–84% (17–21) | Keep script and visuals; add the missing gold-standard elements |
-| **C · Rework** | 45–64% (12–16), or any gate failed | Keep the story and best lines and scenes; rebuild the delivery (voice, facts, offer, website) |
+| **A · Accept** | ≥ 85% (24+ of 28) and all gates passed, **and the automated QA (`tools/qa_check.py`) passes** | Ready to post |
+| **B · Improve** | 65–84% (19–23) | Keep script and visuals; add the missing gold-standard elements |
+| **C · Rework** | 45–64% (13–18), or any gate failed | Keep the story and best lines and scenes; rebuild the delivery (voice, facts, offer, website) |
 | **D · Retire** | < 45%, or a duplicate of a better video | Do not post; reuse its best parts inside other videos |
 
 ## 4. Results (28 November 2026)
@@ -43,7 +44,7 @@ Scored from each video's script, build files and six sampled frames.
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **01 Museum** | 2 | 2 | 2 | 1 | 1 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | **24 (92%)** | ✅ | **A · Accept** (bio link must open the website) |
 | E14 Author promo | 2 | 2 | 1 | 2 | 1 | 2 | 0 | 2 | 1 | 2 | 1 | 1 | 2 | **19 (73%)** | ✅ | **B · Improve** |
-| **E14 Author promo (upgraded)** | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 1 | **25 (96%)** | ✅ | **A · Accept** (72 s, slightly over 65 s) |
+| ~~E14 Author promo (upgraded), first build~~ | | | | | | | | | | | | | | ~~25 (96%)~~ | ❌ G3 | **Withdrawn:** scored without a documented check; captions failed the safe zone |
 | E15 Announcement | 2 | 2 | 1 | 1 | 2 | 2 | 0 | 2 | 2 | 2 | 1 | 1 | 1 | **19 (73%)** | ✅ | **B · Improve** |
 | E03 30-second ad | 1 | 2 | 2 | 2 | 1 | 0 | 0 | 0 | 1 | 2 | 2 | 0 | 1 | 14 (54%) | ❌ G1 | **C · Rework** |
 | E04 Maya | 2 | 1 | 1 | 2 | 2 | 1 | 0 | 0 | 1 | 1 | 0 | 2 | 1 | 14 (54%) | ✅ | **C · Rework** |
@@ -84,3 +85,31 @@ The same upgrade kit applies to each video. It reuses the gold standard's struct
 | 5 | E02 Trailer (+ best of E01) | Re-voice; retire the "You're not lazy" line as the hook by opening on its second line; add the offer and website |
 | 6 | E03 30-second ad | Correct the spoken paperback line; re-voice; replace the retired hook the same way |
 | 7 | E06 Meet the author (+ best of E07) | Re-voice; fix the end card; single CTA |
+
+## 7. QA log
+
+### 28 Nov 2026 · E14 Author promo (upgraded)
+**Method:** `tools/qa_check.py` + frame review every 2.5 s + caption-zone overlay.
+| Finding | Evidence | Fix | Status |
+|---|---|---|---|
+| G3: original captions at 1,488–1,580 px (below 1,440) | caption scan | Original 0–57 s scaled to 82%, lifted, blurred fill | ✅ lowest text now 1,404 px |
+| G3: new ending captions/address down to 1,516 px | caption scan | Ending captions raised to 1,232 px, phone and cards made smaller | ✅ |
+| P3: no book on screen 2.5–39 s | frame review | Book badge 4.3–39.8 s | ✅ |
+| Caption style changes at 57 s (small → large gold) | frame review | None yet | ⚠️ minor |
+| 1.2 s silence at 45.3 s (in original) | silencedetect | None | ⚠️ minor |
+| P6 length 72 s | duration | None (would cut original lines) | ⚠️ |
+| **P7: 3D animation weak compared with 01** (sticky notes, white tangle, text on a plain floor) | author review | Rebuild the middle scenes (4.9–45 s) as cinematic 3D, keeping script, voice and intro | ⏸ **On hold until HeyGen credits reset on 26 Dec 2026** (32 credits left) |
+
+**Score (safe-zone build):** F1 2 · F2 2 · F3 2 · F4 2 · F5 2 · F6 2 · F7 2 · P1 2 · P2 2 · P3 2 · P4 2 · P5 2 · P6 1 · P7 0 = **25/28 (89%)**, but **P7 = 0 blocks acceptance** → **B · Improve, on hold**. File: `heygen-promo/upgrade/out/e14-author-promo-qa-9x16.mp4`.
+
+### 28 Nov 2026 · 01 Museum of Unfinished Dreams (gold standard)
+| Finding | Evidence | Fix | Status |
+|---|---|---|---|
+| G3: end card button and "Amazon UK · link in bio" below 1,440 px (35–41 s) | frame review | Raise the end-card text block | ❌ open |
+| G3: finale "Pre-order your copy today" and "link in bio" below 1,440 px (55–56 s) | frame review | Raise | ❌ open |
+| G3: website captions and address below 1,440 px (58–64 s) | caption scan | Raise captions, shrink phone | ❌ open |
+| 2.5 s dead air at 40.8–43.3 s | silencedetect | Shorten the end-card hold | ⚠️ open |
+| Dip to dark at 43.0 s (fade-in from black) | brightness per frame | Crossfade instead | ⚠️ minor |
+| Bright scenery flagged at 9.0 s | frame review | None (false alarm) | ✅ |
+
+**Category until fixed: C · Rework (G3).** All open fixes are in the code-rendered sections, so they need no HeyGen credits.
